@@ -93,8 +93,7 @@ def crear_sesion():
             shipping_options=shipping_options,
             locale='es',
             billing_address_collection='required',
-            payment_method_collection='always',
-            automatic_payment_methods={'enabled': True},  # 🔥 AQUÍ está la clave
+            payment_method_types=['card', 'paypal'],
             metadata={
                 'source': 'anita_pinturitas_web'
             }
