@@ -5,7 +5,7 @@ from flask_cors import CORS
 import stripe
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=['*'], methods=['GET', 'POST', 'OPTIONS'], allow_headers=['Content-Type'])
 
 # Configuración directa sin archivo externo para simplificar
 stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
@@ -53,8 +53,14 @@ SHIPPING_OPTIONS = [
     },
 ]
 
-@app.route('/crear-sesion', methods=['POST'])
+@app.route('/crear-sesion', methods=['POST', 'OPTIONS'])
 def crear_sesion():
+    if request.method == 'OPTIONS':
+        response = jsonify({'status': 'ok'})
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+        response.headers.add('Access-Control-Allow-Methods', 'POST, OPTIONS')
+        return response
     try:
         print("Recibida petición para crear sesión")
         data = request.get_json()
