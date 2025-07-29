@@ -1,4 +1,5 @@
 import os
+import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import stripe
@@ -20,6 +21,14 @@ IMAGEN_POR_DEFECTO = "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?
 
 # Imagen para productos de belleza
 IMAGEN_BELLEZA = "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&h=300&fit=crop&crop=center"
+
+# Cargar el mapeo de imágenes
+def load_image_mapping():
+    try:
+        with open('image_mapping.json', 'r', encoding='utf-8') as f:
+            return json.load(f)['image_mapping']
+    except FileNotFoundError:
+        return {}
 
 SHIPPING_OPTIONS = [
     {
@@ -55,6 +64,8 @@ def crear_sesion():
         envio_gratuito = subtotal >= 62
 
         line_items = []
+        image_mapping = load_image_mapping()
+        
         for producto in carrito:
             product_data = {
                 'name': producto['nombre'],
@@ -64,9 +75,14 @@ def crear_sesion():
             imagen_url = producto.get('imagen')
             print(f"Procesando imagen para {producto['nombre']}: {imagen_url}")
             
-            # Usar imagen de belleza por defecto ya que las imágenes locales no son accesibles públicamente
-            print(f"Usando imagen de belleza para {producto['nombre']}")
-            product_data['images'].append(IMAGEN_BELLEZA)
+            # Buscar la URL de GitHub para esta imagen
+            if imagen_url and imagen_url in image_mapping:
+                github_url = image_mapping[imagen_url]
+                print(f"Usando imagen de GitHub para {producto['nombre']}: {github_url}")
+                product_data['images'].append(github_url)
+            else:
+                print(f"Usando imagen de belleza por defecto para {producto['nombre']}")
+                product_data['images'].append(IMAGEN_BELLEZA)
 
             line_items.append({
                 'price_data': {

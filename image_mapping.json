@@ -1,0 +1,14 @@
+{
+  "image_mapping": {
+    "/assets/producto1.jpg": "https://raw.githubusercontent.com/AlexFerrandezWeb/anitaPinturitasV2/main/assets/producto1.jpg",
+    "/assets/producto2.jpg": "https://raw.githubusercontent.com/AlexFerrandezWeb/anitaPinturitasV2/main/assets/producto2.jpg",
+    "/assets/producto3.jpg": "https://raw.githubusercontent.com/AlexFerrandezWeb/anitaPinturitasV2/main/assets/producto3.jpg",
+    "/assets/producto4.jpg": "https://raw.githubusercontent.com/AlexFerrandezWeb/anitaPinturitasV2/main/assets/producto4.jpg",
+    "/assets/producto5.jpg": "https://raw.githubusercontent.com/AlexFerrandezWeb/anitaPinturitasV2/main/assets/producto5.jpg",
+    "/assets/producto6.jpg": "https://raw.githubusercontent.com/AlexFerrandezWeb/anitaPinturitasV2/main/assets/producto6.jpg",
+    "/assets/producto7.jpg": "https://raw.githubusercontent.com/AlexFerrandezWeb/anitaPinturitasV2/main/assets/producto7.jpg",
+    "/assets/producto8.jpg": "https://raw.githubusercontent.com/AlexFerrandezWeb/anitaPinturitasV2/main/assets/producto8.jpg",
+    "/assets/producto9.jpg": "https://raw.githubusercontent.com/AlexFerrandezWeb/anitaPinturitasV2/main/assets/producto9.jpg",
+    "/assets/producto10.jpg": "https://raw.githubusercontent.com/AlexFerrandezWeb/anitaPinturitasV2/main/assets/producto10.jpg"
+  }
+} 
