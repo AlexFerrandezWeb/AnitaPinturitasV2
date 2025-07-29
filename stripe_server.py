@@ -18,6 +18,9 @@ CANCEL_URL = 'https://anita-pinturitas-server.onrender.com/cancel'
 # Imagen por defecto para productos sin imagen
 IMAGEN_POR_DEFECTO = "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300&h=300&fit=crop&crop=center"
 
+# Imagen para productos de belleza
+IMAGEN_BELLEZA = "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&h=300&fit=crop&crop=center"
+
 SHIPPING_OPTIONS = [
     {
         'shipping_rate_data': {
@@ -61,16 +64,9 @@ def crear_sesion():
             imagen_url = producto.get('imagen')
             print(f"Procesando imagen para {producto['nombre']}: {imagen_url}")
             
-            if imagen_url:
-                if imagen_url.startswith('/'):
-                    imagen_url = f"https://anitapinturitas.es{imagen_url}"
-                elif not imagen_url.startswith('http'):
-                    imagen_url = f"https://anitapinturitas.es/{imagen_url.lstrip('/')}"
-                print(f"URL final de imagen: {imagen_url}")
-                product_data['images'].append(imagen_url)
-            else:
-                print(f"Usando imagen por defecto para {producto['nombre']}")
-                product_data['images'].append(IMAGEN_POR_DEFECTO)
+            # Usar imagen de belleza por defecto ya que las imágenes locales no son accesibles públicamente
+            print(f"Usando imagen de belleza para {producto['nombre']}")
+            product_data['images'].append(IMAGEN_BELLEZA)
 
             line_items.append({
                 'price_data': {
