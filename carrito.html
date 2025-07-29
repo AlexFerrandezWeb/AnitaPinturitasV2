@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Anita Pinturitas</title>
+    
+    <!-- Meta tags para SEO -->
+    <meta name="description" content="Tu carrito de compras en Anita Pinturitas. Revisa y gestiona tus productos seleccionados.">
+    <meta name="keywords" content="carrito de compras, Younique, productos de belleza, Anita Pinturitas">
+    <meta name="author" content="Ana María Ramos Rodríguez">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://anitapinturitas.es/carrito">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="productos.css?v=1.0.2">
+    <link rel="stylesheet" href="carrito.css?v=1.0.2">
+    <link rel="stylesheet" href="reset.css?v=1.0.2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/assets/img-fav.png" type="image/x-icon">
+
+    <!-- Facebook SDK -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v18.0&appId=TU_APP_ID_FACEBOOK" nonce="random_nonce"></script>
+    
+    <!-- Google Sign-In API -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <!-- JWT Decode -->
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+
+
+
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <header class="header" role="banner">
+        <div class="header-logos">
+            <a href="/" title="Volver a inicio" class="header-a">
+                <img class="imagen-logo" src="/assets/foto-presentacion.jpg" alt="Logo Anita Pinturitas">
+            </a>
+            <span>x</span>
+            <a href="" class="header-a2">
+                <img class="imagen-logo2" src="/assets/logo_naturnua.png" alt="Logo Naturnua">
+            </a>
+        </div>
+        <div class="header-controls">
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="/carrito.html" class="nav-a carrito-link catalogo">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="carrito-cantidad" id="carrito-cantidad-mobile">0</span>
+            </a>
+        </div>
+        <nav class="nav" role="navigation" aria-label="Navegación principal">
+            <ul class="nav-ul">
+                <li class="nav-li">
+                    <a class="nav-a" href="/">Inicio</a>
+                </li>
+                <li class="nav-li">
+                    <p class="nav-p">|</p>
+                </li>
+                <li class="nav-li">
+                    <a class="nav-a" href="/productos.html">
+                        Productos
+                        <img src="/assets/logo_naturnua.png" alt="Logo Naturnua" class="nav-logo">
+                    </a>
+                </li>
+                <li class="nav-li">
+                    <p class="nav-p">|</p>
+                </li>
+                <li class="nav-li">
+                    <a class="nav-a" href="/catalogo.html">
+                        Catálogo
+                        <img src="/assets/logo_younique.svg" alt="Logo Younique" class="nav-logo">
+                    </a>
+                </li>
+                <li class="nav-li">
+                    <p class="nav-p">|</p>
+                </li>
+                <li class="nav-li carrito-desktop">
+                    <a class="nav-a carrito-link catalogo" href="/carrito.html">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="carrito-cantidad" id="carrito-cantidad">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section class="carrito-section"> 
+            <div class="carrito-contenedor">
+                <div class="carrito-productos" id="carrito-productos">
+                    <!-- Los productos del carrito se cargarán dinámicamente -->
+                </div>
+
+                <div class="carrito-resumen">
+                    <h2>Resumen del Pedido</h2>
+                    <div class="resumen-detalles">
+                        <div class="resumen-item">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">0.00 €</span>
+                        </div>
+                        <div class="resumen-item">
+                            <span>Envío:</span>
+                            <span id="envio">0.00 €</span>
+                        </div>
+                        <div class="resumen-item total">
+                            <span>Total:</span>
+                            <span id="total">0.00 €</span>
+                        </div>
+                    </div>
+                    <button class="btn-comprar" id="btn-comprar" disabled style="opacity:0.5;cursor:not-allowed;">
+                        Proceder al Pago
+                    </button>
+                    <p class="metodos-pago-info">
+                        <i class="fas fa-credit-card"></i> Aceptamos tarjetas y PayPal
+                    </p>
+                    <a href="/productos.html" class="btn-seguir-comprando">
+                        Continuar comprando
+                    </a>
+                </div>
+            </div>
+
+            <div class="carrito-vacio" id="carrito-vacio">
+                <i class="fas fa-shopping-cart"></i>
+                <h2>Tu carrito está vacío</h2>
+                <p>Añade productos para comenzar tu compra</p>
+                <a href="/productos.html" class="btn-seguir-comprando">Ver Productos</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Teléfono: 640 55 77 87</p>
+                <p>Email: info@anitapinturitas.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Sígueme</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/anitapinturitass/?locale=es_ES" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/anita_pinturitas_anamariaramos" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@anitapinturitas" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@anitapinturitastv/videos" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.117C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.386.569A2.994 2.994 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a2.994 2.994 0 0 0 2.112 2.117C4.495 20.5 12 20.5 12 20.5s7.505 0 9.386-.569a2.994 2.994 0 0 0 2.112-2.117C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                    <a href="https://es.pinterest.com/anamariaamrrg/?invite_code=f9df48b8300b450588d3e375f84c3556&sender=837951211826119474" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.889-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-legal">
+            <ul class="footer-legal-ul">
+                <li class="footer-legal-li">
+                    <a href="/politica-privacidad.html" class="footer-legal-a">Política de Privacidad</a>
+                </li>
+                <li class="footer-legal-li">
+                    <a href="/terminos-condiciones.html" class="footer-legal-a">Términos y Condiciones</a>
+                </li>
+                <li class="footer-legal-li">
+                    <a href="/politica-devoluciones.html" class="footer-legal-a">Política de Devoluciones</a>
+                </li>
+                <li class="footer-legal-li">
+                    <a href="/envios.html" class="footer-legal-a">Información de Envíos</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Anita Pinturitas. Todos los derechos reservados.</p>
+        </div>
+
+    </footer>
+
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-text">
+            Utilizamos cookies para mejorar tu experiencia en nuestro sitio web. Al continuar navegando, aceptas nuestra política de cookies.
+        </div>
+        <div class="cookie-buttons">
+            <button class="cookie-button accept-cookies" onclick="acceptCookies()">Aceptar</button>
+            <a href="/politica-privacidad.html" class="cookie-button more-info">Más información</a>
+        </div>
+    </div>
+
+    <!-- Modal de pago -->
+    <div class="modal-pago" id="modal-pago">
+        <div class="modal-contenido">
+            <span class="modal-cerrar">&times;</span>
+            <h2>Finalizar Compra</h2>
+            <form id="formulario-pago" class="formulario-pago">
+                <div class="form-grupo">
+                    <label for="nombre">Nombre completo:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-grupo">
+                    <label for="direccion-facturacion">Dirección de facturación:</label>
+                    <input type="text" id="direccion-facturacion" name="direccion-facturacion" required>
+                </div>
+                <div class="form-grupo">
+                    <label for="numero-tarjeta">Número de tarjeta:</label>
+                    <input type="text" id="numero-tarjeta" name="numero-tarjeta" 
+                           pattern="[0-9 ]{19}" maxlength="19" 
+                           placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-grupo tarjeta-detalles">
+                    <div class="form-grupo-fecha">
+                        <label for="fecha-caducidad">Fecha de caducidad:</label>
+                        <input type="text" id="fecha-caducidad" name="fecha-caducidad" 
+                               pattern="(0[1-9]|1[0-2])\/([0-9]{2})" 
+                               placeholder="MM/AA" maxlength="5" required>
+                    </div>
+                    <div class="form-grupo-cvv">
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" name="cvv" 
+                               pattern="[0-9]{3,4}" maxlength="4" 
+                               placeholder="123" required>
+                    </div>
+                </div>
+                <div class="form-grupo">
+                    <label for="nombre-tarjeta">Nombre en la tarjeta:</label>
+                    <input type="text" id="nombre-tarjeta" name="nombre-tarjeta" required>
+                </div>
+                <div class="tarjeta-seguridad">
+                    <i class="fas fa-lock"></i>
+                    <span>Pago seguro con encriptación SSL</span>
+                </div>
+                <button type="submit" class="btn-confirmar">Pagar con Tarjeta o PayPal</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de inicio de sesión -->
+    <div class="modal-login" id="modal-login">
+        <div class="modal-contenido">
+            <span class="modal-cerrar">&times;</span>
+            <h2 id="titulo-modal-login">Iniciar Sesión</h2>
+            <div class="login-opciones" id="login-opciones">
+                <button class="btn-login btn-google">
+                    <i class="fab fa-google"></i>
+                    <span>Continuar con Google</span>
+                </button>
+                <div class="separador">
+                    <span>o</span>
+                </div>
+                <form id="formulario-login" class="formulario-login">
+                    <div class="form-grupo">
+                        <label for="email-login">Email:</label>
+                        <input type="email" id="email-login" name="email" required>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="password">Contraseña:</label>
+                        <div style="position:relative;display:flex;align-items:center;">
+                            <input type="password" id="password" name="password" required style="flex:1;">
+                            <button type="button" class="toggle-password" data-target="password" aria-label="Mostrar u ocultar contraseña" style="background:none;border:none;position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-grupo">
+                        <a href="#" class="olvidaste-contrasena">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <button type="submit" class="btn-confirmar">Iniciar Sesión</button>
+                </form>
+                <p class="registro-texto">
+                    ¿No tienes cuenta? <a href="#" class="registro-link" id="mostrar-registro">Regístrate aquí</a>
+                </p>
+            </div>
+            <!-- Formulario de registro oculto por defecto -->
+            <div class="registro-opciones" id="registro-opciones" style="display:none; height:100%; flex-direction:column; justify-content:space-between; position:relative; padding-bottom:40px;">
+                <form id="form-registro-modal" class="formulario-login">
+                    <div class="form-grupo">
+                        <label for="nombre-registro">Nombre completo</label>
+                        <input type="text" id="nombre-registro" name="nombre" required>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="email-registro">Email</label>
+                        <input type="email" id="email-registro" name="email" required>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="password-registro">Contraseña</label>
+                        <div style="position:relative;display:flex;align-items:center;">
+                            <input type="password" id="password-registro" name="password" required minlength="6" style="flex:1;">
+                            <button type="button" class="toggle-password" data-target="password-registro" aria-label="Mostrar u ocultar contraseña" style="background:none;border:none;position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="repetir-password-registro">Repetir contraseña</label>
+                        <div style="position:relative;display:flex;align-items:center;">
+                            <input type="password" id="repetir-password-registro" name="repetir-password" required minlength="6" style="flex:1;">
+                            <button type="button" class="toggle-password" data-target="repetir-password-registro" aria-label="Mostrar u ocultar contraseña" style="background:none;border:none;position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-confirmar">Registrarse</button>
+                    <div id="mensaje-registro-modal"></div>
+                </form>
+                <a href="#" class="registro-link" id="volver-login">¿Ya tienes cuenta? Inicia sesión</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js?v=1.0.2"></script>
+    <script src="carrito.js?v=1.0.2"></script>
+    <script>
+    // Cambiar entre login y registro en el modal
+    const mostrarRegistro = document.getElementById('mostrar-registro');
+    const volverLogin = document.getElementById('volver-login');
+    const loginOpciones = document.getElementById('login-opciones');
+    const registroOpciones = document.getElementById('registro-opciones');
+    const tituloModalLogin = document.getElementById('titulo-modal-login');
+
+    if (mostrarRegistro) {
+        mostrarRegistro.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginOpciones.classList.add('hide');
+            setTimeout(() => {
+                loginOpciones.style.display = 'none';
+                registroOpciones.style.display = 'flex';
+                registroOpciones.classList.remove('hide');
+                tituloModalLogin.textContent = 'Registro de Usuario';
+            }, 400);
+        });
+    }
+    if (volverLogin) {
+        volverLogin.addEventListener('click', function(e) {
+            e.preventDefault();
+            registroOpciones.classList.add('hide');
+            setTimeout(() => {
+                registroOpciones.style.display = 'none';
+                loginOpciones.style.display = 'flex';
+                loginOpciones.classList.remove('hide');
+                tituloModalLogin.textContent = 'Iniciar Sesión';
+                document.getElementById('mensaje-registro-modal').innerHTML = '';
+            }, 400);
+        });
+    }
+    // Registro en localStorage desde el modal
+    const formRegistroModal = document.getElementById('form-registro-modal');
+    if (formRegistroModal) {
+        formRegistroModal.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre-registro').value.trim();
+            const email = document.getElementById('email-registro').value.trim().toLowerCase();
+            const password = document.getElementById('password-registro').value;
+            const repetir = document.getElementById('repetir-password-registro').value;
+            const mensaje = document.getElementById('mensaje-registro-modal');
+            mensaje.innerHTML = '';
+            if (!nombre || !email || !password || !repetir) {
+                mensaje.innerHTML = '<div class="mensaje-error">Todos los campos son obligatorios.</div>';
+                return;
+            }
+            if (password.length < 6) {
+                mensaje.innerHTML = '<div class="mensaje-error">La contraseña debe tener al menos 6 caracteres.</div>';
+                return;
+            }
+            if (password !== repetir) {
+                mensaje.innerHTML = '<div class="mensaje-error">Las contraseñas no coinciden.</div>';
+                return;
+            }
+            let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+            if (usuarios.find(u => u.email === email)) {
+                mensaje.innerHTML = '<div class="mensaje-error">El email ya está registrado.</div>';
+                return;
+            }
+            usuarios.push({ nombre, email, password });
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+            mensaje.innerHTML = '<div class="mensaje-exito">¡Registro exitoso! Ahora puedes iniciar sesión.</div>';
+            formRegistroModal.reset();
+        });
+    }
+
+    const stripe = Stripe('TU_PK_AQUI'); // Sustituye por tu clave pública de Stripe
+
+    const formularioPago = document.getElementById('formulario-pago');
+    if (formularioPago) {
+        formularioPago.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            // Recoge los datos del formulario
+            const nombre = document.getElementById('nombre').value;
+            const direccion = document.getElementById('direccion-facturacion').value;
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            // Llama a tu backend de Stripe
+            try {
+                const response = await fetch('http://localhost:4242/crear-sesion', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ carrito, nombre, direccion })
+                });
+                const data = await response.json();
+                if (data.id) {
+                    // Redirige a Stripe Checkout
+                    stripe.redirectToCheckout({ sessionId: data.id });
+                } else {
+                    alert('Error al crear la sesión de pago: ' + (data.error || 'Desconocido'));
+                }
+            } catch (err) {
+                alert('Error de conexión con el servidor de pagos.');
+            }
+        });
+    }
+    </script>
+
+    <style>
+        @media (max-width: 768px) {
+            .menu-toggle .fa-bars {
+                color: #333 !important;
+            }
+        }
+    </style>
+
+    <a href="https://wa.me/34640557787" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+        <span>¡Hola! ¿Te ayudo?</span>
+    </a>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('.nav');
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

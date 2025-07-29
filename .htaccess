@@ -1,0 +1,56 @@
+# Configuración específica para Hostinger - Deshabilitar conversión WebP
+RewriteEngine On
+
+# Forzar formato original para imágenes cuando se solicita
+RewriteCond %{QUERY_STRING} format=original
+RewriteRule ^(.*)\.(jpg|jpeg|png|gif)$ $1.$2 [L]
+
+# Deshabilitar headers de conversión WebP
+<IfModule mod_headers.c>
+    # Forzar tipo de contenido original
+    <FilesMatch "\.(jpg|jpeg)$">
+        Header set Content-Type "image/jpeg"
+        Header unset Accept-Encoding
+    </FilesMatch>
+    
+    <FilesMatch "\.(png)$">
+        Header set Content-Type "image/png"
+        Header unset Accept-Encoding
+    </FilesMatch>
+    
+    <FilesMatch "\.(gif)$">
+        Header set Content-Type "image/gif"
+        Header unset Accept-Encoding
+    </FilesMatch>
+</IfModule>
+
+# Deshabilitar compresión WebP en Hostinger
+<IfModule mod_deflate.c>
+    # Excluir imágenes de la compresión
+    SetEnvIfNoCase Request_URI \.(jpg|jpeg|png|gif)$ no-gzip dont-vary
+</IfModule>
+
+# Configuración para evitar conversión automática
+<FilesMatch "\.(jpg|jpeg|png|gif)$">
+    # Forzar descarga en formato original
+    SetEnv no-webp 1
+    SetEnv no-compression 1
+</FilesMatch>
+
+# Deshabilitar módulos de optimización si existen
+<IfModule mod_pagespeed.c>
+    ModPagespeedDisableFilters convert_webp_to_jpg
+    ModPagespeedDisableFilters convert_jpg_to_webp
+    ModPagespeedDisableFilters convert_png_to_jpg
+    ModPagespeedDisableFilters convert_jpg_to_webp_lossless
+</IfModule>
+
+# Configuración adicional para Hostinger
+<IfModule mod_expires.c>
+    # No cachear imágenes con parámetros específicos
+    ExpiresByType image/jpeg "access plus 0 seconds"
+    ExpiresByType image/png "access plus 0 seconds"
+    ExpiresByType image/gif "access plus 0 seconds"
+</IfModule> 
+
+#clave_secreta_stripe:'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'

@@ -1,0 +1,5 @@
+@media (max-width: 768px) {
+    .menu-toggle .fa-bars {
+        color: #333 !important;
+    }
+} 

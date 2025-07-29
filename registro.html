@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario - Anita Pinturitas</title>
+    <link rel="stylesheet" href="productos.css?v=1.0.2">
+    <link rel="stylesheet" href="carrito.css?v=1.0.2">
+    <link rel="stylesheet" href="reset.css?v=1.0.2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="/assets/img-fav.png" type="image/x-icon">
+    <style>
+        .registro-container {
+            max-width: 400px;
+            margin: 4rem auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2rem;
+        }
+        .registro-titulo {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        .form-grupo {
+            margin-bottom: 1.2rem;
+        }
+        .form-grupo label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .form-grupo input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        .btn-registrar {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        .btn-registrar:hover {
+            background: var(--accent-color);
+        }
+        .mensaje-exito {
+            background: #e6ffe6;
+            color: #2e7d32;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .mensaje-error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .registro-link {
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .registro-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="registro-container">
+        <h2 class="registro-titulo">Crear cuenta</h2>
+        <form id="form-registro">
+            <div class="form-grupo">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-grupo">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-grupo">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required minlength="6">
+            </div>
+            <div class="form-grupo">
+                <label for="repetir-password">Repetir contraseña</label>
+                <input type="password" id="repetir-password" name="repetir-password" required minlength="6">
+            </div>
+            <button type="submit" class="btn-registrar">Registrarse</button>
+        </form>
+        <a href="#" class="registro-link" id="ir-login">¿Ya tienes cuenta? Inicia sesión</a>
+        <div id="mensaje-registro"></div>
+    </div>
+    <script>
+    // Guardar usuario en localStorage
+    document.getElementById('form-registro').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nombre = document.getElementById('nombre').value.trim();
+        const email = document.getElementById('email').value.trim().toLowerCase();
+        const password = document.getElementById('password').value;
+        const repetir = document.getElementById('repetir-password').value;
+        const mensaje = document.getElementById('mensaje-registro');
+        mensaje.innerHTML = '';
+
+        if (!nombre || !email || !password || !repetir) {
+            mensaje.innerHTML = '<div class="mensaje-error">Todos los campos son obligatorios.</div>';
+            return;
+        }
+        if (password.length < 6) {
+            mensaje.innerHTML = '<div class="mensaje-error">La contraseña debe tener al menos 6 caracteres.</div>';
+            return;
+        }
+        if (password !== repetir) {
+            mensaje.innerHTML = '<div class="mensaje-error">Las contraseñas no coinciden.</div>';
+            return;
+        }
+        // Comprobar si el email ya está registrado
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+        if (usuarios.find(u => u.email === email)) {
+            mensaje.innerHTML = '<div class="mensaje-error">El email ya está registrado.</div>';
+            return;
+        }
+        // Guardar usuario
+        usuarios.push({ nombre, email, password });
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+        mensaje.innerHTML = '<div class="mensaje-exito">¡Registro exitoso! Ahora puedes iniciar sesión.</div>';
+        document.getElementById('form-registro').reset();
+    });
+    // Enlace para ir al login
+    document.getElementById('ir-login').addEventListener('click', function(e) {
+        e.preventDefault();
+        // Aquí puedes redirigir a la página de login o mostrar el modal de login
+        window.location.href = 'carrito.html';
+    });
+    </script>
+</body>
+</html> 

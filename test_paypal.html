@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test PayPal - Anita Pinturitas</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .btn {
+            background: #ff69b4;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        .btn:hover {
+            background: #ff1493;
+        }
+        .info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #2196f3;
+        }
+        .result {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #28a745;
+        }
+        .error {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test de PayPal en Stripe</h1>
+        
+        <div class="info">
+            <h3>📋 Información del test:</h3>
+            <ul>
+                <li>Producto de prueba: 10€</li>
+                <li>Métodos esperados: Tarjeta + PayPal</li>
+                <li>Moneda: EUR</li>
+                <li>País: España</li>
+            </ul>
+        </div>
+
+        <button class="btn" id="test-paypal">🔍 Probar PayPal en Stripe</button>
+        <button class="btn" id="test-simple">💳 Probar Solo Tarjetas</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const stripe = Stripe('pk_live_51RiBJlAV1sSXblTcz3sH2w36Nd753TcxPOGaRFdj1qKLi1EfDqd3N6S1zXq8RTRVQgxv3SBT31uW3kmDKxZG1t6A00vdarrbHY');
+        
+        document.getElementById('test-paypal').addEventListener('click', async () => {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<div class="result">🔄 Creando sesión con PayPal...</div>';
+            
+            try {
+                const response = await fetch('https://anita-pinturitas-server.onrender.com/crear-sesion', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        carrito: [{
+                            id: 'test-paypal',
+                            nombre: 'Test PayPal',
+                            precio: 10.00,
+                            cantidad: 1,
+                            imagen: '/assets/producto1.jpg'
+                        }]
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.id) {
+                    resultDiv.innerHTML = `
+                        <div class="result">
+                            ✅ Sesión creada exitosamente<br>
+                            ID: ${data.id}<br>
+                            🔍 Redirigiendo a Stripe...<br>
+                            <small>Verifica si aparece la opción de PayPal</small>
+                        </div>
+                    `;
+                    
+                    await stripe.redirectToCheckout({ sessionId: data.id });
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="result error">
+                            ❌ Error al crear sesión<br>
+                            Error: ${data.error}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        ❌ Error de conexión<br>
+                        Error: ${error.message}
+                    </div>
+                `;
+            }
+        });
+
+        document.getElementById('test-simple').addEventListener('click', async () => {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<div class="result">🔄 Creando sesión solo con tarjetas...</div>';
+            
+            try {
+                const response = await fetch('https://anita-pinturitas-server.onrender.com/crear-sesion-simple', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        carrito: [{
+                            id: 'test-simple',
+                            nombre: 'Test Solo Tarjetas',
+                            precio: 10.00,
+                            cantidad: 1,
+                            imagen: '/assets/producto1.jpg'
+                        }]
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.id) {
+                    resultDiv.innerHTML = `
+                        <div class="result">
+                            ✅ Sesión creada exitosamente<br>
+                            ID: ${data.id}<br>
+                            🔍 Redirigiendo a Stripe...<br>
+                            <small>Esta sesión solo debería mostrar tarjetas</small>
+                        </div>
+                    `;
+                    
+                    await stripe.redirectToCheckout({ sessionId: data.id });
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="result error">
+                            ❌ Error al crear sesión<br>
+                            Error: ${data.error}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        ❌ Error de conexión<br>
+                        Error: ${error.message}
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html> 

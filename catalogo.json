@@ -1,0 +1,534 @@
+{
+  "categorias": {
+    "piel": {
+      "productos": [
+        {
+          "id": "piel1",
+          "imagen": "/assets/piel1.jpg",
+          "descripcion": "Limpiador YOUTHPLEXION",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-17500-01"
+        },
+        {
+          "id": "piel2",
+          "imagen": "/assets/piel2.jpg",
+          "descripcion": "Mascarilla de ojos YOU·OLOGY - 30 pares",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-16204-16#UPGRADE-HIDDEN"
+        },
+        {
+          "id": "piel3",
+          "imagen": "/assets/piel3.jpg",
+          "descripcion": "Humectante para el Día YOUTHPLEXION",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-17500-05"
+        },
+        {
+          "id": "piel4",
+          "imagen": "/assets/piel4.jpeg",
+          "descripcion": "YOUNIQUE GLOWPLEXION cleanser",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-17201-01"
+        },
+        {
+          "id": "piel5",
+          "imagen": "/assets/piel5.jpg",
+          "descripcion": "Desmaquillante Líquido YOU·OLOGY",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-53021-03"
+        },
+        {
+          "id": "piel6",
+          "imagen": "/assets/piel6.jpg",
+          "descripcion": "Limpiador Facial Suave en Gel YOU·NIVERSAL",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-17101-04"
+        },
+        {
+          "id": "piel7",
+          "imagen": "/assets/piel7.jpeg",
+          "descripcion": "YOUNIQUE GLOWPLEXION serum",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-17201-02"
+        },
+        {
+          "id": "piel8",
+          "imagen": "/assets/piel8.jpg",
+          "descripcion": "Crema de Ojos YOU·OLOGY",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-16304-01"
+        },
+        {
+          "id": "piel9",
+          "imagen": "/assets/piel9.jpg",
+          "descripcion": "Crema de Ojos YOUNIQUE YOU·NIVERSAL",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-17101-06"
+        },
+        {
+          "id": "piel10",
+          "imagen": "/assets/piel10.jpeg",
+          "descripcion": "YOUNIQUE GLOWPLEXION moisturizer",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-17201-04"
+        },
+        {
+          "id": "piel11",
+          "imagen": "/assets/piel11.jpg",
+          "descripcion": "Aplicador de Crema de Ojos YOUNIQUE",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-52037-02"
+        },
+        {
+          "id": "piel12",
+          "imagen": "/assets/piel12.jpg",
+          "descripcion": "Sérum de Noche YOUTHPLEXION",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-17500-03"
+        },
+        {
+          "id": "piel13",
+          "imagen": "/assets/piel13.jpg",
+          "descripcion": "Mascarilla Refrescante de Bio-celulosa YOU·OLOGY – 8 unidades",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-36208-01"
+        },
+        {
+          "id": "piel14",
+          "imagen": "/assets/piel14.jpg",
+          "descripcion": "Sérum de Belleza UPLIFT YOU·OLOGY",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-16204-05"
+        },
+        {
+          "id": "piel15",
+          "imagen": "/assets/piel15.jpg",
+          "descripcion": "Crema de Noche YOUTHPLEXION",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-17500-07"
+        },
+        {
+          "id": "piel16",
+          "imagen": "/assets/piel16.jpg",
+          "descripcion": "Suscripción al Tratamiento de 7 días de Vitamina C YOU·OLOGY",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-91522-36"
+        },
+        {
+          "id": "piel17",
+          "imagen": "/assets/piel17.jpg",
+          "descripcion": "Exfoliante Cremoso para Labios YOU·OLOGY",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-16208-03"
+        },
+        {
+          "id": "piel18",
+          "imagen": "/assets/piel18.jpg",
+          "descripcion": "Mascarilla Revitalizante YOU·NIVERSAL",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-17100-02"
+        },
+        {
+          "id": "piel19",
+          "imagen": "/assets/piel19.jpg",
+          "descripcion": "Mascarilla de Ojos YOU·OLOGY – 60 pares",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-91522-35"
+        },
+        {
+          "id": "piel20",
+          "imagen": "/assets/piel20.jpg",
+          "descripcion": "Mascarilla de Labios YOU·OLOGY",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-26207-00/US-16207-01"
+        },
+        {
+          "id": "piel21",
+          "imagen": "/assets/piel21.jpg",
+          "descripcion": "Mascarilla Hidratante de Noche YOU·NIVERSAL Younique",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-17100-01"
+        },
+        {
+          "id": "piel22",
+          "imagen": "/assets/piel22.jpg",
+          "descripcion": "Mascarilla Refrescante de Bio-celulosa YOU·OLOGY – 4 unidades",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-16208-01#UPGRADE-HIDDEN"
+        },
+        {
+          "id": "piel23",
+          "imagen": "/assets/piel23.jpg",
+          "descripcion": "Bálsamo de Limpieza Facial YOU·OLOGY",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-16304-02"
+        },
+        {
+          "id": "piel24",
+          "imagen": "/assets/piel24.jpg",
+          "descripcion": "Mascarilla Cremosa de Arcilla y Carbón YOU·NIVERSAL",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-17100-03"
+        },
+        {
+          "id": "piel25",
+          "imagen": "/assets/piel25.jpg",
+          "descripcion": "Tratamiento de 7 días de Vitamina C YOU·OLOGY",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-16405-03#UPGRADE-HIDDEN"
+        },
+        {
+          "id": "piel26",
+          "imagen": "/assets/piel26.jpg",
+          "descripcion": "Toallitas Desmaquillantes YOU·OLOGY",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-16204-10"
+        },
+        {
+          "id": "piel27",
+          "imagen": "/assets/piel27.jpg",
+          "descripcion": "Agua de Rosas Tonificante en Spray YOU·OLOGY",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-26204-00"
+        }
+      ]
+    },
+    "maquillaje": {
+      "ojos": [
+        {
+          "id": "ojos1",
+          "imagen": "/assets/ojos1.jpg",
+          "descripcion": "Sombra de Ojos en Barra MOODSTRUCK",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-51020-00"
+        },
+        {
+          "id": "ojos2",
+          "imagen": "/assets/ojos2.jpg",
+          "descripcion": "Lápiz para Esculpir Cejas MOODSTRUCK",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-62103-00"
+        },
+        {
+          "id": "ojos3",
+          "imagen": "/assets/ojos3.jpg",
+          "descripcion": "Relleno de Sombra de Ojos Compacta MOODSTRUCK",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-21007-00"
+        },
+        {
+          "id": "ojos4",
+          "imagen": "/assets/ojos4.jpg",
+          "descripcion": "Delineador Gráfico MOODSTRUCK PRECISION.",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-22113-00"
+        },
+        {
+          "id": "ojos5",
+          "imagen": "/assets/ojos5.jpg",
+          "descripcion": "Paleta de Cejas Duo MOODSTRUCK",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-82103-00"
+        },
+        {
+          "id": "ojos6",
+          "imagen": "/assets/ojos6.jpg",
+          "descripcion": "Paleta de Sombras MOODSTRUCK ADDICTION",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-21003-00"
+        },
+        {
+          "id": "ojos7",
+          "imagen": "/assets/ojos7.jpg",
+          "descripcion": "Paleta de Sombras MOODSTUCK Essential",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-21022-00"
+        },
+        {
+          "id": "ojos8",
+          "imagen": "/assets/ojos8.jpg",
+          "descripcion": "Relleno del Delineador en Polvo para Cejas MOODSTRUCK",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-72103-00"
+        },
+        {
+          "id": "ojos9",
+          "imagen": "/assets/ojos9.jpg",
+          "descripcion": "Paleta de Sombras de Ojos Compactas MOODSTRUCK BELOVED Volumen 3.",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-11010-05"
+        },
+        {
+          "id": "ojos10",
+          "imagen": "/assets/ojos10.jpg",
+          "descripcion": "Máscara de Pestañas Twisted MOODSTRUCK EPIC",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-11102-13"
+        },
+        {
+          "id": "ojos11",
+          "imagen": "/assets/ojos11.jpg",
+          "descripcion": "Sombra de Ojos Líquida MOODSTRUCK",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-31014-00"
+        },
+        {
+          "id": "ojos12",
+          "imagen": "/assets/ojos12.jpg",
+          "descripcion": "Delineador de Ojos Líquido MOODSTRUCK PRECISION - Perfect",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-12112-01"
+        },
+        {
+          "id": "ojos13",
+          "imagen": "/assets/ojos13.jpg",
+          "descripcion": "Tubing Máscara y Prebase con Sérum 4 en 1 YOUNIQUE QUADRA",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-11106-01"
+        },
+        {
+          "id": "ojos14",
+          "imagen": "/assets/ojos14.jpg",
+          "descripcion": "Sombra Individual de Ojos Compacta MOODSTRUCK",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-31009-01"
+        },
+        {
+          "id": "ojos15",
+          "imagen": "/assets/ojos15.jpg",
+          "descripcion": "Delineador de Ojos Líquido Ultrafino DIP & DRAW",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-22107-00"
+        },
+        {
+          "id": "ojos16",
+          "imagen": "/assets/ojos16.jpg",
+          "descripcion": "Máscara de Pestañas MOODSTRUCK EPIC 4D de un solo paso",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-11102-09"
+        },
+        {
+          "id": "ojos17",
+          "imagen": "/assets/ojos17.jpg",
+          "descripcion": "Paleta de Cuatro Sombras de Ojos Compactas MOODSTRUCK",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-31009-02"
+        },
+        {
+          "id": "ojos18",
+          "imagen": "/assets/ojos18.jpg",
+          "descripcion": "Lápiz Delineador de Ojos MOODSTRUCK PRECISION",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-22102-00"
+        },
+        {
+          "id": "ojos19",
+          "imagen": "/assets/ojos19.jpg",
+          "descripcion": "Prebase de Pestañas MOODSTRUCK EPIC",
+          "precio": "",
+          "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-11102-08"
+        }
+      ],
+      "labios": [
+           {
+            "id": "labios1",
+            "imagen": "/assets/labios1.jpg",
+            "descripcion": "Tinta para Labios MOODSTRUCK",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-22504-00"
+            },
+            {
+            "id": "labios2",
+            "imagen": "/assets/labios2.jpg",
+            "descripcion": "Barra de Labios Mate de Larga Duración MOODSTRUCK SPLASH",
+            "precio": "",
+              "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-21814-00"
+            },
+            {
+            "id": "labios3",
+            "imagen": "/assets/labios3.jpg",
+            "descripcion": "Lápiz Delineador de Labios MOODSTRUCK PRECISION",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-22111-00"
+            },
+            {
+            "id": "labios4",
+            "imagen": "/assets/labios4.jpg",
+            "descripcion": "Barra de Labios Mate MOODSTRUCK OPULENCE",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-11803-00"
+            },
+            {
+            "id": "labios5",
+            "imagen": "/assets/labios5.jpg",
+            "descripcion": "Brillo de Labios LUCRATIVE",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-11802-00"
+            },
+            {
+            "id": "labios6",
+            "imagen": "/assets/labios6.jpg",
+            "descripcion": "Exfoliante Cremoso para Labios YOU·OLOGY",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-16208-03"
+            },
+            {
+            "id": "labios7",
+            "imagen": "/assets/labios7.jpg",
+            "descripcion": "Barra de Labios Cremosa MOODSTRUCK OPULENCE",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-51803-00"
+            },
+            {
+            "id": "labios8",
+            "imagen": "/assets/labios8.jpg",
+            "descripcion": "Potenciador de Labios MOODSTRUCK HOTTIE",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-11806-01"
+            },
+            {
+            "id": "labios9",
+            "imagen": "/assets/labios9.jpg",
+            "descripcion": "Mascarilla de Labios YOU·OLOGY",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-26207-00"
+            }
+          ],
+      "rostro": [
+            {
+            "id": "rostro1",
+            "imagen": "/assets/rostro1.jpg",
+            "descripcion": "Base de Maquillaje en Crema YOUNIQUE TOUCH",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-21419-00"
+            },
+            {
+            "id": "rostro2",
+            "imagen": "/assets/rostro2.jpg",
+            "descripcion": "Base de Maquillaje en Spray YOUNIQUE TOUCH",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-21412-00"
+            },
+            {
+            "id": "rostro3",
+            "imagen": "/assets/rostro3.jpg",
+            "descripcion": "Iluminador Metalizado YOUNIQUE TOUCH",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-17009-00"
+            },
+            {
+            "id": "rostro4",
+            "imagen": "/assets/rostro4.jpg",
+            "descripcion": "Prebase Iluminadora BARE·YOU YOUNIQUE",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-11607-01"
+            },
+            {
+            "id": "rostro5",
+            "imagen": "/assets/rostro5.jpg",
+            "descripcion": "Base de Maquillaje en Barra YOUNIQUE TOUCH",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-21410-00"
+            },
+            {
+            "id": "rostro6",
+            "imagen": "/assets/rostro6.jpg",
+            "descripcion": "Brocha de Abanico en Ángulo YOUNIQUE",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-52033-02"
+            },
+            {
+            "id": "rostro7",
+            "imagen": "/assets/rostro7.jpg",
+            "descripcion": "Corrector Skin Solution YOUNIQUE TOUCH",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-21414-00"
+            },
+            {
+            "id": "rostro8",
+            "imagen": "/assets/rostro8.jpg",
+            "descripcion": "Rubor/Colorete en Polvo Compacto MOODSTRUCK",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-31301-00"
+            },
+            {
+            "id": "rostro9",
+            "imagen": "/assets/rostro9.jpg",
+            "descripcion": "Brocha para Polvo Fijador YOUNIQUE",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-52035-06"
+            },
+            {
+            "id": "rostro10",
+            "imagen": "/assets/rostro10.jpg",
+            "descripcion": "BB Hidratante con Color + YOUNIQUE BARE·YOU",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-21605-00"
+           },
+           {
+            "id": "rostro11",
+            "imagen": "/assets/rostro11.jpg",
+            "descripcion": "Prebase y Fijador en Spray TOUCH BEHOLD",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-17004-02"
+            },
+            {
+            "id": "rostro12",
+            "imagen": "/assets/rostro12.jpg",
+            "descripcion": "Brocha para Rubor/Colorete YOUNIQUE",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-52035-03"
+            },
+            {
+            "id": "rostro13",
+            "imagen": "/assets/rostro13.jpg",
+            "descripcion": "Base de Maquillaje con Sérum YOUNIQUE TOUCH +",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-21418-00"
+            },
+            {
+            "id": "rostro14",
+            "imagen": "/assets/rostro14.jpg",
+            "descripcion": "Polvo Fijador TOUCH BEHOLD",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-17005-02"
+            },
+            {
+            "id": "rostro15",
+            "imagen": "/assets/rostro15.jpg",
+            "descripcion": "Brocha para Esculpir el Rostro YOUNIQUE",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-52038-01"
+            },
+            {
+            "id": "rostro16",
+            "imagen": "/assets/rostro16.jpg",
+            "descripcion": "Base de Maquillaje en Polvo Compacto YOUNIQUE TOUCH complexion+",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-11416-00"
+            },
+            {
+            "id": "rostro17",
+            "imagen": "/assets/rostro17.jpg",
+            "descripcion": "Multibarra Labios y Mejillas BARE·YOU YOUNIQUE",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-21606-00"
+            },
+            {
+            "id": "rostro18",
+            "imagen": "/assets/rostro18.jpg",
+            "descripcion": "Brocha para Contorno YOUNIQUE",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-52033-01"
+            },
+            {
+            "id": "rostro19",
+            "imagen": "/assets/rostro19.jpg",
+            "descripcion": "Brocha Kabuki YOUNIQUE",
+            "precio": "",
+            "url": "https://www.youniqueproducts.com/anitapinturitas/products/view/US-52035-02"
+            }
+      ]
+    }
+  }
+}

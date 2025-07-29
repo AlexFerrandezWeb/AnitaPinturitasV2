@@ -1,0 +1,1148 @@
+{
+    "categorias": [
+        {
+            "id": "alta_cosmética",
+            "nombre": "alta cosmética",
+            "titulo": "Línea alta cosmética",
+            "descripcion": "",
+            "productos": [
+                {
+                    "id": "prod_SdTAGVPaPAE5Wu",
+                    "nombre": "NUA GOLD (Crema facial) - 50 ml.",
+                    "precio": 61.00,
+                    "descripcion": "Crema facial de día y noche para todo tipo de pieles. Aporta factores humectantes y nutrientes que fortalecen intensamente, con ácido hialurónico liposomal que actúa minimizando las líneas de expresión y de la edad. El oro, como oligoelemento, revitaliza la piel y le proporciona luminosidad a la par que la descongestiona. El silicio orgánico vigoriza la piel aportando energía y reforzando las células de la piel. Indicada para todo tipo de pieles.",
+                    "imagen": "/assets/producto1.jpg",
+                    "url": "https://buy.stripe.com/28E3cugBwbU1a2x35fds400"
+                },
+                {
+                    "id": "prod_SdTImCUGKth7R9",
+                    "nombre": "PLATINUM ESPIRIT (Crema facial) - 50 ml.",
+                    "precio": 61.00,
+                    "descripcion": "Desde las primeras aplicaciones, Platinum Espirit devuelve la vitalidad y energía intensamente a la piel que se vuelve mucho más confortable. Con los liposomas de vitamina C el rostro resplandece y se ilumina, aumentando la densidad de la piel y disminuyendo las marcas de la edad por expresión o gravedad. Los activos tensores de última generación, los liposomas de EGF y el colágeno aportan firmeza y tersura. Cubre las necesidades específicas tanto de las pieles jóvenes como maduras, rehidratando intensamente y aportando todos los nutrientes necesarios para mantener la piel siempre joven y tersa. Indicada para pieles secas.",
+                    "imagen": "/assets/producto2.jpg",
+                    "url": "https://buy.stripe.com/dRmdR8dpk8HP7Up6hrds401"
+                },
+                {
+                    "id": "US-21106-03",
+                    "nombre": "PEARL ESPIRIT (Crema facial) - 50 ml.",
+                    "precio": 61.00,
+                    "descripcion": "Crema facial compuesta con liposomas de arbutina, bakuchiol, vitamina C, polvo puro de perla, rosa mosqueta, aceite de onagra y activos blanqueantes para la piel. La vitamina C es un potente antioxidante que refuerza y previene el envejecimiento y pigmentación de la piel. El Polvo puro de Perla unifica la coloración de la piel proporcionando una suave exfoliación. Todos estos activos de última generación actúan en profundidad creando una piel firme y sedosa. Indicada para todo tipo de pieles.",
+                    "imagen": "/assets/producto3.jpg",
+                    "url": "https://buy.stripe.com/fZu00ifxs8HP0rX49jds402"
+                },
+                {
+                    "id": "US-21106-04",
+                    "nombre": "SERUM DE NOCHE - 15 ml.",
+                    "precio": 31.00,
+                    "descripcion": "Fluido con activos altamente antioxidantes y restauradores. Durante la noche el retinol ayuda a las células a regenerarse, combatir las arrugas, las líneas de expresión y a minimizar el impacto de los radicales libres que destruyen las células y aceleran el proceso de envejecimiento. Su fórmula magistral lo convierte en el serum de noche más regenerante, potente y natural. El serum no debe ser un sustituto de las cremas sino más bien un complemento diario. Indicada para todo tipo de pieles.",
+                    "imagen": "/assets/producto4.jpg",
+                    "url": "https://buy.stripe.com/bJe28qclg4rz4Id8pzds403"
+                },
+                {
+                    "id": "US-21106-05",
+                    "nombre": "SERUM DÍA DE ORO Y ÁCIDO HIALURÓNICO - 100 ml.",
+                    "precio": 35.00,
+                    "descripcion": "Serum fluido de día, con alta concentración de principios activos y absorción rápida. Combate los signos del cansancio, proporciona vitalidad y luminosidad a la piel con resultados inmediatos y visibles. El Serum no debe ser un sustituto de las cremas sino más bien un complemento diario. Indicada para todo tipo de pieles.",
+                    "imagen": "/assets/producto5.jpg",
+                    "url": "https://buy.stripe.com/eVqaEWbhc4rzeiN9tDds404"
+                },
+                {
+                    "id": "US-21106-06",
+                    "nombre": "VELO DE COLÁGENO Y CAVIAR - 100 ml.",
+                    "precio": 33.00,
+                    "descripcion": "Las propiedades del velo de colágeno vegetal y caviar son estimular la regeneración celular y proporcionar aminoácidos que impulsan la creación de colágeno y elastina fundamentales para el crecimiento celular. Posee factores hidratantes y reafirmantes que preparan la piel para la aplicación de la crema caviar essence o platinum espirit",
+                    "imagen": "/assets/producto6.jpg",
+                    "url": "https://buy.stripe.com/6oUbJ0ad82jr8YtfS1ds405"
+                },
+                {
+                    "id": "US-21106-07",
+                    "nombre": "DOBLE SERUM ESPIRIT - 15 ml.",
+                    "precio": 31.00,
+                    "descripcion": "Compuesto por principios activos vegetales de última generación. De uso externo, trata las arrugas de expresión y fisiológicas con efecto acumulativo. Los fantásticos resultados aparecen a partir de las 2 horas del tratamiento inicial. Es aconsejable a continuación del Doble Serum Espirit aplicar la crema facial Platinum Espirit. Indicado para todo tipo de pieles.",
+                    "imagen": "/assets/producto7.jpg",
+                    "url": "https://buy.stripe.com/3cIfZgetof6deiN35fds406"
+                },
+                {
+                    "id": "US-21106-08",
+                    "nombre": "RELLENADOR NATURAL 15 ml.",
+                    "precio": 29.00,
+                    "descripcion": "Tratamiento específico para las arrugas con activos biotecnológicos altamente eficaces que trabajan conjuntamente para reducir la apariencia de las arrugas y líneas de expresión. Formulado con liposomas de ácido hialurónico de bajo peso molecular, bakuchiol, complejo de proteínas vegetales y silicio orgánico.",
+                    "imagen": "/assets/producto8.png",
+                    "url": "https://buy.stripe.com/eVqaEW5WS1fngqVdJTds407"
+                },
+                {
+                    "id": "US-21106-09",
+                    "nombre": "SUERO TENSOR - Ampolla 2 ml. (10 unidades)",
+                    "precio": 33.00,
+                    "descripcion": "Ampollas intensivas con doble efecto tensor, inmediato y prolongado. Formuladas con activos reafirmantes, revitalizantes y redensificantes, que rejuvenecen la apariencia del rostro. Actúan promoviendo la síntesis de elastina y colágeno, ayudando a recuperar la fuerza, tensión y luminosidad perdidas con el tiempo y a eliminar las líneas de expresión y signos de cansancio. Contiene glicosaminoglicanos, vitamina C, ácido hialurónico, silicio orgánico y extractos biotecnológicos de origen vegetal.",
+                    "imagen": "/assets/producto9.jpg",
+                    "url": "https://buy.stripe.com/14AeVcbhc5vDdeJeNXds408"
+                },
+                {
+                    "id": "US-21106-10",
+                    "nombre": "VITAMIN C - Ampolla 2 ml. (10 unidades)",
+                    "precio": 33.00,
+                    "descripcion": "Mediante “biotecnología vegetal con doble recubrimiento” conseguimos que la vitamina C penetre en las capas más profundas liberándose por fases de forma pura y estable, potenciando la acción antioxidante, regeneradora y aportando luminosidad a la piel. Estas ampollas de Vitamina C logran con eficacia reparar la piel de forma que su apariencia sea joven y vital.",
+                    "imagen": "/assets/producto10.jpg",
+                    "url": "https://buy.stripe.com/6oUdR8clg6zHfmR21bds409"
+                },
+                {
+                    "id": "US-21106-11",
+                    "nombre": "HYALURONIC - Ampolla 2 ml. (10 unidades)",
+                    "precio": 33.00,
+                    "descripcion": "El ácido hialurónico liposomal de bajo peso molecular, en sus tres formas complejas, unido al colágeno, proporcionan la máxima hidratación y tersura a la piel, además de contribuir a rellenar y tensar las fibras de elastina y colágeno, ayudando a reducir la profundidad de las arrugas. Las ampollas Hyaluronic cubren todas las necesidades de hidratación profunda y nutrición.",
+                    "imagen": "/assets/producto11.jpg",
+                    "url": "https://buy.stripe.com/3cIfZg2KG3nv8YtfS1ds40a"
+                },
+                {
+                    "id": "US-21106-12",
+                    "nombre": "PACK AMPOLLAS (1 ud. VITAMIN C + 1 ud. HYALURONIC + 1 ud. SUERO TENSOR) - 2 ml.",
+                    "precio": 13.00,
+                    "descripcion": "Vitamin C: Reparación de la piel para una apariencia joven y vital. Mediante “biotecnología vegetal con doble recubrimiento” la vitamina C penetra en las capas más profundas liberándose por fases de forma pura y estable, potenciando la acción antioxidante, regeneradora y aportando luminosidad a la piel. Hyaluronic: Nutrición e hidratación para una piel firme, elástica y tonificada. El ácido hialurónico liposomal de bajo peso molecular, en sus tres formas complejas, unido al colágeno, proporcionan la máxima hidratación y tersura a la piel, además de contribuir a rellenar y tensar las fibras de elastina y colágeno, ayudando a reducir la profundidad de las arrugas. Suero Tensor: Ampollas intensivas con doble efecto tensor, inmediato y prolongado. Formuladas con activos reafirmantes, revitalizantes y redensificantes, que rejuvenecen la apariencia del rostro. Actúan promoviendo la síntesis de elastina y colágeno, ayudando a recuperar la fuerza, tensión y luminosidad perdidas con el tiempo y a eliminar las líneas de expresión y signos de cansancio. Contiene glicosaminoglicanos, vitamina C, ácido hialurónico, silicio orgánico y extractos biotecnológicos de origen vegetal.",
+                    "imagen": "/assets/producto12.jpg",
+                    "url": "https://buy.stripe.com/28EcN4clg5vD4IdaxHds40b"
+                },
+                {
+                    "id": "US-21106-13",
+                    "nombre": "ANTI-AGING - Ampolla estéril 2 ml. (10 unidades)",
+                    "precio": 33.00,
+                    "descripcion": "Ampollas estériles antiedad compuestas por activos que ejercen un efecto directo en los signos de la edad como las arrugas, flacidez y falta de vitalidad. La combinación de DMAE, péptidos y silicio orgánico favorecen un efecto lifting y redensificante. El ácido hialurónico de bajo peso molecular hidrata y disminuye las líneas de expresión y el ADN sódico repara y mejora la elasticidad de la piel.",
+                    "imagen": "/assets/producto13.jpg",
+                    "url": "https://buy.stripe.com/fZudR84SO1fn6Ql6hrds40c"
+                },
+                {
+                    "id": "US-21106-14",
+                    "nombre": "FIRMING UP - Ampolla estéril 2 ml. (10 unidades)",
+                    "precio": 33.00,
+                    "descripcion": "Ampollas estériles formuladas con activos altamente eficaces para redensificar e iluminar el rostro. La elastina y la vitamina C actúan sinérgicamente estimulando la síntesis de colágeno, devolviendo la firmeza y tensión al rostro. El DMAE tiene una fuerte acción tensora, suavizando las arrugas producidas por la flacidez e iluminando la piel.",
+                    "imagen": "/assets/producto14.jpg",
+                    "url": "https://buy.stripe.com/bJe14m70W2jrdeJ8pzds40d"
+                },
+                {
+                    "id": "US-21106-15",
+                    "nombre": "WHITENING - Ampolla estéril 2 ml. (10 unidades)",
+                    "precio": 33.00,
+                    "descripcion": "Ampollas estériles diseñadas con activos despigmentantes y antioxidantes para tratar las manchas y unificar el tono de la piel. El glutatión es un antioxidante muy eficaz que actúa inhibiendo la síntesis de melanina. El superóxido dismutasa es una enzima que actúa reduciendo la acción de los radicales libres y disminuyendo las hiperpigmentaciones. Los simbiosomas de pueraria y el ácido fólico (vitamina B9) promueven la regeneración celular y la síntesis de colágeno.",
+                    "imagen": "/assets/producto15.jpg",
+                    "url": "https://buy.stripe.com/7sYeVc850f6dgqV8pzds40e"
+                },
+                {
+                    "id": "US-21106-16",
+                    "nombre": "PACK AMPOLLAS ESTÉRILES - 2 ml. (1ud. ANTIAGING + 1ud. FIRMING UP + 1ud. WHITENING) - 2 ml.",
+                    "precio": 13.00,
+                    "descripcion": "Anti-aging: Ampollas estériles antiedad compuestas por activos que ejercen un efecto directo en los signos de la edad como las arrugas, flacidez y falta de vitalidad. La combinación de DMAE, péptidos y silicio orgánico favorecen un efecto lifting y redensificante. El ácido hialurónico de bajo peso molecular hidrata y disminuye las líneas de expresión y el ADN sódico repara y mejora la elasticidad de la piel. Firming Up: Ampollas estériles formuladas con activos altamente eficaces para redensificar e iluminar el rostro. La elastina y la vitamina C actúan sinérgicamente estimulando la síntesis de colágeno, devolviendo la firmeza y tensión al rostro. El DMAE tiene una fuerte acción tensora, suavizando las arrugas producidas por la flacidez e iluminando la piel. Whitening: Ampollas estériles diseñadas con activos despigmentantes y antioxidantes para tratar las manchas y unificar el tono de la piel. El glutatión es un antioxidante muy eficaz que actúa inhibiendo la síntesis de melanina. El superóxido dismutasa es una enzima que actúa reduciendo la acción de los radicales libres y disminuyendo las hiperpigmentaciones. Los simbiosomas de pueraria y el ácido fólico (vitamina B9) promueven la regeneración celular y la síntesis de colágeno.",
+                    "imagen": "/assets/producto16.png",
+                    "url": "https://buy.stripe.com/3cI14m5WS1fn4Id9tDds40f"
+                },
+                {
+                    "id": "US-21106-17",
+                    "nombre": "SUERO PARA MANCHAS - 15 ml.",
+                    "precio": 29.00,
+                    "descripcion": "Los Laboratorios Espirit de Natura ponen al servicio del profesional el último descubrimiento en el tratamiento de manchas: la molécula vegetal extraída de caesalpinia spinosa que proporciona una aclaración de la zona afectada. A esta molécula le hemos unido la baba de caracol rica en ácido láctico, málico y glicólico y la vitamina C microencapsulada para ofrecer la mejor combinación para atacar las manchas, tanto solares como de cualquier origen.",
+                    "imagen": "/assets/producto17.jpg",
+                    "url": "https://buy.stripe.com/cNi6oG0CybU13E935fds40g"
+                },
+                {
+                    "id": "US-21106-18",
+                    "nombre": "POLVO DE PERLA PURO (Blanqueador y antimanchas) - 10 g.",
+                    "precio": 21.00,
+                    "descripcion": "El polvo puro de perla de uso cosmético es un inmejorable exfoliante y posee múltiples propiedades: actúa como blanqueante en manchas faciales y corporales, regula el exceso de grasa de la piel, posee una acción reparadora y proporciona elasticidad a la piel. Combina bien con productos acuosos y oleosos. El polvo puro de perla contiene aminoácidos, calcio, yodo y otros componentes naturales. Indicado para todo tipo de pieles.",
+                    "imagen": "/assets/producto18.png",
+                    "url": "https://buy.stripe.com/bJe8wOfxsf6d3E9fS1ds40h"
+                },
+                {
+                    "id": "US-21106-19",
+                    "nombre": "ELIXIR FACIAL ANTIEDAD - 30 ml.",
+                    "precio": 41.00,
+                    "descripcion": "Elixir concentrado de alta calidad. Ayuda a nutrir, regenerar y reparar los daños producidos por el envejecimiento, contribuyendo de forma activa a atenuar las arrugas. Formulado con once aceites de origen vegetal que aportan firmeza y elasticidad a la piel. De textura ligera y sedosa, se absorbe con facilidad y devuelve el confort y luminosidad al rostro.",
+                    "imagen": "/assets/producto19.jpg",
+                    "url": "https://buy.stripe.com/eVqaEW4SOgah3E95dnds40i"
+                },
+                {
+                    "id": "US-21106-20",
+                    "nombre": "CONTORNO DE OJOS DRY - 15 ml.",
+                    "precio": 31.00,
+                    "descripcion": "Contorno de ojos altamente concentrado de triple acción. Reduce la apariencia, aclara el pigmento de las ojeras y restaura la elasticidad de la piel. Formulada con activos seleccionados para mejorar la microcirculación, descongestionando y refrescando la mirada. Atenúa gradualmente el color morado o pigmento de las ojeras, disminuye visiblemente el volumen y la hinchazón de las bolsas, aporta luminosidad, además de restaurar la elasticidad y firmeza de la piel.",
+                    "imagen": "/assets/producto20.png",
+                    "url": "https://buy.stripe.com/4gMfZgad80bjcaF0X7ds40j"
+                },
+                {
+                    "id": "US-21106-21",
+                    "nombre": "CONTORNO DE OJOS PLUS - 15 ml.",
+                    "precio": 25.00,
+                    "descripcion": "Contorno de ojos concentrado en aloe vera, colágeno vegetal y extracto de caracol. Está especialmente indicado para bolsas, ojeras, signos del envejecimiento y arrugas. Tiene una textura tipo gel que permite una rápida absorción de los principios activos, por lo que el efecto será perceptible inmediatamente.",
+                    "imagen": "/assets/producto21.png",
+                    "url": "https://buy.stripe.com/dRm3cubhce298Yt35fds40k"
+                },
+                {
+                    "id": "US-21106-22",
+                    "nombre": "FANGO ESPIRIT (facial y corporal) - 15 g.",
+                    "precio": 9.00,
+                    "descripcion": "Fango especial para el tratamiento del rostro y cuerpo con propiedades detoxificantes que ayudan a eliminar toxinas e impurezas de la piel. Rico en polvo de perla aporta nutrientes y combate los signos de la edad y el envejecimiento. El alto contenido en aceite de semilla de uva aporta antioxidantes naturales que protegen la piel de las agresiones externas. El contenido de aloe vera puro al 100% hidrata y regenera las imperfecciones de la piel. El extracto de manzanilla actúa como calmante y suavizante. El aceite de rosa mosqueta de 1ª prensada en frío actúa como regenerador y ayuda a combatir las manchas de la piel, dejándola en su estado óptimo.",
+                    "imagen": "/assets/producto22.jpg",
+                    "url": "https://buy.stripe.com/7sYcN40Cye29a2x7lvds40l"
+                },
+                {
+                    "id": "US-21106-23",
+                    "nombre": "FANGO ESPIRIT (facial y corporal) - 120 g.",
+                    "precio": 15.00,
+                    "descripcion": "Fango especial para el tratamiento del rostro. Rico en polvo de perla aporta nutrientes y combate los signos de la edad y el envejecimiento. El alto contenido en aceite de semilla de uva aporta antioxidantes naturales que protegen la piel de las agresiones externas. El contenido de aloe vera puro al 100% hidrata y regenera las imperfecciones de la piel. El extracto de manzanilla actúa como calmante y suavizante. El aceite de rosa mosqueta de 1ª prensada en frío actúa como regenerador y ayuda a combatir las manchas de la piel, dejándola en su estado óptimo.",
+                    "imagen": "/assets/producto23.jpg",
+                    "url": "https://buy.stripe.com/eVq28qdpk4rzgqVfS1ds42b"
+                },
+                {
+                    "id": "US-21106-24",
+                    "nombre": "MASCARILLA FACIAL CON ORO Y ÁCIDO HIALURÓNICO - 250 ml.",
+                    "precio": 21.00,
+                    "descripcion": "Excelente mascarilla con oro 24 kl y ácido hialurónico. El ácido hialurónico impide la deshidratación permitiendo que las células recuperen su hidratación natural, combatiendo la profundidad de las arrugas. El oro es rico en oligoelementos, revitaliza las pieles gastadas, proporciona firmeza, elasticidad, aporta luminosidad y descongestiona la piel.",
+                    "imagen": "/assets/producto24.jpg",
+                    "url": "https://buy.stripe.com/14A9ASfxs3nvgqVgW5ds40n"
+                },
+                {
+                    "id": "US-21106-25",
+                    "nombre": "MASCARILLA FACIAL ANTIOXIDANTE - 250 ml.",
+                    "precio": 21.00,
+                    "descripcion": "Excelente mascarilla antioxidante con extracto de granada, té verde y trufa. Ayuda a frenar el avance de los radicales libres que producen el envejecimiento de la piel.",
+                    "imagen": "/assets/producto25.jpg",
+                    "url": "https://buy.stripe.com/14A3cubhc3nvfmR0X7ds40o"
+                },
+                {
+                    "id": "US-21106-26",
+                    "nombre": "MASCARILLA FACIAL CON VITAMINA C - 250 ml.",
+                    "precio": 21.00,
+                    "descripcion": "La vitamina C es necesaria para la biosíntesis del colágeno, además de tener propiedades antioxidantes. Esta mascarilla está diseñada para devolver la luminosidad, revitalizar la piel y unificar el tono. Su textura tipo hidrogel, nos proporciona una sensación de hidratación y confort inmediato, ya que aporta la humedad adecuada, mejorando la textura de la piel y contribuyendo a minimizar arrugas y líneas de expresión. Como consecuencia, la piel luce mucho más joven y saludable.",
+                    "imagen": "/assets/producto26.jpg",
+                    "url": "https://buy.stripe.com/bJe8wO5WS0bjfmR21bds40p"
+                },
+                {
+                    "id": "US-21106-27",
+                    "nombre": "MASCARILLA FACIAL PARA MANCHAS - 250 ml",
+                    "precio": 21.00,
+                    "descripcion": "Mascarilla facial tipo gel para tratar las imperfecciones y el tono desigual de la piel. Formulación rica en activos despigmentantes e hidratantes que actúan atenuando y reduciendo las manchas.",
+                    "imagen": "/assets/producto27.jpg",
+                    "url": "https://buy.stripe.com/28E5kCclg2jrcaF8pzds40q"
+                },
+                {
+                    "id": "US-21106-28",
+                    "nombre": "MASCARILLA FACIAL REFRESCANTE - 250 ml.",
+                    "precio": 21.00,
+                    "descripcion": "Mascarilla facial refrescante para revitalizar las pieles cansadas. Formulada con activos que calman y producen una sensación de frescor inmediata. Los tres activos fermentados actúan como prebióticos, aumentando la protección de la barrera cutánea frente a los agentes externos y devolviéndole la elasticidad a la piel. La camomila, con propiedades calmantes, combate los signos de fatiga cutánea dejando el rostro más confortable. El extracto marino de fitoplancton, altamente antioxidante, prevé y repara las pieles dañadas. El ácido hialurónico mantiene la piel hidratada y suave.",
+                    "imagen": "/assets/producto28.png",
+                    "url": "https://buy.stripe.com/7sYbJ0gBw5vD8Yt35fds40r"
+                },
+                {
+                    "id": "US-21106-29",
+                    "nombre": "MASCARILLA PLÁSTICA CON ORO - 350 g.",
+                    "precio": 51.00,
+                    "descripcion": "Mascarilla de alginatos con oro de 24 k, posee propiedades revitalizantes, regeneradoras, calmantes y refrescantes, indicado para pieles apagadas, gastadas, sensibles y flácidas, respectivamente. Esta mascarilla favorece la retención de agua proporcionando alta hidratación y oxigenación facial previniendo el envejecimiento celular.",
+                    "imagen": "/assets/producto29.jpg",
+                    "url": "https://buy.stripe.com/6oU28q994e29deJ9tDds40s"
+                },
+                {
+                    "id": "US-21106-30",
+                    "nombre": "MASCARILLA PLÁSTICA CON VITAMINA C - 350 g.",
+                    "precio": 51.00,
+                    "descripcion": "La vitamina C es un potente antioxidante que ayuda a inactivar los radicales libres responsables del envejecimiento de la piel. Esta mascarilla de alginatos, por su efecto frío, es un potente reafirmante que a la vez proporciona elasticidad, vitalidad y firmeza, estimulando las defensas naturales de la piel.",
+                    "imagen": "/assets/producto30.jpg",
+                    "url": "https://buy.stripe.com/6oU14mad80bja2xbBLds40t"
+                },
+                {
+                    "id": "US-21106-31",
+                    "nombre": "MASCARILLA PLÁSTICA CON POLVO DE PERLA - 350 g.",
+                    "precio": 51.00,
+                    "descripcion": "Mascarilla con polvo de perla puro, con propiedades reafirmantes y blanqueantes. Suaviza e ilumina el rostro. El polvo de perla posee propiedades blanqueantes, estimula la circulación y protege la piel de agresiones externas.",
+                    "imagen": "/assets/producto31.jpg",
+                    "url": "https://buy.stripe.com/28EcN43OK0bjdeJ7lvds40u"
+                } 
+            ]
+        },
+        {
+            "id": "facial",
+            "nombre": "facial",
+            "titulo": "Línea facial",
+            "descripcion": "",
+            "productos": [
+                {
+                    "id": "US-21109-01",
+                    "nombre": "VITAMIN C REGENERATIVE (Crema facial pieles secas) - 50 ml.",
+                    "precio": 31.00,
+                    "descripcion": "Crema facial completa día y noche, con factores hidratantes para la piel que proporcionan energía, vitalidad y dejan la piel firme, resplandeciente y sedosa. El aceite de onagra natural aporta ácido oleico, linoleico y gammalinoleico. Toda crema especial debe contener aceite de onagra. El aceite de rosa mosqueta trata las arrugas y las manchas, dándole firmeza y elasticidad a la piel. El aceite de jojoba natural contiene ésteres insaturados líquidos de cadena larga, tocoferoles y vitamina E con propiedades antioxidantes. Indicado para pieles secas.",
+                    "imagen": "/assets/facial1.png",
+                    "url": "https://buy.stripe.com/bJe6oGad89LTeiNbBLds42f"
+                },
+                {
+                    "id": "US-21110-02",
+                    "nombre": "REESTRUCTUR (Crema facial pieles mixtas) - 50 ml.",
+                    "precio": 31.00,
+                    "descripcion": "Excelente crema reestructuradora. La baba de caracol es rica en alantoína, colágeno, elastina, ácido glicólico, láctico, málico y diversas vitaminas. Posee propiedades hidratantes y nutrientes. Regenera la piel y ayuda en el tratamiento de los signos de la edad y el envejecimiento. Además por su poder regenerador está indicado para combatir las marcas y señales de la piel. Con aloe vera, baba de caracol, aceite de rosa mosqueta, semilla de uva, y jojoba, vitamina E y aceite esencial de lavanda. Indicado para pieles mixtas y grasas. Crema de día y noche.",
+                    "imagen": "/assets/facial2.jpg",
+                    "url": "https://buy.stripe.com/14A9AS3OK4rz7UpfS1ds42g"
+                },
+                {
+                    "id": "US-21110-03",
+                    "nombre": "TRUFA ESSENCE (Crema facial pieles mixtas) - 50 ml.",
+                    "precio": 31.00,
+                    "descripcion": "Excelente crema reguladora para pieles mixtas. Hidrata en profundidad y aporta todos los nutrientes necesarios para la piel. Por su fórmula especial, equilibra, unifica y regula las zonas grasas y secas del rostro dejando una piel lisa y sedosa. Regenera y ayuda a la eliminación de los signos de la edad y las imperfecciones de la piel. Indicada para pieles mixtas. Crema de día y noche.",
+                    "imagen": "/assets/facial3.jpg",
+                    "url": "https://buy.stripe.com/8x27sKfxsf6d0rX35fds42h"
+                },
+                {
+                    "id": "US-21110-04",
+                    "nombre": "HYALURONIC CAVIAR (Crema facial pieles secas) - 50 ml.",
+                    "precio": 31.00,
+                    "descripcion": "Crema hidratante con ácido hialurónico y caviar para pieles secas, favorece la estimulación natural del colágeno, retrasando el envejecimiento celular y aportando tersura y firmeza a la piel. Con niacinamida y vitamina E. Proporciona vitalidad y luminosidad a la piel.",
+                    "imagen": "/assets/facial4.png",
+                    "url": "https://buy.stripe.com/3cI7sK8503nvgqVaxHds42i"
+                },
+                {
+                    "id": "US-21110-05",
+                    "nombre": "HIDRATANTE FACIAL (Crema facial) - 50 ml.",
+                    "precio": 26.00,
+                    "descripcion": "Crema facial enriquecida con centella asiática, provitamina B5 y vitamina E que ayudan a fortalecer y reparar la barrera cutánea, promoviendo la síntesis de colágeno y devolviendo la elasticidad de la piel. Los extractos de avena, pepino y ginseng contribuyen a calmar, hidratar y revitalizar el rostro.",
+                    "imagen": "/assets/facial5.png",
+                    "url": "https://buy.stripe.com/bJecN4dpk3nv7Up49jds42j"
+                },
+                {
+                    "id": "US-21110-06",
+                    "nombre": "HIDROALOE con manteca de karité (Crema facial) - 50 ml.",
+                    "precio": 26.00,
+                    "descripcion": "Crema hidratante de día con aloe vera, manteca de karité, extracto de pepino, aceite de almendras dulces, aceite de semilla de uva, aceite esencial de lavanda y vitamina E. Todos sus componentes proporcionan una hidratación perfecta. Indicada para todo tipo de pieles. Crema de día y noche.",
+                    "imagen": "/assets/facial6.jpg",
+                    "url": "https://buy.stripe.com/7sY5kC2KG7DLcaF21bds42k"
+                },
+                {
+                    "id": "US-21110-07",
+                    "nombre": "NUTRIALOE con vitamina C (Crema facial) - 50 ml.",
+                    "precio": 26.00,
+                    "descripcion": "Crema nutritiva día/noche con efecto reparador que aporta los nutrientes necesarios para dar firmeza y combatir el envejecimiento prematuro. La unión de sus componentes proporciona una nutrición y elasticidad perfecta para todo tipo de pieles apagadas y con falta de vitalidad. Indicada para todo tipo de pieles. Crema de día y noche.",
+                    "imagen": "/assets/facial7.jpg",
+                    "url": "https://buy.stripe.com/bJe7sKetoe29caFcFPds42l"
+                },
+                {
+                    "id": "US-21110-08",
+                    "nombre": "EXFOLIANTE DE ORO (facial y corporal) - 200 ml.",
+                    "precio": 25.00,
+                    "descripcion": "Exfoliante físico y natural con partículas de oro puro de 24 ct y extractos vegetales naturales. Exfoliando la piel regularmente activamos la circulación de la sangre y promovemos la rápida regeneración celular proporcionando suavidad y frescor en la piel.",
+                    "imagen": "/assets/facial8.jpg",
+                    "url": "https://buy.stripe.com/bJecN4fxs3nvfmR35fds42m"
+                },
+                {
+                    "id": "US-21110-09",
+                    "nombre": "EXFOLIANTE DE POLVO DE PERLA (facial y corporal) - 200 ml.",
+                    "precio": 25.00,
+                    "descripcion": "Exfoliante especial con extractos vegetales y polvo de perla. Proporciona una exfoliación suave pero profunda eliminando las células muertas y ayudando a tratamientos despigmentantes. Además, favorece la regeneración rápida de la piel proporcionando suavidad y elasticidad a la piel.",
+                    "imagen": "/assets/facial9.jpg",
+                    "url": "https://buy.stripe.com/aFabJ00CybU1a2x5dnds42n"
+                },
+                {
+                    "id": "US-21110-10",
+                    "nombre": "EXFOLIANTE DE VITAMINA C (facial y corporal) - 200 ml.",
+                    "precio": 25.00,
+                    "descripcion": "Exfoliante especial con naranja dulce y vitamina C. Elimina fácilmente las células muertas con una profunda exfoliación. La vitamina C y el aceite esencial de naranja favorecen la regeneración rápida de la piel.",
+                    "imagen": "/assets/facial10.jpg",
+                    "url": "https://buy.stripe.com/9B67sK2KG6zH4IdbBLds42o"
+                },
+                {
+                    "id": "US-21110-11",
+                    "nombre": "EXFOLIANTE DE ALGA WAKAME (facial y corporal) - 200 ml.",
+                    "precio": 25.00,
+                    "descripcion": "Exfoliante original con alga wakame y aroma a manzana verde para realizar una suave exfoliación eliminando las células muertas y proporcionando una sensación de pureza, frescor y bienestar de la piel. Con propiedades regenerantes para mantener la piel siempre joven y vital.",
+                    "imagen": "/assets/facial11.jpg",
+                    "url": "https://buy.stripe.com/6oU00i850bU18Yt6hrds42p"
+                },
+                {
+                    "id": "US-21110-12",
+                    "nombre": "EXFOLIANTE DE VINO (facial y corporal) - 200 ml.",
+                    "precio": 25.00,
+                    "descripcion": "Exfoliante físico y natural con extractos antioxidantes de vino y partículas de sílica, un mineral que proporciona una exfoliación mecánica de intensidad modulable mediante la presión ejercida; a mayor presión en la exfoliación, mayor será el arrastre del exfoliante. Perfecto para realizar una exfoliación facial y corporal adaptando la intensidad por zonas según requerimiento de cada una.",
+                    "imagen": "/assets/facial12.png",
+                    "url": "https://buy.stripe.com/dRm3cu3OK9LTb6BfS1ds42q"
+                },
+                {
+                    "id": "US-21110-13",
+                    "nombre": "EXFOLIANTE DE CHOCOLATE (facial y corporal) - 200 ml.",
+                    "precio": 25.00,
+                    "descripcion": "El cacao es un activo natural de gran interés cosmético debido a su composición rica en teobromina, polifenoles y minerales. Es un estimulante natural que mejora la microcirculación. Además, el aroma a cacao de los tratamientos de chocolaterapia evoca un estado de bienestar muy agradable y placentero. Los polifenoles que se encuentran en el cacao son unos potentes antioxidantes naturales capaces de captar y neutralizar los radicales libres, evitando así los daños en la piel ocasionados por el poder oxidativo de estos radicales. Los minerales más abundantes del cacao son el calcio, el potasio, magnesio, manganeso y zinc, todos ellos estrechamente implicados en el correcto funcionamiento celular, ya que son, en parte, elementos esenciales y oligoelementos necesarios para la vida celular.",
+                    "imagen": "/assets/facial13.png",
+                    "url": "https://buy.stripe.com/9B68wOfxscY5fmR21bds42r"
+                },
+                {
+                    "id": "US-21110-14",
+                    "nombre": "JABÓN FACIAL - 150 ml.",
+                    "precio": 18.00,
+                    "descripcion": "Jabón facial con activos naturales que respetan y revitalizan la piel, limpia en profundidad las impurezas purificando la piel del rostro sin secarla ni alterar el pH. Libre de aceites. Ideal para antes y después del maquillaje y el ritual diario de limpieza. Indicado para todo tipo de pieles.",
+                    "imagen": "/assets/facial14.jpg",
+                    "url": "https://buy.stripe.com/4gM00ifxs3nv4Id5dnds42s"
+                },
+                {
+                    "id": "US-21110-15",
+                    "nombre": "JABÓN FACIAL INTENSIVO - 150 ml.",
+                    "precio": 18.00,
+                    "descripcion": "Excelente jabón facial para pieles grasas o con acné. Prepara la piel para el tratamiento. El aloe vera posee propiedades reguladoras del exceso de grasa y la eufrasia calma la piel evitando la formación del acné. La manzanilla actúa como calmante.",
+                    "imagen": "/assets/facial15.jpg",
+                    "url": "https://buy.stripe.com/aFa28q9944rzcaFdJTds42t"
+                },
+                {
+                    "id": "US-21110-16",
+                    "nombre": "LECHE LIMPIADORA - 150 ml.",
+                    "precio": 17.00,
+                    "descripcion": "Por su composición vegetal, limpia la piel de impurezas, sin agresiones y de manera suave y eficaz, dejando la piel suave y sedosa. Contiene pantenol que favorece la hidratación.",
+                    "imagen": "/assets/facial16.jpg",
+                    "url": "https://buy.stripe.com/4gMdR8850gah7UpeNXds40K"
+                },
+                {
+                    "id": "US-21110-17",
+                    "nombre": "LECHE LIMPIADORA INTENSIVA - 150 ml.",
+                    "precio": 17.00,
+                    "descripcion": "Leche limpiadora indicada para pieles grasas. Limpia la piel y regula el exceso de grasa. Con aloe vera y extractos de hamamelis y bardana.",
+                    "imagen": "/assets/facial17.jpg",
+                    "url": "https://buy.stripe.com/aFafZgeto6zHdeJ9tDds42C"
+                },
+                {
+                    "id": "prod_SeyHqheij33e5n",
+                    "nombre": "AGUA MICELAR OCEAN - 150 ml.",
+                    "precio": 18.00,
+                    "descripcion": "Desde la inmensidad del océano nace el AGUA MICELAR con fitoplancton, especial para la higiene facial y limpieza diaria, se puede utilizar por la mañana al levantarse para limpiar y refrescar antes de la crema hidratante y también por la noche para eliminar el maquillaje o las impurezas de la piel, quedando suave y sedosa. El fitoplancton, protege y repara la oxidación de las proteínas purificando la piel y reduciendo el daño causado por el envejecimiento. Al ser rico en oligoelementos y aminoácidos restaura la actividad del proteosoma previniendo la oxidación causada por la radiación solar y el paso del tiempo.",
+                    "imagen": "/assets/facial18.png",
+                    "url": "https://buy.stripe.com/aFaaEW0CybU1gqV8pzds42u"
+                },
+                {
+                    "id": "US-21110-19",
+                    "nombre": "NIACINCARE BRUME - 150 ml.",
+                    "precio": 23.00,
+                    "descripcion": "Bruma facial de rápida absorción, ayuda a calmar y aliviar las pieles más sensibles. Los activos actúan sinérgicamente produciendo una sensación de hidratación y confort inmediato. Formulada con activos altamente eficaces y multifuncionales que combaten los signos de la edad, refuerzan la barrera hidrolipídica protegiéndola de factores externos y contribuyen a atenuar los brotes acneicos",
+                    "imagen": "/assets/facial19.png",
+                    "url": "https://buy.stripe.com/00wfZg2KG0bjfmR5dnds42z"
+                },
+                {
+                    "id": "US-21110-20",
+                    "nombre": "TÓNICO FACIAL - 150 ml.",
+                    "precio": 17.00,
+                    "descripcion": "Excelente tónico a base de extractos vegetales, tonifica la piel y contribuye a cerrar los poros dejándola suave y sedosa. Con rosa búlgara, manzanilla y caléndula.",
+                    "imagen": "/assets/facial20.jpg",
+                    "url": "https://buy.stripe.com/00weVc9941fndeJbBLds42A"
+                },
+                {
+                    "id": "US-21110-21",
+                    "nombre": "TÓNICO FACIAL INTENSIVO - 150 ml.",
+                    "precio": 17.00,
+                    "descripcion": "Tónico facial con extractos de hamamelis, salvia y bardana. Tonifica y prepara la piel para la aplicación de la crema facial. Indicado para pieles grasas.",
+                    "imagen": "/assets/facial21.jpg",
+                    "url": "https://buy.stripe.com/4gM6oG0Cy8HPeiN0X7ds40P"
+                },
+                {
+                    "id": "US-21110-22",
+                    "nombre": "AGUA DE NUA - 150 ml.",
+                    "precio": 15.00,
+                    "descripcion": "Combinación magistral de hidrolatos y aceites esenciales con mayores propiedades cosméticas y altamente tonificantes para la piel. Aporta máxima hidratación y frescura.",
+                    "imagen": "/assets/facial22.jpg",
+                    "url": "https://buy.stripe.com/cNicN40Cy4rz2A5dJTds42B"
+                },
+                {
+                    "id": "US-21110-23",
+                    "nombre": "AGUA DE ROSAS - 150 ml.",
+                    "precio": 15.00,
+                    "descripcion": "Agua de rosas obtenida por destilación artesanal en corriente de vapor de la rosa búlgara. Actúa como suave tónico facial para pieles sensibles. Refresca, calma y tonifica la piel.",
+                    "imagen": "/assets/facial23.jpg",
+                    "url": "https://buy.stripe.com/3cIdR83OKf6da2xbBLds42v"
+                },
+                {
+                    "id": "US-21110-24",
+                    "nombre": "AGUA DE HAMAMELIS ECO - 150 ml.",
+                    "precio": 15.00,
+                    "descripcion": "Agua de Hamamelis Virginiana obtenida por destilación de vapor. Especial para regular pieles grasas y con acné. Actúa como astringente, contribuyendo al tratamiento de poros dilatados.",
+                    "imagen": "/assets/facial24.jpg",
+                    "url": "https://buy.stripe.com/4gMfZg4SOe292A55dnds42w"
+                },
+                {
+                    "id": "US-21110-25",
+                    "nombre": "BÁLSAMO LABIAL - 15 ml.",
+                    "precio": 11.00,
+                    "descripcion": "Excelente bálsamo labial a base de aceites y ceras naturales. Protege, hidrata y regenera los labios de los daños producidos por los cambios climáticos u otros efectos. No contiene parafina ni vaselina.",
+                    "imagen": "/assets/facial25.png",
+                    "url": "https://buy.stripe.com/dRm9AS4SOf6deiN6hrds42x"
+                },
+                {
+                    "id": "US-21110-26",
+                    "nombre": "LOCIÓN AFTER (para después del afeitado) - 150 ml.",
+                    "precio": 15.00,
+                    "descripcion": "Loción especial con aloe vera para después del afeitado. Proporciona suavidad e hidratación regenerando la piel dañada por el rasurado. Calma las rojeces y la irritación producidas por el afeitado. Indicado para todo tipo de pieles, especialmente para pieles sensibles.",
+                    "imagen": "/assets/facial26.jpg",
+                    "url": "https://buy.stripe.com/14AfZgbhc0bjgqV5dnds42y"
+                }
+            ]
+        },
+        {
+            "id": "eco-marina",
+            "nombre": "eco-marina",
+            "titulo": "Línea eco-marina (con certificación ecológica)",
+            "descripcion": "",
+            "productos": [
+                {
+                    "id": "US-21113-01",
+                    "nombre": "ENERGY ESSENCE (Crema facial pieles secas) - 50 ml.",
+                    "precio": 31.00,
+                    "descripcion": "Excelente crema facial para pieles secas y deshidratadas, con extractos marinos que aportan máxima hidratación y vitamina C que actúa como un fuerte antioxidante para combatir los signos de la edad. Además, mejora la síntesis de colágeno y ayuda a clarificar las pigmentaciones de la piel. Crema con certificado ecológico. Crema día y noche.",
+                    "imagen": "/assets/eco1.jpg",
+                    "url": "https://buy.stripe.com/3cI7sK5WS3nveiNeNXds40V"
+                },
+                {
+                    "id": "US-21114-02",
+                    "nombre": "VITAL ESSENCE (Crema facial pieles mixtas) - 50 ml.",
+                    "precio": 31.00,
+                    "descripcion": "Excelente crema facial para regular la piel mixta, con activos marinos, vitamina C y factores hidratantes de última generación que aportan máxima hidratación sin engrasar la piel, dejándola suave y sin brillos. Crema con certificado ecológico. Crema día y noche.",
+                    "imagen": "/assets/eco2.jpg",
+                    "url": "https://buy.stripe.com/9B6aEWeto3nv1w1bBLds40W"
+                },
+                {
+                    "id": "US-21114-03",
+                    "nombre": "CONTORNO DE OJOS ECO - 15 ml.",
+                    "precio": 21.00,
+                    "descripcion": "Mejora el aspecto facial y los signos de la edad. Hidrata en profundidad las zonas más susceptibles a la deshidratación ayudando a disminuir las arrugas.",
+                    "imagen": "/assets/eco3.jpg",
+                    "url": "https://buy.stripe.com/7sYdR8850gaha2x35fds40X"
+                },
+                {
+                    "id": "US-21114-04",
+                    "nombre": "AGUA MICELAR OCEAN - 150 ml.",
+                    "precio": 13.00,
+                    "descripcion": "Desde la inmensidad del océano nace el AGUA MICELAR con fitoplancton, especial para la higiene facial y limpieza diaria, se puede utilizar por la mañana al levantarse para limpiar y refrescar antes de la crema hidratante y también por la noche para eliminar el maquillaje o las impurezas de la piel, quedando suave y sedosa. El fitoplancton, protege y repara la oxidación de las proteínas purificando la piel y reduciendo el daño causado por el envejecimiento. Al ser rico en oligoelementos y aminoácidos restaura la actividad del proteosoma previniendo la oxidación causada por la radiación solar y el paso del tiempo.",
+                    "imagen": "/assets/eco4.png",
+                    "url": "https://buy.stripe.com/14AeVceto0bj2A5axHds40Y"
+                },
+                {
+                    "id": "US-21114-05",
+                    "nombre": "AGUA DE NUA ECO - 150 ml.",
+                    "precio": 15.00,
+                    "descripcion": "Combinación magistral de aceites esenciales en forma de hidrolato con propiedades tonificantes, humectantes, refrescantes e hidratantes para la piel. Mantienen la humedad en la piel proporcionando elasticidad y firmeza. Aporta propiedades calmantes para después de la exposición solar y agresiones externas como viento, frio, etc. Especial para preparar la piel como tónico diario.",
+                    "imagen": "/assets/eco5.jpg",
+                    "url": "https://buy.stripe.com/6oUbJ03OKf6d5Mh35fds40Z"
+                },
+                {
+                    "id": "US-21114-06",
+                    "nombre": "AGUA DE HAMAMELIS ECO - 150 ml.",
+                    "precio": 15.00,
+                    "descripcion": "Agua de Hamamelis Virginiana obtenida por destilación de vapor. Especial para regular pieles grasas y con acné. Actúa como astringente, contribuyendo al tratamiento de poros dilatados.",
+                    "imagen": "/assets/eco6.jpg",
+                    "url": "https://buy.stripe.com/aFafZg70W9LT3E90X7ds410"
+                },
+                {
+                    "id": "US-21114-07",
+                    "nombre": "ALOE VERA Y CALÉNDULA - 75 ml.",
+                    "precio": 9.00,
+                    "descripcion": "Gel para después de la ducha, baño, depilación, exposición solar o rayos UVA, afeitado, irritaciones, cambios climáticos bruscos, etc. Con aloe vera, aceite de caléndula, vitamina E, alga wakame y alga chlorella. Especial para hidratar en profundidad, combatir las agresiones externas, refrescar y calmar la piel.",
+                    "imagen": "/assets/eco7.jpg",
+                    "url": "https://buy.stripe.com/28EcN4ad88HPdeJdJTds411"
+                },
+                {
+                    "id": "US-21114-08",
+                    "nombre": "ALOE VERA Y CALÉNDULA - 200 ml.",
+                    "precio": 15.00,
+                    "descripcion": "Gel para después de la ducha, baño, depilación, exposición solar o rayos UVA, afeitado, irritaciones, cambios climáticos bruscos, etc. Con aloe vera, aceite de caléndula, vitamina E, alga wakame y alga chlorella. Especial para hidratar en profundidad, combatir las agresiones externas, refrescar y calmar la piel.",
+                    "imagen": "/assets/eco8.jpg",
+                    "url": "https://buy.stripe.com/9B6dR8clg1fnb6B5dnds412"
+                },
+                {
+                    "id": "US-21114-09",
+                    "nombre": "LOCIÓN CORPORAL - 200 ml.",
+                    "precio": 23.00,
+                    "descripcion": "Hidrata en profundidad todo tipo de pieles mejorando el tono y la suavidad de la piel, calma las irritaciones y refuerza la barrera de la piel. Enriquecida con agentes protectores que impiden la deshidratación de la piel eliminando los signos de la piel seca y descamada. Con manteca de karité, aceite de oliva ecológico, aloe vera y extractos marinos.",
+                    "imagen": "/assets/eco9.jpg",
+                    "url": "https://buy.stripe.com/cNi8wOgBw8HPa2x9tDds413"
+                },
+                {
+                    "id": "US-21114-10",
+                    "nombre": "CREMA DE MANOS ECO - 75 ml.",
+                    "precio": 15.00,
+                    "descripcion": "Crema de manos a base de extractos marinos, aceites y ceras naturales. Cuida, hidrata y regenera las manos dañadas. El karité crea una película que protege las manos de los agentes externos, se absorbe rápidamente y no deja las manos grasas. El alga wakame aporta los minerales y oligoelementos necesarios para mantener la piel en perfecto estado. El aceite de oliva ecológico es rico en nutrientes esenciales para eliminar los signos de la edad en las manos.",
+                    "imagen": "/assets/eco10.jpg",
+                    "url": "https://buy.stripe.com/aFa9AS8504rz8Yt6hrds414"
+                },
+                {
+                    "id": "US-21114-11",
+                    "nombre": "DESODORANTE ECO - 100 ml.",
+                    "precio": 13.00,
+                    "descripcion": "Eficaz desodorante ecológico, neutraliza el olor corporal de forma natural y sin utilizar activos químicos, aportando frescor, suavidad y respetando la piel. Unisex. Formula sin sales de aluminio ni parabenos. El aloe vera actúa eficazmente como bactericida, eliminando el exceso de bacterias que producen el olor por su descomposición. También restaura la piel y eliminas las irritaciones producidas por el sudor. El espliego posee propiedades antisépticas, antibacterianas y calmantes, reforzando la acción del aloe vera. La piedra de alumbre es conocida por sus propiedades bactericidas, cicatrizantes y calmantes desde épocas remotas, siendo utilizada como desodorante.",
+                    "imagen": "/assets/eco11.jpg",
+                    "url": "https://buy.stripe.com/28E00i8509LTcaF35fds415"
+                },
+                {
+                    "id": "US-21114-12",
+                    "nombre": "NATUR PIEL - 50 ml.",
+                    "precio": 19.00,
+                    "descripcion": "Mezcla magistral de ceras naturales, aceites vegetales y aceites esenciales, especial para aliviar irritaciones, rozaduras, escoceduras, dermatitis, descamaciones, etc. Con caléndula, germen de arroz, rosa mosqueta, árnica, hipérico, aceite de oliva, vitamina E, aceite esencial de lavanda y romero.",
+                    "imagen": "/assets/eco12.jpg",
+                    "url": "https://buy.stripe.com/bJe00i3OKaPXfmR7lvds416"
+                },
+                {
+                    "id": "US-21114-13",
+                    "nombre": "ACEITE DE ÁRNICA - 100 ml.",
+                    "precio": 34.00,
+                    "descripcion": "Esta planta ha probado ser efectiva en caso de golpes, contusiones y dislocaciones, dolores reumáticos e inflamación de la piel.",
+                    "imagen": "/assets/eco13.jpg",
+                    "url": "https://buy.stripe.com/5kQ00i9945vDfmReNXds42e"
+                },
+                {
+                    "id": "US-21114-14",
+                    "nombre": "ACEITE DE CALÉNDULA - 100 ml.",
+                    "precio": 29.00,
+                    "descripcion": "El aceite de caléndula actúa eficazmente en rozaduras, quemaduras leves del Sol o el fuego, ayuda a cicatrizar heridas, cortes, inflamaciones en general, eccemas, quemaduras, picaduras de insectos o de medusas, úlceras externas e internas, escozor vaginal, etc.",
+                    "imagen": "/assets/eco14.jpg",
+                    "url": "https://buy.stripe.com/aFaeVc0Cy5vDfmR5dnds418"
+                },
+                {
+                    "id": "US-21114-15",
+                    "nombre": "ACEITE DE HIPÉRICO - 100 ml.",
+                    "precio": 27.00,
+                    "descripcion": "El aceite de hipérico ecológico se convierte, por su elevada concentración en taninos, en el mejor aliado para combatir los problemas de la piel como heridas, quemaduras, cortes, llagas, contusiones, etc. No exponer al Sol cuando se utilice el aceite de hipérico.",
+                    "imagen": "/assets/eco15.jpg",
+                    "url": "https://buy.stripe.com/aFadR88500bj7Up21bds419"
+                }
+            ]
+        },
+        {
+            "id": "corporal",
+            "nombre": "Corporal",
+            "titulo": "Línea corporal",
+            "descripcion": "",
+            "productos": [
+                {
+                    "id": "US-21115-01",
+                    "nombre": "SERUM CORPORAL ORO (loción) - 200 ml.",
+                    "precio": 23.00,
+                    "descripcion": "Formulada con activos naturales, esta crema corporal nutre e hidrata en profundidad mejorando la apariencia de la piel, dejando un acabado aterciopelado y proporcionando una textura fina y sedosa. En su fórmula destacan el oro, el aloe vera y la unión de cuatro aceites vegetales con los que conseguimos nutrir e hidratar en profundidad, además de prevenir la sequedad y descamación de la piel. Su textura sedosa en crema y su agradable y cálido aroma despierta los sentidos, lo que la hará tu crema predilecta. Su composición esta formada por activos de máxima calidad, lo que la convierten en una excelente crema corporal. El oro, por sus propiedades estimulantes, permite que la piel luzca resplandeciente y con luminosidad. El aloe vera, contiene una gran cantidad de mucílagos, lo que proporciona propiedades hidratantes y emolientes. Además de poder encontrar activos cómo las glucoproteínas, la alantoína y otros compuestos de bajo peso molecular que le confieren propiedades cicatrizantes y antiinflamatorias. El aceite de Jojoba aporta suavidad, firmeza y elasticidad a la piel evitando la aparición de estrías. Por su parte, el aceite de almendras dulces retiene la humedad de la piel y la mantiene hidratada, el aceite de argán nutre y revitaliza la piel, devolviéndole la suavidad natural y el aceite de hipérico favorece la regeneración celular, ayudando a disminuir las cicatrices.",
+                    "imagen": "/assets/corporal1.jpg",
+                    "url": "https://buy.stripe.com/8x2fZgetoaPX4IdeNXds41a"
+                },
+                {
+                    "id": "prod_SexCbQPbElVjnE",
+                    "nombre": "LOCIÓN CORPORAL VITAMINA C Y BAKUCHIOL - 200 ml.",
+                    "precio": 22.00,
+                    "descripcion": "La loción corporal nutritiva es una combinación de activos altamente eficaces como la vitamina c, bakuchiol, centella asiática, aceite de zanahoria y germen de arroz, para conseguir una piel más firme y con un tono de piel más uniforme. La vitamina C y el bakuchiol actúan sinérgicamente potenciando la acción antioxidante y reafirmante de ambos. El extracto purificado de la centella asiática, tiene tres funciones principales, por un lado, reparar los daños cutáneos debido a su acción altamente regenerante, además ayuda a mejorar la microcirculación y favorecer la síntesis de colágeno endógeno.",
+                    "imagen": "/assets/corporal2.png",
+                    "url": "https://buy.stripe.com/cNi6oGgBwf6d6Ql49jds42c"
+                },
+                {
+                    "id": "US-21116-03",
+                    "nombre": "SERUM CORPORAL POLVO DE PERLA (loción) - 200 ml.",
+                    "precio": 19.00,
+                    "descripcion": "Excelente crema corporal con polvo de perla, aceite de cereza y aloe vera. Nutre e hidrata en profundidad previniendo la sequedad y descamación de la piel. Regenera la piel actuando sobre las irritaciones e imperfecciones dejándola fina, sedosa y aterciopelada. Es la solución eficaz para pieles secas, ya que desde la primera aplicación la piel se queda suave y con una agradable sensación de bienestar. Su fórmula con polvo de perla la hacen idónea para aquellas pieles que necesiten unificar el tono y quieran dejar un acabado mate y sedoso. La textura tipo crema permite extender de forma fácil fundiéndose en la piel sin dejar sensación grasa. Los efectos se notan desde la primera aplicación.",
+                    "imagen": "/assets/corporal3.jpg",
+                    "url": "https://buy.stripe.com/28EfZgdpk2jr8YtgW5ds41c"
+                },
+                {
+                    "id": "US-21116-04",
+                    "nombre": "SERUM CORPORAL CHOCOLATE (loción) - 200 ml.",
+                    "precio": 19.00,
+                    "descripcion": "El serum corporal de chocolate, por su alto poder antioxidante, permite que la piel luzca como nueva aportando factores antienvejecimiento. Mejora la circulación gracias a su contenido en polifenoles y estimula la oxigenación celular desintoxicando la piel. El aroma cálido de chocolate despierta los sentidos y libera las tensiones diarias. Por su parte, el cacao, unido a los aceites vegetales, aportan humedad, energía y reestablece el manto hidrolipídico reforzando la barrera protectora de la piel. También ofrece una gama de minerales y antioxidantes que liberan a nuestra piel del envejecimiento prematuro.",
+                    "imagen": "/assets/corporal4.jpg",
+                    "url": "https://buy.stripe.com/5kQaEWad8gah8YtaxHds41d"
+                },
+                {
+                    "id": "US-21116-05",
+                    "nombre": "SERUM CORPORAL VINO (loción) - 200 ml.",
+                    "precio": 19.00,
+                    "descripcion": "El serum corporal de vino, por su alto poder antioxidante, permite que la piel luzca rejuvenecida, luminosa y con un tono homogéneo. Su textura tipo crema, permite que se distribuya con facilidad, dejando la piel fina y sedosa. Tanto es así que será tu mejor aliado para lucir una piel sana durante todo el año y especialmente en verano. Una vez aplicado, notarás al instante la piel nutrida y regenerada. Además, su suave fragancia dulce hará que lo quieras usar a todas horas. Formulado con activos de máxima calidad, destacan el extracto del jugo de uva que proporciona una extraordinaria renovación de la superficie de la piel y se manifiesta con una gran mejoría en la topografía general cutánea. Por su parte, el aceite de semilla de uva, es un potente antioxidante que, por su alto contenido en polifenoles y flavonoides, lo convierten en un potente antioxidante.",
+                    "imagen": "/assets/corporal5.jpg",
+                    "url": "https://buy.stripe.com/bJe9AS0CybU1a2xgW5ds41e"
+                },
+                {
+                    "id": "US-21116-06",
+                    "nombre": "SERUM CORPORAL ALOE - 200 ml.",
+                    "precio": 17.00,
+                    "descripcion": "Excelente crema corporal con aloe vera puro. Nutre e hidrata en profundidad previniendo la sequedad y descamación de la piel. Se absorbe fácilmente y no mancha. Es un magnífico regenerador celular para todo tipo de pieles. Deja la piel suave y sedosa. Indicado para después del baño, irritaciones de la piel, quemaduras solares leves, etc.",
+                    "imagen": "/assets/corporal6.jpg",
+                    "url": "https://buy.stripe.com/8x24gy4SOaPXb6BcFPds41f"
+                },
+                {
+                    "id": "US-21116-07",
+                    "nombre": "NATUR OIL TIBETHAN (aceite hidratante) - 250 ml.",
+                    "precio": 17.00,
+                    "descripcion": "Aceite hidratante para después del baño o ducha con propiedades protectoras y regenerantes. Deja la piel suave y sedosa con un aspecto aterciopelado, ayudando a retardar la pérdida de agua y favoreciendo la flexibilidad de la piel. Con aceite de jojoba, germen de trigo, almendras dulces, vitamina E y aceite esencial de romero.",
+                    "imagen": "/assets/corporal7.jpg",
+                    "url": "https://buy.stripe.com/3cIaEW0Cy4rz3E96hrds41g"
+                },
+                {
+                    "id": "US-21116-08",
+                    "nombre": "ALOE VERA Y ROSA MOSQUETA - 75 ml.",
+                    "precio": 6.00,
+                    "descripcion": "Los Laboratorios Espirit de Natura han unido de forma magistral el aceite puro de rosa mosqueta al jugo natural de aloe vera, elaborando un excelente combinado para la piel. Este combinado natural está indicado para después del baño o ducha, quemaduras solares leves, irritaciones, para después de tratamientos de depilación láser, IPL, cera, manchas, descamaciones, etc.",
+                    "imagen": "/assets/corporal8.jpg",
+                    "url": "https://buy.stripe.com/fZu8wOeto8HP4Id7lvds42d"
+                },
+                {
+                    "id": "US-21116-09",
+                    "nombre": "ALOE VERA Y ROSA MOSQUETA - 200 ml.",
+                    "precio": 13.00,
+                    "descripcion": "Los Laboratorios Espirit de Natura han unido de forma magistral el aceite puro de rosa mosqueta al jugo natural de aloe vera, elaborando un excelente combinado para la piel. Este combinado natural está indicado para después del baño o ducha, quemaduras solares leves, irritaciones, para después de tratamientos de depilación láser, IPL, cera, manchas, descamaciones, etc.",
+                    "imagen": "/assets/corporal9.jpg",
+                    "url": "https://buy.stripe.com/14A4gyeto8HP2A5fS1ds41i"
+                },
+                {
+                    "id": "US-21116-10",
+                    "nombre": "ALOE VERA Y ROSA MOSQUETA - 400 ml.",
+                    "precio": 19.00,
+                    "descripcion": "Los Laboratorios Espirit de Natura han unido de forma magistral el aceite puro de rosa mosqueta al jugo natural de aloe vera, elaborando un excelente combinado para la piel. Este combinado natural está indicado para después del baño o ducha, quemaduras solares leves, irritaciones, para después de tratamientos de depilación láser, IPL, cera, manchas, descamaciones, etc.",
+                    "imagen": "/assets/corporal10.jpg",
+                    "url": "https://buy.stripe.com/aFaeVcbhcf6d1w1dJTds41j"
+                },
+                {
+                    "id": "US-21116-11",
+                    "nombre": "ALOE VERA Y ARGÁN - 200 ml.",
+                    "precio": 15.00,
+                    "descripcion": "Excelente gel de aloe vera y aceite de argán para después del baño o ducha. Aporta los nutrientes y humectantes que puede necesitar la piel, dejándola suave y sedosa. Ayuda a prevenir la descamación, irritaciones, sequedad y calma la piel después de tomar baños solares.",
+                    "imagen": "/assets/corporal11.png",
+                    "url": "https://buy.stripe.com/5kQbJ01GCgah6Ql9tDds41k"
+                },
+                {
+                    "id": "US-21116-12",
+                    "nombre": "ALOE VERA - 200 ml.",
+                    "precio": 15.00,
+                    "descripcion": "El gel de Aloe Vera es un magnífico regenerador celular que ayuda a cuidar, proteger y regenerar la piel de las irritaciones, quemaduras leves del Sol y es un magnífico complemento para después de la ducha o baño, dejando una piel suave, tersa y sedosa.",
+                    "imagen": "/assets/corporal12.jpg",
+                    "url": "https://buy.stripe.com/28E6oG2KG7DL4IdcFPds41l"
+                },
+                {
+                    "id": "US-21116-13",
+                    "nombre": "NATUR POST DEPIL - 200 ml.",
+                    "precio": 19.00,
+                    "descripcion": "Es un gel que ayuda en los tratamientos que eliminan o debilitan la salida del vello. Está compuesto por una fracción rica en dihidromiricetina obtenida a partir de la corteza, hojas y flores de Myrica cerífera L (comúnmente denominado árbol de la cera o mirto ceroso). Este producto se obtiene por extracción y posterior concentración mediante columna cromatográfica. Unido al aceite puro de rosa mosqueta y aloe vera posee una acción calmante y ayuda a eliminar las irritaciones del post depilatorio. Indicado para después de cualquier sistema de depilación.",
+                    "imagen": "/assets/corporal13.jpg",
+                    "url": "https://buy.stripe.com/6oU5kC8502jr1w1bBLds41m"
+                },
+                {
+                    "id": "US-21116-14",
+                    "nombre": "GEL FRÍO (piernas cansadas) - 200 ml.",
+                    "precio": 15.00,
+                    "descripcion": "Gel frío de aloe vera para piernas cansada y mala circulación. El frío que produce favorece la circulación en las piernas produciendo un alivio inmediato. El aloe vera actúa como calmante reduciendo el cansancio y la pesadez.",
+                    "imagen": "/assets/corporal14.png",
+                    "url": "https://buy.stripe.com/4gM5kCdpk9LT8Yt9tDds41n"
+                },
+                {
+                    "id": "US-21116-15",
+                    "nombre": "REAFIRMANTE CORPORAL - 200 ml.",
+                    "precio": 15.00,
+                    "descripcion": "Gel corporal reafirmante (con DMAE). Contiene extractos vegetales de efecto reafirmante sobre las fibras de la piel. Con activos que ayudan a reafirmar y mantener la piel tersa y joven, no mancha y permite vestirse después de su aplicación.",
+                    "imagen": "/assets/corporal15.jpg",
+                    "url": "https://buy.stripe.com/eVqcN4bhc8HPeiN5dnds41o"
+                },
+                {
+                    "id": "US-21116-16",
+                    "nombre": "GEL ANTIESTRÍAS - 200 ml.",
+                    "precio": 19.00,
+                    "descripcion": "Gel a base de extractos vegetales que ayuda a hidratar y nutrir en profundidad para prevenir la rotura de la piel y ayuda a proteger al cuerpo de las estrías.",
+                    "imagen": "/assets/corporal16.jpg",
+                    "url": "https://buy.stripe.com/dRm9ASclg9LT3E90X7ds41p"
+                },
+                {
+                    "id": "US-21116-17",
+                    "nombre": "CREMA DE MANOS - 75 ml.",
+                    "precio": 13.00,
+                    "descripcion": "Repara, protege y cuida las manos dañadas por condiciones climáticas, trabajo, descamación, asperezas, etc. Se absorbe rápidamente y no deja las manos grasas.",
+                    "imagen": "/assets/corporal17.jpg",
+                    "url": "https://buy.stripe.com/bJe3cugBw4rz6Ql9tDds41q"
+                },
+                {
+                    "id": "US-21116-18",
+                    "nombre": "CUTYCULUM - 25 ml.",
+                    "precio": 21.00,
+                    "descripcion": "Cutyculum está formulado para cubrir las tres necesidades esenciales en las manicuras y pedicuras. El silicio orgánico actúa como fortalecedor y endurecedor de uñas frágiles o expuestas a disolventes y pinturas de uñas agresivas. El aceite de jojoba puro, regenera las zonas dañadas por las técnicas de manicura o pedicura, y el aceite esencial puro de árbol del té está indicado para tratar problemas provocados por hongos y otros gérmenes.",
+                    "imagen": "/assets/corporal18.png",
+                    "url": "https://buy.stripe.com/3cIbJ00Cy3nv6QlcFPds41r"
+                },
+                {
+                    "id": "US-21116-19",
+                    "nombre": "GRIET TALON (crema talones) - 75 ml.",
+                    "precio": 13.00,
+                    "descripcion": "Crema especial para proteger y regenerar los pies y talones de las agresiones externas. Aportando factores hidratantes y aliviando las grietas",
+                    "imagen": "/assets/corporal19.jpg",
+                    "url": "https://buy.stripe.com/00weVcdpkcY51w1dJTds41s"
+                }
+            ]
+        },
+        {
+            "id": "higiene",
+            "nombre": "higiene",
+            "titulo": "Línea higiene personal",
+            "descripcion": "",
+            "productos": [
+                {
+                    "id": "US-21111-01",
+                    "nombre": "DESODORANTE NATURAL - 100 ml.",
+                    "precio": 13.00,
+                    "descripcion": "Excelente desodorante totalmente natural lleno de frescura y suavidad. Máxima eficacia respetando la transpiración de la piel al no contener cloruro de aluminio. Indicado para todo tipo de pieles.",
+                    "imagen": "/assets/higiene1.jpg",
+                    "url": "https://buy.stripe.com/eVq4gy5WSbU1deJbBLds41t"
+                },
+                {
+                    "id": "US-21112-02",
+                    "nombre": "DESODORANTE PIES (con árbol del té) - 100 ml.",
+                    "precio": 13.00,
+                    "descripcion": "Desodorante natural en spray con aceite esencial de árbol del té. Respeta la transpiración de la piel al no contener cloruro de aluminio.",
+                    "imagen": "/assets/higiene2.jpg",
+                    "url": "https://buy.stripe.com/8x26oG1GC5vD0rX5dnds41u"
+                },
+                {
+                    "id": "US-21112-03",
+                    "nombre": "DESODORANTE CORPORAL - 150 ml.",
+                    "precio": 17.00,
+                    "descripcion": "Excelente desodorante corporal unisex. Elimina el olor corporal al impedir la descomposición de los ácidos grasos eliminados con el sudor, proporcionando sensación de limpieza y frescura. Contiene aroma fresco a té verde.",
+                    "imagen": "/assets/higiene3.jpg",
+                    "url": "https://buy.stripe.com/9B6eVcfxs0bjfmRgW5ds41v"
+                },
+                {
+                    "id": "US-21112-04",
+                    "nombre": "EXFOLIANTE DE ORO (facial y corporal) - 200 ml.",
+                    "precio": 25.00,
+                    "descripcion": "Exfoliante físico y natural con partículas de oro puro de 24 ct y extractos vegetales naturales. Exfoliando la piel regularmente activamos la circulación de la sangre y promovemos la rápida regeneración celular proporcionando suavidad y frescor en la piel.",
+                    "imagen": "/assets/higiene4.jpg",
+                    "url": "https://buy.stripe.com/5kQ00i8501fn7Up49jds41w"
+                },
+                {
+                    "id": "US-21112-05",
+                    "nombre": "EXFOLIANTE DE POLVO DE PERLA (facial y corporal) - 200 ml.",
+                    "precio": 25.00,
+                    "descripcion": "Exfoliante especial con extractos vegetales y polvo de perla. Proporciona una exfoliación suave pero profunda eliminando las células muertas y ayudando a tratamientos despigmentantes. Además, favorece la regeneración rápida de la piel proporcionando suavidad y elasticidad a la piel.",
+                    "imagen": "/assets/higiene5.jpg",
+                    "url": "https://buy.stripe.com/aFa6oGgBwe29eiNaxHds41x"
+                },
+                {
+                    "id": "US-21112-06",
+                    "nombre": "EXFOLIANTE DE VITAMINA C (facial y corporal) - 200 ml.",
+                    "precio": 25.00,
+                    "descripcion": "Exfoliante especial con naranja dulce y vitamina C. Elimina fácilmente las células muertas con una profunda exfoliación. La vitamina C y el aceite esencial de naranja favorecen la regeneración rápida de la piel.",
+                    "imagen": "/assets/higiene6.jpg",
+                    "url": "https://buy.stripe.com/cNi14m70W6zHdeJ49jds41y"
+                },
+                {
+                    "id": "US-21112-07",
+                    "nombre": "EXFOLIANTE DE ALGA WAKAME (facial y corporal) - 200 ml.",
+                    "precio": 25.00,
+                    "descripcion": "Exfoliante original con alga wakame y aroma a manzana verde para realizar una suave exfoliación eliminando las células muertas y proporcionando una sensación de pureza, frescor y bienestar de la piel. Con propiedades regenerantes para mantener la piel siempre joven y vital.",
+                    "imagen": "/assets/higiene7.jpg",
+                    "url": "https://buy.stripe.com/eVq8wO8507DL3E9eNXds41z"
+                },
+                {
+                    "id": "US-21112-08",
+                    "nombre": "EXFOLIANTE DE VINO (facial y corporal) - 200 ml.",
+                    "precio": 25.00,
+                    "descripcion": "Exfoliante físico y natural con extractos antioxidantes de vino y partículas de sílica, un mineral que proporciona una exfoliación mecánica de intensidad modulable mediante la presión ejercida; a mayor presión en la exfoliación, mayor será el arrastre del exfoliante. Perfecto para realizar una exfoliación facial y corporal adaptando la intensidad por zonas según requerimiento de cada una.",
+                    "imagen": "/assets/higiene8.png",
+                    "url": "https://buy.stripe.com/cNi6oGfxsaPXb6BbBLds41A"
+                },
+                {
+                    "id": "US-21112-09",
+                    "nombre": "EXFOLIANTE DE CHOCOLATE (facial y corporal) - 200 ml.",
+                    "precio": 25.00,
+                    "descripcion": "El cacao es un activo natural de gran interés cosmético debido a su composición rica en teobromina, polifenoles y minerales. Es un estimulante natural que mejora la microcirculación. Además, el aroma a cacao de los tratamientos de chocolaterapia evoca un estado de bienestar muy agradable y placentero. Los polifenoles que se encuentran en el cacao son unos potentes antioxidantes naturales capaces de captar y neutralizar los radicales libres, evitando así los daños en la piel ocasionados por el poder oxidativo de estos radicales. Los minerales más abundantes del cacao son el calcio, el potasio, magnesio, manganeso y zinc, todos ellos estrechamente implicados en el correcto funcionamiento celular, ya que son, en parte, elementos esenciales y oligoelementos necesarios para la vida celular.",
+                    "imagen": "/assets/higiene9.png",
+                    "url": "https://buy.stripe.com/dRmbJ0etogah4Id9tDds41B"
+                },
+                {
+                    "id": "US-21112-10",
+                    "nombre": "JABÓN EXFOLIANTE CAPILAR - 300 g.",
+                    "precio": 15.00,
+                    "descripcion": "Jabón con sales Epson para la exfoliación y limpieza capilar.",
+                    "imagen": "/assets/higiene9-1.png",
+                    "url": "https://buy.stripe.com/00weVcclg2jr1w10X7ds41C"
+                },
+                {
+                    "id": "US-21112-11",
+                    "nombre": "JABÓN EXFOLIANTE CORPORAL - 300 g.",
+                    "precio": 15.00,
+                    "descripcion": "Jabón con sales Epson para la exfoliación y limpieza corporal.",
+                    "imagen": "/assets/higiene10.jpg",
+                    "url": "https://buy.stripe.com/fZu5kC70We290rX8pzds41D"
+                },
+                {
+                    "id": "US-21112-12",
+                    "nombre": "JABÓN EXFOLIANTE PIES Y MANOS - 300 g.",
+                    "precio": 15.00,
+                    "descripcion": "Jabón con sales Epson para la exfoliación y limpieza de pies y manos.",
+                    "imagen": "/assets/higiene11.png",
+                    "url": "https://buy.stripe.com/fZu14mad84rz6QlfS1ds41E"
+                },
+                {
+                    "id": "US-21112-13",
+                    "nombre": "HIGIENIZANTE DE MANOS - 500 ml.",
+                    "precio": 15.00,
+                    "descripcion": "Gel altamente higienizante para las manos a base de alcohol. Idóneo para múltiples disciplinas como la estética, medicina, alimentación, comedores, etc. Tamaños disponibles: 2 ml., 75 ml., 150 ml, 500 ml., 1.000 ml y 5.000 ml. Con activos humectantes para evitar que las manos se sequen o cuarteen, dejando una sensación de hidratación perfecta.",
+                    "imagen": "/assets/higiene12.jpg",
+                    "url": "https://buy.stripe.com/6oU5kC3OK5vDgqVeNXds41F"
+                },
+                {
+                    "id": "US-21112-14",
+                    "nombre": "JABÓN DE MANOS - 500 ml.",
+                    "precio": 13.00,
+                    "descripcion": "Jabón muy suave con pH neutro que respeta el equilibrio de las manos. Formulado con activos hidratantes como el aloe vera y la betaina y extractos calmantes como la manzanilla. Limpia en profundidad sin resecar, aportando hidratación y suavidad. Indicado para todo tipo de pieles, especialmente pieles delicadas.",
+                    "imagen": "/assets/higiene13.jpg",
+                    "url": "https://buy.stripe.com/aFa14meto6zH6Ql0X7ds41G"
+                },
+                {
+                    "id": "US-21112-15",
+                    "nombre": "GEL DE DUCHA Y BAÑO CON ALOE VERA Y COCO - 500 ml.",
+                    "precio": 13.00,
+                    "descripcion": "Gel muy suave con pH neutro que respeta el equilibrio de la piel. Con la máxima concentración de principios activos naturales y aloe vera. Indicado para todo tipo de pieles, especialmente pieles delicadas.",
+                    "imagen": "/assets/higiene14.jpg",
+                    "url": "https://buy.stripe.com/8x29AS2KG3nv7Up9tDds41H"
+                },
+                {
+                    "id": "US-21112-16",
+                    "nombre": "GEL DE DUCHA Y BAÑO ALOE VERA Y TÉ VERDE - 500 ml.",
+                    "precio": 13.00,
+                    "descripcion": "Excelente gel corporal de ducha y baño, con pH neutro que respeta el equilibrio de la piel. Enriquecido con las magníficas propiedades del jugo de aloe vera proporciona hidratación y regeneración. Reforzado con extracto de té verde que combate el envejecimiento de la piel. Indicado para todo tipo de pieles, especialmente pieles delicadas.",
+                    "imagen": "/assets/higiene15.jpg",
+                    "url": "https://buy.stripe.com/00w28q4SO8HPgqVdJTds41I"
+                }
+            ]
+        },
+        {
+            "id": "intima",
+            "nombre": "intima",
+            "titulo": "Línea íntima",
+            "descripcion": "",
+            "productos": [
+                {
+                    "id": "US-31110-01",
+                    "nombre": "GEL ÍNTIMO CON ÁRBOL DEL TÉ Y LAVANDA (Jabón líquido) - 200 ml.",
+                    "precio": 15.00,
+                    "descripcion": "Gel de baño especial para proteger las zonas más íntimas de la mujer. Previene y calma las posibles irritaciones. Con activos que proporcionan sensación de frescura, manteniendo el pH estable en la zona.",
+                    "imagen": "/assets/intima1.jpg",
+                    "url": "https://buy.stripe.com/7sY3cuclgaPX2A56hrds41J"
+                },
+                {
+                    "id": "US-31112-02",
+                    "nombre": "VELA DE MASAJE DULCE PECADO (Sinned Sweet) - 100 ml.",
+                    "precio": 15.00,
+                    "descripcion": "Vela especial para masaje erótico, su fragancia especial aumenta la sensación de placer y sensualidad, su calidez acentúa el deseo sexual favoreciendo las relaciones. Contiene atrayente sexual que favorece la atracción y el deseo.",
+                    "imagen": "/assets/intima2.jpg",
+                    "url": "https://buy.stripe.com/6oUcN4994cY5eiNcFPds41K"
+                },
+                {
+                    "id": "US-31112-03",
+                    "nombre": "VELA DE MASAJE CHOCOLATE - 100 ml.",
+                    "precio": 15.00,
+                    "descripcion": "El masaje con el aceite natural de chocolate entre 37 y 40ºC, proporciona sensaciones de bienestar y placer corporal. El aroma de chocolate proporciona calma y tranquilidad. Fabricadas con cera de abeja y aceites nobles. No contiene parafina.",
+                    "imagen": "/assets/intima3.jpg",
+                    "url": "https://buy.stripe.com/00weVcdpk2jr6QlcFPds41L"
+                },
+                {
+                    "id": "US-31112-04",
+                    "nombre": "VELA DE MASAJE FRESA - 100 ml.",
+                    "precio": 15.00,
+                    "descripcion": "El masaje con el aceite natural con aroma a fresa entre 37 y 40ºC, proporciona sensaciones de bienestar y placer corporal. El aroma de fresa activa el deseo sensual facilitando relaciones más cálidas. Fabricadas con cera de abeja y aceites nobles. No contiene parafina.",
+                    "imagen": "/assets/intima4.jpg",
+                    "url": "https://buy.stripe.com/14A5kCbhc1fna2xaxHds41M"
+                },
+                {
+                    "id": "US-31112-05",
+                    "nombre": "VELA DE MASAJE MANTECA DE KARITÉ - 100 ml.",
+                    "precio": 15.00,
+                    "descripcion": "La manteca de karité posee un intenso poder hidratante para la piel, la protege de las agresiones externas como el Sol, frío, viento, etc. Nutre la piel en profundidad, evita la deshidratación, proporciona elasticidad y previene las estrías, grietas, descamaciones e irritaciones de la piel.",
+                    "imagen": "/assets/intima5.jpg",
+                    "url": "https://buy.stripe.com/14AbJ0gBwe29b6B21bds41N"
+                },
+                {
+                    "id": "US-31112-06",
+                    "nombre": "ACEITE DE CHOCOLATE - 200 ml.",
+                    "precio": 19.00,
+                    "descripcion": "Aceite especial para masaje corporal con extracto puro de cacao y vitamina E.",
+                    "imagen": "/assets/intima6.png",
+                    "url": "https://buy.stripe.com/9B69AS9945vDcaF9tDds41O"
+                },
+                {
+                    "id": "US-31112-07",
+                    "nombre": "NATURALUBE - 90 ml.",
+                    "precio": 19.00,
+                    "descripcion": "Naturalube testado ginecológicamente te ayuda a conseguir bienestar íntimo al producir una sensación de hidratación y suavidad inmediata. Esto se debe a su composición base agua con ácido hialurónico que proporcionan humedad y elasticidad.",
+                    "imagen": "/assets/intima7.png",
+                    "url": "https://buy.stripe.com/8x27sKeto7DL4Id6hrds41P"
+                },
+                {
+                    "id": "US-31112-08",
+                    "nombre": "NATURALUBE COOL - 90 ml.",
+                    "precio": 19.00,
+                    "descripcion": "Gel con efecto frío testado ginecológicamente. Formulado con menta y ácido hialurónico para producir una suave sensación de frescor y humedad.",
+                    "imagen": "/assets/intima8.png",
+                    "url": "https://buy.stripe.com/14AaEW4SO6zH4IdbBLds41Q"
+                }
+            ]
+        },
+        {
+            "id": "adolescent",
+            "nombre": "adolescent",
+            "titulo": "Línea adolescent",
+            "descripcion": "",
+            "productos": [
+                {
+                    "id": "US-33111-01",
+                    "nombre": "ADOLESCENT INTENSIVA (Crema facial)- 50 ml.",
+                    "precio": 27.00,
+                    "descripcion": "Excelente crema intensiva para pieles acnéicas. Contiene la mayor concentración en aloe vera de máxima pureza y extractos vegetales. El aloe vera posee propiedades regenerantes, calmantes y antiacnéicas, reduce rápidamente los efectos visibles del acné y tiene un gran poder atenuante de las imperfecciones de la piel.",
+                    "imagen": "/assets/adolescent1.jpg",
+                    "url": "https://buy.stripe.com/eVqcN48508HP4Id7lvds41R"
+                },
+                {
+                    "id": "US-33112-02",
+                    "nombre": "JABÓN FACIAL INTENSIVO - 150 ml.",
+                    "precio": 18.00,
+                    "descripcion": "Excelente jabón facial para pieles grasas o con acné. Prepara la piel para el tratamiento. El aloe vera posee propiedades reguladoras del exceso de grasa y la eufrasia calma la piel evitando la formación del acné. La manzanilla actúa como calmante.",
+                    "imagen": "/assets/adolescent2.jpg",
+                    "url": "https://buy.stripe.com/aFa6oG3OKgahdeJeNXds41S"
+                },
+                {
+                    "id": "US-33112-03",
+                    "nombre": "LECHE LIMPIADORA INTENSIVA - 150 ml.",
+                    "precio": 17.00,
+                    "descripcion": "Leche limpiadora indicada para pieles grasas. Limpia la piel y regula el exceso de grasa. Con aloe vera y extractos de hamamelis y bardana.",
+                    "imagen": "/assets/adolescent3.jpg",
+                    "url": "https://buy.stripe.com/3cIfZg2KG8HP3E95dnds41T"
+                },
+                {
+                    "id": "US-33112-04",
+                    "nombre": "TÓNICO FACIAL INTENSIVO - 150 ml.",
+                    "precio": 17.00,
+                    "descripcion": "Tónico facial con extractos de hamamelis, salvia y bardana. Tonifica y prepara la piel para la aplicación de la crema facial. Indicado para pieles grasas.",
+                    "imagen": "/assets/adolescent4.jpg",
+                    "url": "https://buy.stripe.com/aFafZgdpkaPX8Yt9tDds41U"
+                }
+            ]
+        },
+        {
+            "id": "solar",
+            "nombre": "solar",
+            "titulo": "Línea solar",
+            "descripcion": "",
+            "productos": [
+                {
+                    "id": "US-43111-01",
+                    "nombre": "PROTECTOR SOLAR 50 SPF (facial) COLOR - 60 g.",
+                    "precio": 22.00,
+                    "descripcion": "Formulado con ingredientes 100% naturales, NATURNUA presenta una fórmula innovadora para su protector solar SPF 35 y SPF 50. Elaborado con una mezcla de filtros físicos que garantizan una protección segura frente al espectro UVA y UVB. Además, son muy resistentes al agua con la certificación de VERY WATER RESISTANT. Los filtros usados para la formulación son el óxido de zinc y el dióxido de titanio. Ambos son minerales naturales que, por su opacidad, actúan a modo de pantalla, bloqueando la absorción de la radiación solar e impidiendo que llegue a la piel. Por su naturaleza son capaces de reflejar y dispersar la luz, actuando de forma eficaz sobre la radiación solar. El protector solar SPF 35 y SPF 50 son unas cremas protectoras de origen mineral que no solo protege nuestra piel de las radiaciones solares, sino que, además, hidrata y repara la piel. Esto es debido a que incorpora en su formulación ingredientes como el aloe vera y aceite de aguacate que ayudan a reparar y mantener la piel hidratada. Su textura facilita la extensión y absorción del producto, dejando la piel sin brillos y sin grasa. Indicado para todo tipo de pieles.",
+                    "imagen": "/assets/solar1.jpg",
+                    "url": "https://buy.stripe.com/5kQ7sK70WbU13E9eNXds41V"
+                },
+                {
+                    "id": "US-43112-02",
+                    "nombre": "PROTECTOR SOLAR 50 SPF (facial y corporal) - 150 g.",
+                    "precio": 33.00,
+                    "descripcion": "Formulado con ingredientes 100% naturales, NATURNUA presenta una fórmula innovadora para su protector solar SPF 35 y SPF 50. Elaborado con una mezcla de filtros físicos que garantizan una protección segura frente al espectro UVA y UVB. Además, son muy resistentes al agua con la certificación de VERY WATER RESISTANT. Los filtros usados para la formulación son el óxido de zinc y el dióxido de titanio. Ambos son minerales naturales que, por su opacidad, actúan a modo de pantalla, bloqueando la absorción de la radiación solar e impidiendo que llegue a la piel. Por su naturaleza son capaces de reflejar y dispersar la luz, actuando de forma eficaz sobre la radiación solar. El protector solar SPF 35 y SPF 50 son unas cremas protectoras de origen mineral que no solo protege nuestra piel de las radiaciones solares, sino que, además, hidrata y repara la piel. Esto es debido a que incorpora en su formulación ingredientes como el aloe vera y aceite de aguacate que ayudan a reparar y mantener la piel hidratada. Su textura facilita la extensión y absorción del producto, dejando la piel sin brillos y sin grasa. Indicado para todo tipo de pieles.",
+                    "imagen": "/assets/solar2.jpg",
+                    "url": "https://buy.stripe.com/8x27sKdpk9LT3E97lvds41W"
+                },
+                {
+                    "id": "US-43112-03",
+                    "nombre": "PROTECTOR SOLAR 30 SPF (facial y corporal) - 150 g.",
+                    "precio": 31.00,
+                    "descripcion": "Formulado con ingredientes 100% naturales, NATURNUA presenta una fórmula innovadora para su protector solar SPF 35 y SPF 50. Elaborado con una mezcla de filtros físicos que garantizan una protección segura frente al espectro UVA y UVB. Además, son muy resistentes al agua con la certificación de VERY WATER RESISTANT. Los filtros usados para la formulación son el óxido de zinc y el dióxido de titanio. Ambos son minerales naturales que, por su opacidad, actúan a modo de pantalla, bloqueando la absorción de la radiación solar e impidiendo que llegue a la piel. Por su naturaleza son capaces de reflejar y dispersar la luz, actuando de forma eficaz sobre la radiación solar. El protector solar SPF 35 y SPF 50 son unas cremas protectoras de origen mineral que no solo protege nuestra piel de las radiaciones solares, sino que, además, hidrata y repara la piel. Esto es debido a que incorpora en su formulación ingredientes como el aloe vera y aceite de aguacate que ayudan a reparar y mantener la piel hidratada. Su textura facilita la extensión y absorción del producto, dejando la piel sin brillos y sin grasa. Indicado para todo tipo de pieles.",
+                    "imagen": "/assets/solar3.jpg",
+                    "url": "https://buy.stripe.com/fZu9ASclgf6dgqV49jds41X"
+                },
+                {
+                    "id": "US-43112-04",
+                    "nombre": "ACEITE BRONCEADOR NATURAL - 200 ml.",
+                    "precio": 19.00,
+                    "descripcion": "Magnífico aceite bronceador con aceites naturales de aguacate y zanahoria. Ayuda a conseguir un bronceado intenso y duradero.",
+                    "imagen": "/assets/solar4.jpg",
+                    "url": "https://buy.stripe.com/7sY28q4SO9LT0rXeNXds41Y"
+                },
+                {
+                    "id": "US-43112-05",
+                    "nombre": "ACELERADOR DEL BRONCEADO (Rayos UVA) - 200 ml.",
+                    "precio": 15.00,
+                    "descripcion": "Excelente aceite para acelerar el bronceado de la piel en centros del bronceado. Produce un bronceado uniforme y no provoca manchas en la piel.",
+                    "imagen": "/assets/solar5.jpg",
+                    "url": "https://buy.stripe.com/aFa5kC70Wf6dfmRfS1ds41Z"
+                }
+            ]
+        },
+        {
+            "id": "masajista",
+            "nombre": "masajista",
+            "titulo": "El rincón del masajista",
+            "descripcion": "",
+            "productos": [
+                {
+                    "id": "US-51111-01",
+                    "nombre": "BALSAK TIBETHAN - 50 ml.",
+                    "precio": 19.00,
+                    "descripcion": "Excelente bálsamo tibetano a base de aceite de hierbas naturales, aceites esenciales y ceras naturales. Indicado para toda clase de masajes musculares, lumbalgias, cervicales, dolores de espalda, dolores musculares, etc.",
+                    "imagen": "/assets/masajista1.jpg",
+                    "url": "https://buy.stripe.com/aFacN4ad87DL8Yt49jds420"
+                },
+                {
+                    "id": "US-5112-02",
+                    "nombre": "BALSAK TIBETHAN PLUS (pulverizable) - 100 ml.",
+                    "precio": 23.00,
+                    "descripcion": "Excelente bálsamo a base de principios activos vegetales y silicio orgánico, actúa ayudando a tratar las molestias musculares y articulares. El silicio orgánico, unido a los activos vegetales, favorece la recuperación de problemas musculares.",
+                    "imagen": "/assets/masajista2.jpg",
+                    "url": "https://buy.stripe.com/cNifZg0Cygah3E98pzds421"
+                },
+                {
+                    "id": "US-51112-03",
+                    "nombre": "NATURPIEL - 50 ml.",
+                    "precio": 19.00,
+                    "descripcion": "Mezcla magistral de ceras naturales, aceites vegetales y aceites esenciales, especial para aliviar irritaciones, rozaduras, escoceduras, dermatitis, descamaciones, etc. Con caléndula, germen de arroz, rosa mosqueta, árnica, hipérico, aceite de oliva, vitamina E, aceite esencial de lavanda y romero.",
+                    "imagen": "/assets/masajista3.jpg",
+                    "url": "https://buy.stripe.com/aFa5kC0CycY57Up7lvds422"
+                },
+                {
+                    "id": "US-51112-04",
+                    "nombre": "TINTURA DE TOMILLO, ROMERO Y ÁRNICA - 150 ml.",
+                    "precio": 19.00,
+                    "descripcion": "Tintura pura extraída con métodos tradicionales y artesanos. Indicada para friegas y para favorecer al terapeuta en el tratamiento de los problemas musculares, articulares, falta de tono muscular, etc.",
+                    "imagen": "/assets/masajista4.png",
+                    "url": "https://buy.stripe.com/7sY8wO0Cye291w16hrds423"
+                },
+                {
+                    "id": "US-51112-05",
+                    "nombre": "HARPAGOFITO Y ALOE VERA - 200 ml.",
+                    "precio": 19.00,
+                    "descripcion": "Excelente gel de harpagofito con aloe vera, de rápida absorción. El extracto de harpagofito es conocido por sus innumerables propiedades en los campos del masaje y la fisioterapia.",
+                    "imagen": "/assets/masajista5.jpg",
+                    "url": "https://buy.stripe.com/14A3cu3OK7DLcaF35fds424"
+                },
+                {
+                    "id": "US-51112-06",
+                    "nombre": "LINIMENTO TIBETANO (efecto calor) - 200 ml.",
+                    "precio": 17.00,
+                    "descripcion": "Excelente linimento efecto calor. Formulado especialmente para preparar el sistema muscular de los deportistas proporcionándoles un calor suave que facilita el precalentamiento para evitar posibles lesiones.",
+                    "imagen": "/assets/masajista6.jpg",
+                    "url": "https://buy.stripe.com/14AbJ0etocY55MhcFPds425"
+                },
+                {
+                    "id": "US-51112-07",
+                    "nombre": "ACEITE PARA MASAJE RELAJANTE - 200 ml.",
+                    "precio": 17.00,
+                    "descripcion": "Aceite especial para personas tensas, con stress y nerviosismo. Los aceites esenciales proporcionan calma y serenidad tanto a nivel cutáneo actuando sobre las terminaciones nerviosas como a nivel olfativo.",
+                    "imagen": "/assets/masajista7.jpg",
+                    "url": "https://buy.stripe.com/4gMeVcclg4rz6Ql0X7ds426"
+                },
+                {
+                    "id": "US-51112-08",
+                    "nombre": "ACEITE PARA MASAJE DESCONTRACTURANTE - 200 ml.",
+                    "precio": 17.00,
+                    "descripcion": "Sensacional aceite para masaje descontracturante, por su composición ayuda al profesional a descontracturar la musculatura tensa y contraída tanto por el trabajo como por el deporte. Especial para fisioterapeutas, masajistas, etc.",
+                    "imagen": "/assets/masajista8.jpg",
+                    "url": "https://buy.stripe.com/6oUfZg850f6dfmRgW5ds427"
+                },
+                {
+                    "id": "US-51112-09",
+                    "nombre": "SALES DE BAÑO EPSON RELAJANTE (lavanda y rosa mosqueta) - 1 kg.",
+                    "precio": 33.00,
+                    "descripcion": "Sales de baño Epson enriquecidas con aceite de rosa mosqueta, aceite esencial de lavanda y aceite de almendras dulces. Las sales de baño ricas en Magnesio, unido a los efectos hidratantes y nutritivos de los aceites, aportan una serie de efectos beneficiosos para la piel además de ser relajantes.",
+                    "imagen": "/assets/masajista9.jpg",
+                    "url": "https://buy.stripe.com/00w14mfxs7DL6Ql5dnds428"
+                },
+                {
+                    "id": "US-51112-10",
+                    "nombre": "SALES DE BAÑO EPSON SPORT (Árnica y gaulteria) - 1 kg.",
+                    "precio": 33.00,
+                    "descripcion": "Sales de baño Epson enriquecidas con aceite de árnica y aceite esencial de gaulteria. Sales ricas en Magnesio, unido a los efectos del árnica y la gaulteria potencian sus efectos beneficiosos para músculos y articulaciones. Recomendado para baños completos o parciales.",
+                    "imagen": "/assets/masajista10.jpg",
+                    "url": "https://buy.stripe.com/14A6oGad8aPX4Id6hrds429"
+                }
+            ]
+        }
+    ]
+} 

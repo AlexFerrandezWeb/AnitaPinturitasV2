@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Stripe PayPal</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <h1>Test de Stripe con PayPal</h1>
+    <button id="test-button">Probar Pago con Stripe</button>
+    <div id="result"></div>
+
+    <script>
+        const stripe = Stripe('pk_live_51RiBJlAV1sSXblTcz3sH2w36Nd753TcxPOGaRFdj1qKLi1EfDqd3N6S1zXq8RTRVQgxv3SBT31uW3kmDKxZG1t6A00vdarrbHY');
+        
+        document.getElementById('test-button').addEventListener('click', async () => {
+            try {
+                const response = await fetch('https://anita-pinturitas-server.onrender.com/crear-sesion', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        carrito: [{
+                            id: 'test-product',
+                            nombre: 'Producto de Prueba',
+                            precio: 10.00,
+                            cantidad: 1,
+                            imagen: '/assets/producto1.jpg'
+                        }]
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.id) {
+                    document.getElementById('result').innerHTML = `
+                        <p>Sesión creada: ${data.id}</p>
+                        <p>Redirigiendo a Stripe...</p>
+                    `;
+                    
+                    // Redirigir a Stripe
+                    await stripe.redirectToCheckout({ sessionId: data.id });
+                } else {
+                    document.getElementById('result').innerHTML = `
+                        <p>Error: ${data.error}</p>
+                    `;
+                }
+            } catch (error) {
+                document.getElementById('result').innerHTML = `
+                    <p>Error de conexión: ${error.message}</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html> 
