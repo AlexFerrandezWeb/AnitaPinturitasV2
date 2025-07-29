@@ -53,4 +53,3 @@ RewriteRule ^(.*)\.(jpg|jpeg|png|gif)$ $1.$2 [L]
     ExpiresByType image/gif "access plus 0 seconds"
 </IfModule> 
 
-#clave_secreta_stripe:'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'
