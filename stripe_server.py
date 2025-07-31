@@ -42,11 +42,11 @@ SHIPPING_OPTIONS = [
             'delivery_estimate': {
                 'minimum': {
                     'unit': 'business_day',
-                    'value': 3,
+                    'value': 5,
                 },
                 'maximum': {
                     'unit': 'business_day',
-                    'value': 5,
+                    'value': 10,
                 },
             },
         },
@@ -81,14 +81,9 @@ def crear_sesion():
             imagen_url = producto.get('imagen')
             print(f"Procesando imagen para {producto['nombre']}: {imagen_url}")
             
-            # Buscar la URL de GitHub para esta imagen
-            if imagen_url and imagen_url in image_mapping:
-                github_url = image_mapping[imagen_url]
-                print(f"Usando imagen de GitHub para {producto['nombre']}: {github_url}")
-                product_data['images'].append(github_url)
-            else:
-                print(f"Usando imagen de belleza por defecto para {producto['nombre']}")
-                product_data['images'].append(IMAGEN_BELLEZA)
+            # Usar imagen de belleza por defecto ya que GitHub no está funcionando
+            print(f"Usando imagen de belleza para {producto['nombre']}")
+            product_data['images'].append(IMAGEN_BELLEZA)
 
             line_items.append({
                 'price_data': {
