@@ -65,6 +65,9 @@ def crear_sesion():
         print("Recibida petición para crear sesión")
         data = request.get_json()
         carrito = data.get('carrito', [])
+        print(f"Número de productos en carrito: {len(carrito)}")
+        for i, producto in enumerate(carrito):
+            print(f"Producto {i+1}: {producto.get('nombre', 'Sin nombre')} - Imagen: {producto.get('imagen', 'Sin imagen')}")
 
         subtotal = sum(float(producto['precio']) * int(producto['cantidad']) for producto in carrito)
         envio_gratuito = subtotal >= 62
@@ -80,19 +83,26 @@ def crear_sesion():
 
             imagen_url = producto.get('imagen')
             print(f"Procesando imagen para {producto['nombre']}: {imagen_url}")
+            print(f"Tipo de imagen_url: {type(imagen_url)}")
+            print(f"Longitud de imagen_url: {len(imagen_url) if imagen_url else 0}")
             
             if imagen_url and imagen_url.strip():
-                # Procesar la URL de la imagen
-                if imagen_url.startswith('/'):
-                    imagen_url = f"https://anitapinturitas.es{imagen_url}"
-                elif not imagen_url.startswith('http'):
-                    imagen_url = f"https://anitapinturitas.es/{imagen_url.lstrip('/')}"
+                # Intentar usar el mapeo de imágenes primero
+                if imagen_url in image_mapping:
+                    imagen_url = image_mapping[imagen_url]
+                    print(f"Usando imagen mapeada para {producto['nombre']}: {imagen_url}")
+                else:
+                    # Procesar la URL de la imagen como antes
+                    if imagen_url.startswith('/'):
+                        imagen_url = f"https://anitapinturitas.es{imagen_url}"
+                    elif not imagen_url.startswith('http'):
+                        imagen_url = f"https://anitapinturitas.es/{imagen_url.lstrip('/')}"
+                    print(f"URL final de imagen para {producto['nombre']}: {imagen_url}")
                 
-                print(f"URL final de imagen para {producto['nombre']}: {imagen_url}")
                 product_data['images'].append(imagen_url)
             else:
                 # Usar imagen por defecto si no hay imagen
-                print(f"Usando imagen por defecto para {producto['nombre']}")
+                print(f"Usando imagen por defecto para {producto['nombre']} - imagen_url vacía o nula")
                 product_data['images'].append(IMAGEN_BELLEZA)
 
             line_items.append({
