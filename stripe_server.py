@@ -53,6 +53,29 @@ SHIPPING_OPTIONS = [
     },
 ]
 
+SHIPPING_OPTIONS_GRATIS = [
+    {
+        'shipping_rate_data': {
+            'type': 'fixed_amount',
+            'fixed_amount': {
+                'amount': 0,  # Gratis
+                'currency': 'eur',
+            },
+            'display_name': 'Envío estándar - Gratis',
+            'delivery_estimate': {
+                'minimum': {
+                    'unit': 'business_day',
+                    'value': 5,
+                },
+                'maximum': {
+                    'unit': 'business_day',
+                    'value': 10,
+                },
+            },
+        },
+    },
+]
+
 @app.route('/crear-sesion', methods=['POST', 'OPTIONS'])
 def crear_sesion():
     if request.method == 'OPTIONS':
@@ -114,7 +137,7 @@ def crear_sesion():
                 'quantity': int(producto['cantidad']),
             })
 
-        shipping_options = [] if envio_gratuito else SHIPPING_OPTIONS
+        shipping_options = SHIPPING_OPTIONS_GRATIS if envio_gratuito else SHIPPING_OPTIONS
 
         session = stripe.checkout.Session.create(
             line_items=line_items,
