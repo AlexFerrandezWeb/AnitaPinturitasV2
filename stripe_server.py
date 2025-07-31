@@ -81,9 +81,19 @@ def crear_sesion():
             imagen_url = producto.get('imagen')
             print(f"Procesando imagen para {producto['nombre']}: {imagen_url}")
             
-            # Usar imagen de belleza por defecto ya que GitHub no está funcionando
-            print(f"Usando imagen de belleza para {producto['nombre']}")
-            product_data['images'].append(IMAGEN_BELLEZA)
+            if imagen_url and imagen_url.strip():
+                # Procesar la URL de la imagen
+                if imagen_url.startswith('/'):
+                    imagen_url = f"https://anitapinturitas.es{imagen_url}"
+                elif not imagen_url.startswith('http'):
+                    imagen_url = f"https://anitapinturitas.es/{imagen_url.lstrip('/')}"
+                
+                print(f"URL final de imagen para {producto['nombre']}: {imagen_url}")
+                product_data['images'].append(imagen_url)
+            else:
+                # Usar imagen por defecto si no hay imagen
+                print(f"Usando imagen por defecto para {producto['nombre']}")
+                product_data['images'].append(IMAGEN_BELLEZA)
 
             line_items.append({
                 'price_data': {
