@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: anita-pinturitas-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: STRIPE_SECRET_KEY
+        sync: false  # Debes configurarlo manualmente en Render
+      - key: SUCCESS_URL
+        value: https://tudominio.com  # Cambia esto a tu dominio
+      - key: CANCEL_URL
+        value: https://tudominio.com  # Cambia esto a tu dominio
+      - key: NODE_ENV
+        value: production
+

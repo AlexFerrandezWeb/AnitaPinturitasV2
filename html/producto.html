@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anita Pinturitas - Producto</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/producto.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/botonFlotante.css">
+    <link rel="stylesheet" href="../css/carrito.css">
+    <link rel="stylesheet" href="../css/cartAnimation.css">
+    <link rel="stylesheet" href="../css/confirmModal.css">
+    <link rel="stylesheet" href="../css/searchResults.css">
+</head>
+<body>
+    <nav class="nav">
+        <button class="nav__menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+            <span class="nav__menu-bar"></span>
+            <span class="nav__menu-bar"></span>
+        </button>
+        <a href="index.html" class="nav__logo" aria-label="Inicio">
+            <img src="../assets/foto-presentacion.png" alt="Logo Anita Pinturitas">
+        </a>
+        <div class="nav__actions">
+            <button class="nav__search-toggle" aria-label="Buscar productos" aria-expanded="false" aria-controls="search-bar">
+                <svg class="nav__search-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <a href="carrito.html" class="nav__cart" aria-label="Carrito">
+                <svg class="nav__cart-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <!-- Bolso de compras estilo cosmética -->
+                    <path d="M16 11V7a4 4 0 10-8 0v4M5 8h14l-1 11H6L5 8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="nav__cart-count" aria-label="Productos en carrito">0</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Menú hamburguesa desplegable -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu__overlay"></div>
+        <div class="mobile-menu__content">
+            <div class="mobile-menu__header">
+                <h3 class="mobile-menu__title">Menú</h3>
+                <button class="mobile-menu__close" aria-label="Cerrar menú">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M18 6L6 18M6 6l12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <nav class="mobile-menu__nav">
+                <a href="index.html" class="mobile-menu__link">Inicio</a>
+                <div class="mobile-menu__dropdown">
+                    <a href="productos.html" class="mobile-menu__link mobile-menu__link--dropdown mobile-menu__link--active">Productos</a>
+                    <div class="mobile-menu__submenu">
+                        <a href="cuidadoPiel.html" class="mobile-menu__sublink mobile-menu__sublink--active">Cuidado de la piel</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="mobile-menu__contact">
+                <h4 class="mobile-menu__contact-title">Contáctame:</h4>
+                <div class="mobile-menu__social">
+                    <a href="#" class="mobile-menu__social-link mobile-menu__social-link--facebook" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="mobile-menu__social-link mobile-menu__social-link--instagram" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="mobile-menu__social-link mobile-menu__social-link--tiktok" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="mobile-menu__social-link mobile-menu__social-link--youtube" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="mobile-menu__contact-info">
+                    <a href="tel:640557787" class="mobile-menu__contact-item">
+                        <svg class="mobile-menu__contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" fill="currentColor"/>
+                        </svg>
+                        <span>640 55 77 87</span>
+                    </a>
+                    <a href="mailto:info@anitapinturitas.es" class="mobile-menu__contact-item">
+                        <svg class="mobile-menu__contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>info@anitapinturitas.es</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carrito lateral -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-sidebar__overlay"></div>
+        <div class="cart-sidebar__content">
+            <div class="cart-sidebar__header">
+                <h3 class="cart-sidebar__title">Carrito</h3>
+                <button class="cart-sidebar__close" aria-label="Cerrar carrito">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M18 6L6 18M6 6l12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="cart-sidebar__body">
+                <div class="cart-items" id="cart-items">
+                    <!-- Los productos del carrito se cargarán aquí -->
+                    <div class="cart-empty">
+                        <svg class="cart-empty__icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M16 11V7a4 4 0 10-8 0v4M5 8h14l-1 11H6L5 8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <p>Tu carrito está vacío</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-sidebar__footer">
+                <div class="cart-shipping-info">
+                    <p class="cart-shipping-text">Envío gratis a España en todos los pedidos de más de 62.00 €</p>
+                </div>
+                <div class="cart-total">
+                    <span class="cart-total__label">Total:</span>
+                    <span class="cart-total__amount">0.00 €</span>
+                </div>
+                <button class="cart-checkout" disabled>
+                    Proceder al pago
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra de búsqueda -->
+    <div class="search-bar" id="search-bar">
+        <form class="search-bar__form" role="search">
+            <input type="search" class="search-bar__input" placeholder="Buscar productos..." aria-label="Buscar productos">
+            <button type="submit" class="search-bar__button" aria-label="Buscar">
+                <svg class="search-bar__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </form>
+    </div>
+
+    <main>
+        <!-- Hero del producto -->
+        <section class="producto-hero">
+            <div class="container">
+                <a href="cuidadoPiel.html" class="producto-hero__back">← Volver a productos</a>
+            </div>
+        </section>
+
+        <!-- Detalles del producto -->
+        <section class="producto-details">
+            <div class="container">
+                <div class="producto-details__grid">
+                    <!-- Imagen del producto -->
+                    <div class="producto-details__images">
+                        <div class="producto-details__main-image">
+                            <img id="producto-img-principal" src="../assets/productos/cuidadoPiel/productoPortada1.png" alt="Imagen del producto seleccionado - Anita Pinturitas" class="producto-details__img">
+                        </div>
+                        <div class="producto-details__thumbnails">
+                            <img src="../assets/productos/cuidadoPiel/productoPortada1.png" alt="Miniatura 1 del producto" class="producto-details__thumbnail active" data-main-img="../assets/productos/cuidadoPiel/productoPortada1.png">
+                            <img src="../assets/productos/cuidadoPiel/productoPortada2.png" alt="Miniatura 2 del producto" class="producto-details__thumbnail" data-main-img="../assets/productos/cuidadoPiel/productoPortada2.png">
+                            <img src="../assets/productos/cuidadoPiel/productoPortada3.png" alt="Miniatura 3 del producto" class="producto-details__thumbnail" data-main-img="../assets/productos/cuidadoPiel/productoPortada3.png">
+                        </div>
+                    </div>
+
+                    <!-- Información del producto -->
+                    <div class="producto-details__info">
+                        <h1 class="producto-details__name">Crema Hidratante Facial Natural</h1>
+                        <p class="producto-details__category">Cuidado de la Piel</p>
+                        <div class="producto-details__price">
+                            <span class="producto-details__price-current">29,95€</span>
+                        </div>
+
+                        <div class="producto-details__description">
+                            <h3>Descripción</h3>
+                            <p>Crema hidratante facial intensiva formulada con ingredientes naturales para nutrir y revitalizar tu piel madura. Proporciona hidratación profunda durante 24 horas, dejando tu piel suave, elástica y radiante.</p>
+                            <ul>
+                                <li>Hidratación intensiva de 24 horas</li>
+                                <li>Reduce la apariencia de líneas finas</li>
+                                <li>Ingredientes 100% naturales</li>
+                                <li>Apta para todo tipo de piel</li>
+                                <li>Sin parabenos ni fragancias artificiales</li>
+                            </ul>
+                        </div>
+
+                        <div class="producto-details__ingredients">
+                            <h3>Ingredientes</h3>
+                            <p>Aceite de argán, ácido hialurónico, vitamina E, extracto de aloe vera, manteca de karité, glicerina vegetal.</p>
+                        </div>
+
+                        <div class="producto-details__quantity">
+                            <label for="cantidad">Cantidad:</label>
+                            <div class="producto-details__quantity-controls">
+                                <button class="producto-details__qty-btn" id="decrease-qty">-</button>
+                                <input type="number" id="cantidad" class="producto-details__qty-input" value="1" min="1" max="10">
+                                <button class="producto-details__qty-btn" id="increase-qty">+</button>
+                            </div>
+                        </div>
+
+                        <div class="producto-details__actions">
+                            <button class="btn btn--primary btn--full" id="add-to-cart">Añadir al Carrito</button>
+                            <button class="btn btn--secondary btn--full" id="contact-whatsapp">Consultar por WhatsApp</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__content">
+            <div class="footer__main">
+                <div class="footer__social">
+                    <a href="#" class="footer__social-link" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="footer__social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="footer__social-link" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="footer__social-link" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="footer__contact">
+                    <a href="tel:640557787" class="footer__contact-item">
+                        <svg class="footer__contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" fill="currentColor"/>
+                        </svg>
+                        <span>640 55 77 87</span>
+                    </a>
+                    <a href="mailto:info@anitapinturitas.es" class="footer__contact-item">
+                        <svg class="footer__contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>info@anitapinturitas.es</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Métodos de pago seguro -->
+        <div class="footer__payments">
+            <p class="footer__payments-text">
+                <svg class="footer__lock-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18 11H6a2 2 0 00-2 2v7a2 2 0 002 2h12a2 2 0 002-2v-7a2 2 0 00-2-2zM7 11V7a5 5 0 0110 0v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Pago seguro con:
+            </p>
+            <div class="footer__payments-logos">
+                <img src="../assets/paypal_logo.svg" alt="PayPal" class="footer__payment-logo">
+                <img src="../assets/visa_logo.svg" alt="Visa" class="footer__payment-logo">
+                <img src="../assets/mastercard_logo.svg" alt="Mastercard" class="footer__payment-logo">
+                <img src="../assets/bizum_logo.webp" alt="Bizum" class="footer__payment-logo">
+            </div>
+        </div>
+        
+        <div class="footer__bottom">
+            <div class="footer__legal">
+                <a href="avisoLegal.html" class="footer__legal-link">Aviso Legal</a>
+                <a href="politicaPrivacidad.html" class="footer__legal-link">Política de Privacidad</a>
+                <a href="politicaCookies.html" class="footer__legal-link">Política de Cookies</a>
+                <a href="politicaDevoluciones.html" class="footer__legal-link">Política de Devoluciones</a>
+            </div>
+            <p class="footer__copyright">&copy; 2025 Anita Pinturitas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón WhatsApp Flotante -->
+    <a href="https://wa.me/640557787" class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+        <div class="whatsapp-button__content">
+            <svg class="whatsapp-button__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" fill="currentColor"/>
+            </svg>
+            <span class="whatsapp-button__text"></span>
+        </div>
+    </a>
+
+    <script src="../js/cartUtils.js"></script>
+    <script src="../js/cartAnimation.js"></script>
+    <script src="../js/confirmModal.js"></script>
+    <script src="../js/menu-hamburguesa.js"></script>
+    <script src="../js/carrito.js"></script>
+    <script src="../js/buscador.js"></script>
+    <script src="../js/botonFlotante.js"></script>
+    <script src="../js/producto.js"></script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+/* ===== PRODUCTOS PAGE STYLES ===== */
+
+/* Asegurar espacio bajo el nav fijo */
+body {
+    padding-top: 75px !important;
+}
+
+/* Hero Section */
+.products-hero {
+    background: var(--vista-white);
+    padding: 40px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.products-hero__title {
+    font-size: 2.6rem;
+    font-weight: 600;
+    color: var(--jazzberry-jam);
+    margin: 8px 0;
+    line-height: 1.2;
+}
+
+.products-hero__subtitle {
+    font-size: 1rem;
+    color: rgba(0,0,0,0.6);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* Categories Section */
+.categories-section {
+    padding: 60px 0 40px;
+    background: var(--vista-white);
+}
+
+/* Categories Grid */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Centrar el contenido y evitar que el área clicable abarque toda la columna */
+.categories-grid .category-card { display: flex; justify-content: center; }
+
+/* Category Card */
+.category-card {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    text-align: center;
+    box-shadow: none;
+    transition: none;
+    border: none;
+}
+
+.category-card:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: transparent;
+}
+
+/* Contenedor circular */
+.contenedor-circular {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 0 auto 0;
+    display: block;
+}
+
+.contenedor-circular img,
+.category-card__img {
+    display: block;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    object-fit: contain;
+    object-position: center;
+    margin: 12.5%;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Título recto bajo el círculo */
+.category-card__caption {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #6b8e3a; /* verde oliva */
+    margin-top: -16px; /* ligeramente más abajo del círculo */
+}
+
+
+/* Category Link */
+.category-card__link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: auto;
+    max-width: none;
+    margin: 0 auto;
+    padding: 0;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.category-card__link:hover { transform: scale(1.05); }
+
+.category-card__link .contenedor-circular {
+    position: relative;
+    z-index: 2;
+}
+
+/* Category Content (no usado con caption recto) */
+.category-card__content { display: none; }
+
+
+.category-card__name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--hopbush);
+    margin-bottom: 16px;
+    line-height: 1.3;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    transform: translateY(-10px);
+    background: linear-gradient(135deg, var(--vista-white) 0%, var(--citrine-white) 100%);
+    padding: 8px 16px;
+    border-radius: 25px;
+    border: 2px solid var(--hopbush);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.category-card__name:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.category-card__description {
+    font-size: 1rem;
+    color: var(--indian-khaki);
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn--primary {
+    background: linear-gradient(135deg, var(--hopbush), var(--chantilly));
+    color: white;
+    box-shadow: 0 4px 15px rgba(198, 112, 155, 0.3);
+}
+
+.btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(198, 112, 155, 0.4);
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Evitar franja blanca arriba del footer SOLO en esta página */
+body.page-productos .main { padding-bottom: 1px; display: block; flex: 1 0 auto; }
+body.page-productos .main > *:last-child { margin-bottom: 0 !important; }
+/* Mantener el comportamiento del footer por defecto (auto empuje) */
+
+/* En pantallas muy grandes, reducir aún más el espacio inferior */
+@media (min-width: 1920px) {
+    .categories-section { padding-bottom: 20px; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .products-hero { padding: 28px 0; }
+    
+    .products-hero__title { font-size: 2.1rem; }
+    
+    .products-hero__subtitle { font-size: 0.95rem; }
+    
+    .categories-section {
+        padding: 60px 0;
+    }
+    
+    .categories-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 15px;
+    }
+    
+    .category-card {
+        padding: 0;
+    }
+    
+    .contenedor-circular {
+        width: 220px;
+        height: 220px;
+        margin-bottom: 0;
+    }
+
+    .category-card__caption { font-size: 1.1rem; margin-top: -12px; }
+    
+    
+    .category-card__name {
+        font-size: 1.4rem;
+        padding: 6px 12px;
+        transform: translateY(-8px);
+    }
+    
+    .category-card__name:hover {
+        transform: translateY(-8px) scale(1.05);
+    }
+    
+    .category-card__description {
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+    }
+}

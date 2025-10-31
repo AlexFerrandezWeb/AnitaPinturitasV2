@@ -1,0 +1,275 @@
+/* Layout para forzar el footer al fondo en páginas con poco contenido */
+html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1 0 auto;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, var(--jazzberry-jam) 0%, var(--cardinal-pink) 100%);
+    color: white;
+    padding: 40px 0 20px;
+    margin-top: auto;
+}
+
+.footer__content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+}
+
+.footer__title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    color: white;
+}
+
+.footer__description {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+    opacity: 0.9;
+}
+
+.footer__subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    color: white;
+}
+
+/* Redes sociales */
+.footer__social {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.footer__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.footer__social-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px) scale(1.1);
+}
+
+.footer__social-link svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Contacto */
+.footer__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.footer__contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.footer__contact-item:hover {
+    color: var(--chantilly);
+}
+
+.footer__contact-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+/* Navegación */
+.footer__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+.footer__link {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.footer__link:hover {
+    color: var(--chantilly);
+}
+
+/* Métodos de pago seguro */
+.footer__payments {
+    margin-top: 32px;
+    padding: 24px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.footer__payments-text {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    color: white;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.footer__lock-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.footer__payments-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.footer__payment-logo {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.footer__payment-logo:hover {
+    opacity: 1;
+}
+
+/* Footer bottom */
+.footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 32px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.footer__copyright {
+    font-size: 12px;
+    margin: 0;
+    opacity: 0.8;
+    text-align: center;
+}
+
+.footer__legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+
+.footer__legal-link {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.2s ease;
+}
+
+.footer__legal-link:hover {
+    color: var(--chantilly);
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .footer__main {
+        flex-direction: row;
+        gap: 40px;
+        align-items: center;
+    }
+    
+    .footer__contact {
+        align-items: flex-start;
+    }
+    
+    .footer__bottom {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .footer__copyright {
+        text-align: center;
+        order: 2;
+    }
+    
+    .footer__legal {
+        justify-content: center;
+        order: 1;
+    }
+}
+
+@media (min-width: 1024px) {
+    .footer {
+        padding: 60px 0 30px;
+    }
+    
+    .footer__content {
+        padding: 0 20px;
+    }
+    
+    .footer__payment-logo {
+        height: 32px;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer__payments-logos {
+        gap: 16px;
+    }
+    
+    .footer__payment-logo {
+        height: 20px;
+    }
+}

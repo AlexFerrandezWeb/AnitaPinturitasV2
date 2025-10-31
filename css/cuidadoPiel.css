@@ -1,0 +1,330 @@
+/* Variables CSS - Usando la paleta del sitio principal */
+:root {
+    --cardinal-pink: #98074f;
+    --corn-harvest: #817f0a;
+    --vista-white: #fdfafb;
+    --indian-khaki: #c0be85;
+    --hopbush: #c6709b;
+    --chantilly: #f8c5e4;
+    --citrine-white: #faf8da;
+    --jazzberry-jam: #ba0b5f;
+    --white: #ffffff;
+    --black: #000000;
+}
+
+/* Reset y base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--black);
+    background-color: var(--white);
+    padding-top: 75px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section */
+.cuidado-hero {
+    background: var(--vista-white);
+    padding: 40px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.cuidado-hero::before { display: none; }
+
+.cuidado-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.cuidado-hero__title {
+    font-size: 2.6rem;
+    font-weight: 600;
+    color: var(--jazzberry-jam);
+    margin-bottom: 8px;
+}
+
+.cuidado-hero__subtitle {
+    font-size: 1rem;
+    color: rgba(0,0,0,0.6);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* Contenido principal */
+.cuidado-content {
+    padding: 60px 0;
+    background-color: var(--white);
+}
+
+.cuidado-content .container {
+    text-align: center;
+}
+
+.cuidado-content p {
+    font-size: 1.1rem;
+    color: var(--pale-sky);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Secciones de categorías */
+.categoria-section {
+    margin-bottom: 80px;
+}
+
+.categoria-titulo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 40px;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 20px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--jazzberry-jam) 0%, var(--cardinal-pink) 100%);
+    box-shadow: 0 4px 12px rgba(186, 11, 95, 0.3);
+}
+
+/* Grid de productos */
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Tarjeta de producto */
+.producto-card {
+    background: var(--vista-white);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(152, 7, 79, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--chantilly);
+    cursor: pointer;
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(152, 7, 79, 0.2);
+}
+
+.producto-imagen {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.producto-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.producto-card:hover .producto-imagen img {
+    transform: scale(1.05);
+}
+
+.producto-info {
+    padding: 25px;
+}
+
+.producto-nombre {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+/* Precio en verde olivo - tamaño equilibrado */
+.producto-precio {
+    font-size: 2.4rem !important;
+    font-weight: 700;
+    color: #6b8e3a !important;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+/* Texto de IVA incluido */
+.producto-precio-iva {
+    font-size: 0.75rem;
+    color: #6b8e3a !important;
+    font-weight: 400;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+/* Asegurar que el precio tenga el color correcto */
+.producto-card .producto-precio,
+.producto-info .producto-precio {
+    color: #6b8e3a !important;
+}
+
+.producto-card .producto-precio-iva,
+.producto-info .producto-precio-iva {
+    color: #6b8e3a !important;
+}
+
+.producto-descripcion {
+    font-size: 0.95rem;
+    color: var(--cardinal-pink);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Contenedor de botones */
+.producto-botones {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Botón Ver */
+.btn-ver {
+    background: transparent;
+    color: var(--jazzberry-jam);
+    border: 1px solid var(--jazzberry-jam);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex: 1;
+}
+
+.btn-ver:hover {
+    background: var(--jazzberry-jam);
+    color: var(--white);
+}
+
+/* Botón Añadir al carrito */
+.btn-comprar {
+    display: inline-block;
+    background: var(--jazzberry-jam);
+    color: var(--white);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-comprar:hover {
+    background: #9a0950;
+    color: var(--white);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(186, 11, 95, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cuidado-hero { padding: 28px 0; }
+    
+    .cuidado-hero__title { font-size: 2.1rem; }
+    
+    .cuidado-hero__subtitle { font-size: 0.95rem; }
+    
+    .cuidado-content {
+        padding: 40px 0;
+    }
+    
+    .categoria-titulo {
+        font-size: 2rem;
+        margin-left: -20px;
+        margin-right: -20px;
+        padding: 15px 20px;
+    }
+    
+    .productos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .producto-card {
+        margin: 0 10px;
+    }
+    
+    .producto-info {
+        padding: 20px;
+    }
+    
+    .producto-nombre {
+        font-size: 1.2rem;
+    }
+    
+    .producto-precio {
+        font-size: 2.1rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .cuidado-hero__title { font-size: 1.8rem; }
+    
+    .cuidado-hero__subtitle { font-size: 0.9rem; }
+    
+    .categoria-titulo {
+        font-size: 1.8rem;
+        margin-left: -20px;
+        margin-right: -20px;
+        padding: 12px 20px;
+    }
+    
+    .productos-grid {
+        gap: 15px;
+    }
+    
+    .producto-card {
+        margin: 0 5px;
+    }
+    
+    .producto-info {
+        padding: 15px;
+    }
+    
+    .producto-nombre {
+        font-size: 1.1rem;
+    }
+    
+    .producto-precio {
+        font-size: 1.9rem !important;
+    }
+    
+    .producto-botones {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .btn-ver,
+    .btn-comprar {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}

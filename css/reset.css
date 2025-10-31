@@ -1,0 +1,174 @@
+/*
+
+	Con este reset vamos a resolver:
+		👉Unificar el uso de Custom Properties
+		👉Problemas de box-model más generales
+ 		👉Problemas con imagenes, vídeos e iconos svg
+		👉Problemas con tipografías y etiquetas input en formularios
+		👉Unificar la tipografía de todas  las etiquetas de una web
+
+*/
+
+/*Aquí definimos las Custom properties */
+
+:root{
+    --color-primario     : #ffffff; /*white color*/
+    --color-secundario : #000000; /*black color*/
+/*Tipografía*/
+    --tipo-principal     : helvetica, Arial, sans-serif;
+    --tipo-secundaria : Verdana;
+
+    /* Paleta de colores - Anita Pinturitas */
+    /* CSS HEX */
+    --cardinal-pink   : #98074f;
+    --corn-harvest    : #817f0a;
+    --vista-white     : #fdfafb;
+    --indian-khaki    : #c0be85;
+    --hopbush         : #c6709b;
+    --chantilly       : #f8c5e4;
+    --citrine-white   : #faf8da;
+    --jazzberry-jam   : #ba0b5f;
+}
+
+/*Las adaptamos al modo oscuro*/
+
+@media (prefers-color-scheme: dark){
+    :root{
+        --color-primario:     #ffffff;
+        --color-secundario: #000000;
+        }
+}
+
+/*Configuramos si un usuario ha activado el modo alto contraste. (WD)*/ /*opcional*/
+
+@media (prefers-contrast: high){
+    :root{
+        --color-primario     : white;
+        --color-secundario : black;
+        }
+}
+
+/*Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animations*/ /*opcional*/
+
+@media (prefers-reduced-motion: reduce){
+    *{
+        animation: none;
+        transition: none;
+     }
+}
+    
+/*Reseteamos los margins y paddings de todas las etiquetas*/
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    box-sizing: border-box;
+    vertical-align: baseline;
+ }
+
+/*Evitamos  problemas con las imagenes*/
+
+img , picture , video , iframe , figure{
+    max-width: 100%;
+    width: 100%;
+
+    display: block;
+
+    object-fit: cover; /*hace que la imagen sea responsiva (se adapta a dispositivos móviles)*/ /*opcional*/
+    object-position: center center; /*opcional*/
+}		
+
+/*Reseteamos los enlaces para funcionar como cajas...*/
+
+a{
+    display: block;
+}
+
+/*...excepto los que se encuentran en párrafos*/	
+
+p a{
+    display: inline;
+     }	
+
+/*Quitamos los puntos de los <li>*/
+
+li{
+    list-style-type: none;
+  }
+
+/*Configuramos anclas suaves*/
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--color-primario);
+    }
+    
+/*Desactivamos estilos por defecto de las principales etiquetas de texto*/
+
+h1 , h2 , h3 , h4 , h5 , h6 , p , span , a , strong , blockquote , i , b , u , em{
+    font-size: 1em;
+    font-weight: inherit;
+    font-style: inherit;
+    text-decoration: none;
+    color: inherit; 
+}
+
+/*Evitamos problemas con los pseudoelementos de quotes*/
+
+blockquote:before, blockquote:after , q:before , q:after{
+    content: ' ';
+    content: none;
+}
+
+/*Configuramos el texto que seleccionamos*/
+
+::selection{
+    background-color: var(--color-primario);
+    color: var(--color-secundario);
+}
+
+/*Nivelamos problemas de tipografías y colocación de formularios*/
+
+form , input , textarea , select , button , label{
+    font-family: inherit;
+    font-size: inherit;
+    -webkit-hyphens: auto; /* prefijo para compatibilidad iOS */
+    hyphens: auto; /*nos resuelve problemas de desbordamiento aplicando un guión para separar el texto*/ /*opcional*/
+    background-color: transparent;
+    display: block;
+    color: inherit;
+}
+
+/*Reseteamos las tablas*/
+
+table , tr , td{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*Evitamos problemas con los SVG*/
+
+svg{
+    width: 100%;
+    display: block;
+    fill: currentColor;
+}
+
+/*Configuramos la tipografía para toda la web*/
+
+body{
+    min-height: 100vh;
+    font-size: 100%;
+    font-family: var(--tipo-principal);
+    color: var(--color-secundario);
+    background-color: var(--color-primario);
+    line-height: 1.4em;
+    -webkit-hyphens: auto; /* prefijo para compatibilidad iOS */
+    hyphens: auto; /*se encarga de poner un guión para separ el texto de final de linea*/ /*opcional*/
+    
+    /*estos tres atributos se aplican para darle a la tipografía un tono más definido solo en caso de los macs*/ /*opcional*/
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
