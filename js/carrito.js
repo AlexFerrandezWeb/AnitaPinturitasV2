@@ -229,11 +229,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // ============================================
         // CONFIGURACIÓN DE STRIPE CHECKOUT
         // ============================================
-        // URL del backend (ajusta según tu configuración)
-        // Para desarrollo local: 'http://localhost:3000'
-        // Para producción en Render: 'https://tu-backend.onrender.com'
-        // IMPORTANTE: Cambia esta URL a la de tu servidor backend en Render
-        const BACKEND_URL = 'http://localhost:3000'; // Cambia a tu URL de Render en producción
+        // Detectar automáticamente la URL del backend
+        // - Producción: mismo origen (Render) => usar window.location.origin
+        // - Local: si estás sirviendo estático desde un servidor distinto, puedes definir window.BACKEND_URL en HTML
+        // - Fallback dev: localhost:3000
+        const origin = (window && window.location && window.location.origin) ? window.location.origin : '';
+        const BACKEND_URL = (window && window.BACKEND_URL) ? window.BACKEND_URL
+                           : (origin && origin.startsWith('http')) ? origin
+                           : 'http://localhost:3000';
         const backendCheckoutUrl = `${BACKEND_URL}/api/create-checkout-session`;
         
         // Construir datos del carrito para enviar
