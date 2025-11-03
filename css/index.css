@@ -48,7 +48,7 @@
 
 .hero__title-background {
     position: absolute;
-    top: -280px; /* Moved up more to avoid text overlap */
+    top: -275px; /* Moved up more to avoid text overlap */
     left: 50%;
     transform: translateX(-50%);
     width: 500px;
@@ -87,10 +87,25 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    /* Evitar cortes de palabra no deseados en el texto destacado */
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    word-break: keep-all;
+    overflow-wrap: normal;
+}
+
+.hero__brand {
+    display: inline-block;
+    max-width: 500px;
+    height: auto;
+    margin: 8px 0;
+    padding: 0;
+    border-radius: 0;
 }
 
 .hero__title-accent {
-    color: var(--hopbush);
+    color: var(--corn-harvest);
     position: relative;
 }
 
@@ -260,7 +275,7 @@
 }
 
 .hero__testimonial-author {
-    color: var(--hopbush);
+    color: var(--cardinal-pink);
     font-weight: 600;
     font-size: 0.9rem;
 }
@@ -470,7 +485,7 @@
     }
 
     .hero__title-background { 
-        top: -260px; 
+        top: -275px; 
         width: 420px; 
         height: 360px; 
         opacity: 1; 
@@ -846,13 +861,13 @@
     background: white;
     border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: none;
     text-align: left;
 }
 
 .wedding-makeup__feature:hover {
-    transform: translateX(8px);
-    box-shadow: 0 4px 20px rgba(186, 11, 95, 0.1);
+    transform: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .wedding-makeup__feature-icon {
@@ -1035,7 +1050,7 @@
 .about-anita__subtitle {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--pale-sky);
+    color: var(--olive-green);
     margin-bottom: 30px;
     text-align: center;
     font-style: italic;
@@ -1328,6 +1343,12 @@
     
     .hero__title {
         font-size: 3.5rem;
+        /* En escritorio, no dividir palabras como "redescubrir" */
+        hyphens: none;
+        -webkit-hyphens: none;
+        -ms-hyphens: none;
+        word-break: keep-all;
+        overflow-wrap: normal;
     }
     
     .section__title {

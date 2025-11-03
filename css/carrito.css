@@ -254,16 +254,33 @@
     color: white;
     border: 2px solid var(--jazzberry-jam);
     padding: 16px 24px;
-    border-radius: 8px;
     font-weight: 700;
     font-size: 16px;
     cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0 2px 8px rgba(186, 11, 95, 0.2);
     position: relative;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    animation: cart-checkout-pulse 2s ease-in-out infinite;
+}
+
+.cart-checkout span {
+    display: inline-block;
+}
+
+@keyframes cart-checkout-pulse {
+    0%, 100% {
+        box-shadow: 0 2px 8px rgba(186, 11, 95, 0.2);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(186, 11, 95, 0.6);
+        transform: scale(1.02);
+    }
 }
 
 
@@ -288,6 +305,7 @@
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
+    animation: none;
 }
 
 

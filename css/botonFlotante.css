@@ -20,9 +20,9 @@
 }
 
 .whatsapp-button:hover {
-    background: #128C7E;
-    transform: translateX(-5px);
-    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+    background: #25D366;
+    transform: none;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
 }
 
 .whatsapp-button__content {

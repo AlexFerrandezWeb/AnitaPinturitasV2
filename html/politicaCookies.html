@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/anita-pinturitas_favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Política de Cookies - Anita Pinturitas</title>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/botonFlotante.css">
     <link rel="stylesheet" href="../css/carrito.css">
+    <link rel="stylesheet" href="../css/confirmModal.css">
     <link rel="stylesheet" href="../css/searchResults.css">
 </head>
 <body>
@@ -18,8 +23,8 @@
             <span class="nav__menu-bar"></span>
             <span class="nav__menu-bar"></span>
         </button>
-        <a href="index.html" class="nav__logo" aria-label="Inicio">
-            <img src="../assets/foto-presentacion.png" alt="Logo Anita Pinturitas">
+        <a href="/" class="nav__logo" aria-label="Inicio">
+            <img src="../assets/anita-pinturitas_logo.png" alt="Logo Anita Pinturitas">
         </a>
         <div class="nav__actions">
             <button class="nav__search-toggle" aria-label="Buscar productos" aria-expanded="false" aria-controls="search-bar">
@@ -48,7 +53,7 @@
                 </button>
             </div>
             <nav class="mobile-menu__nav">
-                <a href="index.html" class="mobile-menu__link">Inicio</a>
+                <a href="../index.html" class="mobile-menu__link">Inicio</a>
                 <div class="mobile-menu__dropdown">
                     <a href="productos.html" class="mobile-menu__link mobile-menu__link--dropdown">Productos</a>
                     <div class="mobile-menu__submenu">
@@ -59,22 +64,22 @@
             <div class="mobile-menu__contact">
                 <h4 class="mobile-menu__contact-title">Contáctame:</h4>
                 <div class="mobile-menu__social">
-                    <a href="#" class="mobile-menu__social-link mobile-menu__social-link--facebook" aria-label="Facebook">
+                    <a href="https://www.facebook.com/anitapinturitass/?locale=es_ES" class="mobile-menu__social-link mobile-menu__social-link--facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" fill="currentColor"/>
                         </svg>
                     </a>
-                    <a href="#" class="mobile-menu__social-link mobile-menu__social-link--instagram" aria-label="Instagram">
+                    <a href="https://www.instagram.com/anita_pinturitas_anamariaramos" class="mobile-menu__social-link mobile-menu__social-link--instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="currentColor"/>
                         </svg>
                     </a>
-                    <a href="#" class="mobile-menu__social-link mobile-menu__social-link--tiktok" aria-label="TikTok">
+                    <a href="https://www.tiktok.com/@anitapinturitas" class="mobile-menu__social-link mobile-menu__social-link--tiktok" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" fill="currentColor"/>
                         </svg>
                     </a>
-                    <a href="#" class="mobile-menu__social-link mobile-menu__social-link--youtube" aria-label="YouTube">
+                    <a href="https://www.youtube.com/@anitapinturitastv/videos" class="mobile-menu__social-link mobile-menu__social-link--youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="currentColor"/>
                         </svg>
@@ -129,7 +134,10 @@
                     <span class="cart-total__amount">0.00 €</span>
                 </div>
                 <button class="cart-checkout" disabled>
-                    Proceder al pago
+                    <span>PAGO SEGURO</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" style="width: 20px; height: 20px; margin-left: 8px;">
+                        <path d="M18 11H6a2 2 0 00-2 2v7a2 2 0 002 2h12a2 2 0 002-2v-7a2 2 0 00-2-2zM7 11V7a5 5 0 0110 0v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </button>
             </div>
         </div>
@@ -149,17 +157,44 @@
     <main class="main">
         <section class="legal">
             <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
-                <h1 style="margin-bottom: 20px; color: var(--jazzberry-jam);">Política de Cookies</h1>
-                <p>Utilizamos cookies propias y de terceros para fines analíticos y para mejorar tu experiencia de navegación.</p>
-                <h2 style="margin-top: 24px;">¿Qué son las cookies?</h2>
-                <p>Son pequeños archivos que se almacenan en tu dispositivo para recordar información útil.</p>
-                <h2 style="margin-top: 24px;">Tipos de cookies que usamos</h2>
-                <ul>
-                    <li>Cookies técnicas (necesarias para el funcionamiento).</li>
-                    <li>Cookies de análisis (para estadísticas de uso).</li>
+                <h1 style="margin-bottom: 20px; color: var(--jazzberry-jam);">POLÍTICA DE COOKIES</h1>
+                
+                <h2 style="margin-top: 32px; margin-bottom: 16px;">1. ¿Qué son las Cookies?</h2>
+                <p>Una cookie es un pequeño fichero de texto que se almacena en tu navegador cuando visitas casi cualquier página web. Su utilidad es que la web sea capaz de recordar tu visita cuando vuelvas a navegar por esa página. Las cookies suelen almacenar información de carácter técnico, preferencias personales, personalización de contenidos, estadísticas de uso, enlaces a redes sociales, acceso a cuentas de usuario, etc. El objetivo de la cookie es adaptar el contenido de la web a tu perfil y necesidades.</p>
+
+                <h2 style="margin-top: 32px; margin-bottom: 16px;">2. ¿Qué Tipos de Cookies Utiliza este Sitio Web?</h2>
+                <p>Siguiendo las directrices de la Agencia Española de Protección de Datos, procedemos a detallar el uso de cookies que hace esta web con el fin de informarte con la máxima exactitud posible.</p>
+                <p style="margin-top: 16px;">Este sitio web utiliza las siguientes cookies propias (técnicas):</p>
+                <p style="margin-top: 16px;"><strong>Cookies de sesión:</strong> Son cookies necesarias para el correcto funcionamiento del sitio, como por ejemplo, para gestionar los productos que añades al carrito de la compra o para mantener la sesión de usuario iniciada. Se eliminan automáticamente cuando cierras el navegador.</p>
+                <p style="margin-top: 16px;">Este sitio web utiliza las siguientes cookies de terceros:</p>
+                <p style="margin-top: 16px;"><strong>Google Analytics (Cookies de Análisis):</strong> Almacenan cookies para poder elaborar estadísticas anónimas sobre el tráfico y volumen de visitas de esta web. Al utilizar este sitio web estás consintiendo el tratamiento de información acerca de ti por Google. Por tanto, el ejercicio de cualquier derecho en este sentido deberás hacerlo comunicando directamente con Google. Estas cookies nos ayudan a entender cómo interactúan los visitantes con la página, permitiéndonos mejorar la experiencia de usuario.</p>
+                <ul style="margin-top: 16px; margin-left: 20px;">
+                    <li style="margin-bottom: 8px;"><strong>_ga:</strong> Se usa para distinguir a los usuarios. Duración: 2 años.</li>
+                    <li style="margin-bottom: 8px;"><strong>_gid:</strong> Se usa para distinguir a los usuarios. Duración: 24 horas.</li>
+                    <li style="margin-bottom: 8px;"><strong>_gat:</strong> Se usa para limitar el porcentaje de solicitudes. Duración: 1 minuto.</li>
                 </ul>
-                <h2 style="margin-top: 24px;">Cómo desactivar las cookies</h2>
-                <p>Puedes configurar tu navegador para rechazar o eliminar cookies. Consulta la ayuda de tu navegador.</p>
+
+                <h2 style="margin-top: 32px; margin-bottom: 16px;">3. Consentimiento y Configuración de Cookies</h2>
+                <p>Al acceder por primera vez a nuestro sitio web, se te mostrará un aviso de cookies donde podrás aceptar el uso de todas las cookies o configurarlas según tus preferencias. Las cookies técnicas o necesarias no requieren tu consentimiento ya que son imprescindibles para el funcionamiento de la web.</p>
+                <p style="margin-top: 16px;">En cualquier momento podrás cambiar de opinión y modificar tus preferencias de consentimiento.</p>
+
+                <h2 style="margin-top: 32px; margin-bottom: 16px;">4. ¿Cómo Desactivar o Eliminar las Cookies?</h2>
+                <p>Puedes permitir, bloquear o eliminar las cookies instaladas en tu equipo mediante la configuración de las opciones del navegador instalado en tu ordenador. La desactivación de cookies podría limitar la funcionalidad de nuestro sitio web.</p>
+                <p style="margin-top: 16px;">A continuación, te proporcionamos los enlaces a la ayuda de los principales navegadores donde podrás configurar tus preferencias:</p>
+                <ul style="margin-top: 16px; margin-left: 20px;">
+                    <li style="margin-bottom: 8px;"><strong>Google Chrome:</strong> <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">https://support.google.com/chrome/answer/95647</a></li>
+                    <li style="margin-bottom: 8px;"><strong>Mozilla Firefox:</strong> <a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener noreferrer">https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias</a></li>
+                    <li style="margin-bottom: 8px;"><strong>Microsoft Edge:</strong> <a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer">https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09</a></li>
+                    <li style="margin-bottom: 8px;"><strong>Safari (Apple):</strong> <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">https://support.apple.com/es-es/guide/safari/sfri11471/mac</a></li>
+                </ul>
+
+                <h2 style="margin-top: 32px; margin-bottom: 16px;">5. Notas Adicionales</h2>
+                <p>Anita Pinturitas no se hace responsable del contenido ni de la veracidad de las políticas de privacidad que puedan tener los terceros mencionados en esta política de cookies.</p>
+                <p style="margin-top: 16px;">Los navegadores web son las herramientas encargadas de almacenar las cookies y desde este lugar debe efectuar su derecho a eliminación o desactivación de las mismas. No podemos garantizar la correcta o incorrecta manipulación de las cookies por parte de los mencionados navegadores.</p>
+                <p style="margin-top: 16px;">Esta Política de Cookies puede ser modificada en función de nuevas exigencias legislativas, reglamentarias, o con la finalidad de adaptar dicha política a las instrucciones dictadas por la Agencia Española de Protección de Datos.</p>
+                <p style="margin-top: 16px;">Para cualquier duda o consulta acerca de esta política de cookies no dudes en comunicarte con nosotros a través de la dirección de correo electrónico info@anitapinturitas.es.</p>
+
+                <p style="margin-top: 32px;"><strong>Última actualización:</strong> 31 de octubre de 2025.</p>
             </div>
         </section>
     </main>
@@ -168,22 +203,22 @@
         <div class="footer__content">
             <div class="footer__main">
                 <div class="footer__social">
-                    <a href="#" class="footer__social-link" aria-label="Facebook">
+                    <a href="https://www.facebook.com/anitapinturitass/?locale=es_ES" class="footer__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" fill="currentColor"/>
                         </svg>
                     </a>
-                    <a href="#" class="footer__social-link" aria-label="Instagram">
+                    <a href="https://www.instagram.com/anita_pinturitas_anamariaramos" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="currentColor"/>
                         </svg>
                     </a>
-                    <a href="#" class="footer__social-link" aria-label="TikTok">
+                    <a href="https://www.tiktok.com/@anitapinturitas" class="footer__social-link" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" fill="currentColor"/>
                         </svg>
                     </a>
-                    <a href="#" class="footer__social-link" aria-label="YouTube">
+                    <a href="https://www.youtube.com/@anitapinturitastv/videos" class="footer__social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="currentColor"/>
                         </svg>
@@ -234,7 +269,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/640557787" class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <a href="https://wa.me/34640557787" class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
         <div class="whatsapp-button__content">
             <svg class="whatsapp-button__icon" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h-.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" fill="currentColor"/>
@@ -244,6 +279,7 @@
     </a>
 
     <script src="../js/menu-hamburguesa.js"></script>
+    <script src="../js/confirmModal.js"></script>
     <script src="../js/carrito.js"></script>
     <script src="../js/buscador.js"></script>
     <script src="../js/botonFlotante.js"></script>

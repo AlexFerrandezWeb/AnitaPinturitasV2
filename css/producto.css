@@ -116,7 +116,7 @@ body {
 
 .producto-details__thumbnail:hover,
 .producto-details__thumbnail.active {
-    border-color: var(--hopbush);
+    border-color: var(--cardinal-pink);
     transform: scale(1.05);
 }
 
@@ -124,7 +124,7 @@ body {
 .producto-details__name {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--hopbush);
+    color: var(--cardinal-pink);
     margin-bottom: 10px;
     line-height: 1.2;
 }
@@ -168,7 +168,7 @@ body {
 
 .producto-details__description h3 {
     font-size: 1.3rem;
-    color: var(--hopbush);
+    color: var(--cardinal-pink);
     margin-bottom: 15px;
 }
 
@@ -195,7 +195,7 @@ body {
     content: "✓";
     position: absolute;
     left: 0;
-    color: var(--hopbush);
+    color: var(--cardinal-pink);
     font-weight: bold;
 }
 
@@ -208,7 +208,7 @@ body {
 
 .producto-details__ingredients h3 {
     font-size: 1.3rem;
-    color: var(--hopbush);
+    color: var(--cardinal-pink);
     margin-bottom: 10px;
 }
 
@@ -225,7 +225,7 @@ body {
 .producto-details__quantity label {
     display: block;
     margin-bottom: 10px;
-    color: var(--hopbush);
+    color: var(--cardinal-pink);
     font-weight: 600;
 }
 
@@ -240,7 +240,7 @@ body {
     height: 40px;
     border: 1px solid var(--indian-khaki);
     background-color: var(--white);
-    color: var(--hopbush);
+    color: var(--cardinal-pink);
     border-radius: 6px;
     font-size: 1.2rem;
     font-weight: bold;
@@ -252,9 +252,9 @@ body {
 }
 
 .producto-details__qty-btn:hover {
-    background-color: var(--hopbush);
+    background-color: var(--cardinal-pink);
     color: var(--white);
-    border-color: var(--hopbush);
+    border-color: var(--cardinal-pink);
 }
 
 .producto-details__qty-input {
@@ -270,7 +270,7 @@ body {
 
 .producto-details__qty-input:focus {
     outline: none;
-    border-color: var(--hopbush);
+    border-color: var(--cardinal-pink);
 }
 
 /* Botones de acción */
@@ -348,6 +348,18 @@ body {
 .producto-details__benefit span {
     font-size: 0.95rem;
     color: var(--black);
+}
+
+/* Botón WhatsApp específico */
+#contact-whatsapp {
+    background: transparent;
+    color: var(--corn-harvest);
+    border: 2px solid var(--corn-harvest);
+}
+
+#contact-whatsapp:hover {
+    background-color: var(--corn-harvest);
+    color: var(--white);
 }
 
 /* Responsive */

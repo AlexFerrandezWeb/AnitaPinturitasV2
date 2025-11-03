@@ -15,8 +15,8 @@
     --color-primario     : #ffffff; /*white color*/
     --color-secundario : #000000; /*black color*/
 /*Tipografía*/
-    --tipo-principal     : helvetica, Arial, sans-serif;
-    --tipo-secundaria : Verdana;
+    --tipo-principal     : 'Montserrat', helvetica, Arial, sans-serif;
+    --tipo-secundaria : 'Montserrat', helvetica, Arial, sans-serif;
 
     /* Paleta de colores - Anita Pinturitas */
     /* CSS HEX */
@@ -28,6 +28,8 @@
     --chantilly       : #f8c5e4;
     --citrine-white   : #faf8da;
     --jazzberry-jam   : #ba0b5f;
+    --coral           : #ff7f50;
+    --olive-green     : #6b8e3a;
 }
 
 /*Las adaptamos al modo oscuro*/
@@ -113,6 +115,11 @@ h1 , h2 , h3 , h4 , h5 , h6 , p , span , a , strong , blockquote , i , b , u , e
     font-style: inherit;
     text-decoration: none;
     color: inherit; 
+}
+
+/* Aplicamos Montserrat a los títulos */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--tipo-secundaria);
 }
 
 /*Evitamos problemas con los pseudoelementos de quotes*/

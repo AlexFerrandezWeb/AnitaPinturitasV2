@@ -9,30 +9,36 @@ document.addEventListener('DOMContentLoaded', function() {
         cargarProducto(productoId);
     }
     
-    const thumbnails = document.querySelectorAll('.producto-details__thumbnail');
-    const mainImage = document.querySelector('#producto-img-principal');
     const decreaseBtn = document.querySelector('#decrease-qty');
     const increaseBtn = document.querySelector('#increase-qty');
     const quantityInput = document.querySelector('#cantidad');
     const addToCartBtn = document.querySelector('#add-to-cart');
     const contactWhatsappBtn = document.querySelector('#contact-whatsapp');
 
-    // Cambiar imagen principal al hacer clic en miniaturas
-    thumbnails.forEach(thumbnail => {
-        thumbnail.addEventListener('click', function() {
-            // Remover clase active de todas las miniaturas
-            thumbnails.forEach(thumb => thumb.classList.remove('active'));
-            
-            // Añadir clase active a la miniatura clicada
-            this.classList.add('active');
-            
-            // Cambiar imagen principal
-            const newImageSrc = this.getAttribute('data-main-img');
-            if (mainImage && newImageSrc) {
-                mainImage.src = newImageSrc;
-            }
+    // Función para añadir event listeners a las miniaturas
+    function attachThumbnailListeners() {
+        const thumbnails = document.querySelectorAll('.producto-details__thumbnail');
+        const mainImage = document.querySelector('#producto-img-principal');
+        
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                // Remover clase active de todas las miniaturas
+                thumbnails.forEach(thumb => thumb.classList.remove('active'));
+                
+                // Añadir clase active a la miniatura clicada
+                this.classList.add('active');
+                
+                // Cambiar imagen principal
+                const newImageSrc = this.getAttribute('data-main-img');
+                if (mainImage && newImageSrc) {
+                    mainImage.src = newImageSrc;
+                }
+            });
         });
-    });
+    }
+    
+    // Añadir listeners inicialmente
+    attachThumbnailListeners();
 
     // Controlar cantidad
     if (decreaseBtn && quantityInput) {
@@ -129,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const productName = document.querySelector('.producto-details__name').textContent;
             const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
             const message = `Hola Anita, me interesa saber más sobre: ${productName} (Cantidad: ${quantity})`;
-            const whatsappUrl = `https://wa.me/640557787?text=${encodeURIComponent(message)}`;
+            const whatsappUrl = `https://wa.me/34640557787?text=${encodeURIComponent(message)}`;
             
             window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
         });
@@ -179,12 +185,16 @@ document.addEventListener('DOMContentLoaded', function() {
                         mainImg.alt = producto.nombre;
                     }
                     
-                    // Actualizar las miniaturas (solo mostrar la imagen del producto)
+                    // Actualizar las miniaturas (imágenes del producto + frases inspiracionales)
                     const thumbnailsContainer = document.querySelector('.producto-details__thumbnails');
                     if (thumbnailsContainer) {
                         thumbnailsContainer.innerHTML = `
                             <img src="${producto.imagen}" alt="Vista 1" class="producto-details__thumbnail active" data-main-img="${producto.imagen}">
+                            <img src="../assets/frase1.jpg" alt="Frase inspiracional 1" class="producto-details__thumbnail" data-main-img="../assets/frase1.jpg">
+                            <img src="../assets/frase2.jpg" alt="Frase inspiracional 2" class="producto-details__thumbnail" data-main-img="../assets/frase2.jpg">
                         `;
+                        // Re-añadir listeners a las nuevas miniaturas
+                        attachThumbnailListeners();
                     }
                 } else {
                     console.error('Producto no encontrado');

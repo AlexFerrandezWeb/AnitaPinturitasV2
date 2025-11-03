@@ -111,7 +111,6 @@ body {
 /* Tarjeta de producto */
 .producto-card {
     background: var(--vista-white);
-    border-radius: 15px;
     box-shadow: 0 8px 25px rgba(152, 7, 79, 0.1);
     overflow: hidden;
     transition: all 0.3s ease;
@@ -207,7 +206,6 @@ body {
     color: var(--jazzberry-jam);
     border: 1px solid var(--jazzberry-jam);
     padding: 8px 16px;
-    border-radius: 4px;
     font-weight: 500;
     font-size: 0.85rem;
     cursor: pointer;
@@ -227,7 +225,6 @@ body {
     color: var(--white);
     border: none;
     padding: 8px 16px;
-    border-radius: 4px;
     text-decoration: none;
     font-weight: 500;
     font-size: 0.85rem;
@@ -264,24 +261,51 @@ body {
     }
     
     .productos-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
     
     .producto-card {
-        margin: 0 10px;
+        margin: 0;
+    }
+    
+    .producto-imagen {
+        height: 120px;
+    }
+    
+    .producto-imagen img {
+        object-fit: contain;
     }
     
     .producto-info {
-        padding: 20px;
+        padding: 10px;
     }
     
     .producto-nombre {
-        font-size: 1.2rem;
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+        line-height: 1.2;
     }
     
     .producto-precio {
-        font-size: 2.1rem !important;
+        font-size: 1.3rem !important;
+        margin-bottom: 2px;
+    }
+    
+    .producto-precio-iva {
+        font-size: 0.6rem !important;
+        margin-bottom: 6px;
+    }
+    
+    .producto-botones {
+        margin-top: 8px;
+        gap: 5px;
+    }
+    
+    .btn-ver,
+    .btn-comprar {
+        padding: 4px 8px;
+        font-size: 0.65rem;
     }
 }
 
@@ -298,33 +322,51 @@ body {
     }
     
     .productos-grid {
-        gap: 15px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
     
     .producto-card {
-        margin: 0 5px;
+        margin: 0;
+    }
+    
+    .producto-imagen {
+        height: 110px;
+    }
+    
+    .producto-imagen img {
+        object-fit: contain;
     }
     
     .producto-info {
-        padding: 15px;
+        padding: 8px;
     }
     
     .producto-nombre {
-        font-size: 1.1rem;
+        font-size: 0.85rem;
+        margin-bottom: 5px;
+        line-height: 1.2;
     }
     
     .producto-precio {
-        font-size: 1.9rem !important;
+        font-size: 1.2rem !important;
+        margin-bottom: 2px;
+    }
+    
+    .producto-precio-iva {
+        font-size: 0.55rem !important;
+        margin-bottom: 6px;
     }
     
     .producto-botones {
         flex-direction: column;
-        gap: 8px;
+        gap: 5px;
+        margin-top: 8px;
     }
     
     .btn-ver,
     .btn-comprar {
-        padding: 6px 12px;
-        font-size: 0.8rem;
+        padding: 4px 8px;
+        font-size: 0.65rem;
     }
 }
