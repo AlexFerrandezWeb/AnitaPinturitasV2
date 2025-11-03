@@ -47,11 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
         ocultarResultados();
     }
 
-            // Toggle del buscador
-            if (searchToggle) {
-                searchToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation(); // Evitar que se cierre inmediatamente
+            // Función para abrir buscador y hacer focus
+            function openSearchAndFocus() {
                 const isVisible = searchBar.classList.contains('is-visible');
                 
                 if (isVisible) {
@@ -68,31 +65,72 @@ document.addEventListener('DOMContentLoaded', function() {
                         input.readOnly = false;
                         input.style.pointerEvents = 'auto';
                         
-                        // Función auxiliar para hacer focus de forma agresiva
+                        // Detectar si es móvil
+                        const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                        
+                        // Función auxiliar para hacer focus de forma agresiva (especialmente en móvil)
                         const forceFocus = () => {
-                            input.scrollIntoView({ behavior: 'instant', block: 'nearest' });
-                            input.focus({ preventScroll: true });
+                            // En móvil, usar un enfoque más directo
+                            if (isMobile) {
+                                // Forzar que el input sea el elemento activo
+                                input.style.position = 'relative';
+                                input.style.zIndex = '9999';
+                            }
                             
-                            // Si aún no tiene focus, intentar con click
+                            input.scrollIntoView({ behavior: 'instant', block: 'nearest' });
+                            
+                            // Múltiples intentos de focus
+                            input.focus();
+                            
+                            // Si aún no tiene focus, usar click (útil en móvil)
                             if (document.activeElement !== input) {
                                 input.click();
-                                setTimeout(() => input.focus({ preventScroll: true }), 0);
+                                // En móvil, algunos navegadores requieren un delay más largo
+                                const delay = isMobile ? 300 : 0;
+                                setTimeout(() => {
+                                    input.focus();
+                                    // Último recurso: usar dispatchEvent para simular focus
+                                    if (document.activeElement !== input && isMobile) {
+                                        input.dispatchEvent(new Event('touchstart', { bubbles: true }));
+                                        setTimeout(() => input.focus(), 50);
+                                    }
+                                }, delay);
                             }
                         };
                         
-                        // Intentar focus inmediatamente
-                        forceFocus();
+                        // En móvil, esperar un poco más para que la animación termine
+                        const initialDelay = isMobile ? 100 : 10;
                         
-                        // Reintentar después de que el DOM se actualice
-                        setTimeout(forceFocus, 0);
-                        setTimeout(forceFocus, 50);
-                        setTimeout(forceFocus, 100);
-                        
-                        // Último intento después de la animación CSS
-                        setTimeout(forceFocus, 450);
+                        setTimeout(() => {
+                            forceFocus();
+                            
+                            // Reintentos más frecuentes en móvil
+                            const intervals = isMobile ? [0, 100, 200, 350, 500] : [0, 50, 100, 450];
+                            
+                            intervals.forEach((delay, index) => {
+                                if (index > 0) { // El primero ya se hizo arriba
+                                    setTimeout(forceFocus, delay);
+                                }
+                            });
+                        }, initialDelay);
                     }
                 }
-            });
+            }
+            
+            // Toggle del buscador - soporte para click y touch
+            if (searchToggle) {
+                searchToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openSearchAndFocus();
+                });
+                
+                // También escuchar touchstart para mejor respuesta en móvil
+                searchToggle.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openSearchAndFocus();
+                });
             }
 
     // Cerrar buscador al hacer clic en el body (pero no si se hace clic en los resultados)
