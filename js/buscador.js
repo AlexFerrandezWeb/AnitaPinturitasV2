@@ -50,20 +50,47 @@ document.addEventListener('DOMContentLoaded', function() {
             // Toggle del buscador
             if (searchToggle) {
                 searchToggle.addEventListener('click', function(e) {
+                e.preventDefault();
                 e.stopPropagation(); // Evitar que se cierre inmediatamente
                 const isVisible = searchBar.classList.contains('is-visible');
                 
                 if (isVisible) {
                     closeSearch();
                 } else {
+                    // Añadir clase visible y forzar visibilidad inmediata del input
                     searchBar.classList.add('is-visible');
                     searchToggle.setAttribute('aria-expanded', 'true');
                     
-                    // Enfocar el input de búsqueda
-                    setTimeout(() => {
-                        const searchInput = searchBar.querySelector('.search-bar__input');
-                        if (searchInput) searchInput.focus();
-                    }, 200);
+                    const input = searchBar.querySelector('.search-bar__input');
+                    if (input) {
+                        // Asegurar que el input esté habilitado
+                        input.disabled = false;
+                        input.readOnly = false;
+                        input.style.pointerEvents = 'auto';
+                        
+                        // Función auxiliar para hacer focus de forma agresiva
+                        const forceFocus = () => {
+                            input.scrollIntoView({ behavior: 'instant', block: 'nearest' });
+                            input.focus({ preventScroll: true });
+                            
+                            // Si aún no tiene focus, intentar con click
+                            if (document.activeElement !== input) {
+                                input.click();
+                                setTimeout(() => input.focus({ preventScroll: true }), 0);
+                            }
+                        };
+                        
+                        // Intentar focus inmediatamente
+                        forceFocus();
+                        
+                        // Reintentar después de que el DOM se actualice
+                        setTimeout(forceFocus, 0);
+                        setTimeout(forceFocus, 50);
+                        setTimeout(forceFocus, 100);
+                        
+                        // Último intento después de la animación CSS
+                        setTimeout(forceFocus, 450);
+                    }
                 }
             });
             }
@@ -102,7 +129,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         try {
             console.log('Cargando productos para búsqueda...');
-            const response = await fetch('../data/cuidadoPiel.json');
+            // Detectar si estamos en la raíz (index.html) o en una subcarpeta
+            const isRootPage = window.location.pathname.endsWith('index.html') || 
+                              window.location.pathname === '/' || 
+                              window.location.pathname.endsWith('/');
+            const dataUrl = isRootPage 
+                ? 'data/cuidadoPiel.json' 
+                : '../data/cuidadoPiel.json';
+            const response = await fetch(dataUrl);
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -264,7 +298,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Función para ir a un producto
     window.irAProducto = function(productoId) {
-        window.location.href = `producto.html?id=${productoId}`;
+        // Detectar si estamos en la raíz (index.html) o en una subcarpeta
+        const isRootPage = window.location.pathname.endsWith('index.html') || 
+                          window.location.pathname === '/' || 
+                          window.location.pathname.endsWith('/');
+        const productoUrl = isRootPage 
+            ? `html/producto.html?id=${productoId}` 
+            : `producto.html?id=${productoId}`;
+        window.location.href = productoUrl;
     };
     
     // Manejar envío del formulario
