@@ -145,8 +145,8 @@ app.post('/api/create-checkout-session', async (req, res) => {
             payment_method_types: ['card', 'paypal'], // Incluir PayPal y tarjetas (Google Pay aparece automáticamente si está habilitado)
             line_items: lineItems,
             mode: 'payment',
-            success_url: `${process.env.SUCCESS_URL || 'http://localhost:3000'}/html/success.html?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${process.env.CANCEL_URL || process.env.SUCCESS_URL || 'http://localhost:3000'}/`, // Volver a la página principal
+            success_url: `${baseUrl}/html/success.html?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${baseUrl}/`, // Volver a la página principal usando la URL detectada
             billing_address_collection: 'auto',
             // Solicitar número de teléfono
             phone_number_collection: {
