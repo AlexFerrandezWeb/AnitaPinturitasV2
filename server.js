@@ -92,17 +92,16 @@ app.post('/api/create-checkout-session', async (req, res) => {
         // Umbral para envío gratuito (configurable, por defecto 62€)
         const FREE_SHIPPING_THRESHOLD = parseFloat(process.env.FREE_SHIPPING_THRESHOLD) || 62.00;
         const SHIPPING_COST = 6.95; // Coste de envío estándar en euros
-        const shippingOptions = [];
-
-        // Opción 1: Envío estándar (6.95€)
-        shippingOptions.push({
+        
+        // Una sola opción de envío según el total del pedido
+        const shippingOptions = [{
             shipping_rate_data: {
                 type: 'fixed_amount',
                 fixed_amount: {
-                    amount: Math.round(SHIPPING_COST * 100), // Convertir a centavos
+                    amount: total >= FREE_SHIPPING_THRESHOLD ? 0 : Math.round(SHIPPING_COST * 100), // Gratis si >= 62€, sino 6.95€
                     currency: 'eur',
                 },
-                display_name: 'Envío estándar',
+                display_name: total >= FREE_SHIPPING_THRESHOLD ? 'Envío gratuito' : 'Envío estándar',
                 delivery_estimate: {
                     minimum: {
                         unit: 'business_day',
@@ -114,31 +113,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
                     },
                 },
             },
-        });
-
-        // Opción 2: Envío gratuito (si el total supera el umbral)
-        if (total >= FREE_SHIPPING_THRESHOLD) {
-            shippingOptions.push({
-                shipping_rate_data: {
-                    type: 'fixed_amount',
-                    fixed_amount: {
-                        amount: 0, // Gratis
-                        currency: 'eur',
-                    },
-                    display_name: 'Envío gratuito',
-                    delivery_estimate: {
-                        minimum: {
-                            unit: 'business_day',
-                            value: 5,
-                        },
-                        maximum: {
-                            unit: 'business_day',
-                            value: 10,
-                        },
-                    },
-                },
-            });
-        }
+        }];
 
         // Crear sesión de checkout
         const session = await stripeClient.checkout.sessions.create({
