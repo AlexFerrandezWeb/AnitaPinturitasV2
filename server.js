@@ -146,7 +146,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
             line_items: lineItems,
             mode: 'payment',
             success_url: `${process.env.SUCCESS_URL || 'http://localhost:3000'}/html/success.html?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${process.env.CANCEL_URL || 'http://localhost:3000'}/html/cancel.html`,
+            cancel_url: `${process.env.CANCEL_URL || process.env.SUCCESS_URL || 'http://localhost:3000'}/`, // Volver a la página principal
             billing_address_collection: 'auto',
             // Solicitar número de teléfono
             phone_number_collection: {
