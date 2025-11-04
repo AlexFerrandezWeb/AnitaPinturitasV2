@@ -105,7 +105,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
             // Configuración para mostrar métodos de pago rápidos
             payment_method_options: {
                 paypal: {
-                    capture_method: 'automatic',
+                    capture_method: 'manual', // Stripe requiere 'manual' para PayPal
                 },
             },
             metadata: {
