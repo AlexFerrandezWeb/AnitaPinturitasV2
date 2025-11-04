@@ -89,8 +89,8 @@ app.post('/api/create-checkout-session', async (req, res) => {
         });
 
         // Configurar opciones de envío
-        // Umbral para envío gratuito (configurable, por defecto 50€)
-        const FREE_SHIPPING_THRESHOLD = parseFloat(process.env.FREE_SHIPPING_THRESHOLD) || 50.00;
+        // Umbral para envío gratuito (configurable, por defecto 62€)
+        const FREE_SHIPPING_THRESHOLD = parseFloat(process.env.FREE_SHIPPING_THRESHOLD) || 62.00;
         const SHIPPING_COST = 6.95; // Coste de envío estándar en euros
         const shippingOptions = [];
 
