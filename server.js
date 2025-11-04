@@ -90,12 +90,24 @@ app.post('/api/create-checkout-session', async (req, res) => {
 
         // Crear sesión de checkout
         const session = await stripeClient.checkout.sessions.create({
-            payment_method_types: ['card'],
+            payment_method_types: ['card', 'paypal'], // Incluir PayPal y tarjetas (Google Pay aparece automáticamente si está habilitado)
             line_items: lineItems,
             mode: 'payment',
             success_url: `${process.env.SUCCESS_URL || 'http://localhost:3000'}/html/success.html?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${process.env.CANCEL_URL || 'http://localhost:3000'}/html/cancel.html`,
             billing_address_collection: 'auto',
+            // Solicitar dirección de envío (obligatorio)
+            shipping_address_collection: {
+                allowed_countries: ['ES', 'FR', 'PT', 'IT', 'DE', 'GB', 'US', 'MX', 'AR', 'CO', 'CL', 'PE'], // Países permitidos
+            },
+            // Desactivar código promocional/descuento (esto también ayuda a ocultar el botón Link en algunos casos)
+            allow_promotion_codes: false,
+            // Configuración para mostrar métodos de pago rápidos
+            payment_method_options: {
+                paypal: {
+                    capture_method: 'automatic',
+                },
+            },
             metadata: {
                 // Guardar información adicional si es necesario
                 total: total.toString(),

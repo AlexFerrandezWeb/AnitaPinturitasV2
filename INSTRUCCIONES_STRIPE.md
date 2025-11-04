@@ -47,12 +47,32 @@ http://localhost:3000/api/health
 
 Deberías ver: `{"status":"ok","message":"Servidor funcionando correctamente"}`
 
-## Paso 5: Probar el Carrito
+## Paso 5: Habilitar PayPal y Google Pay (Opcional pero Recomendado)
+
+Para que aparezcan los botones de **PayPal** y **Google Pay** en el checkout:
+
+1. Ve al Dashboard de Stripe: https://dashboard.stripe.com/settings/payment_methods
+2. En la sección **Payment methods**, activa:
+   - ✅ **PayPal** (si está disponible en tu región)
+   - ✅ **Google Pay** (aparece automáticamente si está habilitado)
+3. Guarda los cambios
+
+**Nota:** Los métodos de pago aparecerán automáticamente en el checkout una vez habilitados. El texto "Pago rápido" aparece automáticamente cuando Stripe muestra estos métodos.
+
+**Sobre el botón "Pagar con Link":** Este botón es parte de Stripe Link y aparece automáticamente cuando el cliente tiene una cuenta de Stripe guardada. Se ha desactivado el código promocional para minimizar su visibilidad, pero no se puede ocultar completamente. Los clientes pueden optar por usar PayPal o Google Pay en su lugar.
+
+## Paso 6: Configurar Dirección de Envío
+
+El checkout ahora solicita automáticamente la dirección de envío del cliente. Esta información se guarda en la sesión de Stripe y puedes recuperarla después del pago exitoso usando el endpoint `/api/checkout-session/:sessionId`.
+
+## Paso 7: Probar el Carrito
 
 1. Añade productos al carrito en tu página web
 2. Abre el carrito
-3. Haz clic en "PROCEDER AL PAGO"
+3. Haz clic en "PROCEDER AL PAGO" o "PAGO SEGURO"
 4. Deberías ser redirigido a Stripe Checkout
+5. El cliente deberá rellenar su dirección de envío
+6. Verás los botones de pago: Tarjeta, PayPal (si está habilitado) y Google Pay (si está habilitado)
 
 ## Modo Prueba vs Producción
 
