@@ -52,5 +52,12 @@ document.addEventListener('DOMContentLoaded', function() {
             volverAlInicio();
         }, 17000);
         
+        // Trackear Contact cuando se hace clic en el botón WhatsApp
+        whatsappButton.addEventListener('click', function() {
+            // Trackear Contact en Meta Pixel
+            if (typeof window.trackContact === 'function') {
+                window.trackContact('whatsapp');
+            }
+        });
     }
 });

@@ -255,6 +255,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Guardar datos del carrito en sessionStorage para referencia
         sessionStorage.setItem('checkoutCart', JSON.stringify(cartData));
         
+        // Trackear InitiateCheckout en Meta Pixel
+        if (typeof window.trackInitiateCheckout === 'function') {
+            window.trackInitiateCheckout(total, currentCart);
+        }
+        
         // Mostrar indicador de carga
         if (cartCheckout) {
             cartCheckout.disabled = true;

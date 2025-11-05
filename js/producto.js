@@ -137,6 +137,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const message = `Hola Anita, me interesa saber más sobre: ${productName} (Cantidad: ${quantity})`;
             const whatsappUrl = `https://wa.me/34640557787?text=${encodeURIComponent(message)}`;
             
+            // Trackear Contact en Meta Pixel
+            if (typeof window.trackContact === 'function') {
+                window.trackContact('whatsapp');
+            }
+            
             window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
         });
     }
@@ -183,6 +188,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (mainImg) {
                         mainImg.src = producto.imagen;
                         mainImg.alt = producto.nombre;
+                    }
+                    
+                    // Trackear ViewContent (ver contenido del producto)
+                    if (typeof window.trackViewContent === 'function') {
+                        window.trackViewContent(producto.id, producto.nombre, producto.precio);
                     }
                     
                     // Actualizar las miniaturas (imágenes del producto + frases inspiracionales)

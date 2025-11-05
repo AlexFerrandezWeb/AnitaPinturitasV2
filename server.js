@@ -227,14 +227,7 @@ app.post('/api/track-purchase', async (req, res) => {
         }
 
         // PASO 2: Obtener datos de la petición (IP y User-Agent)
-        // Obtener IP (manejando proxies como el de Render)
-        const forwardedFor = req.headers['x-forwarded-for'];
-        const clientIp = forwardedFor 
-            ? forwardedFor.split(',')[0].trim() // Tomar la primera IP si hay múltiples
-            : req.socket.remoteAddress || req.connection?.remoteAddress || null;
-        
-        // Obtener User Agent
-        const clientUserAgent = req.headers['user-agent'] || null;
+        const { clientIp, clientUserAgent } = getClientConnectionData(req);
 
         // Verificar configuración de Meta
         const metaAccessToken = process.env.META_ACCESS_TOKEN;
@@ -267,32 +260,7 @@ app.post('/api/track-purchase', async (req, res) => {
         const eventTime = Math.floor(Date.now() / 1000);
 
         // PASO 3: Construir user_data con datos hasheados y datos de conexión (sin hashear)
-        const userData = {
-            em: hashedEmail ? [hashedEmail] : [],
-            ph: hashedPhone ? [hashedPhone] : [],
-        };
-
-        // Añadir nombre y apellido hasheados si están disponibles
-        if (hashedFirstName) {
-            userData.fn = [hashedFirstName];
-        }
-        if (hashedLastName) {
-            userData.ln = [hashedLastName];
-        }
-
-        // Añadir datos de conexión (NO se hashean)
-        if (clientIp) {
-            userData.client_ip_address = clientIp;
-        }
-        if (clientUserAgent) {
-            userData.client_user_agent = clientUserAgent;
-        }
-        if (fbc) {
-            userData.fbc = fbc; // Cookie _fbc (sin hashear)
-        }
-        if (fbp) {
-            userData.fbp = fbp; // Cookie _fbp (sin hashear)
-        }
+        const userData = buildUserData(email, phone, firstName, lastName, clientIp, clientUserAgent, fbc, fbp);
 
         // Construir el payload según el formato de Meta
         const eventData = {
@@ -321,82 +289,246 @@ app.post('/api/track-purchase', async (req, res) => {
             data: [eventData],
         };
 
-        // Si hay test_event_code, añadirlo a la URL
-        const urlPath = testEventCode 
-            ? `/v21.0/${metaPixelId}/events?access_token=${metaAccessToken}&test_event_code=${testEventCode}`
-            : `/v21.0/${metaPixelId}/events?access_token=${metaAccessToken}`;
+        // Función helper para enviar evento a Meta
+        return sendEventToMeta(requestBody, metaAccessToken, metaPixelId, testEventCode, res);
+    } catch (error) {
+        console.error('❌ Error al trackear compra en Meta:', error);
+        // Respondemos 200 para no interrumpir el flujo del usuario
+        res.status(200).json({ 
+            success: false, 
+            message: 'Error al procesar evento',
+            error: error.message,
+            tracked: false
+        });
+    }
+});
 
-        // Hacer la petición POST a Meta Graph API usando https
-        const postData = JSON.stringify(requestBody);
-        
-        const options = {
-            hostname: 'graph.facebook.com',
-            port: 443,
-            path: urlPath,
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Content-Length': Buffer.byteLength(postData),
-            },
-        };
+// Función helper para enviar eventos a Meta (reutilizable)
+function sendEventToMeta(requestBody, metaAccessToken, metaPixelId, testEventCode, res) {
+    // Si hay test_event_code, añadirlo a la URL
+    const urlPath = testEventCode 
+        ? `/v21.0/${metaPixelId}/events?access_token=${metaAccessToken}&test_event_code=${testEventCode}`
+        : `/v21.0/${metaPixelId}/events?access_token=${metaAccessToken}`;
 
-        // Hacer la petición POST a Meta Graph API
-        const req = https.request(options, (metaRes) => {
-            let data = '';
+    // Hacer la petición POST a Meta Graph API
+    const postData = JSON.stringify(requestBody);
+    
+    const options = {
+        hostname: 'graph.facebook.com',
+        port: 443,
+        path: urlPath,
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': Buffer.byteLength(postData),
+        },
+    };
 
-            metaRes.on('data', (chunk) => {
-                data += chunk;
-            });
+    // Hacer la petición POST a Meta Graph API
+    const req = https.request(options, (metaRes) => {
+        let data = '';
 
-            metaRes.on('end', () => {
-                try {
-                    const response = JSON.parse(data);
-                    
-                    if (metaRes.statusCode >= 200 && metaRes.statusCode < 300) {
-                        console.log('✅ Evento enviado a Meta correctamente:', response);
-                        return res.status(200).json({ 
-                            success: true, 
-                            message: 'Evento trackeado en Meta',
-                            metaResponse: response,
-                            tracked: true
-                        });
-                    } else {
-                        console.error('❌ Error en respuesta de Meta:', response);
-                        // Aún así respondemos 200 para no interrumpir el flujo del usuario
-                        return res.status(200).json({ 
-                            success: false, 
-                            message: 'Error al enviar evento a Meta',
-                            error: response,
-                            tracked: false
-                        });
-                    }
-                } catch (parseError) {
-                    console.error('❌ Error al parsear respuesta de Meta:', parseError);
+        metaRes.on('data', (chunk) => {
+            data += chunk;
+        });
+
+        metaRes.on('end', () => {
+            try {
+                const response = JSON.parse(data);
+                
+                if (metaRes.statusCode >= 200 && metaRes.statusCode < 300) {
+                    console.log('✅ Evento enviado a Meta correctamente:', response);
+                    return res.status(200).json({ 
+                        success: true, 
+                        message: 'Evento trackeado en Meta',
+                        metaResponse: response,
+                        tracked: true
+                    });
+                } else {
+                    console.error('❌ Error en respuesta de Meta:', response);
+                    // Aún así respondemos 200 para no interrumpir el flujo del usuario
                     return res.status(200).json({ 
                         success: false, 
-                        message: 'Error al procesar respuesta de Meta',
+                        message: 'Error al enviar evento a Meta',
+                        error: response,
                         tracked: false
                     });
                 }
-            });
+            } catch (parseError) {
+                console.error('❌ Error al parsear respuesta de Meta:', parseError);
+                return res.status(200).json({ 
+                    success: false, 
+                    message: 'Error al procesar respuesta de Meta',
+                    tracked: false
+                });
+            }
         });
+    });
 
-        req.on('error', (error) => {
-            console.error('❌ Error en petición a Meta:', error);
-            // Respondemos 200 para no interrumpir el flujo del usuario
+    req.on('error', (error) => {
+        console.error('❌ Error en petición a Meta:', error);
+        // Respondemos 200 para no interrumpir el flujo del usuario
+        return res.status(200).json({ 
+            success: false, 
+            message: 'Error de conexión con Meta',
+            error: error.message,
+            tracked: false
+        });
+    });
+
+    req.write(postData);
+    req.end();
+}
+
+// Función helper para obtener datos de conexión del cliente
+function getClientConnectionData(req) {
+    // Obtener IP (manejando proxies como el de Render)
+    const forwardedFor = req.headers['x-forwarded-for'];
+    const clientIp = forwardedFor 
+        ? forwardedFor.split(',')[0].trim() // Tomar la primera IP si hay múltiples
+        : req.socket.remoteAddress || req.connection?.remoteAddress || null;
+    
+    // Obtener User Agent
+    const clientUserAgent = req.headers['user-agent'] || null;
+
+    return { clientIp, clientUserAgent };
+}
+
+// Función helper para construir user_data con datos hasheados y de conexión
+function buildUserData(email, phone, firstName, lastName, clientIp, clientUserAgent, fbc, fbp) {
+    const userData = {
+        em: email ? [hashEmail(email)] : [],
+        ph: phone ? [hashPhone(phone)] : [],
+    };
+
+    // Añadir nombre y apellido hasheados si están disponibles
+    if (firstName) {
+        userData.fn = [hashName(firstName)];
+    }
+    if (lastName) {
+        userData.ln = [hashLastName(lastName)];
+    }
+
+    // Añadir datos de conexión (NO se hashean)
+    if (clientIp) {
+        userData.client_ip_address = clientIp;
+    }
+    if (clientUserAgent) {
+        userData.client_user_agent = clientUserAgent;
+    }
+    if (fbc) {
+        userData.fbc = fbc; // Cookie _fbc (sin hashear)
+    }
+    if (fbp) {
+        userData.fbp = fbp; // Cookie _fbp (sin hashear)
+    }
+
+    return userData;
+}
+
+// Endpoint genérico para trackear eventos de Meta Pixel
+app.post('/api/track-event', async (req, res) => {
+    try {
+        const { 
+            eventName,        // Nombre del evento (ViewContent, AddToCart, Search, Contact, InitiateCheckout)
+            email,           // Email del usuario (opcional para algunos eventos)
+            phone,           // Teléfono (opcional)
+            firstName,       // Nombre (opcional)
+            lastName,        // Apellido (opcional)
+            value,           // Valor (para Purchase, AddToCart, InitiateCheckout)
+            currency,        // Divisa (para Purchase, AddToCart, InitiateCheckout)
+            contentName,     // Nombre del contenido (para ViewContent)
+            contentIds,      // IDs de contenido (para ViewContent, AddToCart)
+            searchString,    // Término de búsqueda (para Search)
+            fbc,             // Cookie _fbc
+            fbp,             // Cookie _fbp
+            eventId,         // ID único del evento para deduplicación
+            sourceUrl        // URL de origen del evento
+        } = req.body;
+
+        // Validar que el nombre del evento esté presente
+        if (!eventName) {
+            return res.status(400).json({ 
+                error: 'Datos incompletos: se requiere eventName' 
+            });
+        }
+
+        // Verificar configuración de Meta
+        const metaAccessToken = process.env.META_ACCESS_TOKEN;
+        const metaPixelId = process.env.META_PIXEL_ID;
+        const testEventCode = process.env.META_TEST_EVENT_CODE;
+
+        if (!metaAccessToken) {
+            console.warn('⚠️  META_ACCESS_TOKEN no configurada. No se enviará evento a Meta.');
             return res.status(200).json({ 
-                success: false, 
-                message: 'Error de conexión con Meta',
-                error: error.message,
-                tracked: false
+                message: 'Evento recibido pero Meta no configurado',
+                tracked: false 
             });
-        });
+        }
 
-        req.write(postData);
-        req.end();
+        if (!metaPixelId && !testEventCode) {
+            console.warn('⚠️  META_PIXEL_ID o META_TEST_EVENT_CODE no configurados.');
+            return res.status(200).json({ 
+                message: 'Evento recibido pero Pixel ID no configurado',
+                tracked: false 
+            });
+        }
+
+        // Obtener datos de conexión
+        const { clientIp, clientUserAgent } = getClientConnectionData(req);
+
+        // Construir user_data
+        const userData = buildUserData(email, phone, firstName, lastName, clientIp, clientUserAgent, fbc, fbp);
+
+        // Obtener timestamp actual (en segundos)
+        const eventTime = Math.floor(Date.now() / 1000);
+
+        // Construir custom_data según el tipo de evento
+        const customData = {};
+        if (value !== undefined && value !== null) {
+            customData.value = parseFloat(value).toFixed(2);
+        }
+        if (currency) {
+            customData.currency = currency;
+        }
+        if (contentName) {
+            customData.content_name = contentName;
+        }
+        if (contentIds && Array.isArray(contentIds)) {
+            customData.content_ids = contentIds;
+        }
+        if (searchString) {
+            customData.search_string = searchString;
+        }
+
+        // Construir el payload según el formato de Meta
+        const eventData = {
+            event_name: eventName,
+            event_time: eventTime,
+            action_source: 'website',
+            user_data: userData,
+        };
+
+        // Añadir custom_data solo si tiene contenido
+        if (Object.keys(customData).length > 0) {
+            eventData.custom_data = customData;
+        }
+
+        // Añadir event_id para deduplicación si está disponible
+        if (eventId) {
+            eventData.event_id = eventId;
+        }
+
+        // Construir el body de la petición
+        const requestBody = {
+            data: [eventData],
+        };
+
+        // Enviar evento a Meta
+        return sendEventToMeta(requestBody, metaAccessToken, metaPixelId, testEventCode, res);
 
     } catch (error) {
-        console.error('❌ Error al trackear compra en Meta:', error);
+        console.error('❌ Error al trackear evento en Meta:', error);
         // Respondemos 200 para no interrumpir el flujo del usuario
         res.status(200).json({ 
             success: false, 

@@ -360,6 +360,11 @@ document.addEventListener('DOMContentLoaded', function() {
             await cargarProductos();
             const resultados = buscarProductos(termino);
             mostrarResultados(resultados, termino);
+            
+            // Trackear Search en Meta Pixel
+            if (termino.length >= 2 && typeof window.trackSearch === 'function') {
+                window.trackSearch(termino);
+            }
         });
     }
     
@@ -382,6 +387,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 await cargarProductos();
                 const resultados = buscarProductos(termino);
                 mostrarResultados(resultados, termino);
+                
+                // Trackear Search en Meta Pixel (solo si hay resultados y el término es válido)
+                // Solo trackear una vez por búsqueda, no en cada keystroke
+                if (termino.length >= 2 && resultados.length > 0 && typeof window.trackSearch === 'function') {
+                    // Usar una variable para evitar múltiples tracking del mismo término
+                    if (!window.lastTrackedSearch || window.lastTrackedSearch !== termino) {
+                        window.trackSearch(termino);
+                        window.lastTrackedSearch = termino;
+                    }
+                }
+                
                 // Asegurar que el buscador permanezca visible cuando hay resultados
                 if (searchBar && !searchBar.classList.contains('is-visible')) {
                     searchBar.classList.add('is-visible');

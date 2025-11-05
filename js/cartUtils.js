@@ -51,6 +51,11 @@
         // Disparar evento personalizado
         window.dispatchEvent(new CustomEvent('cartUpdated'));
         
+        // Trackear AddToCart en Meta Pixel
+        if (typeof window.trackAddToCart === 'function') {
+            window.trackAddToCart(productoId, nombre, precioNum, cantidad);
+        }
+        
         // Notificar al carrito si existe
         if (typeof window.renderCart === 'function') {
             setTimeout(() => {
