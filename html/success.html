@@ -157,6 +157,23 @@
                     const email = session.customer_details?.email || session.customer_email;
                     const phone = session.customer_details?.phone;
                     
+                    // Extraer nombre y apellido (Stripe puede proporcionar el nombre completo en customer_details.name)
+                    let firstName = null;
+                    let lastName = null;
+                    const fullName = session.customer_details?.name;
+                    
+                    if (fullName) {
+                        // Intentar dividir el nombre completo en nombre y apellido
+                        const nameParts = fullName.trim().split(/\s+/);
+                        if (nameParts.length > 0) {
+                            firstName = nameParts[0];
+                            // Si hay más de una parte, el apellido es el resto
+                            if (nameParts.length > 1) {
+                                lastName = nameParts.slice(1).join(' ');
+                            }
+                        }
+                    }
+                    
                     // Obtener el total del pedido (amount_total está en centavos)
                     const totalAmount = session.amount_total ? (session.amount_total / 100).toFixed(2) : null;
                     
@@ -174,6 +191,8 @@
                         body: JSON.stringify({
                             email: email,
                             phone: phone || null,
+                            firstName: firstName || null,
+                            lastName: lastName || null,
                             value: totalAmount,
                             session_id: sessionId
                         })

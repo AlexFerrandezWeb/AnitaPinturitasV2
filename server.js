@@ -192,10 +192,28 @@ function hashPhone(phone) {
     return crypto.createHash('sha256').update(normalizedPhone).digest('hex');
 }
 
+// Función para hashear nombre con SHA-256
+function hashName(name) {
+    if (!name) return null;
+    // Normalizar: minúsculas, sin espacios extra, trim
+    const normalizedName = name.toLowerCase().trim().replace(/\s+/g, ' ');
+    if (!normalizedName) return null;
+    return crypto.createHash('sha256').update(normalizedName).digest('hex');
+}
+
+// Función para hashear apellido con SHA-256
+function hashLastName(lastName) {
+    if (!lastName) return null;
+    // Normalizar: minúsculas, sin espacios extra, trim
+    const normalizedLastName = lastName.toLowerCase().trim().replace(/\s+/g, ' ');
+    if (!normalizedLastName) return null;
+    return crypto.createHash('sha256').update(normalizedLastName).digest('hex');
+}
+
 // Endpoint para trackear compra en Meta (Facebook Pixel)
 app.post('/api/track-purchase', async (req, res) => {
     try {
-        const { email, phone, value, session_id } = req.body;
+        const { email, phone, firstName, lastName, value, session_id } = req.body;
 
         // Validar datos requeridos
         if (!email || !value) {
@@ -225,22 +243,35 @@ app.post('/api/track-purchase', async (req, res) => {
             });
         }
 
-        // Hashear email y teléfono
+        // Hashear información personal (email, teléfono, nombre, apellido)
         const hashedEmail = hashEmail(email);
         const hashedPhone = phone ? hashPhone(phone) : null;
+        const hashedFirstName = firstName ? hashName(firstName) : null;
+        const hashedLastName = lastName ? hashLastName(lastName) : null;
 
         // Obtener timestamp actual (en segundos)
         const eventTime = Math.floor(Date.now() / 1000);
+
+        // Construir user_data con datos hasheados
+        const userData = {
+            em: hashedEmail ? [hashedEmail] : [],
+            ph: hashedPhone ? [hashedPhone] : [null],
+        };
+
+        // Añadir nombre y apellido hasheados si están disponibles
+        if (hashedFirstName) {
+            userData.fn = [hashedFirstName];
+        }
+        if (hashedLastName) {
+            userData.ln = [hashedLastName];
+        }
 
         // Construir el payload según el formato de Meta
         const eventData = {
             event_name: 'Purchase',
             event_time: eventTime,
             action_source: 'website',
-            user_data: {
-                em: hashedEmail ? [hashedEmail] : [],
-                ph: hashedPhone ? [hashedPhone] : [null],
-            },
+            user_data: userData,
             custom_data: {
                 currency: 'EUR', // Cambiado de USD a EUR
                 value: parseFloat(value).toFixed(2), // Asegurar formato con 2 decimales
