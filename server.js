@@ -2,6 +2,8 @@
 const express = require('express');
 const stripe = require('stripe');
 const cors = require('cors');
+const crypto = require('crypto');
+const https = require('https');
 require('dotenv').config();
 
 const app = express();
@@ -169,6 +171,175 @@ app.get('/api/checkout-session/:sessionId', async (req, res) => {
     } catch (error) {
         console.error('Error al recuperar sesión:', error);
         res.status(500).json({ error: 'Error al recuperar la sesión' });
+    }
+});
+
+// Función para hashear email con SHA-256
+function hashEmail(email) {
+    if (!email) return null;
+    // Normalizar email: minúsculas y sin espacios
+    const normalizedEmail = email.toLowerCase().trim();
+    // Hashear con SHA-256
+    return crypto.createHash('sha256').update(normalizedEmail).digest('hex');
+}
+
+// Función para hashear teléfono con SHA-256
+function hashPhone(phone) {
+    if (!phone) return null;
+    // Eliminar espacios, guiones y otros caracteres, solo dejar números
+    const normalizedPhone = phone.replace(/\D/g, '');
+    if (!normalizedPhone) return null;
+    return crypto.createHash('sha256').update(normalizedPhone).digest('hex');
+}
+
+// Endpoint para trackear compra en Meta (Facebook Pixel)
+app.post('/api/track-purchase', async (req, res) => {
+    try {
+        const { email, phone, value, session_id } = req.body;
+
+        // Validar datos requeridos
+        if (!email || !value) {
+            return res.status(400).json({ 
+                error: 'Datos incompletos: se requieren email y value' 
+            });
+        }
+
+        // Verificar configuración de Meta
+        const metaAccessToken = process.env.META_ACCESS_TOKEN;
+        const metaPixelId = process.env.META_PIXEL_ID;
+        const testEventCode = process.env.META_TEST_EVENT_CODE; // Opcional, para testing
+
+        if (!metaAccessToken) {
+            console.warn('⚠️  META_ACCESS_TOKEN no configurada. No se enviará evento a Meta.');
+            return res.status(200).json({ 
+                message: 'Evento recibido pero Meta no configurado',
+                tracked: false 
+            });
+        }
+
+        if (!metaPixelId && !testEventCode) {
+            console.warn('⚠️  META_PIXEL_ID o META_TEST_EVENT_CODE no configurados.');
+            return res.status(200).json({ 
+                message: 'Evento recibido pero Pixel ID no configurado',
+                tracked: false 
+            });
+        }
+
+        // Hashear email y teléfono
+        const hashedEmail = hashEmail(email);
+        const hashedPhone = phone ? hashPhone(phone) : null;
+
+        // Obtener timestamp actual (en segundos)
+        const eventTime = Math.floor(Date.now() / 1000);
+
+        // Construir el payload según el formato de Meta
+        const eventData = {
+            event_name: 'Purchase',
+            event_time: eventTime,
+            action_source: 'website',
+            user_data: {
+                em: hashedEmail ? [hashedEmail] : [],
+                ph: hashedPhone ? [hashedPhone] : [null],
+            },
+            custom_data: {
+                currency: 'EUR', // Cambiado de USD a EUR
+                value: parseFloat(value).toFixed(2), // Asegurar formato con 2 decimales
+            },
+        };
+
+        // Añadir attribution_data si es necesario (opcional)
+        // eventData.attribution_data = {
+        //     attribution_share: "0.3"
+        // };
+
+        // Construir el body de la petición
+        const requestBody = {
+            data: [eventData],
+        };
+
+        // Si hay test_event_code, añadirlo a la URL
+        const urlPath = testEventCode 
+            ? `/v21.0/${metaPixelId}/events?access_token=${metaAccessToken}&test_event_code=${testEventCode}`
+            : `/v21.0/${metaPixelId}/events?access_token=${metaAccessToken}`;
+
+        // Hacer la petición POST a Meta Graph API usando https
+        const postData = JSON.stringify(requestBody);
+        
+        const options = {
+            hostname: 'graph.facebook.com',
+            port: 443,
+            path: urlPath,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(postData),
+            },
+        };
+
+        // Hacer la petición POST a Meta Graph API
+        const req = https.request(options, (metaRes) => {
+            let data = '';
+
+            metaRes.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            metaRes.on('end', () => {
+                try {
+                    const response = JSON.parse(data);
+                    
+                    if (metaRes.statusCode >= 200 && metaRes.statusCode < 300) {
+                        console.log('✅ Evento enviado a Meta correctamente:', response);
+                        return res.status(200).json({ 
+                            success: true, 
+                            message: 'Evento trackeado en Meta',
+                            metaResponse: response,
+                            tracked: true
+                        });
+                    } else {
+                        console.error('❌ Error en respuesta de Meta:', response);
+                        // Aún así respondemos 200 para no interrumpir el flujo del usuario
+                        return res.status(200).json({ 
+                            success: false, 
+                            message: 'Error al enviar evento a Meta',
+                            error: response,
+                            tracked: false
+                        });
+                    }
+                } catch (parseError) {
+                    console.error('❌ Error al parsear respuesta de Meta:', parseError);
+                    return res.status(200).json({ 
+                        success: false, 
+                        message: 'Error al procesar respuesta de Meta',
+                        tracked: false
+                    });
+                }
+            });
+        });
+
+        req.on('error', (error) => {
+            console.error('❌ Error en petición a Meta:', error);
+            // Respondemos 200 para no interrumpir el flujo del usuario
+            return res.status(200).json({ 
+                success: false, 
+                message: 'Error de conexión con Meta',
+                error: error.message,
+                tracked: false
+            });
+        });
+
+        req.write(postData);
+        req.end();
+
+    } catch (error) {
+        console.error('❌ Error al trackear compra en Meta:', error);
+        // Respondemos 200 para no interrumpir el flujo del usuario
+        res.status(200).json({ 
+            success: false, 
+            message: 'Error al procesar evento',
+            error: error.message,
+            tracked: false
+        });
     }
 });
 

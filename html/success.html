@@ -108,6 +108,78 @@
             <p class="footer__copyright">&copy; 2025 Anita Pinturitas. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <script>
+        // Trackear compra en Meta (Facebook Pixel) cuando se carga la página de éxito
+        (function() {
+            // Obtener session_id de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const sessionId = urlParams.get('session_id');
+
+            if (!sessionId) {
+                console.log('No se encontró session_id en la URL');
+                return;
+            }
+
+            // Determinar URL del backend dinámicamente
+            const backendUrl = window.location.origin;
+
+            // Obtener datos de la sesión de Stripe
+            fetch(`${backendUrl}/api/checkout-session/${sessionId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Error HTTP: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const session = data.session;
+                    
+                    // Extraer datos necesarios
+                    const email = session.customer_details?.email || session.customer_email;
+                    const phone = session.customer_details?.phone;
+                    
+                    // Obtener el total del pedido (amount_total está en centavos)
+                    const totalAmount = session.amount_total ? (session.amount_total / 100).toFixed(2) : null;
+                    
+                    if (!email || !totalAmount) {
+                        console.warn('Datos incompletos de la sesión:', { email, totalAmount });
+                        return;
+                    }
+
+                    // Enviar evento a Meta
+                    fetch(`${backendUrl}/api/track-purchase`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                            phone: phone || null,
+                            value: totalAmount,
+                            session_id: sessionId
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(result => {
+                        if (result.tracked) {
+                            console.log('✅ Compra trackeada en Meta correctamente');
+                        } else {
+                            console.log('⚠️ Evento recibido pero no trackeado:', result.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error al trackear compra en Meta:', error);
+                        // No interrumpir la experiencia del usuario si falla el tracking
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al obtener datos de la sesión:', error);
+                    // No interrumpir la experiencia del usuario si falla el tracking
+                });
+        })();
+    </script>
+    <script src="../js/nav.js"></script>
 </body>
 </html>
 

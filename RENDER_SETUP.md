@@ -32,6 +32,33 @@ Cuando despliegues el backend en Render, configura estas variables de entorno en
   - Por defecto: `3000`
   - ⚠️ No cambies esto en Render, usa la variable `PORT` que Render proporciona
 
+- **`FREE_SHIPPING_THRESHOLD`**
+  - Valor: Umbral para envío gratuito en euros
+  - Ejemplo: `62.00`
+  - Por defecto: `62.00`
+
+### Variables para Meta (Facebook Pixel) - Opcionales
+
+Para trackear compras en Meta (Facebook Pixel), configura estas variables:
+
+- **`META_ACCESS_TOKEN`**
+  - Valor: Token de acceso de Meta (Facebook Pixel)
+  - Cómo obtenerlo: Ve a [Meta Events Manager](https://business.facebook.com/events_manager2) > Configuración > Pixel > Configuración de API
+  - Ejemplo: `EAABsbCS1iHgBO...tu_token_completo`
+  - ⚠️ Sin esto, no se trackearán las compras en Meta
+
+- **`META_PIXEL_ID`**
+  - Valor: ID de tu Pixel de Meta
+  - Cómo obtenerlo: Ve a [Meta Events Manager](https://business.facebook.com/events_manager2) > Selecciona tu Pixel > El ID aparece en la configuración
+  - Ejemplo: `1234567890123456`
+  - ⚠️ Requerido si no usas `META_TEST_EVENT_CODE`
+
+- **`META_TEST_EVENT_CODE`** (Opcional, solo para testing)
+  - Valor: Código de evento de prueba de Meta
+  - Cómo obtenerlo: Ve a [Meta Events Manager](https://business.facebook.com/events_manager2) > Configuración > Test Events
+  - Ejemplo: `TEST12345`
+  - ⚠️ Solo usa esto en desarrollo/testing. En producción usa `META_PIXEL_ID`
+
 ## Actualizar Frontend para Usar Render
 
 Una vez que tu backend esté desplegado en Render:
