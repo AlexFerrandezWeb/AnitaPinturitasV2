@@ -213,7 +213,11 @@ function hashLastName(lastName) {
 // Endpoint para trackear compra en Meta (Facebook Pixel)
 app.post('/api/track-purchase', async (req, res) => {
     try {
-        const { email, phone, firstName, lastName, value, session_id } = req.body;
+        // PASO 1: Recibir los nuevos datos del body
+        const { 
+            email, phone, firstName, lastName, value, session_id,
+            fbc, fbp, eventId // Nuevos datos para deduplicación
+        } = req.body;
 
         // Validar datos requeridos
         if (!email || !value) {
@@ -221,6 +225,16 @@ app.post('/api/track-purchase', async (req, res) => {
                 error: 'Datos incompletos: se requieren email y value' 
             });
         }
+
+        // PASO 2: Obtener datos de la petición (IP y User-Agent)
+        // Obtener IP (manejando proxies como el de Render)
+        const forwardedFor = req.headers['x-forwarded-for'];
+        const clientIp = forwardedFor 
+            ? forwardedFor.split(',')[0].trim() // Tomar la primera IP si hay múltiples
+            : req.socket.remoteAddress || req.connection?.remoteAddress || null;
+        
+        // Obtener User Agent
+        const clientUserAgent = req.headers['user-agent'] || null;
 
         // Verificar configuración de Meta
         const metaAccessToken = process.env.META_ACCESS_TOKEN;
@@ -252,10 +266,10 @@ app.post('/api/track-purchase', async (req, res) => {
         // Obtener timestamp actual (en segundos)
         const eventTime = Math.floor(Date.now() / 1000);
 
-        // Construir user_data con datos hasheados
+        // PASO 3: Construir user_data con datos hasheados y datos de conexión (sin hashear)
         const userData = {
             em: hashedEmail ? [hashedEmail] : [],
-            ph: hashedPhone ? [hashedPhone] : [null],
+            ph: hashedPhone ? [hashedPhone] : [],
         };
 
         // Añadir nombre y apellido hasheados si están disponibles
@@ -264,6 +278,20 @@ app.post('/api/track-purchase', async (req, res) => {
         }
         if (hashedLastName) {
             userData.ln = [hashedLastName];
+        }
+
+        // Añadir datos de conexión (NO se hashean)
+        if (clientIp) {
+            userData.client_ip_address = clientIp;
+        }
+        if (clientUserAgent) {
+            userData.client_user_agent = clientUserAgent;
+        }
+        if (fbc) {
+            userData.fbc = fbc; // Cookie _fbc (sin hashear)
+        }
+        if (fbp) {
+            userData.fbp = fbp; // Cookie _fbp (sin hashear)
         }
 
         // Construir el payload según el formato de Meta
@@ -277,6 +305,11 @@ app.post('/api/track-purchase', async (req, res) => {
                 value: parseFloat(value).toFixed(2), // Asegurar formato con 2 decimales
             },
         };
+
+        // PASO 4: Añadir el event_id para deduplicación
+        if (eventId) {
+            eventData.event_id = eventId;
+        }
 
         // Añadir attribution_data si es necesario (opcional)
         // eventData.attribution_data = {
