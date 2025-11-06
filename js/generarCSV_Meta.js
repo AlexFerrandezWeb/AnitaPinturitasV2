@@ -4,7 +4,7 @@ const path = require('path');
 
 // Configuración
 const JSON_FILE = path.join(__dirname, '..', 'data', 'cuidadoPiel.json');
-const CSV_FILE = path.join(__dirname, '..', 'data', 'product-feed.csv');
+const CSV_FILE = path.join(__dirname, '..', 'product-feed.csv');
 const CURRENCY = 'EUR';
 
 // Función para escapar valores CSV (manejar comillas, comas, saltos de línea)
