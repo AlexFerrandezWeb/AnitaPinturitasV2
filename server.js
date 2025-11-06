@@ -4,6 +4,8 @@ const stripe = require('stripe');
 const cors = require('cors');
 const crypto = require('crypto');
 const https = require('https');
+const fs = require('fs');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -537,6 +539,27 @@ app.post('/api/track-event', async (req, res) => {
             tracked: false
         });
     }
+});
+
+// Endpoint para servir el CSV del catálogo de productos con el tipo MIME correcto
+app.get('/product-feed.csv', (req, res) => {
+    const csvPath = path.join(__dirname, 'product-feed.csv');
+    
+    // Verificar que el archivo existe
+    if (!fs.existsSync(csvPath)) {
+        return res.status(404).json({ error: 'Archivo CSV no encontrado' });
+    }
+    
+    // Leer el archivo CSV
+    const csvContent = fs.readFileSync(csvPath, 'utf8');
+    
+    // Configurar headers para que el navegador/Facebook lo lea correctamente
+    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    res.setHeader('Content-Disposition', 'inline; filename="product-feed.csv"');
+    res.setHeader('Cache-Control', 'public, max-age=3600'); // Cache por 1 hora
+    
+    // Enviar el contenido CSV
+    res.send(csvContent);
 });
 
 // Endpoint de salud para verificar que el servidor funciona

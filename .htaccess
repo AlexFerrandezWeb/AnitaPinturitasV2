@@ -1,0 +1,14 @@
+# Configuración de tipos MIME para archivos CSV
+<IfModule mod_mime.c>
+    AddType text/csv .csv
+    AddType application/csv .csv
+</IfModule>
+
+# Headers para archivos CSV
+<IfModule mod_headers.c>
+    <FilesMatch "\.csv$">
+        Header set Content-Type "text/csv; charset=utf-8"
+        Header set Content-Disposition "inline"
+    </FilesMatch>
+</IfModule>
+
