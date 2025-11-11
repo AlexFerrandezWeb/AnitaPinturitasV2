@@ -3,23 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aviso legal de Anita Pinturitas. Información sobre términos y condiciones de uso, propiedad intelectual y datos de contacto.">
+    <meta name="description" content="Tratamientos profesionales para el cuidado del cabello. Champús, mascarillas, aceites y productos de styling para devolver la vitalidad y el brillo a tu melena.">
+    <meta name="keywords" content="cuidado capilar, champús profesionales, mascarillas cabello, aceites capilares, styling volumen, Anita Pinturitas">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://anitapinturitas.es/html/avisoLegal.html">
-    
+    <link rel="canonical" href="https://anitapinturitas.es/html/cuidadoCapilar.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anitapinturitas.es/html/cuidadoCapilar.html">
+    <meta property="og:title" content="Anita Pinturitas - Cuidado Capilar Profesional">
+    <meta property="og:description" content="Descubre champús, mascarillas, aceites y productos de styling para nutrir, reparar y dar volumen al cabello.">
+    <meta property="og:image" content="https://anitapinturitas.es/assets/anita-pinturitas_logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://anitapinturitas.es/html/cuidadoCapilar.html">
+    <meta property="twitter:title" content="Anita Pinturitas - Cuidado Capilar Profesional">
+    <meta property="twitter:description" content="Descubre champús, mascarillas, aceites y productos de styling para nutrir, reparar y dar volumen al cabello.">
+    <meta property="twitter:image" content="https://anitapinturitas.es/assets/anita-pinturitas_logo.png">
+
     <link rel="icon" type="image/png" href="../assets/anita-pinturitas_favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <title>Aviso Legal - Anita Pinturitas | Términos y Condiciones</title>
+    <title>Anita Pinturitas - Cuidado Capilar Profesional</title>
     <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/cuidadoCapilar.css">
     <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/botonFlotante.css">
     <link rel="stylesheet" href="../css/carrito.css">
     <link rel="stylesheet" href="../css/confirmModal.css">
+    <link rel="stylesheet" href="../css/cartAnimation.css">
     <link rel="stylesheet" href="../css/searchResults.css">
-    
+
     <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -39,7 +56,6 @@
     <!-- End Meta Pixel Code -->
 </head>
 <body>
-
     <nav class="nav">
         <button class="nav__menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
             <span class="nav__menu-bar"></span>
@@ -54,7 +70,7 @@
                     <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
-            <a href="#" class="nav__cart" aria-label="Carrito">
+            <a href="carrito.html" class="nav__cart" aria-label="Carrito">
                 <svg class="nav__cart-icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M16 11V7a4 4 0 10-8 0v4M5 8h14l-1 11H6L5 8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -63,6 +79,7 @@
         </div>
     </nav>
 
+    <!-- Menú hamburguesa desplegable -->
     <div class="mobile-menu" id="mobile-menu">
         <div class="mobile-menu__overlay"></div>
         <div class="mobile-menu__content">
@@ -77,10 +94,10 @@
             <nav class="mobile-menu__nav">
                 <a href="../index.html" class="mobile-menu__link">Inicio</a>
                 <div class="mobile-menu__dropdown">
-                    <a href="productos.html" class="mobile-menu__link mobile-menu__link--dropdown">Productos</a>
+                    <a href="productos.html" class="mobile-menu__link mobile-menu__link--dropdown mobile-menu__link--active">Productos</a>
                     <div class="mobile-menu__submenu">
                         <a href="cuidadoPiel.html" class="mobile-menu__sublink">Cuidado de la piel</a>
-                        <a href="cuidadoCapilar.html" class="mobile-menu__sublink">Cuidado capilar</a>
+                        <a href="cuidadoCapilar.html" class="mobile-menu__sublink mobile-menu__sublink--active">Cuidado capilar</a>
                     </div>
                 </div>
             </nav>
@@ -108,6 +125,7 @@
                         </svg>
                     </a>
                 </div>
+
                 <div class="mobile-menu__contact-info">
                     <a href="tel:640557787" class="mobile-menu__contact-item">
                         <svg class="mobile-menu__contact-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -127,6 +145,7 @@
         </div>
     </div>
 
+    <!-- Carrito lateral -->
     <div class="cart-sidebar" id="cart-sidebar">
         <div class="cart-sidebar__overlay"></div>
         <div class="cart-sidebar__content">
@@ -140,6 +159,7 @@
             </div>
             <div class="cart-sidebar__body">
                 <div class="cart-items" id="cart-items">
+                    <!-- Los productos del carrito se cargarán aquí -->
                     <div class="cart-empty">
                         <svg class="cart-empty__icon" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M16 11V7a4 4 0 10-8 0v4M5 8h14l-1 11H6L5 8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -166,9 +186,10 @@
         </div>
     </div>
 
+    <!-- Barra de búsqueda -->
     <div class="search-bar" id="search-bar">
         <form class="search-bar__form" role="search">
-            <input type="search" class="search-bar__input" placeholder="Buscar productos..." aria-label="Buscar productos">
+            <input type="search" class="search-bar__input" placeholder="Buscar productos..." aria-label="Buscar productos" tabindex="0">
             <button type="submit" class="search-bar__button" aria-label="Buscar">
                 <svg class="search-bar__icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -177,51 +198,26 @@
         </form>
     </div>
 
-    <main class="main">
-        <section class="legal">
-            <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
-                <h1 style="margin-bottom: 20px; color: var(--jazzberry-jam);">AVISO LEGAL</h1>
-                
-                <h2 style="margin-top: 32px; margin-bottom: 16px;">1. DATOS IDENTIFICATIVOS DEL TITULAR</h2>
-                <p>En cumplimiento del deber de información estipulado en el artículo 10 de la Ley 34/2002 de 11 de julio de Servicios de la Sociedad de la Información y de Comercio Electrónico, se comunican los siguientes datos identificativos del titular de este sitio web:</p>
-                <p style="margin-top: 16px;"><strong>Titular:</strong> [Ana María Ramos Rodríguez]</p>
-                <p><strong>Nombre Comercial:</strong> Anita Pinturitas</p>
-                <p><strong>NIF:</strong> [10872007e]</p>
-                <p><strong>Domicilio:</strong> [Las campas 3, 33129, Asturias]</p>
-                <p><strong>Correo Electrónico:</strong> info@anitapinturitas.es</p>
-                <p><strong>Teléfono de Contacto:</strong> 640 55 77 87</p>
-                <p><strong>Sitio Web:</strong> https://anitapinturitas.es</p>
+    <main>
+        <!-- Hero Section -->
+        <section class="cuidado-hero">
+            <div class="container">
+                <h1 class="cuidado-hero__title">Cuidado Capilar</h1>
+            </div>
+        </section>
 
-                <h2 style="margin-top: 32px; margin-bottom: 16px;">2. OBJETO Y ACEPTACIÓN</h2>
-                <p>El presente Aviso Legal regula el acceso y la utilización del sitio web https://anitapinturitas.es (en adelante, el "Sitio Web"), que Anita Pinturitas pone a disposición de los usuarios de Internet.</p>
-                <p style="margin-top: 16px;">El acceso y la navegación por el Sitio Web atribuyen la condición de usuario del mismo (en adelante, el "Usuario") e implican la aceptación plena y sin reservas de todas y cada una de las disposiciones incluidas en este Aviso Legal, que pueden sufrir modificaciones. Se recomienda al Usuario leer atentamente este documento en cada una de las ocasiones en que se proponga utilizar el Sitio Web.</p>
-
-                <h2 style="margin-top: 32px; margin-bottom: 16px;">3. CONDICIONES GENERALES DE USO</h2>
-                <p>El Usuario se obliga a hacer un uso correcto del Sitio Web de conformidad con las leyes, la buena fe, el orden público, los usos del tráfico y el presente Aviso Legal. El Usuario responderá frente a Anita Pinturitas o frente a terceros de cualesquiera daños y perjuicios que pudieran causarse como consecuencia del incumplimiento de dicha obligación.</p>
-                <p style="margin-top: 16px;">El Usuario se compromete a no utilizar el Sitio Web con fines fraudulentos, así como a no llevar a cabo conducta alguna que pudiera dañar la imagen, los intereses y los derechos de Anita Pinturitas o de terceros. Asimismo, se compromete a no realizar ningún acto con objeto de dañar, inutilizar o sobrecargar el Sitio Web, o que impidiera, de cualquier forma, la normal utilización y funcionamiento del mismo.</p>
-
-                <h2 style="margin-top: 32px; margin-bottom: 16px;">4. PROPIEDAD INTELECTUAL E INDUSTRIAL</h2>
-                <p>Todos los derechos de propiedad intelectual e industrial del Sitio Web y de sus contenidos, entre los que se incluyen, a título enunciativo, imágenes, sonido, audio, vídeo, diseños, textos, gráficos, logos, iconos, combinaciones de colores, estructura, botones, así como el software, los nombres comerciales, las marcas, obras, ilustraciones, fotografías o dibujos industriales y cualesquiera otros signos susceptibles de utilización industrial y comercial, son propiedad y titularidad de Anita Pinturitas o de terceros titulares de los mismos que han autorizado debidamente su inclusión en el Sitio Web.</p>
-                <p style="margin-top: 16px;">Quedan expresamente prohibidas la reproducción, la distribución y la comunicación pública, incluida su modalidad de puesta a disposición, de la totalidad o parte de los contenidos de este Sitio Web, con fines comerciales, en cualquier soporte y por cualquier medio técnico, sin la autorización expresa y por escrito de Anita Pinturitas.</p>
-
-                <h2 style="margin-top: 32px; margin-bottom: 16px;">5. EXCLUSIÓN DE GARANTÍAS Y RESPONSABILIDAD</h2>
-                <p>Anita Pinturitas no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier naturaleza que pudieran ocasionar, a título enunciativo: errores u omisiones en los contenidos, falta de disponibilidad del portal o la transmisión de virus o programas maliciosos o lesivos en los contenidos, a pesar de haber adoptado todas las medidas tecnológicas necesarias para evitarlo.</p>
-                <p style="margin-top: 16px;">El Sitio Web puede contener enlaces a otros sitios web y contenidos de terceros. Anita Pinturitas no tiene control sobre dichos sitios, por lo que no se hace responsable del contenido de los mismos ni de las prácticas de privacidad que puedan adoptar.</p>
-
-                <h2 style="margin-top: 32px; margin-bottom: 16px;">6. PROTECCIÓN DE DATOS PERSONALES</h2>
-                <p>Todo lo relativo al tratamiento de sus datos personales se encuentra regulado en la Política de Privacidad, que forma parte integrante de estas condiciones.</p>
-
-                <h2 style="margin-top: 32px; margin-bottom: 16px;">7. POLÍTICA DE COOKIES</h2>
-                <p>La información sobre el uso de cookies en este Sitio Web se encuentra detallada en nuestra Política de Cookies.</p>
-
-                <h2 style="margin-top: 32px; margin-bottom: 16px;">8. LEY APLICABLE Y JURISDICCIÓN</h2>
-                <p>La relación entre Anita Pinturitas y el Usuario se regirá por la normativa española vigente. Para la resolución de cualquier controversia que pudiera surgir, ambas partes se someten a la jurisdicción de los Juzgados y Tribunales que correspondan según la ley.</p>
-
-                <p style="margin-top: 32px;"><strong>Última actualización:</strong> 31 de octubre de 2025.</p>
+        <!-- Contenido principal -->
+        <section class="cuidado-content">
+            <div class="container">
+                <!-- Sección de categorías de productos -->
+                <div id="productos-container">
+                    <!-- Los productos se cargarán dinámicamente aquí -->
+                </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer__content">
             <div class="footer__main">
@@ -247,6 +243,7 @@
                         </svg>
                     </a>
                 </div>
+
                 <div class="footer__contact">
                     <a href="tel:640557787" class="footer__contact-item">
                         <svg class="footer__contact-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -264,7 +261,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Métodos de pago seguro -->
         <div class="footer__payments">
             <p class="footer__payments-text">
@@ -280,7 +277,7 @@
                 <img src="../assets/bizum_logo.webp" alt="Bizum" class="footer__payment-logo">
             </div>
         </div>
-        
+
         <div class="footer__bottom">
             <div class="footer__legal">
                 <a href="avisoLegal.html" class="footer__legal-link">Aviso Legal</a>
@@ -292,6 +289,7 @@
         </div>
     </footer>
 
+    <!-- Botón WhatsApp Flotante -->
     <a href="https://wa.me/34640557787" class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
         <div class="whatsapp-button__content">
             <svg class="whatsapp-button__icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -301,12 +299,15 @@
         </div>
     </a>
 
-    <script src="../js/menu-hamburguesa.js"></script>
+    <script src="../js/metaPixelTracking.js"></script>
+    <script src="../js/cartUtils.js"></script>
     <script src="../js/confirmModal.js"></script>
+    <script src="../js/cartAnimation.js"></script>
+    <script src="../js/menu-hamburguesa.js"></script>
     <script src="../js/carrito.js"></script>
     <script src="../js/buscador.js"></script>
     <script src="../js/botonFlotante.js"></script>
+    <script src="../js/cuidadoCapilar.js"></script>
 </body>
 </html>
-
 

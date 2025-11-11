@@ -1,9 +1,9 @@
-// Cargar y mostrar productos de cuidado de la piel
+// Cargar y mostrar productos de cuidado capilar
 document.addEventListener('DOMContentLoaded', function() {
     const productosContainer = document.getElementById('productos-container');
     
     // Cargar datos del JSON
-    fetch('../data/cuidadoPiel.json')
+    fetch('../data/cuidadoCapilar.json')
         .then(response => response.json())
         .then(data => {
             mostrarProductos(data.categorias);
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             html += `
                 <div class="categoria-section">
                     <h2 class="categoria-titulo">${categoria.titulo}</h2>
-                    <div class="productos-grid">
+                    <div class="productos-grid${categoria.productos.length === 1 ? ' productos-grid--single' : ''}">
             `;
             
             categoria.productos.forEach(producto => {
@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             <h3 class="producto-nombre">${producto.nombre}</h3>
                             <p class="producto-precio">${producto.precio.toFixed(2)} €</p>
                             <p class="producto-precio-iva">+IVA incluido</p>
-                            ${['US-21109-00', 'prod_SdTAGVPaPAE5Wu0', 'prod_SdTAGVPaPAE5Wu01'].includes(producto.id) ? '<span class="producto-etiqueta producto-etiqueta--nuevo">Nuevo</span>' : ''}
                             <div class="producto-botones" onclick="event.stopPropagation()">
                                 <button class="btn-ver" onclick="event.stopPropagation(); verProducto('${producto.id}')">
                                     Ver
@@ -69,8 +68,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Función para ver detalles del producto
     window.verProducto = function(productoId) {
-        // Redirigir a la página de producto con el ID como parámetro
-        window.location.href = `producto.html?id=${productoId}`;
+        const isRootPage = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/');
+        const productoUrl = isRootPage
+            ? `html/producto.html?id=${productoId}`
+            : `producto.html?id=${productoId}`;
+        window.location.href = productoUrl;
     };
     
     // Función para añadir al carrito con animación

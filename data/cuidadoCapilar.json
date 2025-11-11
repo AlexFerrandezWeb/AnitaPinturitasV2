@@ -1,0 +1,204 @@
+{
+    "categorias": [
+        {
+            "id": "aceites_reavilitizante_del_cabello",
+            "nombre": "aceites reavilitizante del cabello",
+            "titulo": "Aceites reavilitizante del cabello",
+            "descripcion": "Tratamientos nutritivos en formato aceite que devuelven vitalidad, brillo y suavidad al cabello desde la primera aplicación.",
+            "productos": [
+                {
+                    "id": "hair_oil_revive_30ml",
+                    "nombre": "ACEITE REAVIVA CABELLO PROFESIONAL REVIVE STYLE.ME",
+                    "precio": 14.9,
+                    "descripcion": "Aceite revitalizante con extracto de quinoa y orquídea que aporta suavidad y elasticidad al cabello. Colabora a la reparación de los cabellos secos y dañados, aportando brillo, sedosidad y un control perfecto del encrespamiento.",
+                    "imagen": "/assets/productos/cuidadoCapilar/aceite-styleme-revive-revive-tu-cabello.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/aceite-styleme-revive-revive-tu-cabello.jpg",
+                        "/assets/productos/cuidadoCapilar/aceite-styleme-revive-revive-tu-cabello2.jpg",
+                        "/assets/productos/cuidadoCapilar/aceite-styleme-revive-revive-tu-cabello3.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/aceite-revitalizante.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_oil_revive_30ml",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": ["Aceite revitalizante con extracto de quinoa y orquídea.", "Repara los cabellos secos y dañados.", "Perfecto para aportar brillo, sedosidad y evita el encrespamiento.", "Tamaño: 200 ml"]
+                }
+            ]
+        },
+        {
+            "id": "polvos_voluminizadores",
+            "nombre": "polvos voluminizadores",
+            "titulo": "Polvos voluminizadores",
+            "descripcion": "Polvos texturizantes que elevan las raíces y aportan volumen inmediato con acabado natural.",
+            "productos": [
+                {
+                    "id": "hair_powder_volume_rootlift",
+                    "nombre": "POLVO VOLUMINIZADOR PROFESIONAL DUSTY STYLE.ME",
+                    "precio": 22.9,
+                    "descripcion": "Voluminizador en polvo ideal para aportar ese extra de volumen y textura al cabello. Destaca por su innovador dosificador, en formato pulsador, para mayor precisión a la hora de aplicar el producto en su cantidad justa. Aplicándolo sobre la raíz del cabello en seco, proporciona un efecto voluminizador instantáneo y de larga duración. Es ideal para texturizar, dar forma y cardar el cabello. Si se aplica en poca cantidad, también puede actuar como champú en seco al eliminar aceites grasos del cabello.",
+                    "imagen": "/assets/productos/cuidadoCapilar/polvo-styleme-dusty-super-voluminizador.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/polvo-styleme-dusty-super-voluminizador.jpg",
+                        "/assets/productos/cuidadoCapilar/polvo-styleme-dusty-super-voluminizador2.jpg",
+                        "/assets/productos/cuidadoCapilar/polvo-styleme-dusty-super-voluminizador3.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/polvo-volumen.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_powder_volume_rootlift",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": ["Polvo súper voluminizador.", "Perfecta para aportar volumen y textura al cabello.", "Se aplica en la raíz del cabello seco para un efecto instantáneo y de larga duración", "Tamaño: 60 ml"]
+                }
+            ]
+        },
+        {
+            "id": "lacas",
+            "nombre": "lacas",
+            "titulo": "Lacas",
+            "descripcion": "Fijadores flexibles que protegen el peinado de la humedad sin dejar residuos.",
+            "productos": [
+                {
+                    "id": "hair_laca_fijacion_flexible",
+                    "nombre": "LACA FUERTE PROFESIONAL SEXY STYLE.ME",
+                    "precio": 14.9,
+                    "descripcion": "Laca de fijación fuerte y de larga duración, perfecta para aportar volumen a esos peinados que necesitan mantenerse intactos durante todo el día. Protege el cabello de la humedad y lo acondiciona para un peinado natural e intenso.",
+                    "imagen": "/assets/productos/cuidadoCapilar/laca-styleme-sexy-larga-duracion.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/laca-styleme-sexy-larga-duracion.jpg",
+                        "/assets/productos/cuidadoCapilar/laca-styleme-sexy-larga-duracion2.jpg",
+                        "/assets/productos/cuidadoCapilar/laca-styleme-sexy-larga-duracion3.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/laca-fijacion.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_laca_fijacion_flexible",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": ["Laca en spray de larga duración.", "No apelmaza.", "Hold 5: Fijación muy alta.", "Tamaño: spray de 500 ml."]
+                }
+            ]
+        },
+        {
+            "id": "champus_y_mascarillas",
+            "nombre": "champús y mascarillas",
+            "titulo": "Champús y mascarillas",
+            "descripcion": "Rutinas completas para limpiar, tratar y reparar el cabello en casa con resultados profesionales.",
+            "productos": [
+                {
+                    "id": "hair_shampoo_fortificante_250ml",
+                    "nombre": "Mascarilla Anti-Yellow Style.me",
+                    "precio": 16,
+                    "descripcion": "Repara y fortalece el cabello dañado. Para evitar la desnutrición que causaría perder los lípidos naturales del cabello, Termix ha desarrollado la nueva mascarilla Repair.Me, ideal para cabellos dañados, ya que gracias a su fórmula sin sulfatos ni siliconas repara la fibra capilar y lo mantiene hidratado. Enriquecida con manteca de Karité, Aloe Vera y aceite de Marula, además de un 84% de principios activos naturales, la mascarilla fortalece las fibras capilares, regenera el cabello, y le da un aspecto más bonito y saludable. Combínala con el champú Repair.Me para conseguir una melena más suave, brillante y protegida.",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/mascarilla-anti-yellow-styleme.jpg",
+                        "/assets/productos/cuidadoCapilar/mascarilla-anti-yellow-styleme2.jpg",
+                        "/assets/productos/cuidadoCapilar/mascarilla-anti-yellow-styleme3.jpg"
+                    ],
+                    "imagen": "/assets/productos/cuidadoCapilar/mascarilla-anti-yellow-styleme.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/champu-fortificante.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_shampoo_fortificante_250ml",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": ["Mascarilla restauradora para cabello dañado o muy dañado: reconstruye, rejuvenece y repara el cabello dañado, castigado con necesitado de reparación.", "Repara los cabellos secos y dañados.", "Enriquecido con ingredientes naturales: los principios activos de la mascarilla son el Aloe Vera, aceite de Marula y la manteca de Karité, ingredientes reconocidos por sus propiedades hidratantes.", "Sin SLS ni parabenos ni siliconas: promueven un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.", "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.", "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",  "Tamaño: 500 ml"]
+                },
+                {
+                    "id": "hair_shampoo_color_250ml",
+                    "nombre": "Mascarilla Nutritiva Nutri.me Style.me",
+                    "precio": 16,
+                    "descripcion": "Para un cabello sano y nutrido. La mascarilla Nutri.Me es ideal para cabellos quebradizos, sin elasticidad y sin brillo ya que gracias su fórmula vegana, 100% libre de SLES, parabenos y siliconas deja el pelo nutrido y revitaliza la fibra capilar aportando movimiento de raíz a puntas. Con una textura fundente, tiene propiedades altamente nutritivas y protectoras. Contiene un 85% de ingredientes naturales como la manteca de Karité, el Aloe Vera y el aceite de Marula reestructura la fibra capilar y proporciona una nutrición intensa sin apelmazar el cabello, restaurando además su brillo.",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/mascarilla-nutritiva-nutrime-styleme.jpg",
+                        "/assets/productos/cuidadoCapilar/mascarilla-nutritiva-nutrime-styleme2.jpg",
+                        "/assets/productos/cuidadoCapilar/mascarilla-nutritiva-nutrime-styleme3.jpg"
+                    ],
+                    "imagen": "/assets/productos/cuidadoCapilar/mascarilla-nutritiva-nutrime-styleme.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/champu-color.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_shampoo_color_250ml",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": ["Mascarilla de nutrición para cabello seco que proporciona al cabello la nutrición que necesita, sobre todo cuando ha sido sometido a procesos químicos", "Enriquecido con ingredientes naturales: los principios activos de la mascarilla son el Aloe Vera, aceite de Marula y la manteca de Karité, que tienen propiedades altamente nutritivas.", "Enriquecido con ingredientes naturales: los principios activos de la mascarilla son el Aloe Vera, aceite de Marula y la manteca de Karité, ingredientes reconocidos por sus propiedades hidratantes.", "Sin SLS ni parabenos ni siliconas: promueven un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.", "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.", "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",  "Tamaño: 500 ml"]
+                },
+                {
+                    "id": "hair_shampoo_antiedad_250ml",
+                    "nombre": "Champú Antiyellow.Me Style.Me",
+                    "precio": 13,
+                    "descripcion": "Reaviva y transforma el tono del cabello. Termix presenta su primera línea de champús y mascarillas veganas AntiYellow.Me de Style.Me para cabellos rubios, decolorados o con canas formulada para neutralizar los tonos subyacentes amarillos no deseados. Gracias a su fórmula natural, libre de SLES, y enriquecida con Aloe Vera, Aceite de Marula y pigmentos violetas, mantiene el rubio frío neutralizando los tonos subyacentes cálidos, previniendo la pérdida de color y realzando su intensidad. Compuesto por un 88% de ingredientes de origen natural, el champú AntiYellow.Me está enriquecida con ingredientes como el Aloe Vera, el aceite de Marula y pigmentos violetas para limpiar con suavidad las impurezas del cuero cabelludo y eliminar de forma instantánea los tonos subyacentes amarillos no deseados.",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/champu-antiyellowme-styleme.jpg",
+                        "/assets/productos/cuidadoCapilar/champu-antiyellowme-styleme2.jpg"
+                    ],
+                    "imagen": "/assets/productos/cuidadoCapilar/champu-antiyellowme-styleme.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/champu-antiedad.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_shampoo_antiedad_250ml",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": ["Champú matizador con extracto de aceite de Marula, aloe vera y pigmento violeta", "Enriquecido con ingredientes naturales: los principios activos del champú son el Aloe Vera, aceite de Marula y pigmentos violetas, que tienen propiedades altamente nutritivas.", "Sin SLES, parabenos o siliconas: promueve un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.", "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.", "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",  "Tamaño: 300 ml"]
+                },
+                {
+                    "id": "hair_mascarilla_reparadora_200ml",
+                    "nombre": "Champú nutritivo Nutri.Me Style.Me",
+                    "precio": 13,
+                    "descripcion": "Cuidado desde la raíz hasta las puntas. Dale a tu cabello una dosis de fuerza, suavidad y vitalidad con el champú Nutri.Me, que nutre profundamente la fibra capilar desde el interior a la vez que previene la rotura del cabello y las puntas abiertas. Compuesto por un 88% de ingredientes de origen natural, su fórmula nutritiva a base de Aloe Vera, aceite de Marula y Provitamina B5, elimina el encrespamiento y aporta la nutrición que el cabello necesita a la vez que elimina con suavidad las impurezas del cuero cabelludo.",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/champu-nutritivo-nutrime-styleme.jpg",
+                        "/assets/productos/cuidadoCapilar/champu-nutritivo-nutrime-styleme2.jpg"
+                    ],
+                    "imagen": "/assets/productos/cuidadoCapilar/champu-nutritivo-nutrime-styleme.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/mascarilla-reparadora.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_mascarilla_reparadora_200ml",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": ["Champú de nutrición para cabello seco que proporciona al cabello la nutrición que necesita, sobre todo cuando ha sido sometido a procesos químicos.", "Enriquecido con ingredientes naturales: los principios activos del champú son el Aloe Vera, aceite de Marula y el Pantenole (Provitamina B5), que tienen propiedades altamente nutritivas.", "Sin SLS ni parabenos ni siliconas: promueven un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.", "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.", "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",  "Tamaño: 500 ml"]
+                },
+                {
+                    "id": "hair_mascarilla_hidratante_200ml",
+                    "nombre": "Champú reparador Repair.Me Style.Me",
+                    "precio": 13,
+                    "descripcion": "¿List@ para revivir tu melena? Termix presenta su primera línea de champús veganos Repair.Me de Style.Me con tecnología natural que repara y fortalece el cabello dañado. Con un 88% de principios activos naturales, su fórmula sin SLES está enriquecida con Aloe Vera y Aceite de Marula para regenerar el cabello, revitalizarlo y devolverle un aspecto saludable y brillante. Diseñado para cabellos secos y dañados, limpia en profundidad el cuero cabelludo a la vez que restaura los cabellos más dañados. ¡Devuélvele la vida a tu cabello!",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/champu-reparador-repairme-styleme.jpg",
+                        "/assets/productos/cuidadoCapilar/champu-reparador-repairme-styleme2.jpg"
+                    ],
+                    "imagen": "/assets/productos/cuidadoCapilar/champu-reparador-repairme-styleme.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/mascarilla-hidratante.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_mascarilla_hidratante_200ml",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": ["Champú de reparación para cabello dañado o muy dañado: reconstruye, rejuvenece y repara el cabello dañado, castigado con necesitado de reparación.", "Enriquecido con ingredientes naturales: los principios activos del champú son el Aloe Vera y el aceite de Marula, ingredientes reconocidos por sus propiedades hidratantes.", "Sin SLS ni parabenos ni siliconas: promueven un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.", "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.", "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",  "Tamaño: 300 ml"]
+                },
+                {
+                    "id": "hair_mascarilla_brillo_150ml",
+                    "nombre": "Mascarilla reparadora Repair.me Style.me",
+                    "precio": 16,
+                    "descripcion": "Repara y fortalece el cabello dañado.Para evitar la desnutrición que causaría perder los lípidos naturales del cabello, Termix ha desarrollado la nueva mascarilla Repair.Me, ideal para cabellos dañados, ya que gracias a su fórmula sin sulfatos ni siliconas repara la fibra capilar y lo mantiene hidratado. Enriquecida con manteca de Karité, Aloe Vera y aceite de Marula, además de un 84% de principios activos naturales, la mascarilla fortalece las fibras capilares, regenera el cabello, y le da un aspecto más bonito y saludable. Combínala con el champú Repair.Me para conseguir una melena más suave, brillante y protegida.",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/mascarilla-reparadora-repairme-styleme.jpg",
+                        "/assets/productos/cuidadoCapilar/mascarilla-reparadora-repairme-styleme2.jpg",
+                        "/assets/productos/cuidadoCapilar/mascarilla-reparadora-repairme-styleme3.jpg"
+                    ],
+                    "imagen": "/assets/productos/cuidadoCapilar/mascarilla-reparadora-repairme-styleme.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/mascarilla-brillo.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_mascarilla_brillo_150ml",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": ["Mascarilla restauradora para cabello dañado o muy dañado: reconstruye, rejuvenece y repara el cabello dañado, castigado con necesitado de reparación.", "Enriquecido con ingredientes naturales: los principios activos de la mascarilla son el Aloe Vera, aceite de Marula y la manteca de Karité, ingredientes reconocidos por sus propiedades hidratantes.", "Sin SLS ni parabenos ni siliconas: promueven un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.", "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.", "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",  "Tamaño: 500 ml"]
+                }
+            ]
+        }
+    ]
+}

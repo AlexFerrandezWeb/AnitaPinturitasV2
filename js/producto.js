@@ -163,56 +163,149 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Función para cargar datos del producto desde el JSON
     function cargarProducto(id) {
-        fetch('../data/cuidadoPiel.json')
-            .then(response => response.json())
-            .then(data => {
-                // Buscar el producto en todas las categorías
-                let producto = null;
-                for (let categoria of data.categorias) {
-                    producto = categoria.productos.find(p => p.id === id);
-                    if (producto) break;
+        obtenerDatosProducto(id)
+            .then(result => {
+                if (!result || !result.producto) {
+                    console.error('Producto no encontrado');
+                    return;
+                }
+
+                const { producto } = result;
+
+                // Actualizar los elementos de la página
+                document.querySelector('.producto-details__name').textContent = producto.nombre;
+                document.querySelector('.producto-details__price-current').textContent = producto.precio.toFixed(2) + '€';
+                document.querySelector('.producto-details__description p').textContent = producto.descripcion;
+                renderIngredientes(producto.ingredientes);
+                
+                // Guardar ID del producto para el carrito
+                window.currentProductId = producto.id;
+                window.currentProductData = producto;
+                
+                // Actualizar imagen principal y galería
+                const mainImg = document.querySelector('#producto-img-principal');
+                const galeria = Array.isArray(producto.galeria) && producto.galeria.length > 0
+                    ? producto.galeria
+                    : [producto.imagen, '../assets/frase1.jpg', '../assets/frase2.jpg'];
+                const thumbnailsContainer = document.querySelector('.producto-details__thumbnails');
+
+                if (mainImg) {
+                    mainImg.src = galeria[0];
+                    mainImg.alt = producto.nombre;
                 }
                 
-                if (producto) {
-                    // Actualizar los elementos de la página
-                    document.querySelector('.producto-details__name').textContent = producto.nombre;
-                    document.querySelector('.producto-details__price-current').textContent = producto.precio.toFixed(2) + '€';
-                    document.querySelector('.producto-details__description p').textContent = producto.descripcion;
-                    
-                    // Guardar ID del producto para el carrito
-                    window.currentProductId = producto.id;
-                    window.currentProductData = producto;
-                    
-                    // Actualizar imagen principal
-                    const mainImg = document.querySelector('#producto-img-principal');
-                    if (mainImg) {
-                        mainImg.src = producto.imagen;
-                        mainImg.alt = producto.nombre;
-                    }
-                    
-                    // Trackear ViewContent (ver contenido del producto)
-                    if (typeof window.trackViewContent === 'function') {
-                        window.trackViewContent(producto.id, producto.nombre, producto.precio);
-                    }
-                    
-                    // Actualizar las miniaturas (imágenes del producto + frases inspiracionales)
-                    const thumbnailsContainer = document.querySelector('.producto-details__thumbnails');
-                    if (thumbnailsContainer) {
-                        thumbnailsContainer.innerHTML = `
-                            <img src="${producto.imagen}" alt="Vista 1" class="producto-details__thumbnail active" data-main-img="${producto.imagen}">
-                            <img src="../assets/frase1.jpg" alt="Frase inspiracional 1" class="producto-details__thumbnail" data-main-img="../assets/frase1.jpg">
-                            <img src="../assets/frase2.jpg" alt="Frase inspiracional 2" class="producto-details__thumbnail" data-main-img="../assets/frase2.jpg">
-                        `;
-                        // Re-añadir listeners a las nuevas miniaturas
-                        attachThumbnailListeners();
-                    }
-                } else {
-                    console.error('Producto no encontrado');
+                if (thumbnailsContainer) {
+                    thumbnailsContainer.innerHTML = galeria.map((imagenSrc, index) => {
+                        const isActive = index === 0 ? 'active' : '';
+                        const altText = index === 0 ? 'Vista 1' : `Vista ${index + 1}`;
+                        return `<img src="${imagenSrc}" alt="${altText}" class="producto-details__thumbnail ${isActive}" data-main-img="${imagenSrc}">`;
+                    }).join('');
+                    attachThumbnailListeners();
                 }
+                
+                // Trackear ViewContent (ver contenido del producto)
+                if (typeof window.trackViewContent === 'function') {
+                    window.trackViewContent(producto.id, producto.nombre, producto.precio);
+                }
+                
+                // Actualizar las miniaturas (imágenes del producto + frases inspiracionales)
+                // const thumbnailsContainer = document.querySelector('.producto-details__thumbnails');
+                // if (thumbnailsContainer) {
+                //     thumbnailsContainer.innerHTML = `
+                //         <img src="${producto.imagen}" alt="Vista 1" class="producto-details__thumbnail active" data-main-img="${producto.imagen}">
+                //         <img src="../assets/frase1.jpg" alt="Frase inspiracional 1" class="producto-details__thumbnail" data-main-img="../assets/frase1.jpg">
+                //         <img src="../assets/frase2.jpg" alt="Frase inspiracional 2" class="producto-details__thumbnail" data-main-img="../assets/frase2.jpg">
+                //     `;
+                    // Re-añadir listeners a las nuevas miniaturas
+                    // attachThumbnailListeners();
+                // }
             })
             .catch(error => {
                 console.error('Error al cargar el producto:', error);
             });
+    }
+
+    function obtenerDatosProducto(id) {
+        const dataFiles = ['../data/cuidadoPiel.json', '../data/cuidadoCapilar.json'];
+
+        return new Promise((resolve, reject) => {
+            const intentarArchivo = (index) => {
+                if (index >= dataFiles.length) {
+                    resolve(null);
+                    return;
+                }
+
+                fetch(dataFiles[index])
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Error al cargar ${dataFiles[index]}: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (!data || !Array.isArray(data.categorias)) {
+                            throw new Error(`Formato de datos inválido en ${dataFiles[index]}`);
+                        }
+
+                        for (const categoria of data.categorias) {
+                            const productoEncontrado = (categoria.productos || []).find(p => p.id === id);
+                            if (productoEncontrado) {
+                                resolve({ producto: productoEncontrado, origen: dataFiles[index] });
+                                return;
+                            }
+                        }
+
+                        // No encontrado en este archivo, intentar con el siguiente
+                        intentarArchivo(index + 1);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        intentarArchivo(index + 1);
+                    });
+            };
+
+            intentarArchivo(0);
+        });
+    }
+
+    // Función para renderizar ingredientes dinamicamente
+    function renderIngredientes(ingredientes) {
+        const ingredientsSection = document.querySelector('.producto-details__ingredients');
+        const ingredientsContent = document.querySelector('.producto-details__ingredients-content');
+
+        if (!ingredientsSection || !ingredientsContent) return;
+
+        const items = [];
+
+        if (Array.isArray(ingredientes)) {
+            ingredientes.forEach(ing => {
+                if (typeof ing === 'string') {
+                    const cleaned = ing.trim();
+                    if (cleaned) items.push(cleaned);
+                }
+            });
+        } else if (typeof ingredientes === 'string') {
+            const normalized = ingredientes.trim();
+            if (normalized) {
+                const separator = normalized.includes('\n') ? /\n+/ : /[,;]+/;
+                const parts = normalized.split(separator).map(part => part.trim()).filter(Boolean);
+                if (parts.length > 1) {
+                    items.push(...parts);
+                } else {
+                    ingredientsContent.textContent = normalized;
+                    ingredientsSection.style.display = '';
+                    return;
+                }
+            }
+        }
+
+        if (items.length > 0) {
+            ingredientsContent.innerHTML = `<ul class="producto-details__ingredients-list">${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
+            ingredientsSection.style.display = '';
+        } else {
+            ingredientsContent.innerHTML = '';
+            ingredientsSection.style.display = 'none';
+        }
     }
 });
 

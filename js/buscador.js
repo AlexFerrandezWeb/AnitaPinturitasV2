@@ -165,46 +165,41 @@ document.addEventListener('DOMContentLoaded', function() {
     async function cargarProductos() {
         if (productosCache) return productosCache;
         
-        try {
-            console.log('Cargando productos para búsqueda...');
-            // Detectar si estamos en la raíz (index.html) o en una subcarpeta
-            const isRootPage = window.location.pathname.endsWith('index.html') || 
-                              window.location.pathname === '/' || 
-                              window.location.pathname.endsWith('/');
-            const dataUrl = isRootPage 
-                ? 'data/cuidadoPiel.json' 
-                : '../data/cuidadoPiel.json';
-            const response = await fetch(dataUrl);
-            
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            
-            const data = await response.json();
-            console.log('Datos cargados:', data);
-            
-            // Aplanar todos los productos de todas las categorías
-            productosCache = [];
-            data.categorias.forEach(categoria => {
-                categoria.productos.forEach(producto => {
-                    const nombre = producto.nombre || '';
-                    const descripcion = producto.descripcion || '';
-                    const categoriaTitulo = categoria.titulo || '';
-                    productosCache.push({
-                        ...producto,
-                        categoria: categoriaTitulo,
-                        // Índice de texto normalizado para rendimiento
-                        _textoIndex: normalizarTexto(`${nombre} ${descripcion} ${categoriaTitulo}`)
-                    });
-                });
-            });
-            
-            console.log('Productos procesados:', productosCache.length);
-            return productosCache;
-        } catch (error) {
-            console.error('Error al cargar productos:', error);
-            return [];
-        }
+        const basePath = window.location.pathname.includes('/html/') ? '../data/' : 'data/';
+        const archivosDatos = [`${basePath}cuidadoPiel.json`, `${basePath}cuidadoCapilar.json`];
+
+        const productosUnicos = new Map();
+
+        await Promise.all(
+            archivosDatos.map(async (ruta) => {
+                try {
+                    const response = await fetch(ruta);
+                    if (!response.ok) {
+                        throw new Error(`Error al cargar ${ruta}: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    if (data && Array.isArray(data.categorias)) {
+                        data.categorias.forEach(categoria => {
+                            (categoria.productos || []).forEach(producto => {
+                                const productoNormalizado = {
+                                    ...producto,
+                                    categoria: categoria.titulo || categoria.nombre || 'Sin categoría'
+                                };
+
+                                if (!productosUnicos.has(productoNormalizado.id)) {
+                                    productosUnicos.set(productoNormalizado.id, productoNormalizado);
+                                }
+                            });
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error cargando productos desde', ruta, error);
+                }
+            })
+        );
+
+        productosCache = Array.from(productosUnicos.values());
+        return productosCache;
     }
     
     // Función para normalizar texto (quitar tildes, guiones, espacios extra, etc.)

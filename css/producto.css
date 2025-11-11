@@ -212,9 +212,29 @@ body {
     margin-bottom: 10px;
 }
 
-.producto-details__ingredients p {
+.producto-details__ingredients-content {
     color: var(--black);
     line-height: 1.8;
+}
+
+.producto-details__ingredients-list {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+.producto-details__ingredients-list li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 8px;
+}
+
+.producto-details__ingredients-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--cardinal-pink);
+    font-weight: 700;
 }
 
 /* Controles de cantidad */
