@@ -176,6 +176,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.querySelector('.producto-details__name').textContent = producto.nombre;
                 document.querySelector('.producto-details__price-current').textContent = producto.precio.toFixed(2) + '€';
                 document.querySelector('.producto-details__description p').textContent = producto.descripcion;
+                
+                const categoryElement = document.querySelector('.producto-details__category');
+                if (categoryElement) {
+                    const defaultCategory = result.origen && result.origen.includes('cuidadoCapilar')
+                        ? 'Cuidado Capilar'
+                        : 'Cuidado de la Piel';
+                    categoryElement.textContent = defaultCategory;
+                }
                 renderIngredientes(producto.ingredientes);
                 
                 // Guardar ID del producto para el carrito

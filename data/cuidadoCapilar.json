@@ -1,9 +1,36 @@
 {
     "categorias": [
         {
-            "id": "aceites_reavilitizante_del_cabello",
-            "nombre": "aceites reavilitizante del cabello",
-            "titulo": "Aceites reavilitizante del cabello",
+            "id": "spray_termoprotector",
+            "nombre": "spray termoprotector",
+            "titulo": "Spray termoprotector",
+            "descripcion": "Tratamientos nutritivos en formato spray que devuelven vitalidad, brillo y suavidad al cabello desde la primera aplicación.",
+            "productos": [
+                {
+                    "id": "hair_spray_termo_protector_30ml",
+                    "nombre": "SPRAY TERMO PROTECTOR PROFESIONAL SHIELDY STYLE.ME",
+                    "precio": 14.9,
+                    "descripcion": "Spray termoprotector enriquecido con aceite de argán que crea una película invisible para una protección total del cabello contra las altas temperaturas y la acción del calor. Facilita el planchado y proporciona una acción hidratante y anti-estática para un cabello más suave y luminoso.",
+                    "imagen": "/assets/productos/cuidadoCapilar/spray-styleme-shieldy-termoprotector.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/spray-styleme-shieldy-termoprotector.jpg",
+                        "/assets/productos/cuidadoCapilar/spray-styleme-shieldy-termoprotector2.jpg",
+                        "/assets/productos/cuidadoCapilar/spray-styleme-shieldy-termoprotector3.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/spray-termoprotector.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_spray_termo_protector_30ml",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": ["Spray termoprotector enriquecido con aceite de argán.", "Crea una película invisible para una protección total del cabello contra las altas temperaturas.", "Utilizar antes de la utilización de planchas, secadores o tenacillas.","Hold 1: Fijación mínima.", "Tamaño: 200 ml"]
+                }
+            ]
+        },
+        {
+            "id": "aceites_revitalizante_del_cabello",
+            "nombre": "aceites revitalizante del cabello",
+            "titulo": "Aceites revitalizante del cabello",
             "descripcion": "Tratamientos nutritivos en formato aceite que devuelven vitalidad, brillo y suavidad al cabello desde la primera aplicación.",
             "productos": [
                 {
