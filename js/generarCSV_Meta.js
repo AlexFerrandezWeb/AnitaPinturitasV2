@@ -3,7 +3,10 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuración
-const JSON_FILE = path.join(__dirname, '..', 'data', 'cuidadoPiel.json');
+const JSON_FILES = [
+    path.join(__dirname, '..', 'data', 'cuidadoPiel.json'),
+    path.join(__dirname, '..', 'data', 'cuidadoCapilar.json')
+];
 const CSV_FILE = path.join(__dirname, '..', 'product-feed.csv');
 const CURRENCY = 'EUR';
 
@@ -37,9 +40,22 @@ function formatPrice(precio) {
 // Función principal
 function generateCSV() {
     try {
-        console.log('📖 Leyendo archivo JSON...');
-        const jsonContent = fs.readFileSync(JSON_FILE, 'utf8');
-        const data = JSON.parse(jsonContent);
+        console.log('📖 Leyendo archivos JSON...');
+
+        const datasets = JSON_FILES.map(filePath => {
+            try {
+                const jsonContent = fs.readFileSync(filePath, 'utf8');
+                const data = JSON.parse(jsonContent);
+                return { data, origen: path.basename(filePath) };
+            } catch (error) {
+                console.error(`❌ Error al leer ${filePath}:`, error.message);
+                return null;
+            }
+        }).filter(Boolean);
+
+        if (!datasets.length) {
+            throw new Error('No se pudieron cargar los archivos JSON de productos.');
+        }
 
         // Columnas del CSV según requerimientos de Meta
         const headers = [
@@ -61,39 +77,41 @@ function generateCSV() {
         let totalProducts = 0;
         let processedProducts = 0;
 
-        // Procesar cada categoría
-        if (data.categorias && Array.isArray(data.categorias)) {
-            data.categorias.forEach(categoria => {
-                if (categoria.productos && Array.isArray(categoria.productos)) {
-                    categoria.productos.forEach(producto => {
-                        totalProducts++;
+        datasets.forEach(({ data, origen }) => {
+            if (data.categorias && Array.isArray(data.categorias)) {
+                data.categorias.forEach(categoria => {
+                    if (categoria.productos && Array.isArray(categoria.productos)) {
+                        categoria.productos.forEach(producto => {
+                            totalProducts++;
 
-                        // Validar que el producto tenga los campos necesarios
-                        if (!producto.id || !producto.nombre) {
-                            console.warn(`⚠️  Producto sin ID o nombre, saltando: ${JSON.stringify(producto)}`);
-                            return;
-                        }
+                            if (!producto.id || !producto.nombre) {
+                                console.warn(`⚠️  Producto sin ID o nombre, saltando: ${JSON.stringify(producto)}`);
+                                return;
+                            }
 
-                        // Construir la fila del CSV
-                        const row = [
-                            escapeCSV(producto.id),
-                            escapeCSV(producto.nombre),
-                            escapeCSV(producto.descripcion || ''),
-                            escapeCSV(formatPrice(producto.precio)),
-                            escapeCSV(producto.image_link || producto.imagen || ''),
-                            escapeCSV(producto.link || ''),
-                            escapeCSV(producto.availability || 'in stock'),
-                            escapeCSV(producto.condition || 'new'),
-                            escapeCSV(producto.brand || 'Anita Pinturitas'),
-                            escapeCSV(producto.product_type || 'Cuidado de la Piel')
-                        ];
+                            const origenDefault = origen.includes('Capilar') ? 'Cuidado Capilar' : 'Cuidado de la Piel';
+                            const productTypeFallback = producto.product_type || categoria?.nombre || origenDefault;
 
-                        rows.push(row.join(','));
-                        processedProducts++;
-                    });
-                }
-            });
-        }
+                            const row = [
+                                escapeCSV(producto.id),
+                                escapeCSV(producto.nombre),
+                                escapeCSV(producto.descripcion || ''),
+                                escapeCSV(formatPrice(producto.precio)),
+                                escapeCSV(producto.image_link || producto.imagen || ''),
+                                escapeCSV(producto.link || ''),
+                                escapeCSV(producto.availability || 'in stock'),
+                                escapeCSV(producto.condition || 'new'),
+                                escapeCSV(producto.brand || 'Anita Pinturitas'),
+                                escapeCSV(productTypeFallback)
+                            ];
+
+                            rows.push(row.join(','));
+                            processedProducts++;
+                        });
+                    }
+                });
+            }
+        });
 
         // Escribir el CSV
         console.log('💾 Generando archivo CSV...');
