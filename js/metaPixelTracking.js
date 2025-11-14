@@ -20,24 +20,61 @@
         return window.location.origin;
     }
 
+    /**
+     * Recopila todos los datos de conexión necesarios para CAPI.
+     * Captura cookies _fbc y _fbp, userAgent y otros datos esenciales.
+     * @param {object} piiData - Datos de PII (email, name, etc.) si están disponibles.
+     * @returns {object} - Payload base para enviar al servidor.
+     */
+    function getCapiPayload(piiData = {}) {
+        // 1. Capturar cookies _fbc y _fbp (esenciales para calidad de coincidencia)
+        const fbc = getCookie('_fbc');
+        const fbp = getCookie('_fbp');
+
+        // 2. Capturar User Agent (navegador del usuario)
+        const userAgent = navigator.userAgent;
+
+        // 3. Obtener URL actual
+        const sourceUrl = window.location.href;
+
+        return {
+            // Datos de conexión (clave para ViewContent y AddToCart)
+            fbc: fbc,
+            fbp: fbp,
+            userAgent: userAgent,
+            sourceUrl: sourceUrl,
+            
+            // Datos de PII (se combinan con los datos pasados)
+            ...piiData,
+        };
+    }
+
     // Función para trackear evento tanto en Pixel como en CAPI
     function trackEvent(eventName, eventData = {}, pixelData = {}) {
         // Generar ID único del evento
         const eventId = generateEventId(eventName);
 
-        // Leer cookies de Meta
-        const fbc = getCookie('_fbc');
-        const fbp = getCookie('_fbp');
-
-        // Obtener URL actual
-        const sourceUrl = window.location.href;
+        // Construir payload base con datos de conexión
+        const basePayload = getCapiPayload({
+            eventName: eventName,
+            email: eventData.email || null,
+            phone: eventData.phone || null,
+            firstName: eventData.firstName || null,
+            lastName: eventData.lastName || null,
+            value: eventData.value || null,
+            currency: eventData.currency || 'EUR',
+            contentName: eventData.contentName || null,
+            contentIds: eventData.contentIds || null,
+            searchString: eventData.searchString || null,
+            eventId: eventId
+        });
 
         // 1. Disparar Pixel en frontend (si está disponible)
         if (typeof fbq === 'function') {
             fbq('track', eventName, pixelData, { eventID: eventId });
         }
 
-        // 2. Enviar evento a backend (CAPI)
+        // 2. Enviar evento a backend (CAPI) con todos los datos de conexión
         const backendUrl = getBackendUrl();
         
         fetch(`${backendUrl}/api/track-event`, {
@@ -45,22 +82,7 @@
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                eventName: eventName,
-                email: eventData.email || null,
-                phone: eventData.phone || null,
-                firstName: eventData.firstName || null,
-                lastName: eventData.lastName || null,
-                value: eventData.value || null,
-                currency: eventData.currency || 'EUR',
-                contentName: eventData.contentName || null,
-                contentIds: eventData.contentIds || null,
-                searchString: eventData.searchString || null,
-                fbc: fbc,
-                fbp: fbp,
-                eventId: eventId,
-                sourceUrl: sourceUrl
-            })
+            body: JSON.stringify(basePayload)
         })
         .then(response => response.json())
         .then(result => {

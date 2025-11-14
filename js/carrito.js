@@ -9,6 +9,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartCheckout = document.querySelector('.cart-checkout');
     const cartCount = document.querySelector('.nav__cart-count');
 
+    // Función de utilidad para mostrar mensajes no bloqueantes (Reemplazo de alert())
+    // Compatible con Canvas y entornos donde alert() no funciona
+    function showUserMessage(message, type = 'error') {
+        // Intentar usar un elemento de mensaje si existe en el DOM
+        const messageBox = document.getElementById('user-message-box');
+        if (messageBox) {
+            messageBox.textContent = message;
+            messageBox.className = `user-message user-message--${type}`;
+            messageBox.classList.add('visible');
+            // Auto-ocultar después de 5 segundos
+            setTimeout(() => {
+                messageBox.classList.remove('visible');
+            }, 5000);
+            return;
+        }
+
+        // Fallback: usar console para depuración (no bloqueante)
+        if (type === 'error') {
+            console.error('⚠️ Mensaje al usuario:', message);
+        } else {
+            console.warn('ℹ️ Mensaje al usuario:', message);
+        }
+
+        // Si hay un sistema de notificaciones disponible, usarlo
+        if (typeof window.showNotification === 'function') {
+            window.showNotification(message, type);
+        }
+    }
+
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     
     // Exponer cart globalmente para actualización desde otras páginas
@@ -216,7 +245,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
         
         if (currentCart.length === 0) {
-            alert('Tu carrito está vacío');
+            // Reemplazo de alert() - compatible con Canvas
+            showUserMessage('Tu carrito está vacío. Añade productos para proceder al pago.', 'warning');
             return;
         }
 
@@ -260,23 +290,46 @@ document.addEventListener('DOMContentLoaded', function() {
             window.trackInitiateCheckout(total, currentCart);
         }
         
+        // Capturar cookies de Meta para HQC (serán guardadas en metadata de Stripe)
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+        const fbc = getCookie('_fbc');
+        const fbp = getCookie('_fbp');
+        
+        // Añadir cookies de Meta a los datos del checkout
+        const checkoutPayload = {
+            ...cartData,
+            ...(fbc && { fbc: fbc }),
+            ...(fbp && { fbp: fbp })
+        };
+        
         // Mostrar indicador de carga
         if (cartCheckout) {
             cartCheckout.disabled = true;
             cartCheckout.textContent = 'Procesando...';
         }
         
-        // Crear sesión de checkout en el backend
+        // Crear sesión de checkout en el backend (con cookies de Meta para HQC)
         fetch(backendCheckoutUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(cartData)
+            body: JSON.stringify(checkoutPayload)
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error(`Error HTTP: ${response.status}`);
+                // Leer el error del cuerpo si está disponible
+                return response.json().then(errorData => {
+                    throw new Error(errorData.error || `Error HTTP: ${response.status}`);
+                }).catch(() => {
+                    // Si no se puede parsear el error, usar el status
+                    throw new Error(`Error HTTP: ${response.status}`);
+                });
             }
             return response.json();
         })
@@ -290,7 +343,9 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => {
             console.error('Error al crear sesión de checkout:', error);
-            alert('Error al procesar el pago. Por favor, inténtalo de nuevo.\n\nSi el problema persiste, verifica que el servidor backend esté corriendo.');
+            // Reemplazo de alert() - compatible con Canvas
+            const errorMessage = error.message || 'Error al procesar el pago. Por favor, inténtalo de nuevo.';
+            showUserMessage(`${errorMessage}\n\nSi el problema persiste, verifica que el servidor backend esté corriendo.`, 'error');
             
             // Restaurar botón
             if (cartCheckout) {

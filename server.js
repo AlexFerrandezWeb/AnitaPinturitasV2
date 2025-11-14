@@ -13,7 +13,19 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
-app.use(express.json());
+
+// Middleware condicional: excluir webhook de Stripe del parsing JSON
+// porque necesita el body raw para verificar la firma
+app.use((req, res, next) => {
+    if (req.path === '/api/stripe-webhook') {
+        // Para el webhook, usar express.raw() en lugar de express.json()
+        express.raw({ type: 'application/json' })(req, res, next);
+    } else {
+        // Para el resto de endpoints, usar express.json()
+        express.json()(req, res, next);
+    }
+});
+
 app.use(express.static('.'));
 
 // Inicializar Stripe con tu clave secreta
@@ -53,7 +65,7 @@ function convertToAbsoluteUrl(imagePath, baseUrl) {
 // Endpoint para crear sesión de checkout
 app.post('/api/create-checkout-session', async (req, res) => {
     try {
-        const { items, total } = req.body;
+        const { items, total, fbc, fbp } = req.body; // Capturar cookies de Meta para HQC
 
         if (!items || items.length === 0) {
             return res.status(400).json({ error: 'El carrito está vacío' });
@@ -149,6 +161,9 @@ app.post('/api/create-checkout-session', async (req, res) => {
                 // Guardar información adicional si es necesario
                 total: total.toString(),
                 item_count: items.length.toString(),
+                // Guardar cookies de Meta para HQC (serán usadas en el webhook)
+                ...(fbc && { fbc: fbc }),
+                ...(fbp && { fbp: fbp }),
             },
         });
 
@@ -173,6 +188,159 @@ app.get('/api/checkout-session/:sessionId', async (req, res) => {
     } catch (error) {
         console.error('Error al recuperar sesión:', error);
         res.status(500).json({ error: 'Error al recuperar la sesión' });
+    }
+});
+
+// Webhook de Stripe para disparar evento Purchase de forma robusta (HQC)
+// IMPORTANTE: Configura este endpoint en Stripe Dashboard -> Webhooks
+// URL: https://tu-dominio.com/api/stripe-webhook
+// Eventos a escuchar: checkout.session.completed
+// NOTA: El middleware condicional arriba ya procesa el body como raw para este endpoint
+app.post('/api/stripe-webhook', async (req, res) => {
+    const sig = req.headers['stripe-signature'];
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+    if (!webhookSecret) {
+        console.warn('⚠️  STRIPE_WEBHOOK_SECRET no configurada. El webhook no funcionará correctamente.');
+        return res.status(400).send('Webhook secret no configurado');
+    }
+
+    let event;
+
+    try {
+        // Verificar la firma del webhook para asegurar que viene de Stripe
+        event = stripeClient.webhooks.constructEvent(req.body, sig, webhookSecret);
+    } catch (err) {
+        console.error('❌ Error al verificar firma del webhook:', err.message);
+        return res.status(400).send(`Webhook Error: ${err.message}`);
+    }
+
+    // Manejar el evento checkout.session.completed
+    if (event.type === 'checkout.session.completed') {
+        const session = event.data.object;
+
+        try {
+            // Extraer datos de PII de Stripe (garantizados y exactos)
+            const email = session.customer_details?.email || session.customer_email;
+            const phone = session.customer_details?.phone || null;
+            
+            // Extraer nombre y apellido
+            let firstName = null;
+            let lastName = null;
+            const fullName = session.customer_details?.name;
+            if (fullName) {
+                const nameParts = fullName.trim().split(/\s+/);
+                if (nameParts.length > 0) {
+                    firstName = nameParts[0];
+                    if (nameParts.length > 1) {
+                        lastName = nameParts.slice(1).join(' ');
+                    }
+                }
+            }
+
+            // Recuperar cookies de Meta de los metadatos (guardadas en create-checkout-session)
+            const fbc = session.metadata?.fbc || null;
+            const fbp = session.metadata?.fbp || null;
+
+            // Obtener el valor total (amount_total está en centavos)
+            const value = session.amount_total ? (session.amount_total / 100).toFixed(2) : null;
+
+            // Validar datos requeridos
+            if (!email || !value) {
+                console.warn('⚠️  Datos incompletos en webhook:', { email, value, sessionId: session.id });
+                return res.status(200).json({ received: true, message: 'Datos incompletos, evento no trackeado' });
+            }
+
+            // Obtener datos de conexión del webhook (IP y User Agent de Stripe)
+            // Nota: En webhooks, la IP es la de Stripe, no la del cliente final
+            // Por eso es importante tener fbc/fbp guardados en metadata
+            const { clientIp, clientUserAgent } = getClientConnectionData(req);
+
+            // Verificar configuración de Meta
+            const metaAccessToken = process.env.META_ACCESS_TOKEN;
+            const metaPixelId = process.env.META_PIXEL_ID;
+            const testEventCode = process.env.META_TEST_EVENT_CODE;
+
+            if (!metaAccessToken) {
+                console.warn('⚠️  META_ACCESS_TOKEN no configurada. No se enviará evento a Meta.');
+                return res.status(200).json({ received: true, message: 'Meta no configurado' });
+            }
+
+            if (!metaPixelId && !testEventCode) {
+                console.warn('⚠️  META_PIXEL_ID o META_TEST_EVENT_CODE no configurados.');
+                return res.status(200).json({ received: true, message: 'Pixel ID no configurado' });
+            }
+
+            // Hashear información personal (email, teléfono, nombre, apellido)
+            const hashedEmail = hashEmail(email);
+            const hashedPhone = phone ? hashPhone(phone) : null;
+            const hashedFirstName = firstName ? hashName(firstName) : null;
+            const hashedLastName = lastName ? hashLastName(lastName) : null;
+
+            // Obtener timestamp actual (en segundos)
+            const eventTime = Math.floor(Date.now() / 1000);
+
+            // Generar ID único del evento para deduplicación
+            // Usar session.id como parte del eventId para garantizar unicidad
+            const eventId = `purchase_webhook_${session.id}_${eventTime}`;
+
+            // Construir user_data con datos hasheados y datos de conexión
+            const userData = buildUserData(email, phone, firstName, lastName, clientIp, clientUserAgent, fbc, fbp);
+
+            // Construir el payload según el formato de Meta
+            const eventData = {
+                event_name: 'Purchase',
+                event_time: eventTime,
+                action_source: 'website',
+                user_data: userData,
+                custom_data: {
+                    currency: 'EUR',
+                    value: parseFloat(value).toFixed(2),
+                },
+                event_id: eventId, // Para deduplicación
+            };
+
+            // Construir el body de la petición
+            const requestBody = {
+                data: [eventData],
+            };
+
+            // Enviar evento a Meta usando la función helper
+            console.log('📤 Enviando evento Purchase desde webhook a Meta:', {
+                email: email,
+                value: value,
+                fbc: fbc ? 'presente' : 'ausente',
+                fbp: fbp ? 'presente' : 'ausente',
+                eventId: eventId
+            });
+
+            // Enviar evento a Meta (la función sendEventToMeta maneja la respuesta)
+            // Crear un objeto res mock para que sendEventToMeta funcione correctamente
+            const mockRes = {
+                status: (code) => ({
+                    json: (data) => {
+                        if (code >= 200 && code < 300) {
+                            console.log('✅ Evento Purchase trackeado desde webhook:', data);
+                        } else {
+                            console.error('❌ Error al trackear desde webhook:', data);
+                        }
+                        // Responder al webhook de Stripe
+                        return res.status(200).json({ received: true, tracked: data.tracked || false, ...data });
+                    }
+                })
+            };
+
+            return sendEventToMeta(requestBody, metaAccessToken, metaPixelId, testEventCode, mockRes);
+
+        } catch (error) {
+            console.error('❌ Error al procesar webhook de Stripe:', error);
+            // Responder 200 para que Stripe no reintente
+            return res.status(200).json({ received: true, error: error.message });
+        }
+    } else {
+        // Evento no manejado
+        console.log(`ℹ️  Evento de webhook recibido pero no manejado: ${event.type}`);
+        res.json({ received: true, message: `Evento ${event.type} recibido pero no procesado` });
     }
 });
 
@@ -218,7 +386,7 @@ app.post('/api/track-purchase', async (req, res) => {
         // PASO 1: Recibir los nuevos datos del body
         const { 
             email, phone, firstName, lastName, value, session_id,
-            fbc, fbp, eventId // Nuevos datos para deduplicación
+            fbc, fbp, userAgent, eventId // Nuevos datos para deduplicación
         } = req.body;
 
         // Validar datos requeridos
@@ -229,7 +397,9 @@ app.post('/api/track-purchase', async (req, res) => {
         }
 
         // PASO 2: Obtener datos de la petición (IP y User-Agent)
-        const { clientIp, clientUserAgent } = getClientConnectionData(req);
+        // Priorizar userAgent del body si está disponible
+        const { clientIp, clientUserAgent: headerUserAgent } = getClientConnectionData(req);
+        const clientUserAgent = req.body.userAgent || headerUserAgent;
 
         // Verificar configuración de Meta
         const metaAccessToken = process.env.META_ACCESS_TOKEN;
@@ -444,6 +614,7 @@ app.post('/api/track-event', async (req, res) => {
             searchString,    // Término de búsqueda (para Search)
             fbc,             // Cookie _fbc
             fbp,             // Cookie _fbp
+            userAgent,       // User Agent del navegador (opcional, se obtiene del header si no viene)
             eventId,         // ID único del evento para deduplicación
             sourceUrl        // URL de origen del evento
         } = req.body;
@@ -476,8 +647,9 @@ app.post('/api/track-event', async (req, res) => {
             });
         }
 
-        // Obtener datos de conexión
-        const { clientIp, clientUserAgent } = getClientConnectionData(req);
+        // Obtener datos de conexión (priorizar userAgent del body si está disponible)
+        const { clientIp, clientUserAgent: headerUserAgent } = getClientConnectionData(req);
+        const clientUserAgent = req.body.userAgent || headerUserAgent;
 
         // Construir user_data
         const userData = buildUserData(email, phone, firstName, lastName, clientIp, clientUserAgent, fbc, fbp);

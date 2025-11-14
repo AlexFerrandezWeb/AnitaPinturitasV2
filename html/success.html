@@ -134,8 +134,11 @@
         </div>
     </footer>
 
+    <!-- Cargar metaPixelTracking.js ANTES del script inline para que window.trackPurchase esté disponible -->
+    <script src="../js/metaPixelTracking.js"></script>
+    
     <script>
-        // Función para leer cookies
+        // Función para leer cookies (fallback si metaPixelTracking.js no está disponible)
         function getCookie(name) {
             const value = `; ${document.cookie}`;
             const parts = value.split(`; ${name}=`);
@@ -197,58 +200,82 @@
                         return;
                     }
 
-                    // 1. Generar un ID de evento único para deduplicación
-                    const eventId = 'purchase_' + new Date().getTime() + '_' + Math.random().toString(36).substring(2);
-
-                    // 2. Leer las cookies de Meta (_fbc y _fbp)
-                    const fbc = getCookie('_fbc');
-                    const fbp = getCookie('_fbp');
-
-                    // 3. Disparar también el evento de Pixel en el frontend (para deduplicación)
-                    // Asegúrate de que el Pixel base ya esté cargado en esta página
-                    if (typeof fbq === 'function') {
-                        fbq('track', 'Purchase', 
-                            { 
-                                value: parseFloat(totalAmount), 
-                                currency: 'EUR' 
-                            },
-                            { 
-                                eventID: eventId  // Usar el mismo ID de evento para deduplicación
-                            }
+                    // Usar window.trackPurchase si está disponible (de metaPixelTracking.js)
+                    // Esta función ya captura automáticamente fbc, fbp, userAgent y sourceUrl
+                    if (typeof window.trackPurchase === 'function') {
+                        // La función trackPurchase ya maneja la captura de cookies y userAgent
+                        window.trackPurchase(
+                            email,
+                            phone || null,
+                            firstName || null,
+                            lastName || null,
+                            parseFloat(totalAmount)
                         );
-                    }
+                        console.log('✅ Compra trackeada usando window.trackPurchase');
+                    } else {
+                        // Fallback: Si metaPixelTracking.js no está cargado, usar fetch directo
+                        console.warn('⚠️ window.trackPurchase no disponible, usando fetch directo');
+                        
+                        // 1. Generar un ID de evento único para deduplicación
+                        const eventId = 'purchase_' + new Date().getTime() + '_' + Math.random().toString(36).substring(2);
 
-                    // 4. Enviar evento a Meta a través del backend (CAPI)
-                    fetch(`${backendUrl}/api/track-purchase`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            email: email,
-                            phone: phone || null,
-                            firstName: firstName || null,
-                            lastName: lastName || null,
-                            value: totalAmount,
-                            session_id: sessionId,
-                            // Nuevos datos para deduplicación
-                            fbc: fbc || null,
-                            fbp: fbp || null,
-                            eventId: eventId
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(result => {
-                        if (result.tracked) {
-                            console.log('✅ Compra trackeada en Meta correctamente (CAPI)');
-                        } else {
-                            console.log('⚠️ Evento recibido pero no trackeado:', result.message);
+                        // 2. Leer las cookies de Meta (_fbc y _fbp) y capturar User Agent
+                        function getCookie(name) {
+                            const value = `; ${document.cookie}`;
+                            const parts = value.split(`; ${name}=`);
+                            if (parts.length === 2) return parts.pop().split(';').shift();
+                            return null;
                         }
-                    })
-                    .catch(error => {
-                        console.error('Error al trackear compra en Meta:', error);
-                        // No interrumpir la experiencia del usuario si falla el tracking
-                    });
+                        
+                        const fbc = getCookie('_fbc');
+                        const fbp = getCookie('_fbp');
+                        const userAgent = navigator.userAgent;
+
+                        // 3. Disparar también el evento de Pixel en el frontend (para deduplicación)
+                        if (typeof fbq === 'function') {
+                            fbq('track', 'Purchase', 
+                                { 
+                                    value: parseFloat(totalAmount), 
+                                    currency: 'EUR' 
+                                },
+                                { 
+                                    eventID: eventId
+                                }
+                            );
+                        }
+
+                        // 4. Enviar evento a Meta a través del backend (CAPI) con todos los datos de conexión
+                        fetch(`${backendUrl}/api/track-purchase`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                email: email,
+                                phone: phone || null,
+                                firstName: firstName || null,
+                                lastName: lastName || null,
+                                value: totalAmount,
+                                session_id: sessionId,
+                                // Datos de conexión esenciales para calidad de coincidencia
+                                fbc: fbc || null,
+                                fbp: fbp || null,
+                                userAgent: userAgent,
+                                eventId: eventId
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(result => {
+                            if (result.tracked) {
+                                console.log('✅ Compra trackeada en Meta correctamente (CAPI)');
+                            } else {
+                                console.log('⚠️ Evento recibido pero no trackeado:', result.message);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error al trackear compra en Meta:', error);
+                        });
+                    }
                 })
                 .catch(error => {
                     console.error('Error al obtener datos de la sesión:', error);
