@@ -212,8 +212,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 // Trackear ViewContent (ver contenido del producto)
-                if (typeof window.trackViewContent === 'function') {
-                    window.trackViewContent(producto.id, producto.nombre, producto.precio);
+                // Usar fbq directamente para asegurar que content_ids y content_type se envíen correctamente
+                if (typeof window.fbq === 'function') {
+                    // Obtener categoría del producto (product_type o categoría por defecto)
+                    const productCategory = producto.product_type || 
+                                          (result.origen && result.origen.includes('cuidadoCapilar') 
+                                              ? 'Cuidado Capilar' 
+                                              : 'Cuidado de la Piel');
+                    
+                    window.fbq('track', 'ViewContent', {
+                        content_name: producto.nombre,
+                        content_category: productCategory,
+                        content_ids: [producto.id.toString()], // CLAVE: Envía el ID del catálogo
+                        content_type: 'product', // CLAVE: Indica que es un producto
+                        value: producto.precio,
+                        currency: 'EUR'
+                    });
+                    console.log('✅ Meta ViewContent trackeado con content_ids:', producto.id);
+                    
+                    // También llamar a trackViewContent para mantener compatibilidad con CAPI
+                    if (typeof window.trackViewContent === 'function') {
+                        window.trackViewContent(producto.id, producto.nombre, producto.precio, productCategory);
+                    }
                 }
                 
                 // Actualizar las miniaturas (imágenes del producto + frases inspiracionales)

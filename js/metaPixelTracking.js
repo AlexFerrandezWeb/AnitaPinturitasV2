@@ -21,6 +21,28 @@
     }
 
     /**
+     * Normaliza datos PII (email, firstName, lastName, phone) antes de enviar al backend.
+     * Esto facilita el hasheo del lado del servidor.
+     */
+    function normalizePII(data) {
+        const normalized = {};
+        if (data.email) {
+            normalized.email = data.email.toLowerCase().trim();
+        }
+        if (data.firstName) {
+            normalized.firstName = data.firstName.toLowerCase().trim().replace(/\s+/g, ' ');
+        }
+        if (data.lastName) {
+            normalized.lastName = data.lastName.toLowerCase().trim().replace(/\s+/g, ' ');
+        }
+        if (data.phone) {
+            // CRÍTICO: Limpiar el número de teléfono para que sólo contenga dígitos (ej. "34666112233")
+            normalized.phone = data.phone.replace(/\D/g, '');
+        }
+        return normalized;
+    }
+
+    /**
      * Recopila todos los datos de conexión necesarios para CAPI.
      * Captura cookies _fbc y _fbp, userAgent y otros datos esenciales.
      * @param {object} piiData - Datos de PII (email, name, etc.) si están disponibles.
@@ -37,15 +59,33 @@
         // 3. Obtener URL actual
         const sourceUrl = window.location.href;
 
-        return {
+        // 4. Normalizar PII antes de enviar
+        const normalizedPII = normalizePII(piiData);
+        
+        // 5. Crear un objeto base con los datos de contexto (fbc, fbp, userAgent, sourceUrl)
+        // y mezclar con los PII normalizados.
+        const basePayload = {
             // Datos de conexión (clave para ViewContent y AddToCart)
             fbc: fbc,
             fbp: fbp,
             userAgent: userAgent,
             sourceUrl: sourceUrl,
             
-            // Datos de PII (se combinan con los datos pasados)
-            ...piiData,
+            // Datos de PII normalizados
+            ...normalizedPII,
+        };
+        
+        // El resto de datos de eventos (value, currency, eventId, eventName, eventDetails, etc.) se agregan desde piiData, 
+        // pero se eliminan los campos PII originales para evitar sobrescribir los normalizados.
+        const eventDataCopy = { ...piiData };
+        delete eventDataCopy.email;
+        delete eventDataCopy.firstName;
+        delete eventDataCopy.lastName;
+        delete eventDataCopy.phone;
+
+        return {
+            ...basePayload,
+            ...eventDataCopy, // Mantener campos de evento (value, currency, etc.)
         };
     }
 
@@ -54,19 +94,51 @@
         // Generar ID único del evento
         const eventId = generateEventId(eventName);
 
-        // Construir payload base con datos de conexión
+        // Construir eventDetails estructurado para el backend
+        // Este objeto se enviará directamente como custom_data en CAPI
+        const eventDetails = {};
+        
+        // Copiar campos relevantes de pixelData a eventDetails
+        if (pixelData.value !== undefined && pixelData.value !== null) {
+            eventDetails.value = parseFloat(pixelData.value).toFixed(2);
+        }
+        if (pixelData.currency) {
+            eventDetails.currency = pixelData.currency;
+        }
+        if (pixelData.content_name) {
+            eventDetails.content_name = pixelData.content_name;
+        }
+        if (pixelData.content_ids && Array.isArray(pixelData.content_ids)) {
+            eventDetails.content_ids = pixelData.content_ids;
+        }
+        if (pixelData.content_category) {
+            eventDetails.content_category = pixelData.content_category;
+        }
+        if (pixelData.content_type) {
+            eventDetails.content_type = pixelData.content_type;
+        }
+        if (pixelData.contents && Array.isArray(pixelData.contents)) {
+            eventDetails.contents = pixelData.contents;
+        }
+        if (pixelData.quantity !== undefined) {
+            eventDetails.quantity = pixelData.quantity;
+        }
+        if (pixelData.num_items !== undefined) {
+            eventDetails.num_items = pixelData.num_items;
+        }
+        if (pixelData.search_string) {
+            eventDetails.search_string = pixelData.search_string;
+        }
+
+        // Construir payload base con datos de conexión y eventDetails
         const basePayload = getCapiPayload({
             eventName: eventName,
             email: eventData.email || null,
             phone: eventData.phone || null,
             firstName: eventData.firstName || null,
             lastName: eventData.lastName || null,
-            value: eventData.value || null,
-            currency: eventData.currency || 'EUR',
-            contentName: eventData.contentName || null,
-            contentIds: eventData.contentIds || null,
-            searchString: eventData.searchString || null,
-            eventId: eventId
+            eventId: eventId,
+            eventDetails: eventDetails // ✅ Enviar eventDetails estructurado
         });
 
         // 1. Disparar Pixel en frontend (si está disponible)
@@ -101,22 +173,39 @@
     // Funciones específicas para cada tipo de evento
 
     // ViewContent: Ver contenido (página de producto)
-    window.trackViewContent = function(productId, productName, productPrice) {
+    window.trackViewContent = function(productId, productName, productPrice, productCategory = null) {
+        const pixelData = {
+            content_name: productName,
+            content_ids: productId ? [productId] : null,
+            content_type: 'product',
+            value: productPrice || null,
+            currency: 'EUR'
+        };
+        
+        // Añadir content_category si está disponible
+        if (productCategory) {
+            pixelData.content_category = productCategory;
+        }
+        
         trackEvent('ViewContent', {
             contentName: productName,
             contentIds: productId ? [productId] : null,
+            contentCategory: productCategory || null,
             value: productPrice || null
-        }, {
-            content_name: productName,
-            content_ids: productId ? [productId] : null,
-            value: productPrice || null,
-            currency: 'EUR'
-        });
+        }, pixelData);
     };
 
     // AddToCart: Agregar al carrito
     window.trackAddToCart = function(productId, productName, productPrice, quantity = 1) {
         const totalValue = productPrice * quantity;
+        
+        // Estructura contents para Dynamic Product Ads (DPA)
+        const contents = [{
+            id: productId.toString(),
+            quantity: quantity,
+            item_price: parseFloat(productPrice).toFixed(2)
+        }];
+        
         trackEvent('AddToCart', {
             contentName: productName,
             contentIds: productId ? [productId] : null,
@@ -125,9 +214,11 @@
         }, {
             content_name: productName,
             content_ids: productId ? [productId] : null,
+            content_type: 'product',
             value: totalValue,
             currency: 'EUR',
-            quantity: quantity
+            quantity: quantity,
+            contents: contents // ✅ Estructura contents para DPA
         });
     };
 
@@ -150,6 +241,14 @@
     // InitiateCheckout: Iniciar proceso de pago
     window.trackInitiateCheckout = function(cartValue, cartItems = []) {
         const contentIds = cartItems.map(item => item.id || item.productId).filter(Boolean);
+        
+        // Estructura contents para Dynamic Product Ads (DPA)
+        const contents = cartItems.map(item => ({
+            id: (item.id || item.productId || '').toString(),
+            quantity: item.cantidad || item.quantity || 1,
+            item_price: parseFloat(item.precio || item.price || 0).toFixed(2)
+        })).filter(item => item.id);
+        
         trackEvent('InitiateCheckout', {
             value: cartValue,
             currency: 'EUR',
@@ -157,13 +256,42 @@
         }, {
             value: cartValue,
             currency: 'EUR',
+            content_type: 'product',
             content_ids: contentIds.length > 0 ? contentIds : null,
-            num_items: cartItems.length
+            num_items: cartItems.length,
+            contents: contents // ✅ Estructura contents para DPA
         });
     };
 
     // Purchase: Compra completada (ya implementado en success.html, pero aquí para referencia)
-    window.trackPurchase = function(email, phone, firstName, lastName, value) {
+    window.trackPurchase = function(email, phone, firstName, lastName, value, cartItems = []) {
+        const contentIds = cartItems.length > 0 
+            ? cartItems.map(item => item.id || item.productId).filter(Boolean)
+            : null;
+        
+        // Estructura contents para Dynamic Product Ads (DPA)
+        const contents = cartItems.length > 0
+            ? cartItems.map(item => ({
+                id: (item.id || item.productId || '').toString(),
+                quantity: item.cantidad || item.quantity || 1,
+                item_price: parseFloat(item.precio || item.price || 0).toFixed(2)
+            })).filter(item => item.id)
+            : [];
+        
+        const pixelData = {
+            value: value,
+            currency: 'EUR'
+        };
+        
+        if (contentIds && contentIds.length > 0) {
+            pixelData.content_ids = contentIds;
+            pixelData.content_type = 'product';
+        }
+        
+        if (contents.length > 0) {
+            pixelData.contents = contents;
+        }
+        
         trackEvent('Purchase', {
             email: email,
             phone: phone,
@@ -171,10 +299,7 @@
             lastName: lastName,
             value: value,
             currency: 'EUR'
-        }, {
-            value: value,
-            currency: 'EUR'
-        });
+        }, pixelData);
     };
 
     console.log('✅ Meta Pixel Tracking utilities cargadas');

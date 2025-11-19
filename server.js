@@ -1,10 +1,10 @@
-// Servidor backend para Stripe Checkout
+// Servidor backend para Stripe Checkout y Meta Conversions API (CAPI)
 const express = require('express');
 const stripe = require('stripe');
 const cors = require('cors');
 const crypto = require('crypto');
 const https = require('https');
-const fs = require('fs');
+const fs = require('fs'); // Importar 'fs' para la fuente de productos
 const path = require('path');
 require('dotenv').config();
 
@@ -32,10 +32,10 @@ app.use(express.static('.'));
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
 if (!stripeSecretKey || stripeSecretKey.includes('tu_clave_aqui')) {
-    console.error('⚠️  ERROR: STRIPE_SECRET_KEY no está configurada');
-    console.error('   Configúrala en Render -> Environment Variables');
-    console.error('   O en archivo .env para desarrollo local');
-    console.error('   Obtén tu clave desde: https://dashboard.stripe.com/apikeys');
+    console.error('⚠️  ERROR: STRIPE_SECRET_KEY no está configurada');
+    console.error('   Configúrala en Render -> Environment Variables');
+    console.error('   O en archivo .env para desarrollo local');
+    console.error('   Obtén tu clave desde: https://dashboard.stripe.com/apikeys');
 }
 
 const stripeClient = stripe(stripeSecretKey);
@@ -201,7 +201,7 @@ app.post('/api/stripe-webhook', async (req, res) => {
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
     if (!webhookSecret) {
-        console.warn('⚠️  STRIPE_WEBHOOK_SECRET no configurada. El webhook no funcionará correctamente.');
+        console.warn('⚠️  STRIPE_WEBHOOK_SECRET no configurada. El webhook no funcionará correctamente.');
         return res.status(400).send('Webhook secret no configurado');
     }
 
@@ -247,7 +247,7 @@ app.post('/api/stripe-webhook', async (req, res) => {
 
             // Validar datos requeridos
             if (!email || !value) {
-                console.warn('⚠️  Datos incompletos en webhook:', { email, value, sessionId: session.id });
+                console.warn('⚠️  Datos incompletos en webhook:', { email, value, sessionId: session.id });
                 return res.status(200).json({ received: true, message: 'Datos incompletos, evento no trackeado' });
             }
 
@@ -262,20 +262,17 @@ app.post('/api/stripe-webhook', async (req, res) => {
             const testEventCode = process.env.META_TEST_EVENT_CODE;
 
             if (!metaAccessToken) {
-                console.warn('⚠️  META_ACCESS_TOKEN no configurada. No se enviará evento a Meta.');
+                console.warn('⚠️  META_ACCESS_TOKEN no configurada. No se enviará evento a Meta.');
                 return res.status(200).json({ received: true, message: 'Meta no configurado' });
             }
 
             if (!metaPixelId && !testEventCode) {
-                console.warn('⚠️  META_PIXEL_ID o META_TEST_EVENT_CODE no configurados.');
+                console.warn('⚠️  META_PIXEL_ID o META_TEST_EVENT_CODE no configurados.');
                 return res.status(200).json({ received: true, message: 'Pixel ID no configurado' });
             }
 
             // Hashear información personal (email, teléfono, nombre, apellido)
-            const hashedEmail = hashEmail(email);
-            const hashedPhone = phone ? hashPhone(phone) : null;
-            const hashedFirstName = firstName ? hashName(firstName) : null;
-            const hashedLastName = lastName ? hashLastName(lastName) : null;
+            // Ya no es necesario hashear aquí, la función buildUserData lo hace.
 
             // Obtener timestamp actual (en segundos)
             const eventTime = Math.floor(Date.now() / 1000);
@@ -287,16 +284,69 @@ app.post('/api/stripe-webhook', async (req, res) => {
             // Construir user_data con datos hasheados y datos de conexión
             const userData = buildUserData(email, phone, firstName, lastName, clientIp, clientUserAgent, fbc, fbp);
 
+            // ✅ MEJORA: Obtener line items de Stripe para construir contents
+            let contents = [];
+            let contentIds = [];
+            try {
+                const lineItems = await stripeClient.checkout.sessions.listLineItems(session.id, {
+                    expand: ['data.price.product']
+                });
+                
+                if (lineItems && lineItems.data && lineItems.data.length > 0) {
+                    // Iterar sobre line items y mapear a formato Meta
+                    contents = lineItems.data.map(item => {
+                        // Intentar obtener el ID del producto desde metadata o description
+                        const productId = item.price?.product?.metadata?.product_id || 
+                                            item.price?.product?.id || 
+                                            item.description?.split(' - ')[0] || 
+                                            `stripe_${item.price?.id}`;
+                        
+                        if (productId && !contentIds.includes(productId)) {
+                            contentIds.push(productId);
+                        }
+                        
+                        // Determinar el precio unitario, excluyendo el coste de envío
+                        const isShipping = item.price?.product?.name?.toLowerCase().includes('envío');
+
+                        // Si es el ítem de envío, no incluirlo en contents para Meta (solo productos)
+                        if (isShipping) {
+                            return null;
+                        }
+
+                        return {
+                            id: productId.toString(),
+                            quantity: item.quantity || 1,
+                            item_price: item.price ? (item.price.unit_amount / 100).toFixed(2) : '0.00'
+                        };
+                    }).filter(item => item !== null); // Eliminar el ítem de envío si se detectó
+                }
+            } catch (lineItemsError) {
+                console.warn('⚠️  Error al obtener line items de Stripe:', lineItemsError.message);
+                // Continuar sin contents si hay error
+            }
+
+            // Construir custom_data
+            const customData = {
+                currency: 'EUR',
+                value: parseFloat(value).toFixed(2),
+            };
+
+            // Añadir contents si están disponibles
+            if (contents.length > 0) {
+                customData.contents = contents;
+                customData.content_type = 'product';
+                if (contentIds.length > 0) {
+                    customData.content_ids = contentIds;
+                }
+            }
+
             // Construir el payload según el formato de Meta
             const eventData = {
                 event_name: 'Purchase',
                 event_time: eventTime,
                 action_source: 'website',
                 user_data: userData,
-                custom_data: {
-                    currency: 'EUR',
-                    value: parseFloat(value).toFixed(2),
-                },
+                custom_data: customData,
                 event_id: eventId, // Para deduplicación
             };
 
@@ -315,7 +365,7 @@ app.post('/api/stripe-webhook', async (req, res) => {
             });
 
             // Enviar evento a Meta (la función sendEventToMeta maneja la respuesta)
-            // Crear un objeto res mock para que sendEventToMeta funcione correctamente
+            // Creamos un objeto res mock para que sendEventToMeta responda a Stripe
             const mockRes = {
                 status: (code) => ({
                     json: (data) => {
@@ -324,7 +374,7 @@ app.post('/api/stripe-webhook', async (req, res) => {
                         } else {
                             console.error('❌ Error al trackear desde webhook:', data);
                         }
-                        // Responder al webhook de Stripe
+                        // Responder al webhook de Stripe con 200, incluso si Meta devuelve error
                         return res.status(200).json({ received: true, tracked: data.tracked || false, ...data });
                     }
                 })
@@ -339,7 +389,7 @@ app.post('/api/stripe-webhook', async (req, res) => {
         }
     } else {
         // Evento no manejado
-        console.log(`ℹ️  Evento de webhook recibido pero no manejado: ${event.type}`);
+        console.log(`ℹ️  Evento de webhook recibido pero no manejado: ${event.type}`);
         res.json({ received: true, message: `Evento ${event.type} recibido pero no procesado` });
     }
 });
@@ -381,12 +431,13 @@ function hashLastName(lastName) {
 }
 
 // Endpoint para trackear compra en Meta (Facebook Pixel)
+// Este endpoint es redundante si el webhook funciona, pero se mantiene para eventos de fallback.
 app.post('/api/track-purchase', async (req, res) => {
     try {
-        // PASO 1: Recibir los nuevos datos del body
         const { 
-            email, phone, firstName, lastName, value, session_id,
-            fbc, fbp, userAgent, eventId // Nuevos datos para deduplicación
+            email, phone, firstName, lastName, value,
+            fbc, fbp, userAgent, eventId,
+            eventDetails // ✅ Nuevo: eventDetails estructurado
         } = req.body;
 
         // Validar datos requeridos
@@ -396,7 +447,7 @@ app.post('/api/track-purchase', async (req, res) => {
             });
         }
 
-        // PASO 2: Obtener datos de la petición (IP y User-Agent)
+        // Obtener datos de la petición (IP y User-Agent)
         // Priorizar userAgent del body si está disponible
         const { clientIp, clientUserAgent: headerUserAgent } = getClientConnectionData(req);
         const clientUserAgent = req.body.userAgent || headerUserAgent;
@@ -404,35 +455,29 @@ app.post('/api/track-purchase', async (req, res) => {
         // Verificar configuración de Meta
         const metaAccessToken = process.env.META_ACCESS_TOKEN;
         const metaPixelId = process.env.META_PIXEL_ID;
-        const testEventCode = process.env.META_TEST_EVENT_CODE; // Opcional, para testing
+        const testEventCode = process.env.META_TEST_EVENT_CODE;
 
-        if (!metaAccessToken) {
-            console.warn('⚠️  META_ACCESS_TOKEN no configurada. No se enviará evento a Meta.');
+        if (!metaAccessToken || (!metaPixelId && !testEventCode)) {
             return res.status(200).json({ 
-                message: 'Evento recibido pero Meta no configurado',
+                message: 'Meta no configurado', 
                 tracked: false 
             });
         }
-
-        if (!metaPixelId && !testEventCode) {
-            console.warn('⚠️  META_PIXEL_ID o META_TEST_EVENT_CODE no configurados.');
-            return res.status(200).json({ 
-                message: 'Evento recibido pero Pixel ID no configurado',
-                tracked: false 
-            });
-        }
-
-        // Hashear información personal (email, teléfono, nombre, apellido)
-        const hashedEmail = hashEmail(email);
-        const hashedPhone = phone ? hashPhone(phone) : null;
-        const hashedFirstName = firstName ? hashName(firstName) : null;
-        const hashedLastName = lastName ? hashLastName(lastName) : null;
 
         // Obtener timestamp actual (en segundos)
         const eventTime = Math.floor(Date.now() / 1000);
 
-        // PASO 3: Construir user_data con datos hasheados y datos de conexión (sin hashear)
+        // Construir user_data con datos hasheados y datos de conexión
         const userData = buildUserData(email, phone, firstName, lastName, clientIp, clientUserAgent, fbc, fbp);
+
+        // ✅ USAMOS DIRECTAMENTE eventDetails como custom_data
+        const customData = eventDetails || {};
+
+        // Si no hay eventDetails, usar valores básicos
+        if (Object.keys(customData).length === 0) {
+            customData.currency = 'EUR';
+            customData.value = parseFloat(value).toFixed(2);
+        }
 
         // Construir el payload según el formato de Meta
         const eventData = {
@@ -440,21 +485,16 @@ app.post('/api/track-purchase', async (req, res) => {
             event_time: eventTime,
             action_source: 'website',
             user_data: userData,
-            custom_data: {
-                currency: 'EUR', // Cambiado de USD a EUR
-                value: parseFloat(value).toFixed(2), // Asegurar formato con 2 decimales
-            },
         };
 
-        // PASO 4: Añadir el event_id para deduplicación
+        if (Object.keys(customData).length > 0) {
+            eventData.custom_data = customData;
+        }
+
+        // Añadir el event_id para deduplicación
         if (eventId) {
             eventData.event_id = eventId;
         }
-
-        // Añadir attribution_data si es necesario (opcional)
-        // eventData.attribution_data = {
-        //     attribution_share: "0.3"
-        // };
 
         // Construir el body de la petición
         const requestBody = {
@@ -568,12 +608,15 @@ function getClientConnectionData(req) {
 
 // Función helper para construir user_data con datos hasheados y de conexión
 function buildUserData(email, phone, firstName, lastName, clientIp, clientUserAgent, fbc, fbp) {
-    const userData = {
-        em: email ? [hashEmail(email)] : [],
-        ph: phone ? [hashPhone(phone)] : [],
-    };
+    const userData = {};
 
-    // Añadir nombre y apellido hasheados si están disponibles
+    // Añadir PII hasheada (solo si está disponible)
+    if (email) {
+        userData.em = [hashEmail(email)];
+    }
+    if (phone) {
+        userData.ph = [hashPhone(phone)];
+    }
     if (firstName) {
         userData.fn = [hashName(firstName)];
     }
@@ -602,21 +645,17 @@ function buildUserData(email, phone, firstName, lastName, clientIp, clientUserAg
 app.post('/api/track-event', async (req, res) => {
     try {
         const { 
-            eventName,        // Nombre del evento (ViewContent, AddToCart, Search, Contact, InitiateCheckout)
-            email,           // Email del usuario (opcional para algunos eventos)
-            phone,           // Teléfono (opcional)
-            firstName,       // Nombre (opcional)
-            lastName,        // Apellido (opcional)
-            value,           // Valor (para Purchase, AddToCart, InitiateCheckout)
-            currency,        // Divisa (para Purchase, AddToCart, InitiateCheckout)
-            contentName,     // Nombre del contenido (para ViewContent)
-            contentIds,      // IDs de contenido (para ViewContent, AddToCart)
-            searchString,    // Término de búsqueda (para Search)
-            fbc,             // Cookie _fbc
-            fbp,             // Cookie _fbp
-            userAgent,       // User Agent del navegador (opcional, se obtiene del header si no viene)
-            eventId,         // ID único del evento para deduplicación
-            sourceUrl        // URL de origen del evento
+            eventName,        // Nombre del evento (ViewContent, AddToCart, Search, Contact, InitiateCheckout)
+            email,           // Email del usuario (opcional para algunos eventos)
+            phone,           // Teléfono (opcional)
+            firstName,       // Nombre (opcional)
+            lastName,        // Apellido (opcional)
+            fbc,             // Cookie _fbc
+            fbp,             // Cookie _fbp
+            userAgent,       // User Agent del navegador (opcional, se obtiene del header si no viene)
+            eventId,         // ID único del evento para deduplicación
+            sourceUrl,       // URL de origen del evento
+            eventDetails     // ✅ CRÍTICO: Objeto estructurado con custom_data (contents, content_type, value, currency, etc.)
         } = req.body;
 
         // Validar que el nombre del evento esté presente
@@ -632,7 +671,7 @@ app.post('/api/track-event', async (req, res) => {
         const testEventCode = process.env.META_TEST_EVENT_CODE;
 
         if (!metaAccessToken) {
-            console.warn('⚠️  META_ACCESS_TOKEN no configurada. No se enviará evento a Meta.');
+            console.warn('⚠️  META_ACCESS_TOKEN no configurada. No se enviará evento a Meta.');
             return res.status(200).json({ 
                 message: 'Evento recibido pero Meta no configurado',
                 tracked: false 
@@ -640,7 +679,7 @@ app.post('/api/track-event', async (req, res) => {
         }
 
         if (!metaPixelId && !testEventCode) {
-            console.warn('⚠️  META_PIXEL_ID o META_TEST_EVENT_CODE no configurados.');
+            console.warn('⚠️  META_PIXEL_ID o META_TEST_EVENT_CODE no configurados.');
             return res.status(200).json({ 
                 message: 'Evento recibido pero Pixel ID no configurado',
                 tracked: false 
@@ -657,23 +696,9 @@ app.post('/api/track-event', async (req, res) => {
         // Obtener timestamp actual (en segundos)
         const eventTime = Math.floor(Date.now() / 1000);
 
-        // Construir custom_data según el tipo de evento
-        const customData = {};
-        if (value !== undefined && value !== null) {
-            customData.value = parseFloat(value).toFixed(2);
-        }
-        if (currency) {
-            customData.currency = currency;
-        }
-        if (contentName) {
-            customData.content_name = contentName;
-        }
-        if (contentIds && Array.isArray(contentIds)) {
-            customData.content_ids = contentIds;
-        }
-        if (searchString) {
-            customData.search_string = searchString;
-        }
+        // ✅ USAMOS DIRECTAMENTE eventDetails como custom_data.
+        // Contiene 'value', 'currency', 'content_type', 'contents', etc., según el evento.
+        const customData = eventDetails || {};
 
         // Construir el payload según el formato de Meta
         const eventData = {
@@ -682,6 +707,11 @@ app.post('/api/track-event', async (req, res) => {
             action_source: 'website',
             user_data: userData,
         };
+
+        // 💡 MEJORA: Añadir source_url para mejor coincidencia
+        if (sourceUrl) {
+            eventData.event_source_url = sourceUrl;
+        }
 
         // Añadir custom_data solo si tiene contenido
         if (Object.keys(customData).length > 0) {
@@ -714,24 +744,31 @@ app.post('/api/track-event', async (req, res) => {
 });
 
 // Endpoint para servir el CSV del catálogo de productos con el tipo MIME correcto
-app.get('/product-feed.csv', (req, res) => {
+// ⚠️ Nota: Cambiado a asíncrono para mejor rendimiento
+app.get('/product-feed.csv', async (req, res) => {
     const csvPath = path.join(__dirname, 'product-feed.csv');
     
     // Verificar que el archivo existe
     if (!fs.existsSync(csvPath)) {
+        console.warn(`⚠️ Archivo CSV no encontrado en: ${csvPath}`);
         return res.status(404).json({ error: 'Archivo CSV no encontrado' });
     }
     
-    // Leer el archivo CSV
-    const csvContent = fs.readFileSync(csvPath, 'utf8');
-    
-    // Configurar headers para que el navegador/Facebook lo lea correctamente
-    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
-    res.setHeader('Content-Disposition', 'inline; filename="product-feed.csv"');
-    res.setHeader('Cache-Control', 'public, max-age=3600'); // Cache por 1 hora
-    
-    // Enviar el contenido CSV
-    res.send(csvContent);
+    try {
+        // Leer el archivo CSV de forma asíncrona
+        const csvContent = await fs.promises.readFile(csvPath, 'utf8');
+        
+        // Configurar headers para que el navegador/Facebook lo lea correctamente
+        res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+        res.setHeader('Content-Disposition', 'inline; filename="product-feed.csv"');
+        res.setHeader('Cache-Control', 'public, max-age=3600'); // Cache por 1 hora
+        
+        // Enviar el contenido CSV
+        res.send(csvContent);
+    } catch (error) {
+        console.error('❌ Error al leer o servir el archivo CSV:', error);
+        res.status(500).json({ error: 'Error interno al procesar el archivo CSV' });
+    }
 });
 
 // Endpoint de salud para verificar que el servidor funciona
@@ -743,8 +780,8 @@ app.listen(PORT, () => {
     console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
     
     if (!stripeSecretKey || stripeSecretKey.includes('tu_clave_aqui')) {
-        console.error('⚠️  ERROR: STRIPE_SECRET_KEY no está configurada');
-        console.error('   Configúrala en Render -> Environment Variables');
+        console.error('⚠️  ERROR: STRIPE_SECRET_KEY no está configurada');
+        console.error('   Configúrala en Render -> Environment Variables');
     } else {
         console.log('✅ Stripe configurado correctamente');
     }
