@@ -133,7 +133,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
 
         // Crear sesión de checkout
         const session = await stripeClient.checkout.sessions.create({
-            payment_method_types: ['card', 'paypal'], // Incluir PayPal y tarjetas (Google Pay aparece automáticamente si está habilitado)
+            payment_method_types: ['card', 'paypal', 'klarna'], // Incluir PayPal, Klarna y tarjetas (Google Pay aparece automáticamente si está habilitado)
             line_items: lineItems,
             mode: 'payment',
             success_url: `${baseUrl}/html/success.html?session_id={CHECKOUT_SESSION_ID}`,
