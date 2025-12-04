@@ -273,10 +273,13 @@
 }
 
 @keyframes cart-checkout-pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 2px 8px rgba(186, 11, 95, 0.2);
         transform: scale(1);
     }
+
     50% {
         box-shadow: 0 4px 20px rgba(186, 11, 95, 0.6);
         transform: scale(1.02);

@@ -43,12 +43,12 @@ const stripeClient = stripe(stripeSecretKey);
 // Función para convertir rutas relativas a URLs absolutas
 function convertToAbsoluteUrl(imagePath, baseUrl) {
     if (!imagePath) return null;
-    
+
     // Si ya es una URL absoluta (http/https), devolverla tal cual
     if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
         return imagePath;
     }
-    
+
     // Si es una ruta relativa, convertirla a absoluta
     // Normalizar la ruta (eliminar ../ al inicio y barras duplicadas)
     let normalizedPath = imagePath
@@ -56,7 +56,7 @@ function convertToAbsoluteUrl(imagePath, baseUrl) {
         .replace(/^\.\//, '') // Eliminar ./ al inicio
         .replace(/^\/+/, '') // Eliminar barras al inicio
         .replace(/\/+/g, '/'); // Normalizar barras duplicadas
-    
+
     // Construir URL absoluta
     const base = baseUrl.replace(/\/$/, ''); // Eliminar barra final si existe
     return `${base}/${normalizedPath}`;
@@ -90,7 +90,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
                     imageUrl = null; // No incluir imágenes inválidas o no accesibles
                 }
             }
-            
+
             return {
                 price_data: {
                     currency: 'eur',
@@ -108,7 +108,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
         // Umbral para envío gratuito (configurable, por defecto 62€)
         const FREE_SHIPPING_THRESHOLD = parseFloat(process.env.FREE_SHIPPING_THRESHOLD) || 62.00;
         const SHIPPING_COST = 6.95; // Coste de envío estándar en euros
-        
+
         // Una sola opción de envío según el total del pedido
         const shippingOptions = [{
             shipping_rate_data: {
@@ -165,17 +165,23 @@ app.post('/api/create-checkout-session', async (req, res) => {
                 ...(fbc && { fbc: fbc }),
                 ...(fbp && { fbp: fbp }),
             },
+            locale: 'es', // Forzar idioma español
+            custom_text: {
+                submit: {
+                    message: 'También puedes pagar en 3 plazos sin intereses seleccionando Klarna.',
+                },
+            },
         });
 
-        res.json({ 
+        res.json({
             checkout_url: session.url,
-            session_id: session.id 
+            session_id: session.id
         });
     } catch (error) {
         console.error('Error al crear sesión de checkout:', error);
-        res.status(500).json({ 
+        res.status(500).json({
             error: 'Error al procesar el pago',
-            details: error.message 
+            details: error.message
         });
     }
 });
@@ -184,7 +190,16 @@ app.post('/api/create-checkout-session', async (req, res) => {
 app.get('/api/checkout-session/:sessionId', async (req, res) => {
     try {
         const session = await stripeClient.checkout.sessions.retrieve(req.params.sessionId);
-        res.json({ session });
+
+        // Recuperar también los line items para saber qué productos se compraron
+        const lineItems = await stripeClient.checkout.sessions.listLineItems(req.params.sessionId, {
+            expand: ['data.price.product']
+        });
+
+        res.json({
+            session,
+            lineItems: lineItems.data
+        });
     } catch (error) {
         console.error('Error al recuperar sesión:', error);
         res.status(500).json({ error: 'Error al recuperar la sesión' });
@@ -223,7 +238,7 @@ app.post('/api/stripe-webhook', async (req, res) => {
             // Extraer datos de PII de Stripe (garantizados y exactos)
             const email = session.customer_details?.email || session.customer_email;
             const phone = session.customer_details?.phone || null;
-            
+
             // Extraer nombre y apellido
             let firstName = null;
             let lastName = null;
@@ -291,20 +306,20 @@ app.post('/api/stripe-webhook', async (req, res) => {
                 const lineItems = await stripeClient.checkout.sessions.listLineItems(session.id, {
                     expand: ['data.price.product']
                 });
-                
+
                 if (lineItems && lineItems.data && lineItems.data.length > 0) {
                     // Iterar sobre line items y mapear a formato Meta
                     contents = lineItems.data.map(item => {
                         // Intentar obtener el ID del producto desde metadata o description
-                        const productId = item.price?.product?.metadata?.product_id || 
-                                            item.price?.product?.id || 
-                                            item.description?.split(' - ')[0] || 
-                                            `stripe_${item.price?.id}`;
-                        
+                        const productId = item.price?.product?.metadata?.product_id ||
+                            item.price?.product?.id ||
+                            item.description?.split(' - ')[0] ||
+                            `stripe_${item.price?.id}`;
+
                         if (productId && !contentIds.includes(productId)) {
                             contentIds.push(productId);
                         }
-                        
+
                         // Determinar el precio unitario, excluyendo el coste de envío
                         const isShipping = item.price?.product?.name?.toLowerCase().includes('envío');
 
@@ -434,7 +449,7 @@ function hashLastName(lastName) {
 // Este endpoint es redundante si el webhook funciona, pero se mantiene para eventos de fallback.
 app.post('/api/track-purchase', async (req, res) => {
     try {
-        const { 
+        const {
             email, phone, firstName, lastName, value,
             fbc, fbp, userAgent, eventId,
             eventDetails // ✅ Nuevo: eventDetails estructurado
@@ -442,8 +457,8 @@ app.post('/api/track-purchase', async (req, res) => {
 
         // Validar datos requeridos
         if (!email || !value) {
-            return res.status(400).json({ 
-                error: 'Datos incompletos: se requieren email y value' 
+            return res.status(400).json({
+                error: 'Datos incompletos: se requieren email y value'
             });
         }
 
@@ -458,9 +473,9 @@ app.post('/api/track-purchase', async (req, res) => {
         const testEventCode = process.env.META_TEST_EVENT_CODE;
 
         if (!metaAccessToken || (!metaPixelId && !testEventCode)) {
-            return res.status(200).json({ 
-                message: 'Meta no configurado', 
-                tracked: false 
+            return res.status(200).json({
+                message: 'Meta no configurado',
+                tracked: false
             });
         }
 
@@ -506,8 +521,8 @@ app.post('/api/track-purchase', async (req, res) => {
     } catch (error) {
         console.error('❌ Error al trackear compra en Meta:', error);
         // Respondemos 200 para no interrumpir el flujo del usuario
-        res.status(200).json({ 
-            success: false, 
+        res.status(200).json({
+            success: false,
             message: 'Error al procesar evento',
             error: error.message,
             tracked: false
@@ -518,13 +533,13 @@ app.post('/api/track-purchase', async (req, res) => {
 // Función helper para enviar eventos a Meta (reutilizable)
 function sendEventToMeta(requestBody, metaAccessToken, metaPixelId, testEventCode, res) {
     // Si hay test_event_code, añadirlo a la URL
-    const urlPath = testEventCode 
+    const urlPath = testEventCode
         ? `/v21.0/${metaPixelId}/events?access_token=${metaAccessToken}&test_event_code=${testEventCode}`
         : `/v21.0/${metaPixelId}/events?access_token=${metaAccessToken}`;
 
     // Hacer la petición POST a Meta Graph API
     const postData = JSON.stringify(requestBody);
-    
+
     const options = {
         hostname: 'graph.facebook.com',
         port: 443,
@@ -547,11 +562,11 @@ function sendEventToMeta(requestBody, metaAccessToken, metaPixelId, testEventCod
         metaRes.on('end', () => {
             try {
                 const response = JSON.parse(data);
-                
+
                 if (metaRes.statusCode >= 200 && metaRes.statusCode < 300) {
                     console.log('✅ Evento enviado a Meta correctamente:', response);
-                    return res.status(200).json({ 
-                        success: true, 
+                    return res.status(200).json({
+                        success: true,
                         message: 'Evento trackeado en Meta',
                         metaResponse: response,
                         tracked: true
@@ -559,8 +574,8 @@ function sendEventToMeta(requestBody, metaAccessToken, metaPixelId, testEventCod
                 } else {
                     console.error('❌ Error en respuesta de Meta:', response);
                     // Aún así respondemos 200 para no interrumpir el flujo del usuario
-                    return res.status(200).json({ 
-                        success: false, 
+                    return res.status(200).json({
+                        success: false,
                         message: 'Error al enviar evento a Meta',
                         error: response,
                         tracked: false
@@ -568,8 +583,8 @@ function sendEventToMeta(requestBody, metaAccessToken, metaPixelId, testEventCod
                 }
             } catch (parseError) {
                 console.error('❌ Error al parsear respuesta de Meta:', parseError);
-                return res.status(200).json({ 
-                    success: false, 
+                return res.status(200).json({
+                    success: false,
                     message: 'Error al procesar respuesta de Meta',
                     tracked: false
                 });
@@ -580,8 +595,8 @@ function sendEventToMeta(requestBody, metaAccessToken, metaPixelId, testEventCod
     req.on('error', (error) => {
         console.error('❌ Error en petición a Meta:', error);
         // Respondemos 200 para no interrumpir el flujo del usuario
-        return res.status(200).json({ 
-            success: false, 
+        return res.status(200).json({
+            success: false,
             message: 'Error de conexión con Meta',
             error: error.message,
             tracked: false
@@ -596,10 +611,10 @@ function sendEventToMeta(requestBody, metaAccessToken, metaPixelId, testEventCod
 function getClientConnectionData(req) {
     // Obtener IP (manejando proxies como el de Render)
     const forwardedFor = req.headers['x-forwarded-for'];
-    const clientIp = forwardedFor 
+    const clientIp = forwardedFor
         ? forwardedFor.split(',')[0].trim() // Tomar la primera IP si hay múltiples
         : req.socket.remoteAddress || req.connection?.remoteAddress || null;
-    
+
     // Obtener User Agent
     const clientUserAgent = req.headers['user-agent'] || null;
 
@@ -644,7 +659,7 @@ function buildUserData(email, phone, firstName, lastName, clientIp, clientUserAg
 // Endpoint genérico para trackear eventos de Meta Pixel
 app.post('/api/track-event', async (req, res) => {
     try {
-        const { 
+        const {
             eventName,        // Nombre del evento (ViewContent, AddToCart, Search, Contact, InitiateCheckout)
             email,           // Email del usuario (opcional para algunos eventos)
             phone,           // Teléfono (opcional)
@@ -660,8 +675,8 @@ app.post('/api/track-event', async (req, res) => {
 
         // Validar que el nombre del evento esté presente
         if (!eventName) {
-            return res.status(400).json({ 
-                error: 'Datos incompletos: se requiere eventName' 
+            return res.status(400).json({
+                error: 'Datos incompletos: se requiere eventName'
             });
         }
 
@@ -673,17 +688,17 @@ app.post('/api/track-event', async (req, res) => {
 
         if (!metaAccessToken) {
             console.warn('⚠️  META_ACCESS_TOKEN no configurada. No se enviará evento a Meta.');
-            return res.status(200).json({ 
+            return res.status(200).json({
                 message: 'Evento recibido pero Meta no configurado',
-                tracked: false 
+                tracked: false
             });
         }
 
         if (!metaPixelId && !testEventCode) {
             console.warn('⚠️  META_PIXEL_ID o META_TEST_EVENT_CODE no configurados.');
-            return res.status(200).json({ 
+            return res.status(200).json({
                 message: 'Evento recibido pero Pixel ID no configurado',
-                tracked: false 
+                tracked: false
             });
         }
 
@@ -735,8 +750,8 @@ app.post('/api/track-event', async (req, res) => {
     } catch (error) {
         console.error('❌ Error al trackear evento en Meta:', error);
         // Respondemos 200 para no interrumpir el flujo del usuario
-        res.status(200).json({ 
-            success: false, 
+        res.status(200).json({
+            success: false,
             message: 'Error al procesar evento',
             error: error.message,
             tracked: false
@@ -748,22 +763,22 @@ app.post('/api/track-event', async (req, res) => {
 // ⚠️ Nota: Cambiado a asíncrono para mejor rendimiento
 app.get('/product-feed.csv', async (req, res) => {
     const csvPath = path.join(__dirname, 'product-feed.csv');
-    
+
     // Verificar que el archivo existe
     if (!fs.existsSync(csvPath)) {
         console.warn(`⚠️ Archivo CSV no encontrado en: ${csvPath}`);
         return res.status(404).json({ error: 'Archivo CSV no encontrado' });
     }
-    
+
     try {
         // Leer el archivo CSV de forma asíncrona
         const csvContent = await fs.promises.readFile(csvPath, 'utf8');
-        
+
         // Configurar headers para que el navegador/Facebook lo lea correctamente
         res.setHeader('Content-Type', 'text/csv; charset=utf-8');
         res.setHeader('Content-Disposition', 'inline; filename="product-feed.csv"');
         res.setHeader('Cache-Control', 'public, max-age=3600'); // Cache por 1 hora
-        
+
         // Enviar el contenido CSV
         res.send(csvContent);
     } catch (error) {
@@ -779,7 +794,7 @@ app.get('/api/health', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
-    
+
     if (!stripeSecretKey || stripeSecretKey.includes('tu_clave_aqui')) {
         console.error('⚠️  ERROR: STRIPE_SECRET_KEY no está configurada');
         console.error('   Configúrala en Render -> Environment Variables');
