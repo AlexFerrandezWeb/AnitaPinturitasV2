@@ -17,7 +17,7 @@ app.use(cors());
 // Middleware condicional: excluir webhook de Stripe del parsing JSON
 // porque necesita el body raw para verificar la firma
 app.use((req, res, next) => {
-    if (req.path === '/api/stripe-webhook') {
+    if (req.path === '/webhook-stripe') {
         // Para el webhook, usar express.raw() en lugar de express.json()
         express.raw({ type: 'application/json' })(req, res, next);
     } else {
@@ -211,7 +211,7 @@ app.get('/api/checkout-session/:sessionId', async (req, res) => {
 // URL: https://tu-dominio.com/api/stripe-webhook
 // Eventos a escuchar: checkout.session.completed
 // NOTA: El middleware condicional arriba ya procesa el body como raw para este endpoint
-app.post('/api/stripe-webhook', async (req, res) => {
+app.post('/webhook-stripe', async (req, res) => {
     const sig = req.headers['stripe-signature'];
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
