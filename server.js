@@ -684,7 +684,7 @@ app.post('/api/track-event', async (req, res) => {
         const metaAccessToken = process.env.META_ACCESS_TOKEN;
         const metaPixelId = process.env.META_PIXEL_ID;
         // Código de prueba de Meta para testear eventos
-        const testEventCode = 'TEST95382'; // Usar código de prueba directamente
+        const testEventCode = 'TEST48945'; // Usar código de prueba directamente
 
         if (!metaAccessToken) {
             console.warn('⚠️  META_ACCESS_TOKEN no configurada. No se enviará evento a Meta.');
