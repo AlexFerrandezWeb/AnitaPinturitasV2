@@ -274,7 +274,7 @@ app.post('/webhook-stripe', async (req, res) => {
             // Verificar configuración de Meta
             const metaAccessToken = process.env.META_ACCESS_TOKEN;
             const metaPixelId = process.env.META_PIXEL_ID;
-            const testEventCode = 'TEST48945'; // Usar código de prueba directamente
+            const testEventCode = process.env.META_TEST_EVENT_CODE || 'TEST48945'; // Usar variable de entorno o fallback
 
             if (!metaAccessToken) {
                 console.warn('⚠️  META_ACCESS_TOKEN no configurada. No se enviará evento a Meta.');
@@ -470,7 +470,7 @@ app.post('/api/track-purchase', async (req, res) => {
         // Verificar configuración de Meta
         const metaAccessToken = process.env.META_ACCESS_TOKEN;
         const metaPixelId = process.env.META_PIXEL_ID;
-        const testEventCode = process.env.META_TEST_EVENT_CODE;
+        const testEventCode = process.env.META_TEST_EVENT_CODE || 'TEST48945';
 
         if (!metaAccessToken || (!metaPixelId && !testEventCode)) {
             return res.status(200).json({
@@ -684,7 +684,7 @@ app.post('/api/track-event', async (req, res) => {
         const metaAccessToken = process.env.META_ACCESS_TOKEN;
         const metaPixelId = process.env.META_PIXEL_ID;
         // Código de prueba de Meta para testear eventos
-        const testEventCode = 'TEST48945'; // Usar código de prueba directamente
+        const testEventCode = process.env.META_TEST_EVENT_CODE || 'TEST48945';
 
         if (!metaAccessToken) {
             console.warn('⚠️  META_ACCESS_TOKEN no configurada. No se enviará evento a Meta.');
