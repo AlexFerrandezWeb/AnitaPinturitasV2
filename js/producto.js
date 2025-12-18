@@ -4,9 +4,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const productoId = urlParams.get('id');
 
+    // Obtener elemento contenedor para controlar la visibilidad (evitar parpadeo)
+    const productContainer = document.querySelector('.producto-details');
+    if (productContainer) {
+        productContainer.style.opacity = '0';
+        productContainer.style.transition = 'opacity 0.3s ease';
+    }
+
     // Cargar datos del producto si hay ID
     if (productoId) {
         cargarProducto(productoId);
+    } else {
+        // Si no hay ID, mostrar el producto por defecto
+        if (productContainer) productContainer.style.opacity = '1';
     }
 
     const decreaseBtn = document.querySelector('#decrease-qty');
@@ -195,6 +205,8 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(result => {
                 if (!result || !result.producto) {
                     console.error('Producto no encontrado');
+                    // Mostrar aunque falle para no dejar la página en blanco
+                    if (productContainer) productContainer.style.opacity = '1';
                     return;
                 }
 
@@ -290,6 +302,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
 
+                // Una vez cargado todo, mostrar el contenedor
+                if (productContainer) {
+                    productContainer.style.opacity = '1';
+                }
+
                 // Trackear ViewContent (ver contenido del producto)
                 // Usar fbq directamente para asegurar que content_ids y content_type se envíen correctamente
                 if (typeof window.fbq === 'function') {
@@ -314,21 +331,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         window.trackViewContent(producto.id, producto.nombre, producto.precio, productCategory);
                     }
                 }
-
-                // Actualizar las miniaturas (imágenes del producto + frases inspiracionales)
-                // const thumbnailsContainer = document.querySelector('.producto-details__thumbnails');
-                // if (thumbnailsContainer) {
-                //     thumbnailsContainer.innerHTML = `
-                //         <img src="${producto.imagen}" alt="Vista 1" class="producto-details__thumbnail active" data-main-img="${producto.imagen}">
-                //         <img src="../assets/frase1.jpg" alt="Frase inspiracional 1" class="producto-details__thumbnail" data-main-img="../assets/frase1.jpg">
-                //         <img src="../assets/frase2.jpg" alt="Frase inspiracional 2" class="producto-details__thumbnail" data-main-img="../assets/frase2.jpg">
-                //     `;
-                // Re-añadir listeners a las nuevas miniaturas
-                // attachThumbnailListeners();
-                // }
             })
             .catch(error => {
                 console.error('Error al cargar el producto:', error);
+                // Asegurar que se muestra el contenido si hay error, para no bloquear
+                if (productContainer) productContainer.style.opacity = '1';
             });
     }
 
@@ -415,4 +422,3 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
-

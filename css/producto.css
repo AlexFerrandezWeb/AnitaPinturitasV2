@@ -38,7 +38,7 @@ body {
     background: var(--vista-white);
     padding: 40px 0;
     text-align: center;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .producto-hero__back {
@@ -57,6 +57,8 @@ body {
 .producto-details {
     padding: 60px 0 100px 0;
     background-color: var(--white);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .producto-details__grid {
@@ -453,4 +455,3 @@ body {
         font-size: 1rem;
     }
 }
-
