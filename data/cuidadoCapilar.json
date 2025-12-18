@@ -23,7 +23,13 @@
                     "condition": "new",
                     "brand": "Anita Pinturitas",
                     "product_type": "Cuidado Capilar",
-                    "ingredientes": ["Spray termoprotector enriquecido con aceite de argán.", "Crea una película invisible para una protección total del cabello contra las altas temperaturas.", "Utilizar antes de la utilización de planchas, secadores o tenacillas.","Hold 1: Fijación mínima.", "Tamaño: 200 ml"]
+                    "ingredientes": [
+                        "Spray termoprotector enriquecido con aceite de argán.",
+                        "Crea una película invisible para una protección total del cabello contra las altas temperaturas.",
+                        "Utilizar antes de la utilización de planchas, secadores o tenacillas.",
+                        "Hold 1: Fijación mínima.",
+                        "Tamaño: 200 ml"
+                    ]
                 }
             ]
         },
@@ -50,7 +56,12 @@
                     "condition": "new",
                     "brand": "Anita Pinturitas",
                     "product_type": "Cuidado Capilar",
-                    "ingredientes": ["Aceite revitalizante con extracto de quinoa y orquídea.", "Repara los cabellos secos y dañados.", "Perfecto para aportar brillo, sedosidad y evita el encrespamiento.", "Tamaño: 200 ml"]
+                    "ingredientes": [
+                        "Aceite revitalizante con extracto de quinoa y orquídea.",
+                        "Repara los cabellos secos y dañados.",
+                        "Perfecto para aportar brillo, sedosidad y evita el encrespamiento.",
+                        "Tamaño: 200 ml"
+                    ]
                 }
             ]
         },
@@ -77,7 +88,12 @@
                     "condition": "new",
                     "brand": "Anita Pinturitas",
                     "product_type": "Cuidado Capilar",
-                    "ingredientes": ["Polvo súper voluminizador.", "Perfecta para aportar volumen y textura al cabello.", "Se aplica en la raíz del cabello seco para un efecto instantáneo y de larga duración", "Tamaño: 60 ml"]
+                    "ingredientes": [
+                        "Polvo súper voluminizador.",
+                        "Perfecta para aportar volumen y textura al cabello.",
+                        "Se aplica en la raíz del cabello seco para un efecto instantáneo y de larga duración",
+                        "Tamaño: 60 ml"
+                    ]
                 }
             ]
         },
@@ -104,7 +120,12 @@
                     "condition": "new",
                     "brand": "Anita Pinturitas",
                     "product_type": "Cuidado Capilar",
-                    "ingredientes": ["Laca en spray de larga duración.", "No apelmaza.", "Hold 5: Fijación muy alta.", "Tamaño: spray de 500 ml."]
+                    "ingredientes": [
+                        "Laca en spray de larga duración.",
+                        "No apelmaza.",
+                        "Hold 5: Fijación muy alta.",
+                        "Tamaño: spray de 500 ml."
+                    ]
                 }
             ]
         },
@@ -131,7 +152,15 @@
                     "condition": "new",
                     "brand": "Anita Pinturitas",
                     "product_type": "Cuidado Capilar",
-                    "ingredientes": ["Mascarilla restauradora para cabello dañado o muy dañado: reconstruye, rejuvenece y repara el cabello dañado, castigado con necesitado de reparación.", "Repara los cabellos secos y dañados.", "Enriquecido con ingredientes naturales: los principios activos de la mascarilla son el Aloe Vera, aceite de Marula y la manteca de Karité, ingredientes reconocidos por sus propiedades hidratantes.", "Sin SLS ni parabenos ni siliconas: promueven un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.", "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.", "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",  "Tamaño: 500 ml"]
+                    "ingredientes": [
+                        "Mascarilla restauradora para cabello dañado o muy dañado: reconstruye, rejuvenece y repara el cabello dañado, castigado con necesitado de reparación.",
+                        "Repara los cabellos secos y dañados.",
+                        "Enriquecido con ingredientes naturales: los principios activos de la mascarilla son el Aloe Vera, aceite de Marula y la manteca de Karité, ingredientes reconocidos por sus propiedades hidratantes.",
+                        "Sin SLS ni parabenos ni siliconas: promueven un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.",
+                        "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.",
+                        "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",
+                        "Tamaño: 500 ml"
+                    ]
                 },
                 {
                     "id": "hair_shampoo_color_250ml",
@@ -150,7 +179,15 @@
                     "condition": "new",
                     "brand": "Anita Pinturitas",
                     "product_type": "Cuidado Capilar",
-                    "ingredientes": ["Mascarilla de nutrición para cabello seco que proporciona al cabello la nutrición que necesita, sobre todo cuando ha sido sometido a procesos químicos", "Enriquecido con ingredientes naturales: los principios activos de la mascarilla son el Aloe Vera, aceite de Marula y la manteca de Karité, que tienen propiedades altamente nutritivas.", "Enriquecido con ingredientes naturales: los principios activos de la mascarilla son el Aloe Vera, aceite de Marula y la manteca de Karité, ingredientes reconocidos por sus propiedades hidratantes.", "Sin SLS ni parabenos ni siliconas: promueven un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.", "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.", "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",  "Tamaño: 500 ml"]
+                    "ingredientes": [
+                        "Mascarilla de nutrición para cabello seco que proporciona al cabello la nutrición que necesita, sobre todo cuando ha sido sometido a procesos químicos",
+                        "Enriquecido con ingredientes naturales: los principios activos de la mascarilla son el Aloe Vera, aceite de Marula y la manteca de Karité, que tienen propiedades altamente nutritivas.",
+                        "Enriquecido con ingredientes naturales: los principios activos de la mascarilla son el Aloe Vera, aceite de Marula y la manteca de Karité, ingredientes reconocidos por sus propiedades hidratantes.",
+                        "Sin SLS ni parabenos ni siliconas: promueven un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.",
+                        "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.",
+                        "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",
+                        "Tamaño: 500 ml"
+                    ]
                 },
                 {
                     "id": "hair_shampoo_antiedad_250ml",
@@ -168,7 +205,14 @@
                     "condition": "new",
                     "brand": "Anita Pinturitas",
                     "product_type": "Cuidado Capilar",
-                    "ingredientes": ["Champú matizador con extracto de aceite de Marula, aloe vera y pigmento violeta", "Enriquecido con ingredientes naturales: los principios activos del champú son el Aloe Vera, aceite de Marula y pigmentos violetas, que tienen propiedades altamente nutritivas.", "Sin SLES, parabenos o siliconas: promueve un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.", "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.", "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",  "Tamaño: 300 ml"]
+                    "ingredientes": [
+                        "Champú matizador con extracto de aceite de Marula, aloe vera y pigmento violeta",
+                        "Enriquecido con ingredientes naturales: los principios activos del champú son el Aloe Vera, aceite de Marula y pigmentos violetas, que tienen propiedades altamente nutritivas.",
+                        "Sin SLES, parabenos o siliconas: promueve un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.",
+                        "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.",
+                        "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",
+                        "Tamaño: 300 ml"
+                    ]
                 },
                 {
                     "id": "hair_mascarilla_reparadora_200ml",
@@ -186,7 +230,14 @@
                     "condition": "new",
                     "brand": "Anita Pinturitas",
                     "product_type": "Cuidado Capilar",
-                    "ingredientes": ["Champú de nutrición para cabello seco que proporciona al cabello la nutrición que necesita, sobre todo cuando ha sido sometido a procesos químicos.", "Enriquecido con ingredientes naturales: los principios activos del champú son el Aloe Vera, aceite de Marula y el Pantenole (Provitamina B5), que tienen propiedades altamente nutritivas.", "Sin SLS ni parabenos ni siliconas: promueven un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.", "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.", "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",  "Tamaño: 500 ml"]
+                    "ingredientes": [
+                        "Champú de nutrición para cabello seco que proporciona al cabello la nutrición que necesita, sobre todo cuando ha sido sometido a procesos químicos.",
+                        "Enriquecido con ingredientes naturales: los principios activos del champú son el Aloe Vera, aceite de Marula y el Pantenole (Provitamina B5), que tienen propiedades altamente nutritivas.",
+                        "Sin SLS ni parabenos ni siliconas: promueven un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.",
+                        "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.",
+                        "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",
+                        "Tamaño: 500 ml"
+                    ]
                 },
                 {
                     "id": "hair_mascarilla_hidratante_200ml",
@@ -204,7 +255,14 @@
                     "condition": "new",
                     "brand": "Anita Pinturitas",
                     "product_type": "Cuidado Capilar",
-                    "ingredientes": ["Champú de reparación para cabello dañado o muy dañado: reconstruye, rejuvenece y repara el cabello dañado, castigado con necesitado de reparación.", "Enriquecido con ingredientes naturales: los principios activos del champú son el Aloe Vera y el aceite de Marula, ingredientes reconocidos por sus propiedades hidratantes.", "Sin SLS ni parabenos ni siliconas: promueven un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.", "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.", "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",  "Tamaño: 300 ml"]
+                    "ingredientes": [
+                        "Champú de reparación para cabello dañado o muy dañado: reconstruye, rejuvenece y repara el cabello dañado, castigado con necesitado de reparación.",
+                        "Enriquecido con ingredientes naturales: los principios activos del champú son el Aloe Vera y el aceite de Marula, ingredientes reconocidos por sus propiedades hidratantes.",
+                        "Sin SLS ni parabenos ni siliconas: promueven un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.",
+                        "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.",
+                        "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",
+                        "Tamaño: 300 ml"
+                    ]
                 },
                 {
                     "id": "hair_mascarilla_brillo_150ml",
@@ -223,7 +281,415 @@
                     "condition": "new",
                     "brand": "Anita Pinturitas",
                     "product_type": "Cuidado Capilar",
-                    "ingredientes": ["Mascarilla restauradora para cabello dañado o muy dañado: reconstruye, rejuvenece y repara el cabello dañado, castigado con necesitado de reparación.", "Enriquecido con ingredientes naturales: los principios activos de la mascarilla son el Aloe Vera, aceite de Marula y la manteca de Karité, ingredientes reconocidos por sus propiedades hidratantes.", "Sin SLS ni parabenos ni siliconas: promueven un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.", "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.", "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",  "Tamaño: 500 ml"]
+                    "ingredientes": [
+                        "Mascarilla restauradora para cabello dañado o muy dañado: reconstruye, rejuvenece y repara el cabello dañado, castigado con necesitado de reparación.",
+                        "Enriquecido con ingredientes naturales: los principios activos de la mascarilla son el Aloe Vera, aceite de Marula y la manteca de Karité, ingredientes reconocidos por sus propiedades hidratantes.",
+                        "Sin SLS ni parabenos ni siliconas: promueven un cuidado del cabello en forma natural, sin agentes químicos que a la larga generan resequedad y daños en su composición y propiedades.",
+                        "Vegan friendly: la mascarilla no contiene ingredientes de origen animal.",
+                        "Packaging ecorresponsable: con packagings ecodiseñados, 100% reciclables y sin folletos de papel. Además, incorpora un código QR para informar sobre el producto.",
+                        "Tamaño: 500 ml"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "cepillos",
+            "nombre": "cepillos",
+            "titulo": "Cepillos",
+            "descripcion": "Cepillos de Pelo Profesionales Termix",
+            "productos": [
+                {
+                    "id": "pack-6-cepillos-termix-cramic-pride",
+                    "nombre": "Pack 6 Cepillos Termix C·Ramic Pride",
+                    "precio": 69.00,
+                    "descripcion": "Muestra quién eres. Los colores nos identifican, nos transmiten emociones e impulsan nuestra creatividad. El nuevo pack C·Ramic Pride apuesta por marcar la diferencia y es por ello que incluye 6 cepillos de distintos colores y diámetros. Para que puedas crear estilos sin límites. Inspirados en la diversidad y libertad de la bandera LGTBI, los cepillos C·Ramic Pride se visten con los colores del arcoíris para que des rienda suelta a tu creatividad siendo la apuesta perfecta para aquellos profesionales que se atrevan a mostrar todo su potencial. Sin complejos, ni ataduras.",
+                    "imagen": "/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride.jpg",
+                        "/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride2.jpg",
+                        "/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride3.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_cepillos_termix_cramic_pride",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": [
+                        "Todo tipo de cabellos que quieren recuperar su brillo natural.",
+                        "Alisado Perfecto, rizos, ondas, resultados duraderos y cabello con mucho brillo.",
+                        "Cómo usar: Utiliza el Spray Termo-Protector Shieldy de Style.Me y quita la humedad del cabello con el secador hasta que esté seco al 80%. Trabaja con secciones y moldea cada mechón colocando el cepillo en la zona de la raíz y apuntando con el secador de pelo hacia abajo mientras deslizas el cepillo por el pelo. No te olvides de tu Spray Glossy para mayor brillo o Silky para acabar con las puntas abiertas."
+                    ]
+                },
+                {
+                    "id": "pack-cepillos-redondos-termix-evolution-basic-cabello-medio",
+                    "nombre": "Pack Cepillos Redondos Termix Evolution Basic cabello medio",
+                    "precio": 59.00,
+                    "descripcion": "Ideal para cabellos medios.Especialmente diseñado con fibra ionizada de alto rendimiento especial para cabellos de grosor medio. El cepillo Evolution Basic de Termix es el único cepillo del mercado diseñado para controlar los problemas de deshidratación que presenta este tipo de cabello gracias a la combinación del diseño de su tubo y la cantidad y grosor específico de sus fibras de nylon ionizadas.",
+                    "imagen": "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic.jpg",
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic2.jpg",
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic3.jpg",
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic4.jpg",
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic5.jpg",
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic6.jpg",
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic7.jpg",
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic8.jpg",
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic9.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_cepillos_termix_evolution_basic",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": [
+                        "Especialmente diseñado para cabellos de grosor medio.",
+                        "Alisado Perfecto, rizos, ondas con movimiento.",
+                        "Cómo usar: Utiliza el Spray Termo-Protector Shieldy de Style.Me y quita la humedad del cabello con el secador hasta que esté seco al 80%. Trabaja con secciones y moldea cada mechón colocando el cepillo en la zona de la raíz y apuntando con el secador de pelo hacia abajo mientras deslizas el cepillo por el pelo. No te olvides de tu Cristal Líquido Silky para acabar con las puntas abiertas o del Aceite Revive para reparar el cabello seco y dañado."
+                    ]
+                },
+                {
+                    "id": "set-cepillos-Termix-evolution-soft",
+                    "nombre": "Set de Cepillos Redondos Termix Evolution Soft cabello fino",
+                    "precio": 59.00,
+                    "descripcion": "Perfecto para cabellos finos. Especialmente diseñado para cuidar de los cabellos finos con tendencia a la rotura.El cepillo Evolution Soft de Termix es el único cepillo del mercado diseñado para evitar la rotura del cabello y el deterioro de la fibra capilar gracias a su sistema cruzado de fibras de diámetro fino de nylon ionizadas y microfilamentos de color beige. Este sistema permite un mayor agarre del cabello sin dañarlo y aportando un efecto de mayor densidad capilar.",
+                    "imagen": "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft.jpg",
+                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft2.jpg",
+                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft3.jpg",
+                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft4.jpg",
+                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft5.jpg",
+                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft6.jpg",
+                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft7.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_cepillos_termix_evolution_soft",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": [
+                        "Especialmente diseñado para cabellos finos.",
+                        "Cabello con volumen, Alisado Perfecto, ondas.",
+                        "Cómo usar: Utiliza el Spray Termo-Protector Shieldy de Style.Me y quita la humedad del cabello con el secador hasta que esté seco al 80%. Trabaja con secciones y moldea cada mechón colocando el cepillo en la zona de la raíz y apuntando con el secador de pelo hacia abajo mientras deslizas el cepillo por el pelo. No te olvides de tu Spray Glossy para mayor brillo o Silky para acabar con las puntas abiertas. Y si quieres potenciar aun más el volumen, apuesta por las medidas por encima de los hombros y las ondas amplias y desestructuradas para ganar superficie y jugar con las texturas."
+                    ]
+                },
+                {
+                    "id": "pack-termix-profesional-regalo-neceser",
+                    "nombre": "Pack Termix profesional regalo neceser",
+                    "precio": 28.00,
+                    "descripcion": "Este lanzamiento lleva un neceser de gran calidad en color negro con el logo de Termix y, todo los esencial para realizar los primeros recogidos, peinados, tintes, cepillados… El pack incorpora tres cepillos térmicos Profesionales (ø23, ø32 y ø43), el buque insignia de Termix, que nos permitirán conseguir un secado rápido y nos facilitarán crear peinados de todo tipo, con unos resultados verdaderamente duraderos y sin daños ni roturas en el pelo. Precisamente estos diámetros son los más demandados en nuestro mercado. Además, este pack, también incorpora dos pinzas profesionales y dos paletinas grandes, para recoger gran cantidad de cabello sin marcarlo y para trabajar cualquier tipo de tinte. ¡Consigue los mejores resultados con este kit! Ideal para todos los estilitas.",
+                    "imagen": "/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser.jpg",
+                        "/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser2.jpg",
+                        "/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser3.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_pack_termix_profesional_regalo_neceser",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": [
+                        "El Pack incluye: 1 neceser de color negro, 3 cepillos Profesionales (ø23, ø32 y ø43), 2 pinzas Profesionales, 2 Paletinas grandes.",
+                        "Los cepillos Profesionales de Termix están creados con fibras altamente resistentes al calor y con la tecnología “efecto memoria”, con la aplicación del calor se reblandecen y, tras su uso, vuelven a su posición y rigidez habitual. Estos cepillos tienen el tubo de aluminio perforado lo que facilita y acelera el proceso de secado del cabello. El mango está hecho de polipropileno, un material muy resistente y antiadherente, que evita que el cabello se pegue al mango. Además, incorpora en la parte inferior una púa, que sirve para separar mechones de cabello con el mismo cepillo mientras lo moldeas, ahorrando tiempo y ganando confort.",
+                        "Las pinzas de pelo Termix están pensadas para lograr recoger una gran cantidad de cabello, sin marcarlo. Además, también son perfectas para crear particiones durante la elaboración de cualquier peinado. Con muelles de acero, contribuyen a una mayor elasticidad para un agarre fuerte, prolongado y sin marcas.",
+                        "Las paletinas de tinte Termix están hechas con fibras de alta calidad. Gracias a su diseño, permiten aplicar de manera uniforme el tinte. Además, presentan una gran resistencia a los agentes químicos propios del tinte y la coloración, siendo muy duraderas y eficaces.",
+                        "El neceser para academias de Termix está diseñado en un color atemporal y elegante, y ofrece una gran resistencia y tiene una gran capacidad de guardado. Ultraligero y con acabados de calidad."
+                    ]
+                },
+                {
+                    "id": "cepillo-detangling-antiestatico-para-desenredar-termix-professional",
+                    "nombre": "Cepillo Detangling Antiestático Para Desenredar Termix Professional",
+                    "precio": 69.00,
+                    "descripcion": "El Cepillo Detangling Antiestático de Termix Professional es la herramienta profesional diseñada para un desenredado rápido, suave y sin frizz. Gracias a su tecnología antiestática, controla la electricidad estática desde la primera pasada, dejando el cabello más pulido, brillante y manejable. Sus púas flexibles en dos alturas con sistema antitirones se deslizan suavemente por el cabello, evitando roturas y adaptándose al cuero cabelludo para ofrecer una experiencia más cómoda al cliente. Además, su estructura perforada permite el paso del aire durante el secado, acelerando el proceso sin dañar la fibra capilar. Ligero, compacto y ergonómico, es perfecto para los estilistas freelance, de eventos, shootings o todos aquellos que necesitan cepillos fáciles de transportar. Disponible en tres colores tendencia —Ocean Breeze, Green Whisper y Sandy Peach—, combina funcionalidad, cuidado y estilo en una sola herramienta profesional.",
+                    "imagen": "/assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional.jpg",
+                        "/assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional2.jpg",
+                        "/assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional3.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_cepillos_termix_cramic_pride",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": [
+                        "Tecnología antiestática para eliminar el frizz y potenciar el brillo natural.",
+                        "Púas flexibles en dos alturas con sistema antitirones y antirotura.",
+                        "Cuerpo ligero y flexible que se adapta al contorno de la cabeza.",
+                        "Base perforada que facilita un secado más rápido con secador.",
+                        "Diseño compacto, manejable y ergonómico para uso profesional.",
+                        "Disponible en tres colores: Ocean Breeze, Green Whisper y Sandy Peach.",
+                        "Garantía de 3 años."
+                    ],
+                    "colores": [
+                        "Azul",
+                        "Naranja",
+                        "Verde"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "planchas",
+            "nombre": "planchas",
+            "titulo": "Planchas",
+            "descripcion": "Planchas de Pelo Profesionales Termix",
+            "productos": [
+                {
+                    "id": "plancha_de_pelo_profesional_termix_wild",
+                    "nombre": "PLANCHA DE PELO PROFESIONAL TERMIX WILD",
+                    "precio": 14.9,
+                    "descripcion": "Presentamos la Plancha de pelo Termix profesional Wild. Una combinación de elegancia y sencillez en una plancha de pelo especialmente pensada para los que premian la versatilidad. ¿Alisado perfecto u ondas salvajes? La creatividad no tiene límites. Desata tu lado más salvaje con la nueva Plancha de pelo Termix Wild.",
+                    "imagen": "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild.jpg",
+                        "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild2.jpg",
+                        "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild3.jpg",
+                        "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild4.jpg",
+                        "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild5.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=plancha_de_pelo_profesional_termix_wild",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": [
+                        "Diseño Extra Lite: Menos peso y placas basculantes. La plancha de pelo Profesional WILD permite un dominio más rápido y ligero del cabello. Sus contornos ovalados logran un deslizamiento suave para crear ondas y rizos con mayor facilidad.",
+                        "Regulador de temperatura: Permite regular la temperatura en 5 posiciones entre 150ºC y 230ºC con tan sólo un clic. De esta manera, podemos adaptar el calor al tipo de cabello para asegurar la máxima protección y el mínimo impacto.",
+                        "Cerámica y turmalina iónica: Las placas de la nueva plancha WILD incluyen cerámica y turmalina para un acabado mucho más brillante. Además, sus propiedades iónicas permiten controlar el encrespamiento para cabello pulido por más tiempo.",
+                        "Placas: Ancho de 27mm.",
+                        "Apagado automático: A los 60 minutos de inactividad, la plancha profesional WILD se apagará de forma automática, para evitar descuidos y un consumo de energía innecesario.",
+                        "Neceser teddy: La nueva plancha de pelo Profesional WILD no llega sola. Sino que lo hace acompañada por un protector de silicona para las placas y un neceser térmico a prueba de altas temperaturas recubierto de un suave pelo.",
+                        "Potencia: de 110 a 240w."
+                    ]
+                },
+                {
+                    "id": "plancha_de_pelo_profesional_termix_unlimited",
+                    "nombre": "PLANCHA DE PELO TERMIX PROFESSIONAL UNLIMITED",
+                    "precio": 14.9,
+                    "descripcion": "La Plancha Termix Professional Unlimited ofrece una solución avanzada para estilistas que buscan precisión, versatilidad y resultados duraderos. Equipada con un contador de pasadas patentado y alertas sonoras, esta herramienta optimiza cada tratamiento, reduciendo el tiempo de trabajo y garantizando un acabado perfecto sin dañar el cabello. Su diseño con placas de cerámica y turmalina de 38mm distribuye el calor de manera uniforme, proporcionando un acabado suave y brillante en una sola pasada. Los peines intercambiables permiten adaptar la plancha a diferentes tipos de cabello y técnicas, lo que la convierte en una opción imprescindible para cualquier profesional. Además, su control táctil de temperatura permite un ajuste preciso, alcanzando hasta 230°C, ideal para tratamientos de salón, alisados y ondas. Diseñada para el uso intensivo en salones de belleza, la Plancha Termix Unlimited combina innovación y funcionalidad, ofreciendo a los profesionales una herramienta que maximiza la calidad y la eficiencia en cada servicio.",
+                    "imagen": "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited.jpg",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited2.jpg",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited3.jpg",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited4.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=plancha_de_pelo_profesional_termix_unlimited",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": [
+                        "Contador de pasadas: Esta innovadora característica permite fijar y seguir el número exacto de pasadas necesarias para cada tratamiento capilar. El contador emite una señal sonora al alcanzar el número de pasadas programadas, optimizando el proceso y evitando el uso de calor innecesario, lo que protege aún más el cabello.",
+                        "Control de Temperatura Avanzado: La plancha de cabello Professional Unlimited de Termix ofrece un control de temperatura preciso, alcanzando hasta 230ºC. Esta característica permite adaptar el calor a cada tipo de cabello, asegurando resultados óptimos sin dañarlo. La guía de temperaturas incorporada facilita la selección de la temperatura adecuada, mientras que el regulador táctil y el botón de bloqueo previenen cambios accidentales durante el uso.",
+                        "Placas de Cerámica y Turmalina:  Las placas de cerámica turmalina de la Professional Unlimited tienen una anchura de 38mm y emiten iones negativos que reducen el frizz y mejoran la suavidad del cabello. Estas placas también aseguran una distribución uniforme del calor, proporcionando un acabado brillante y sedoso en una sola pasada.",
+                        "Estabilizador de temperatura: La plancha incorpora dos estabilizadores de temperatura que garantizan una distribución constante y uniforme del calor en ambas placas. Esta tecnología evita picos de temperatura que pueden dañar el cabello, asegurando un tratamiento seguro y eficaz.",
+                        "Sonido y Precisión en la Temperatura:  La plancha alcanza una temperatura máxima de 230ºC, ideal para tratamientos de salón. Emite un sonido tanto al alcanzar la temperatura deseada como al finalizar las pasadas programadas, garantizando resultados perfectos y uniformes en cada uso.",
+                        "Personalización con Peines Intercambiables: Incluye 3 peines y 2 conos intercambiables que se adaptan a distintos tipos de cabello, personalizando la experiencia y asegurando resultados óptimos. Estos peines ayudan a obtener los mejores resultados posibles, ya sea para alisar, crear ondas o realizar tratamientos específicos.",
+                        "Fácil Manejo con Tecnología Táctil: El regulador de temperatura con sensor táctil permite ajustar el calor con un simple deslizamiento del dedo. Además, cuenta con un botón de bloqueo que evita cambios accidentales de temperatura, garantizando una experiencia de uso segura y eficiente.",
+                        "Diseño Ergonómico y Cable Giratorio: Diseñada para la comodidad del usuario, la plancha tiene un peso de 280 gramos y cuenta con un cable giratorio de 3 metros que evita enredos y facilita el manejo durante el estilizado. Este diseño ergonómico permite una mayor libertad de movimiento, ideal para el uso profesional en salones de belleza."
+                    ]
+                },
+                {
+                    "id": "plancha_de_pelo_profesional_termix_230_gold_rose",
+                    "nombre": "Plancha de Pelo Profesional Termix 230º Gold Rose",
+                    "precio": 14.9,
+                    "descripcion": "La Plancha más icónica de Termix se actualiza en esta nueva edición limitada para seguir revolucionando el cuidado del cabello. Con un acabado brillante en oro rosa y elegantes placas de cerámica en color dorado, la plancha 230º Gold Rose es idónea para realizar cualquier look o tratamientos profesionales respetando la salud del cabello y aportando un resultado profesional duradero, personalizado y con un extra de brillo. Descubre el clásico más codiciado por los estilistas ahora en una edición limitada Gold Rose con un exclusivo neceser resistente al calor ideal tanto para uso profesional como para usar en casa. Conecta con la magia de Termix estas Navidades y hazte con la herramienta más poderosa para ser uno mismo.",
+                    "imagen": "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-230-gold-rose.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-230-gold-rose.jpg",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-230-gold-rose2.jpg",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-230-gold-rose3.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-230-gold-rose.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=plancha_de_pelo_profesional_termix_230_gold_rose",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": [
+                        "Planchado personalizado: El control digital de la temperatura ha sido mejorado al implantar este sistema digital a las planchas Termix 230º.",
+                        "Especial tratamientos: Igual que la plancha Termix 230º Black, esta nueva edición sigue siendo la más elegida por los profesionales por su versatilidad y acabado en tratamientos como la keratina. Sus placas 100% de cerámica y turmalina, junto con su regulador de temperatura, hacen que sea la más indicada para el uso profesional de cualquier tipo de servicios y tratamiento.",
+                        "Tecnología ultra-glide: Sus placas basculantes de cerámica y turmalina en color oro presentan un mejor deslizamiento y control en las pasadas, que evitan tirones y rotura de cabello.",
+                        "Nanotecnología e iones: La plancha de pelo 230º Gold Rose está diseñada para cuidar del cabello al máximo. Es por ello que incorpora Nano óxido de Titanio (Nano Ti O2) y Nano Plata (Ano Ag) en sus placas, componentes que ayudan a eliminar restos de productos químicos y colaboran a la desinfección del cabello.",
+                        "Sistema infrarrojo: Su avanzada tecnología de ondas infrarrojas permite tener una mayor capacidad de trabajo consiguiendo así mejores y más rápidos resultados.",
+                        "Sistema Integrado de Calentamiento con Cerámica (ICHS): Este patentado sistema de recuperación instantánea del calor en las placas cerámicas consigue que la temperatura se conserve y se reparta de manera uniforme.",
+                        "Estuche 'Love my hair': La plancha viene acompañada de un estuche de viaje aterciopelado resistente al calor. Su protector de placas también protege las placas y permite guardarla incluso inmediatamente después de su uso.",
+                        "Características adicionales: Cable giratorio de 3 metros y modo de apagado automático a los 30 minutos de inactividad. El tiempo necesario para alcanzar nuevamente la temperatura indicada en la pantalla digital es de 15 segundos una vez se pulse el botón ON."
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "pinzas",
+            "nombre": "pinzas",
+            "titulo": "Pinzas",
+            "descripcion": "Pinzas de Pelo Profesionales Termix",
+            "productos": [
+                {
+                    "id": "set_6_pinzas_de_pelo_profesionales_pride_termix",
+                    "nombre": "SET 6 PINZAS DE PELO PROFESIONALES PRIDE TERMIX",
+                    "precio": 13.00,
+                    "descripcion": "Una sujeción del cabello perfecta. Las pinzas de pelo Termix están diseñadas para lograr recoger una gran cantidad de cabello, sin marcarlo. Además, también son perfectas para crear particiones durante la elaboración de cualquier peinado. Con muelles de acero, contribuyen a una mayor elasticidad para un agarre fuerte, prolongado y sin marca.",
+                    "imagen": "/assets/productos/cuidadoCapilar/set-6-pinzas-de-pelo-profesionales-pride-termix.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/set-6-pinzas-de-pelo-profesionales-pride-termix.jpg",
+                        "/assets/productos/cuidadoCapilar/set-6-pinzas-de-pelo-profesionales-pride-termix2.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/set-6-pinzas-de-pelo-profesionales-pride-termix.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=set_6_pinzas_de_pelo_profesionales_pride_termix",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": [
+                        "Pinzas para el pelo con muelles de acero.",
+                        "Gran agarre y fijación.",
+                        "Perfecta para realizar particiones durante la elaboración de peinados."
+                    ]
+                },
+                {
+                    "id": "set_6_pinzas_de_pelo_profesional_termix_unlimited",
+                    "nombre": "SET 6 PINZAS DE PELO PROFESIONALES TERMIX",
+                    "precio": 12.00,
+                    "descripcion": "Probablemente las pinzas para el pelo más avanzadas del mercado. Su estudiado diseño permite agarrar una mayor cantidad de cabello con máxima fijación. Perfectas también para realizar particiones durante la elaboración de peinados. Sus muelles están diseñados con acero importado, con elasticidad y mayor estabilidad que otros ganchos de cabello ordinarios. La elasticidad de estas pinzas para el pelo se mantiene incluso después de un uso frecuente. Pinzas con tacto gomoso (soft touch) para mayor sensación de agarre y presentadas en packs de 6 unidades.",
+                    "imagen": "/assets/productos/cuidadoCapilar/pinzas-termix-negras-soft-touch.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/pinzas-termix-negras-soft-touch.jpg",
+                        "/assets/productos/cuidadoCapilar/pinzas-termix-negras-soft-touch2.jpg",
+                        "/assets/productos/cuidadoCapilar/pinzas-termix-negras-soft-touch3.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pinzas-termix-negras-soft-touch.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=set_6_pinzas_de_pelo_profesional_termix_unlimited",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": [
+                        "Pinzas para el pelo con muelles de acero",
+                        "Gran agarre y fijación",
+                        "Perfecta para realizar particiones durante la elaboración de peinados",
+                        "Tacto suave (soft touch)"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "peines",
+            "nombre": "peines",
+            "titulo": "Peines",
+            "descripcion": "Peines de Pelo Profesionales Termix",
+            "productos": [
+                {
+                    "id": "peine_profesional_carbono_desenredante_termix",
+                    "nombre": "PEINE PROFESIONAL CARBONO DESENREDANTE TERMIX",
+                    "precio": 17.00,
+                    "descripcion": "Peine de fibra de carbono que alcanza una gran resistencia y durabilidad. Los peines de carbono Termix disponen de diferentes modelos que ofrecen alternativas en cuanto a peinado, sin embargo, este diseño es ideal para cortes y peinados. Además, es antiestático y soporta altas temperaturas, por lo que podrás trabajar con él incluso con plancha.",
+                    "imagen": "/assets/productos/cuidadoCapilar/peine-termix-carbono.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/peine-termix-carbono.jpg",
+                        "/assets/productos/cuidadoCapilar/peine-termix-carbono2.jpg",
+                        "/assets/productos/cuidadoCapilar/peine-termix-carbono3.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/peine-termix-carbono.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=peine_profesional_carbono_desenredante_termix",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": [
+                        "17,90 Medida: 22,5 cm",
+                        "Diseño con púas gruesas y separadas",
+                        "Antiestático",
+                        " La línea de peines de carbono Termix tolera altas temperaturas",
+                        "Apto para esterilizar"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "maquinas_de_corte_y_afeitado",
+            "nombre": "maquinas de corte y afeitado",
+            "titulo": "Máquinas de corte y afeitado",
+            "descripcion": "Máquinas de corte y afeitado",
+            "productos": [
+                {
+                    "id": "maquina_para_contornos_profesional_termix_marble",
+                    "nombre": "MÁQUINA PARA CONTORNOS PROFESIONAL TERMIX MARBLE",
+                    "precio": 89.00,
+                    "descripcion": "Precisión y rendimiento en cada corte. La Máquina para Contornos Profesional Termix Marble es ideal para cualquier tipo de retoque o hair tattoos. Gracias a su motor eléctrico sin escobillas y a su set de peines, obtendrás un resultado impecable, pulido y definido durante sus 120 minutos de uso continuo. Este avanzado y novedoso motor ofrece un menor calentamiento y brinda un mejor rendimiento. Su tiempo máximo de carga es de 90 minutos y cuenta con una potente, pero ligera batería de litio, que tiene un menor efecto memoria, lo que significa que se puede cargar en cualquier momento sin afectar a su capacidad. La máquina permite alcanzar altas cotas de precisión gracias a su cuchilla de acero inoxidable. Para el tipo de rasurado que buscamos en la barba y para ciertos retoques en el cabello, este material es uno de los más indicados. Esta herramienta también destaca por su pattern estilo mármol, que transmite elegancia, sofisticación y atemporalidad. Además, es versátil, pudiendo ser utilizada tanto con cable como sin cable, proporcionando flexibilidad y comodidad, ideal para cualquier tipo de retoque.",
+                    "imagen": "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble.jpg",
+                        "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble2.jpg",
+                        "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble3.jpg",
+                        "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble4.jpg",
+                        "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble5.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=maquina_para_contornos_profesional_termix_marble",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": [
+                        "Modo de Uso: Con cable o sin cable",
+                        "Tiempo de Carga: 1,5 horas",
+                        "Tiempo de Uso: 120 minutos.",
+                        "Set de 4 peines: de 1.5mm, 3mm, 4.5mm, 6mm",
+                        "Tipo de Batería: 1400mAh batería de litio",
+                        "Motor: Eléctrico 3V",
+                        "Velocidad del motor: 6000 ± 200 rpm",
+                        "Tipo de cuchilla: Acero Inoxidable",
+                        "Corriente: AC 100-240V, 50-60Hz",
+                        "Peso: 135g",
+                        "Garantía: 3 años."
+                    ]
+                },
+                {
+                    "id": "maquina_de_corte_profesional_termix_marble_max",
+                    "nombre": "MÁQUINA DE CORTE PROFESIONAL TERMIX MARBLE MAX",
+                    "precio": 109.00,
+                    "descripcion": "Precisión y rendimiento en cada corte. La Máquina de Corte Profesional Termix Marble Max es la elección perfecta para los profesionales del cuidado del cabello. Gracias a su motor eléctrico sin escobillas, produce un menor calentamiento y brinda un mejor rendimiento durante sus 180 minutos de tiempo de uso. Su ligera, pero potente batería de litio ofrece un menor efecto memoria, lo que significa que se puede cargar en cualquier momento sin afectar a su capacidad. La máquina redefine el concepto de precisión en el corte del cabello gracias a su avanzada cuchilla de pulvimetalurgia. Este material, fabricado mediante un proceso de compresión de polvos metálicos a altas temperaturas, ofrece toda una serie de ventajas en comparación con las cuchillas tradicionales, como, por ejemplo, mayor durabilidad y rendimiento superior. Incorpora ocho peines de distinto tamaño para adaptarse a todas las necesidades. Esta herramienta también destaca por su pattern estilo mármol, que transmite elegancia, sofisticación y atemporalidad. Además, es versátil, pudiendo ser utilizada tanto con cable como sin cable, proporcionando flexibilidad y comodidad, ideal para cualquier tipo de corte.",
+                    "imagen": "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max.jpg",
+                        "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max2.jpg",
+                        "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max3.jpg",
+                        "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max4.jpg",
+                        "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max5.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=maquina_de_corte_profesional_termix_marble_max",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": [
+                        "Modo de Uso: Con cable o sin cable",
+                        "Tiempo de Carga: 3 horas",
+                        "Tiempo de Uso: 180 minutos.",
+                        "Largo de corte: 0.1/0.2/0.3/0.4/0.5mm (sin cable)",
+                        "Set de 8 peines: de 1.5mm, 3mm, 4.5mm, 6mm, 10mm, 13mm, 16mm, 19mm",
+                        "Tipo de Batería: Litio",
+                        "Motor: Potente motor eléctrico 3.7V sin escobillas",
+                        "Salida de potencia: Constante.",
+                        "Velocidad del motor: 6000 ± 200 rpm (sin cable)",
+                        "Tipo de cuchilla: Pulvimetalurgia",
+                        "Corriente: AC 100-240V, 50-60Hz",
+                        "Peso: 248g",
+                        "Garantía: 3 años."
+                    ]
                 }
             ]
         }

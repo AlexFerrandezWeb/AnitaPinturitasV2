@@ -1,14 +1,14 @@
 // Funcionalidad de la página de producto
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Obtener ID del producto de la URL
     const urlParams = new URLSearchParams(window.location.search);
     const productoId = urlParams.get('id');
-    
+
     // Cargar datos del producto si hay ID
     if (productoId) {
         cargarProducto(productoId);
     }
-    
+
     const decreaseBtn = document.querySelector('#decrease-qty');
     const increaseBtn = document.querySelector('#increase-qty');
     const quantityInput = document.querySelector('#cantidad');
@@ -19,15 +19,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function attachThumbnailListeners() {
         const thumbnails = document.querySelectorAll('.producto-details__thumbnail');
         const mainImage = document.querySelector('#producto-img-principal');
-        
+
         thumbnails.forEach(thumbnail => {
-            thumbnail.addEventListener('click', function() {
+            thumbnail.addEventListener('click', function () {
                 // Remover clase active de todas las miniaturas
                 thumbnails.forEach(thumb => thumb.classList.remove('active'));
-                
+
                 // Añadir clase active a la miniatura clicada
                 this.classList.add('active');
-                
+
                 // Cambiar imagen principal
                 const newImageSrc = this.getAttribute('data-main-img');
                 if (mainImage && newImageSrc) {
@@ -36,13 +36,13 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-    
+
     // Añadir listeners inicialmente
     attachThumbnailListeners();
 
     // Controlar cantidad
     if (decreaseBtn && quantityInput) {
-        decreaseBtn.addEventListener('click', function() {
+        decreaseBtn.addEventListener('click', function () {
             let currentValue = parseInt(quantityInput.value);
             if (currentValue > 1) {
                 quantityInput.value = currentValue - 1;
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (increaseBtn && quantityInput) {
-        increaseBtn.addEventListener('click', function() {
+        increaseBtn.addEventListener('click', function () {
             let currentValue = parseInt(quantityInput.value);
             const maxValue = parseInt(quantityInput.getAttribute('max')) || 10;
             if (currentValue < maxValue) {
@@ -62,11 +62,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Validar cantidad manualmente
     if (quantityInput) {
-        quantityInput.addEventListener('change', function() {
+        quantityInput.addEventListener('change', function () {
             let value = parseInt(this.value);
             const minValue = parseInt(this.getAttribute('min')) || 1;
             const maxValue = parseInt(this.getAttribute('max')) || 10;
-            
+
             if (isNaN(value) || value < minValue) {
                 this.value = minValue;
             } else if (value > maxValue) {
@@ -77,51 +77,67 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Añadir al carrito
     if (addToCartBtn) {
-        addToCartBtn.addEventListener('click', function() {
+        addToCartBtn.addEventListener('click', function () {
             // Obtener datos del producto (usar el ID del producto cargado o de la URL)
             const productId = window.currentProductId || productoId || 'default-' + Date.now();
-            const productName = document.querySelector('.producto-details__name').textContent;
+            let productName = document.querySelector('.producto-details__name').textContent;
+
+            // Añadir color al nombre si hay uno seleccionado
+            let finalProductId = productId;
+            const colorSelector = document.getElementById('color-selector');
+            if (colorSelector && colorSelector.value) {
+                productName = `${productName} (${colorSelector.value})`;
+                finalProductId = `${productId}-${colorSelector.value}`;
+            }
+
             const productPriceText = document.querySelector('.producto-details__price-current').textContent;
             const productPrice = parseFloat(productPriceText.replace('€', '').replace(',', '.')) || 0;
-            const productImage = document.querySelector('#producto-img-principal') ? 
-                                 document.querySelector('#producto-img-principal').src : 
-                                 '../assets/productos/cuidadoPiel/productoPortada1.png';
+
+            // Usar la imagen mostrada actualmente como imagen del carrito
+            const mainImgElement = document.querySelector('#producto-img-principal');
+            const productImage = mainImgElement ? mainImgElement.src :
+                ((window.currentProductData && window.currentProductData.galeria && window.currentProductData.galeria.length > 0) ?
+                    window.currentProductData.galeria[0] :
+                    (window.currentProductData && window.currentProductData.imagen ?
+                        window.currentProductData.imagen :
+                        '../assets/productos/cuidadoPiel/productoPortada1.png'));
+
             const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
 
             // Validar que todos los datos sean válidos
-            if (!productId || productId === 'undefined') {
+            if (!finalProductId || finalProductId === 'undefined') {
                 alert('Error: No se ha podido identificar el producto. Por favor, recarga la página.');
                 return;
             }
-            
+
             if (!productName || productName.trim() === '' || productName === 'undefined') {
                 alert('Error: No se ha podido obtener el nombre del producto. Por favor, recarga la página.');
                 return;
             }
-            
+
             // Usar la función global addToCart
             if (typeof window.addToCart === 'function') {
                 // Ejecutar animación desde el botón antes de añadir al carrito
                 if (typeof window.createFlyToCartAnimationFromButton === 'function') {
                     window.createFlyToCartAnimationFromButton(this, productImage, () => {
                         // Añadir al carrito después de la animación
-                        window.addToCart(productId, productName, productPrice, productImage, quantity);
-                        console.log('Producto añadido al carrito:', {productId, productName, productPrice, productImage, quantity});
+                        window.addToCart(finalProductId, productName, productPrice, productImage, quantity);
+                        console.log('Producto añadido al carrito:', { finalProductId, productName, productPrice, productImage, quantity });
                     });
                 } else {
                     // Si no hay animación disponible, añadir directamente
-                    window.addToCart(productId, productName, productPrice, productImage, quantity);
-                    console.log('Producto añadido al carrito:', {productId, productName, productPrice, productImage, quantity});
+                    window.addToCart(finalProductId, productName, productPrice, productImage, quantity);
+                    console.log('Producto añadido al carrito:', { finalProductId, productName, productPrice, productImage, quantity });
                 }
             } else {
                 console.error('La función addToCart no está disponible');
             }
-            
+
             // Feedback visual en el botón
             const originalText = this.textContent;
             this.textContent = '✓ Añadido al carrito';
             this.style.background = 'linear-gradient(135deg, #4caf50 0%, #45a049 100%)';
-            
+
             setTimeout(() => {
                 this.textContent = originalText;
                 this.style.background = '';
@@ -131,17 +147,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Consultar por WhatsApp
     if (contactWhatsappBtn) {
-        contactWhatsappBtn.addEventListener('click', function() {
+        contactWhatsappBtn.addEventListener('click', function () {
             const productName = document.querySelector('.producto-details__name').textContent;
             const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
             const message = `Hola Anita, me interesa saber más sobre: ${productName} (Cantidad: ${quantity})`;
             const whatsappUrl = `https://wa.me/34640557787?text=${encodeURIComponent(message)}`;
-            
+
             // Trackear Contact en Meta Pixel
             if (typeof window.trackContact === 'function') {
                 window.trackContact('whatsapp');
             }
-            
+
             window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
         });
     }
@@ -150,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateCartCount() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
         const cartCount = document.querySelector('.nav__cart-count');
-        
+
         if (cartCount) {
             const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
             cartCount.textContent = totalItems;
@@ -160,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Actualizar contador al cargar la página
     updateCartCount();
-    
+
     // Función para cargar datos del producto desde el JSON
     function cargarProducto(id) {
         obtenerDatosProducto(id)
@@ -176,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.querySelector('.producto-details__name').textContent = producto.nombre;
                 document.querySelector('.producto-details__price-current').textContent = producto.precio.toFixed(2) + '€';
                 document.querySelector('.producto-details__description p').textContent = producto.descripcion;
-                
+
                 const categoryElement = document.querySelector('.producto-details__category');
                 if (categoryElement) {
                     const defaultCategory = result.origen && result.origen.includes('cuidadoCapilar')
@@ -185,11 +201,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     categoryElement.textContent = defaultCategory;
                 }
                 renderIngredientes(producto.ingredientes);
-                
+
                 // Guardar ID del producto para el carrito
                 window.currentProductId = producto.id;
                 window.currentProductData = producto;
-                
+
                 // Actualizar imagen principal y galería
                 const mainImg = document.querySelector('#producto-img-principal');
                 const galeria = Array.isArray(producto.galeria) && producto.galeria.length > 0
@@ -201,7 +217,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     mainImg.src = galeria[0];
                     mainImg.alt = producto.nombre;
                 }
-                
+
                 if (thumbnailsContainer) {
                     thumbnailsContainer.innerHTML = galeria.map((imagenSrc, index) => {
                         const isActive = index === 0 ? 'active' : '';
@@ -210,16 +226,67 @@ document.addEventListener('DOMContentLoaded', function() {
                     }).join('');
                     attachThumbnailListeners();
                 }
-                
+
+                // Renderizar selector de colores si existen
+                const quantitySection = document.querySelector('.producto-details__quantity');
+                const existingColorSelector = document.querySelector('.producto-details__colors');
+                if (existingColorSelector) {
+                    existingColorSelector.remove();
+                }
+
+                if (producto.colores && Array.isArray(producto.colores) && producto.colores.length > 0) {
+                    const colorContainer = document.createElement('div');
+                    colorContainer.className = 'producto-details__colors';
+                    colorContainer.style.marginBottom = '20px';
+                    colorContainer.innerHTML = `
+                        <label for="color-selector" style="display: block; margin-bottom: 10px; font-family: 'Montserrat', sans-serif; font-size: 1rem; color: #333;">Color:</label>
+                        <select id="color-selector" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: 'Montserrat', sans-serif; font-size: 1rem; color: #333; background-color: #fff;">
+                            ${producto.colores.map(color => `<option value="${color}">${color}</option>`).join('')}
+                        </select>
+                    `;
+
+                    if (quantitySection) {
+                        quantitySection.parentNode.insertBefore(colorContainer, quantitySection);
+                    }
+
+                    // Lógica para cambiar imagen según color
+                    const selector = document.getElementById('color-selector');
+                    if (selector) {
+                        selector.addEventListener('change', function () {
+                            const selectedColor = this.value;
+                            const mainImg = document.querySelector('#producto-img-principal');
+
+                            // Construir ruta de imagen basada en el color
+                            // Patrón: nombre-base + Color + .jpg
+                            // Ejemplo: cepillo-detangling-antiestatico-termix-professionalAzul.jpg
+
+                            // Obtener nombre base de la imagen original o hardcodearla si es este producto específico
+                            // Dado que es un requerimiento específico para este producto, podemos asumir la ruta base si estamos en este bloque
+                            if (producto.id === 'cepillo-detangling-antiestatico-para-desenredar-termix-professional') {
+                                const newImageSrc = `/assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional${selectedColor}.jpg`;
+
+                                if (mainImg) {
+                                    mainImg.src = newImageSrc;
+                                }
+                            }
+                        });
+
+                        // Disparar cambio inicial si hay valor seleccionado
+                        if (selector.value) {
+                            selector.dispatchEvent(new Event('change'));
+                        }
+                    }
+                }
+
                 // Trackear ViewContent (ver contenido del producto)
                 // Usar fbq directamente para asegurar que content_ids y content_type se envíen correctamente
                 if (typeof window.fbq === 'function') {
                     // Obtener categoría del producto (product_type o categoría por defecto)
-                    const productCategory = producto.product_type || 
-                                          (result.origen && result.origen.includes('cuidadoCapilar') 
-                                              ? 'Cuidado Capilar' 
-                                              : 'Cuidado de la Piel');
-                    
+                    const productCategory = producto.product_type ||
+                        (result.origen && result.origen.includes('cuidadoCapilar')
+                            ? 'Cuidado Capilar'
+                            : 'Cuidado de la Piel');
+
                     window.fbq('track', 'ViewContent', {
                         content_name: producto.nombre,
                         content_category: productCategory,
@@ -229,13 +296,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         currency: 'EUR'
                     });
                     console.log('✅ Meta ViewContent trackeado con content_ids:', producto.id);
-                    
+
                     // También llamar a trackViewContent para mantener compatibilidad con CAPI
                     if (typeof window.trackViewContent === 'function') {
                         window.trackViewContent(producto.id, producto.nombre, producto.precio, productCategory);
                     }
                 }
-                
+
                 // Actualizar las miniaturas (imágenes del producto + frases inspiracionales)
                 // const thumbnailsContainer = document.querySelector('.producto-details__thumbnails');
                 // if (thumbnailsContainer) {
@@ -244,8 +311,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 //         <img src="../assets/frase1.jpg" alt="Frase inspiracional 1" class="producto-details__thumbnail" data-main-img="../assets/frase1.jpg">
                 //         <img src="../assets/frase2.jpg" alt="Frase inspiracional 2" class="producto-details__thumbnail" data-main-img="../assets/frase2.jpg">
                 //     `;
-                    // Re-añadir listeners a las nuevas miniaturas
-                    // attachThumbnailListeners();
+                // Re-añadir listeners a las nuevas miniaturas
+                // attachThumbnailListeners();
                 // }
             })
             .catch(error => {
