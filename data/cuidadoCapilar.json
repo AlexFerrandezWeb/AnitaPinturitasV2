@@ -405,7 +405,7 @@
                 {
                     "id": "cepillo-detangling-antiestatico-para-desenredar-termix-professional",
                     "nombre": "Cepillo Detangling Antiestático Para Desenredar Termix Professional",
-                    "precio": 69.00,
+                    "precio": 8.00,
                     "descripcion": "El Cepillo Detangling Antiestático de Termix Professional es la herramienta profesional diseñada para un desenredado rápido, suave y sin frizz. Gracias a su tecnología antiestática, controla la electricidad estática desde la primera pasada, dejando el cabello más pulido, brillante y manejable. Sus púas flexibles en dos alturas con sistema antitirones se deslizan suavemente por el cabello, evitando roturas y adaptándose al cuero cabelludo para ofrecer una experiencia más cómoda al cliente. Además, su estructura perforada permite el paso del aire durante el secado, acelerando el proceso sin dañar la fibra capilar. Ligero, compacto y ergonómico, es perfecto para los estilistas freelance, de eventos, shootings o todos aquellos que necesitan cepillos fáciles de transportar. Disponible en tres colores tendencia —Ocean Breeze, Green Whisper y Sandy Peach—, combina funcionalidad, cuidado y estilo en una sola herramienta profesional.",
                     "imagen": "/assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional.jpg",
                     "galeria": [
@@ -501,6 +501,37 @@
                     ]
                 },
                 {
+                    "id": "plancha_de_pelo_profesional_termix_230",
+                    "nombre": "PLANCHA DE PELO PROFESIONAL TERMIX 230º",
+                    "precio": 110.00,
+                    "descripcion": "La plancha de pelo Termix 230 está diseñada para trabajar todo tipo de cabellos y tratamientos con resultados profesionales y duraderos. Gracias a la tecnología que incorpora en sus placas de cerámica y su avanzado sistema digital de regulación de temperatura, está considerada una de las mejores planchas de pelo del mercado. La posibilidad de regular la temperatura –desde los 130º hasta los 230º- permite un planchado personalizado ya que se puede trabajar todo tipo de cabellos respetando su salud.",
+                    "imagen": "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition.jpg",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition2.jpg",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition3.jpg",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition4.jpg",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition5.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=plancha_de_pelo_profesional_termix_230_black_edition",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": [
+                        "Sistema de infrarrojos: Su avanzada tecnología de rayos infrarrojos evita dañar el cabello y consigue mejores y más rápidos resultados.",
+                        "Nanotecnología: La plancha Termix 230 dispone de Nano Titanio (Nano Ti) que ayuda a generar iones negativos beneficiosos para el cabello. El Nano Óxido de Titanio limpia los restos de productos químicos, toxinas y polución que se adhieren a la superficie del cabello consiguiendo así un efecto purificante. También incorpora Nano Plata (Nano Ag) que proporciona protección antibacteriana con efecto desinfectante que elimina además los olores al cabello.",
+                        "Tecnología iónica: El control de los iones en el cabello lo vuelve más manejable, moldeable y suave, facilitando así que el tiempo de secado sea más rápido de lo habitual.",
+                        "Sistema digital: El control constante de la temperatura ha sido mejorado al implantar un sistema digital. El regulador permite ajustar la temperatura desde los 130º hasta los 230º.",
+                        "Placas: Ancho de 27mm",
+                        "Especial para tratamientos: Las placas especiales de cerámica y el control digital de la temperatura hacen que la plancha de pelo Termix 230 sea la indicada para el uso de tratamientos de Keratina u otros tratamientos de hidratación, que requieren alcanzar temperaturas elevadas para conseguir mejores resultados.",
+                        "Apagado automático: A los 30 minutos sin uso, se apaga automáticamente para evitar un consumo de energía innecesario. El tiempo necesario para alcanzar nuevamente la temperatura indicada en la pantalla digital es de 15 segundos una vez se pulse el botón ON.",
+                        "Potencia: de 100 a 240w",
+                        "Neceser térmico incluido"
+                    ]
+                },
+                {
                     "id": "plancha_de_pelo_profesional_termix_230_gold_rose",
                     "nombre": "Plancha de Pelo Profesional Termix 230º Gold Rose",
                     "precio": 124.00,
@@ -526,6 +557,45 @@
                         "Sistema Integrado de Calentamiento con Cerámica (ICHS): Este patentado sistema de recuperación instantánea del calor en las placas cerámicas consigue que la temperatura se conserve y se reparta de manera uniforme.",
                         "Estuche 'Love my hair': La plancha viene acompañada de un estuche de viaje aterciopelado resistente al calor. Su protector de placas también protege las placas y permite guardarla incluso inmediatamente después de su uso.",
                         "Características adicionales: Cable giratorio de 3 metros y modo de apagado automático a los 30 minutos de inactividad. El tiempo necesario para alcanzar nuevamente la temperatura indicada en la pantalla digital es de 15 segundos una vez se pulse el botón ON."
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "secadores_de_pelo",
+            "nombre": "secadores de pelo",
+            "titulo": "Secadores de Pelo",
+            "descripcion": "Secadores de Pelo Profesionales Termix",
+            "productos": [
+                {
+                    "id": "secador_profesional_termix_illusion",
+                    "nombre": "SECADOR PROFESIONAL TERMIX ILLUSION",
+                    "precio": 179.00,
+                    "descripcion": "La unión perfecta entre potencia, diseño de vanguardia y ligereza. Incorpora un revolucionario motor silencioso con el que se reduce aproximadamente un 40% el tiempo de secado y que ofrece una extensa vida útil de más de 2.000 horas de uso. Además, incorpora una función de autolimpiado, botón de bloqueo, botón de aire frío, 3 niveles temperatura y 3 de potencia. Con tecnología iónica y antifrizz, se adapta a todo tipo de cabello y consigue un resultado suave, brillante y saludable.",
+                    "imagen": "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion.jpg",
+                    "galeria": [
+                        "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion.jpg",
+                        "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion2.jpg",
+                        "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion3.jpg",
+                        "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion4.jpg",
+                        "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion5.jpg"
+                    ],
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion.jpg",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=secador_profesional_termix_illusion",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Cuidado Capilar",
+                    "ingredientes": [
+                        "Tecnología iónica antiencrespamiento: Transmite iones negativos para neutralizar los positivos que contiene el cabello, obteniendo como resultado el cierre de cutículas, la eliminación y reducción del frizz. Consiguiendo un resultado mucho más suave, liso y brillante.",
+                        "Múltiples ajustes de calor y flujo de aire: Incorpora 3 niveles de temperatura, 3 niveles de flujo de aire y un botón de aire frio, permitiendo conseguir adaptarse a todo tipo de cabellos, mejorando la duración y la calidad del peinado.",
+                        "Capacidad de autolimpieza:  Elimina la acumulación de polvo, cabello y residuos que puedan obstruir los filtros, garantizando un flujo de aire constante y eficiente y manteniendo el rendimiento óptimo de tu secador.",
+                        "Botón de encendido y bloqueo: Garantizando un uso seguro y evitando cambios accidentales de temperatura y velocidad del ventilador.",
+                        "Ultra ligero y cómodo: Con tan solo 400 gramos de peso, se convierte en una herramienta mucho más ergonómica y ligera para una mayor comodidad durante el secado.",
+                        "Mayor potencia: Reduce los tiempos de secado en un 40% con el motor BLDC avanzado y la tecnología de secado turbo gracias a sus 2000-2400W de potencia con el mínimo de sonido.",
+                        "Más silencioso: ¡Dile adiós al ruido ensordecedor! El motor BLDC permite un secado potente con un sonido mínimo, lo que crea un ambiente de salón tranquilo tanto para los estilistas como para los clientes.",
+                        "Motor BLDC 40 mm: El revolucionario motor BLDC tiene una vida útil 2,5 veces más larga en comparación con los motores tradicionales, lo que se traduce en más de 2.000 horas de funcionamiento confiable. Invierte en una herramienta duradera diseñada para soportar las exigencias del uso diario.",
+                        "Cable: de 3m."
                     ]
                 }
             ]

@@ -93,14 +93,26 @@ document.addEventListener('DOMContentLoaded', function () {
             const productPriceText = document.querySelector('.producto-details__price-current').textContent;
             const productPrice = parseFloat(productPriceText.replace('€', '').replace(',', '.')) || 0;
 
-            // Usar la imagen mostrada actualmente como imagen del carrito
-            const mainImgElement = document.querySelector('#producto-img-principal');
-            const productImage = mainImgElement ? mainImgElement.src :
-                ((window.currentProductData && window.currentProductData.galeria && window.currentProductData.galeria.length > 0) ?
-                    window.currentProductData.galeria[0] :
-                    (window.currentProductData && window.currentProductData.imagen ?
-                        window.currentProductData.imagen :
-                        '../assets/productos/cuidadoPiel/productoPortada1.png'));
+            // Usar SIEMPRE la primera imagen para el carrito, no la que está visible actualmente
+            const firstThumbnail = document.querySelector('.producto-details__thumbnail');
+            let productImage;
+
+            if (firstThumbnail && firstThumbnail.getAttribute('data-main-img')) {
+                productImage = firstThumbnail.getAttribute('data-main-img');
+            } else if (window.currentProductData && window.currentProductData.galeria && window.currentProductData.galeria.length > 0) {
+                productImage = window.currentProductData.galeria[0];
+            } else if (window.currentProductData && window.currentProductData.imagen) {
+                productImage = window.currentProductData.imagen;
+            } else {
+                const mainImgElement = document.querySelector('#producto-img-principal');
+                productImage = mainImgElement ? mainImgElement.src : '../assets/productos/cuidadoPiel/productoPortada1.png';
+            }
+
+            // EXCEPCIÓN: Si es el cepillo Termix y tiene color seleccionado, usar la imagen específica
+            // Reutilizamos la variable colorSelector definida arriba
+            if (productId === 'cepillo-detangling-antiestatico-para-desenredar-termix-professional' && colorSelector && colorSelector.value) {
+                productImage = `../assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional${colorSelector.value}.jpg`;
+            }
 
             const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
 
