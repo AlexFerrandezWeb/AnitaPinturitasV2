@@ -35,6 +35,20 @@
                     "ingredientes": []
                 },
                 {
+                    "id": "prod_SdTAGVPaPAE5Wu02",
+                    "nombre": "EXODERM - 2 ml.",
+                    "precio": 39,
+                    "descripcion": "Cóctel para tratamientos antiedad. Formuladas con exosomas vegetales de Houttuynia cordata y Gossypium herbaceum. Enriquecidas con aminoácidos esenciales, vitaminas y ácido hialurónico indicados para mejorar la firmeza de la piel y reducir las líneas de expresión.",
+                    "imagen": "/assets/productos/cuidadoPiel/producto02.png",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoPiel/producto02.png",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=prod_SdTAGVPaPAE5Wu02",
+                    "availability": "in stock",
+                    "condition": "new",
+                    "brand": "Anita Pinturitas",
+                    "product_type": "Alta Cosmética",
+                    "ingredientes": []
+                },
+                {
                     "id": "prod_SdTAGVPaPAE5Wu",
                     "nombre": "NUA GOLD (Crema facial) - 50 ml.",
                     "precio": 61,
