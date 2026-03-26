@@ -10,6 +10,7 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const INSTAGRAM_REELS_CACHE_PATH = path.join(__dirname, 'data', 'instagramReelsCache.json');
 
 // Middleware
 app.use(cors());
@@ -863,6 +864,37 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
         'Cache-Control': 'no-cache'
     };
 
+    function readReelsCache() {
+        try {
+            if (!fs.existsSync(INSTAGRAM_REELS_CACHE_PATH)) {
+                return null;
+            }
+            const raw = fs.readFileSync(INSTAGRAM_REELS_CACHE_PATH, 'utf8');
+            const parsed = JSON.parse(raw);
+            if (!parsed || !Array.isArray(parsed.reels)) {
+                return null;
+            }
+            return parsed;
+        } catch (error) {
+            console.warn('⚠️ Error reading reels cache:', error.message);
+            return null;
+        }
+    }
+
+    function writeReelsCache(payload) {
+        try {
+            const cachePayload = {
+                updatedAt: new Date().toISOString(),
+                username: payload.username,
+                count: payload.count,
+                reels: payload.reels
+            };
+            fs.writeFileSync(INSTAGRAM_REELS_CACHE_PATH, JSON.stringify(cachePayload, null, 2), 'utf8');
+        } catch (error) {
+            console.warn('⚠️ Error writing reels cache:', error.message);
+        }
+    }
+
     function getJson(hostname, requestPath, headers = instagramHeaders) {
         return new Promise((resolve, reject) => {
             const request = https.get({
@@ -942,7 +974,9 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
             }));
 
         if (reels.length > 0) {
-            return res.json({ username, count: reels.length, reels });
+            const responsePayload = { username, count: reels.length, reels, source: 'instagram_live' };
+            writeReelsCache(responsePayload);
+            return res.json(responsePayload);
         }
 
         // Fallback: usar timeline del profile endpoint si el feed no devuelve reels.
@@ -959,9 +993,37 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
                 timestamp: node.taken_at_timestamp || null
             }));
 
-        return res.json({ username, count: timelineReels.length, reels: timelineReels });
+        if (timelineReels.length > 0) {
+            const responsePayload = { username, count: timelineReels.length, reels: timelineReels, source: 'instagram_timeline' };
+            writeReelsCache(responsePayload);
+            return res.json(responsePayload);
+        }
+
+        const cache = readReelsCache();
+        if (cache && cache.reels.length > 0) {
+            return res.json({
+                username,
+                count: Math.min(limit, cache.reels.length),
+                reels: cache.reels.slice(0, limit),
+                source: 'cache',
+                cachedAt: cache.updatedAt
+            });
+        }
+
+        return res.status(200).json({ username, count: 0, reels: [], error: 'Unable to fetch reels now' });
     } catch (error) {
         console.error('Error in /api/instagram-latest-reels:', error.message);
+        const cache = readReelsCache();
+        if (cache && cache.reels.length > 0) {
+            return res.json({
+                username,
+                count: Math.min(limit, cache.reels.length),
+                reels: cache.reels.slice(0, limit),
+                source: 'cache',
+                cachedAt: cache.updatedAt
+            });
+        }
+
         return res.status(200).json({ username, count: 0, reels: [], error: 'Unable to fetch reels now' });
     }
 });
