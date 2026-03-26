@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const INSTAGRAM_USERNAME = 'anita_pinturitas';
     const CHECK_INTERVAL = 5 * 60 * 1000; // Check every 5 minutes
+    let isLiveNow = false;
 
     if (!liveBadge || !liveBanner) return;
 
@@ -90,11 +91,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderLatestReels(data.reels);
                 setApiStatus('ok', 'API conectada');
             } else {
-                setApiStatus('error', 'API sin reels disponibles');
+                if (isLiveNow) {
+                    setApiStatus('ok', 'Directo activo detectado');
+                } else {
+                    setApiStatus('checking', 'Instagram sin reels en este momento');
+                }
             }
         } catch (error) {
             console.error('Error loading latest Instagram reels:', error);
-            setApiStatus('error', 'API no disponible');
+            if (isLiveNow) {
+                setApiStatus('ok', 'Directo activo detectado');
+            } else {
+                setApiStatus('error', 'API no disponible');
+            }
         }
     }
 
@@ -113,12 +122,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = await response.json();
                 isLive = data.isLive;
             }
+            isLiveNow = isLive;
 
             // Update UI based on live status
             if (isLive) {
                 liveBadge.style.display = 'inline-flex';
                 liveBanner.style.display = 'flex';
                 if (reelsSection) reelsSection.style.display = 'none';
+                setApiStatus('ok', 'Directo activo detectado');
             } else {
                 liveBadge.style.display = 'none';
                 liveBanner.style.display = 'none';
@@ -133,10 +144,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initial check
-    checkLiveStatus();
-    loadLatestReels();
+    async function syncInstagramSection() {
+        // Forzamos orden: primero live, luego reels
+        await checkLiveStatus();
+        await loadLatestReels();
+    }
+
+    // Initial check with deterministic order
+    syncInstagramSection();
 
     // Set interval for periodic checks
-    setInterval(checkLiveStatus, CHECK_INTERVAL);
+    setInterval(syncInstagramSection, CHECK_INTERVAL);
 });

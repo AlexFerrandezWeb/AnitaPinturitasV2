@@ -878,7 +878,7 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
                 });
                 apiRes.on('end', () => {
                     if (apiRes.statusCode < 200 || apiRes.statusCode >= 300) {
-                        return reject(new Error(`Instagram responded with ${apiRes.statusCode}`));
+                        return reject(new Error(`Instagram responded with ${apiRes.statusCode} on ${hostname}${requestPath}`));
                     }
                     try {
                         resolve(JSON.parse(raw));
@@ -895,8 +895,23 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
         });
     }
 
+    async function getJsonWithRetry(hostname, requestPath, headers = instagramHeaders, retries = 2) {
+        let lastError = null;
+        for (let attempt = 0; attempt <= retries; attempt++) {
+            try {
+                return await getJson(hostname, requestPath, headers);
+            } catch (error) {
+                lastError = error;
+                if (attempt < retries) {
+                    await new Promise((resolve) => setTimeout(resolve, 350 * (attempt + 1)));
+                }
+            }
+        }
+        throw lastError;
+    }
+
     try {
-        const profileData = await getJson(
+        const profileData = await getJsonWithRetry(
             'www.instagram.com',
             `/api/v1/users/web_profile_info/?username=${encodeURIComponent(username)}`,
             instagramHeaders
@@ -907,9 +922,9 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
             return res.status(200).json({ username, count: 0, reels: [], error: 'Instagram user not found' });
         }
 
-        const feedData = await getJson(
+        const feedData = await getJsonWithRetry(
             'i.instagram.com',
-            `/api/v1/feed/user/${encodeURIComponent(userId)}/?count=18`,
+            `/api/v1/feed/user/${encodeURIComponent(userId)}/?count=50`,
             instagramHeaders
         );
 
@@ -926,7 +941,25 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
                 timestamp: item.taken_at || null
             }));
 
-        return res.json({ username, count: reels.length, reels });
+        if (reels.length > 0) {
+            return res.json({ username, count: reels.length, reels });
+        }
+
+        // Fallback: usar timeline del profile endpoint si el feed no devuelve reels.
+        const timelineReels = (profileData?.data?.user?.edge_owner_to_timeline_media?.edges || [])
+            .map((edge) => edge?.node)
+            .filter((node) => node && node.is_video && (node.product_type === 'clips' || node.__typename === 'GraphVideo'))
+            .slice(0, limit)
+            .map((node) => ({
+                shortcode: node.shortcode,
+                url: `https://www.instagram.com/reel/${node.shortcode}/`,
+                caption: node.edge_media_to_caption?.edges?.[0]?.node?.text || '',
+                thumbnail: node.display_url || null,
+                videoUrl: null,
+                timestamp: node.taken_at_timestamp || null
+            }));
+
+        return res.json({ username, count: timelineReels.length, reels: timelineReels });
     } catch (error) {
         console.error('Error in /api/instagram-latest-reels:', error.message);
         return res.status(200).json({ username, count: 0, reels: [], error: 'Unable to fetch reels now' });
