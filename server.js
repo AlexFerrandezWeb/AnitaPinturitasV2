@@ -846,6 +846,61 @@ app.get('/api/instagram-live-status', async (req, res) => {
     }
 });
 
+// Endpoint para resolver la URL de vídeo de un reel por shortcode
+app.get('/api/instagram-reel-video/:shortcode', async (req, res) => {
+    const shortcode = (req.params.shortcode || '').toString().trim();
+
+    if (!/^[A-Za-z0-9_-]+$/.test(shortcode)) {
+        return res.status(400).json({ error: 'Invalid shortcode' });
+    }
+
+    const headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'es-ES,es;q=0.9,en;q=0.8',
+        'Cache-Control': 'no-cache'
+    };
+
+    function getHtml(hostname, requestPath) {
+        return new Promise((resolve, reject) => {
+            const request = https.get({
+                hostname,
+                path: requestPath,
+                method: 'GET',
+                headers,
+                timeout: 8000
+            }, (apiRes) => {
+                let raw = '';
+                apiRes.on('data', (chunk) => { raw += chunk; });
+                apiRes.on('end', () => {
+                    if (apiRes.statusCode < 200 || apiRes.statusCode >= 300) {
+                        return reject(new Error(`Instagram responded with ${apiRes.statusCode}`));
+                    }
+                    resolve(raw);
+                });
+            });
+
+            request.on('error', reject);
+            request.on('timeout', () => request.destroy(new Error('Instagram request timeout')));
+        });
+    }
+
+    try {
+        const html = await getHtml('www.instagram.com', `/reel/${encodeURIComponent(shortcode)}/`);
+        const match = html.match(/<meta[^>]+property=["']og:video["'][^>]+content=["']([^"']+)["']/i);
+        const videoUrl = match ? match[1].replace(/&amp;/g, '&') : null;
+
+        if (!videoUrl) {
+            return res.status(404).json({ error: 'Video URL not found' });
+        }
+
+        return res.redirect(302, videoUrl);
+    } catch (error) {
+        console.error('Error in /api/instagram-reel-video:', error.message);
+        return res.status(503).json({ error: 'Unable to resolve reel video now' });
+    }
+});
+
 // Endpoint para obtener los últimos reels públicos de una cuenta
 app.get('/api/instagram-latest-reels', async (req, res) => {
     const username = (req.query.username || '').toString().trim();

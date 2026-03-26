@@ -67,24 +67,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const safeCaption = reel.caption ? reel.caption.replace(/"/g, '&quot;') : 'Reel de Instagram';
             const safeThumbnail = reel.thumbnail || 'assets/reel1.jpg';
             const safeVideoUrl = reel.videoUrl || '';
-            const embedUrl = safeUrl.endsWith('/') ? `${safeUrl}embed` : `${safeUrl}/embed`;
+            const proxyVideoUrl = reel.shortcode ? `/api/instagram-reel-video/${reel.shortcode}` : '';
+            const finalVideoUrl = safeVideoUrl || proxyVideoUrl;
 
             return `
                 <div class="live-section__reel-container">
-                    ${safeVideoUrl ? `
+                    ${finalVideoUrl ? `
                     <video class="live-section__reel-video" controls playsinline preload="metadata" poster="${safeThumbnail}">
-                        <source src="${safeVideoUrl}" type="video/mp4">
+                        <source src="${finalVideoUrl}" type="video/mp4">
                         Tu navegador no soporta el formato de video.
                     </video>` : `
-                    <iframe
-                        class="live-section__reel-video"
-                        src="${embedUrl}"
-                        title="${safeCaption}"
-                        loading="lazy"
-                        allow="autoplay; encrypted-media; picture-in-picture; clipboard-write"
-                        allowfullscreen
-                        frameborder="0">
-                    </iframe>`}
+                    <a href="${safeUrl}" target="_blank" rel="noopener noreferrer">
+                        <img class="live-section__reel-video" src="${safeThumbnail}" alt="${safeCaption}" loading="lazy">
+                    </a>`}
                 </div>
             `;
         }).join('');
