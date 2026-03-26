@@ -927,6 +927,65 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
         });
     }
 
+    function getHtml(hostname, requestPath, headers = instagramHeaders) {
+        return new Promise((resolve, reject) => {
+            const request = https.get({
+                hostname,
+                path: requestPath,
+                method: 'GET',
+                headers,
+                timeout: 8000
+            }, (apiRes) => {
+                let raw = '';
+                apiRes.on('data', (chunk) => {
+                    raw += chunk;
+                });
+                apiRes.on('end', () => {
+                    if (apiRes.statusCode < 200 || apiRes.statusCode >= 300) {
+                        return reject(new Error(`Instagram HTML responded with ${apiRes.statusCode} on ${hostname}${requestPath}`));
+                    }
+                    resolve(raw);
+                });
+            });
+
+            request.on('error', reject);
+            request.on('timeout', () => {
+                request.destroy(new Error('Instagram HTML request timeout'));
+            });
+        });
+    }
+
+    function matchMetaContent(html, property) {
+        if (!html) return null;
+        const escaped = property.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(`<meta[^>]+property=["']${escaped}["'][^>]+content=["']([^"']+)["']`, 'i');
+        const match = html.match(regex);
+        return match ? match[1] : null;
+    }
+
+    async function enrichReelsWithPublicMeta(reels) {
+        const enriched = [];
+        for (const reel of reels) {
+            if (reel.videoUrl && reel.thumbnail) {
+                enriched.push(reel);
+                continue;
+            }
+
+            try {
+                const reelHtml = await getHtml('www.instagram.com', `/reel/${encodeURIComponent(reel.shortcode)}/`);
+                enriched.push({
+                    ...reel,
+                    videoUrl: reel.videoUrl || matchMetaContent(reelHtml, 'og:video') || null,
+                    thumbnail: reel.thumbnail || matchMetaContent(reelHtml, 'og:image') || null,
+                    caption: reel.caption || matchMetaContent(reelHtml, 'og:title') || ''
+                });
+            } catch (error) {
+                enriched.push(reel);
+            }
+        }
+        return enriched;
+    }
+
     async function getJsonWithRetry(hostname, requestPath, headers = instagramHeaders, retries = 2) {
         let lastError = null;
         for (let attempt = 0; attempt <= retries; attempt++) {
@@ -974,7 +1033,8 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
             }));
 
         if (reels.length > 0) {
-            const responsePayload = { username, count: reels.length, reels, source: 'instagram_live' };
+            const enrichedReels = await enrichReelsWithPublicMeta(reels);
+            const responsePayload = { username, count: enrichedReels.length, reels: enrichedReels, source: 'instagram_live' };
             writeReelsCache(responsePayload);
             return res.json(responsePayload);
         }
@@ -994,19 +1054,28 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
             }));
 
         if (timelineReels.length > 0) {
-            const responsePayload = { username, count: timelineReels.length, reels: timelineReels, source: 'instagram_timeline' };
+            const enrichedTimelineReels = await enrichReelsWithPublicMeta(timelineReels);
+            const responsePayload = { username, count: enrichedTimelineReels.length, reels: enrichedTimelineReels, source: 'instagram_timeline' };
             writeReelsCache(responsePayload);
             return res.json(responsePayload);
         }
 
         const cache = readReelsCache();
         if (cache && cache.reels.length > 0) {
-            return res.json({
+            const cachedReels = cache.reels.slice(0, limit);
+            const enrichedCachedReels = await enrichReelsWithPublicMeta(cachedReels);
+            const cacheResponsePayload = {
                 username,
-                count: Math.min(limit, cache.reels.length),
-                reels: cache.reels.slice(0, limit),
+                count: enrichedCachedReels.length,
+                reels: enrichedCachedReels,
                 source: 'cache',
                 cachedAt: cache.updatedAt
+            };
+            if (enrichedCachedReels.some((reel) => reel.videoUrl || reel.thumbnail)) {
+                writeReelsCache(cacheResponsePayload);
+            }
+            return res.json({
+                ...cacheResponsePayload
             });
         }
 
