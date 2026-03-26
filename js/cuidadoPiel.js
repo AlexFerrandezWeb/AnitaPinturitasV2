@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             <h3 class="producto-nombre">${producto.nombre}</h3>
                             <p class="producto-precio">${producto.precio.toFixed(2)} €</p>
                             <p class="producto-precio-iva">+IVA incluido</p>
-                            ${['US-21109-00', 'prod_SdTAGVPaPAE5Wu0', 'prod_SdTAGVPaPAE5Wu01', 'prod_SdTAGVPaPAE5Wu02'].includes(producto.id) ? '<span class="producto-etiqueta producto-etiqueta--nuevo">Nuevo</span>' : ''}
+                            ${['US-21109-00', 'prod_SdTAGVPaPAE5Wu0', 'prod_SdTAGVPaPAE5Wu01', 'prod_SdTAGVPaPAE5Wu02', 'prod_SdTAGVPaPAE5Wu03', 'prod_SdTAGVPaPAE5Wu04'].includes(producto.id) ? '<span class="producto-etiqueta producto-etiqueta--nuevo">Nuevo</span>' : ''}
                             <div class="producto-botones" onclick="event.stopPropagation()">
                                 <button class="btn-ver" onclick="event.stopPropagation(); verProducto('${producto.id}')">
                                     Ver

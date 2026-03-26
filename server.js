@@ -787,6 +787,152 @@ app.get('/product-feed.csv', async (req, res) => {
     }
 });
 
+
+// Endpoint to check Instagram Live status
+// Best-effort detection + Manual override via environment variable
+app.get('/api/instagram-live-status', async (req, res) => {
+    const { username } = req.query;
+    
+    // Check if manual override is set in environment variables
+    // This allows the user to force "Live" status via Render Dashboard or .env
+    const forceLive = process.env.FORCE_INSTAGRAM_LIVE === 'true';
+    if (forceLive) {
+        return res.json({ isLive: true, source: 'manual_override' });
+    }
+
+    if (!username) {
+        return res.status(400).json({ error: 'Username is required' });
+    }
+
+    try {
+        // Best-effort check: Try to fetch the live URL
+        // Note: Instagram often blocks server-side requests. 
+        // This is a minimal implementation that can be expanded with proxies if needed.
+        const options = {
+            hostname: 'www.instagram.com',
+            path: `/${username}/live/`,
+            method: 'GET',
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+                'Accept-Language': 'es-ES,es;q=0.9,en;q=0.8',
+            },
+            timeout: 5000
+        };
+
+        const request = https.get(options, (instaRes) => {
+            // If it redirects to profiles (302) or returns 404, they are likely not live
+            // If it returns 200, they might be live
+            const isLive = instaRes.statusCode === 200;
+            
+            res.json({ 
+                isLive, 
+                statusCode: instaRes.statusCode,
+                username 
+            });
+        });
+
+        request.on('error', (e) => {
+            console.error('Instagram check error:', e.message);
+            res.json({ isLive: false, error: 'Connection error' });
+        });
+
+        request.end();
+
+    } catch (error) {
+        console.error('Error in /api/instagram-live-status:', error);
+        res.json({ isLive: false });
+    }
+});
+
+// Endpoint para obtener los últimos reels públicos de una cuenta
+app.get('/api/instagram-latest-reels', async (req, res) => {
+    const username = (req.query.username || '').toString().trim();
+    const limit = Math.min(parseInt(req.query.limit, 10) || 3, 6);
+
+    if (!username) {
+        return res.status(400).json({ error: 'Username is required' });
+    }
+
+    const instagramHeaders = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+        'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'es-ES,es;q=0.9,en;q=0.8',
+        'X-IG-App-ID': '936619743392459',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Cache-Control': 'no-cache'
+    };
+
+    function getJson(hostname, requestPath, headers = instagramHeaders) {
+        return new Promise((resolve, reject) => {
+            const request = https.get({
+                hostname,
+                path: requestPath,
+                method: 'GET',
+                headers,
+                timeout: 8000
+            }, (apiRes) => {
+                let raw = '';
+                apiRes.on('data', (chunk) => {
+                    raw += chunk;
+                });
+                apiRes.on('end', () => {
+                    if (apiRes.statusCode < 200 || apiRes.statusCode >= 300) {
+                        return reject(new Error(`Instagram responded with ${apiRes.statusCode}`));
+                    }
+                    try {
+                        resolve(JSON.parse(raw));
+                    } catch (parseError) {
+                        reject(parseError);
+                    }
+                });
+            });
+
+            request.on('error', reject);
+            request.on('timeout', () => {
+                request.destroy(new Error('Instagram request timeout'));
+            });
+        });
+    }
+
+    try {
+        const profileData = await getJson(
+            'www.instagram.com',
+            `/api/v1/users/web_profile_info/?username=${encodeURIComponent(username)}`,
+            instagramHeaders
+        );
+
+        const userId = profileData?.data?.user?.id;
+        if (!userId) {
+            return res.status(200).json({ username, count: 0, reels: [], error: 'Instagram user not found' });
+        }
+
+        const feedData = await getJson(
+            'i.instagram.com',
+            `/api/v1/feed/user/${encodeURIComponent(userId)}/?count=18`,
+            instagramHeaders
+        );
+
+        const feedItems = Array.isArray(feedData?.items) ? feedData.items : [];
+        const reels = feedItems
+            .filter((item) => item && item.media_type === 2 && item.product_type === 'clips' && item.code)
+            .slice(0, limit)
+            .map((item) => ({
+                shortcode: item.code,
+                url: `https://www.instagram.com/reel/${item.code}/`,
+                caption: item.caption?.text || '',
+                thumbnail: item.image_versions2?.candidates?.[0]?.url || null,
+                videoUrl: item.video_versions?.[0]?.url || null,
+                timestamp: item.taken_at || null
+            }));
+
+        return res.json({ username, count: reels.length, reels });
+    } catch (error) {
+        console.error('Error in /api/instagram-latest-reels:', error.message);
+        return res.status(200).json({ username, count: 0, reels: [], error: 'Unable to fetch reels now' });
+    }
+});
+
 // Endpoint de salud para verificar que el servidor funciona
 app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', message: 'Servidor funcionando correctamente' });
