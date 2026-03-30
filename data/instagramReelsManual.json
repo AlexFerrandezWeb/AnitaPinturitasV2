@@ -1,0 +1,30 @@
+{
+  "updatedAt": "2026-03-26T17:20:00.000Z",
+  "notes": "Rellena videoUrl con URLs mp4 propias (CDN/hosting) para forzar reproducción en web en producción.",
+  "manualReels": [
+    {
+      "shortcode": "DWUrHnTCJvp",
+      "url": "https://www.instagram.com/reel/DWUrHnTCJvp/",
+      "caption": "",
+      "thumbnail": null,
+      "videoUrl": null,
+      "timestamp": null
+    },
+    {
+      "shortcode": "DWSH_twiAXa",
+      "url": "https://www.instagram.com/reel/DWSH_twiAXa/",
+      "caption": "",
+      "thumbnail": null,
+      "videoUrl": null,
+      "timestamp": null
+    },
+    {
+      "shortcode": "DWQ5kE6leNn",
+      "url": "https://www.instagram.com/reel/DWQ5kE6leNn/",
+      "caption": "",
+      "thumbnail": null,
+      "videoUrl": null,
+      "timestamp": null
+    }
+  ]
+}

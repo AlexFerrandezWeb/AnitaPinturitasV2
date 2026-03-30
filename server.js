@@ -11,6 +11,7 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 const INSTAGRAM_REELS_CACHE_PATH = path.join(__dirname, 'data', 'instagramReelsCache.json');
+const INSTAGRAM_REELS_MANUAL_PATH = path.join(__dirname, 'data', 'instagramReelsManual.json');
 
 // Middleware
 app.use(cors());
@@ -936,6 +937,48 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
         }
     }
 
+    function readManualReelsConfig() {
+        try {
+            if (!fs.existsSync(INSTAGRAM_REELS_MANUAL_PATH)) {
+                return { manualReels: [] };
+            }
+            const raw = fs.readFileSync(INSTAGRAM_REELS_MANUAL_PATH, 'utf8');
+            const parsed = JSON.parse(raw);
+            if (!parsed || !Array.isArray(parsed.manualReels)) {
+                return { manualReels: [] };
+            }
+            return parsed;
+        } catch (error) {
+            console.warn('⚠️ Error reading manual reels config:', error.message);
+            return { manualReels: [] };
+        }
+    }
+
+    function applyManualOverrides(reels, manualConfig) {
+        if (!Array.isArray(reels) || reels.length === 0) {
+            return [];
+        }
+
+        const byShortcode = new Map(
+            (manualConfig?.manualReels || [])
+                .filter((item) => item && item.shortcode)
+                .map((item) => [item.shortcode, item])
+        );
+
+        return reels.map((reel) => {
+            const manual = byShortcode.get(reel.shortcode);
+            if (!manual) return reel;
+
+            return {
+                ...reel,
+                // Si defines videoUrl en data/instagramReelsManual.json, tendrá prioridad para reproducir en web.
+                videoUrl: manual.videoUrl || reel.videoUrl || null,
+                thumbnail: manual.thumbnail || reel.thumbnail || null,
+                caption: manual.caption || reel.caption || ''
+            };
+        });
+    }
+
     function writeReelsCache(payload) {
         try {
             const cachePayload = {
@@ -1057,6 +1100,7 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
     }
 
     try {
+        const manualConfig = readManualReelsConfig();
         const profileData = await getJsonWithRetry(
             'www.instagram.com',
             `/api/v1/users/web_profile_info/?username=${encodeURIComponent(username)}`,
@@ -1088,7 +1132,7 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
             }));
 
         if (reels.length > 0) {
-            const enrichedReels = await enrichReelsWithPublicMeta(reels);
+            const enrichedReels = applyManualOverrides(await enrichReelsWithPublicMeta(reels), manualConfig);
             const responsePayload = { username, count: enrichedReels.length, reels: enrichedReels, source: 'instagram_live' };
             writeReelsCache(responsePayload);
             return res.json(responsePayload);
@@ -1109,7 +1153,7 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
             }));
 
         if (timelineReels.length > 0) {
-            const enrichedTimelineReels = await enrichReelsWithPublicMeta(timelineReels);
+            const enrichedTimelineReels = applyManualOverrides(await enrichReelsWithPublicMeta(timelineReels), manualConfig);
             const responsePayload = { username, count: enrichedTimelineReels.length, reels: enrichedTimelineReels, source: 'instagram_timeline' };
             writeReelsCache(responsePayload);
             return res.json(responsePayload);
@@ -1118,7 +1162,7 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
         const cache = readReelsCache();
         if (cache && cache.reels.length > 0) {
             const cachedReels = cache.reels.slice(0, limit);
-            const enrichedCachedReels = await enrichReelsWithPublicMeta(cachedReels);
+            const enrichedCachedReels = applyManualOverrides(await enrichReelsWithPublicMeta(cachedReels), manualConfig);
             const cacheResponsePayload = {
                 username,
                 count: enrichedCachedReels.length,
@@ -1134,17 +1178,45 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
             });
         }
 
+        // Último fallback: usar manualReels si existen en config.
+        if (manualConfig.manualReels.length > 0) {
+            const fallbackManualReels = manualConfig.manualReels.slice(0, limit).map((item) => ({
+                shortcode: item.shortcode || null,
+                url: item.url || (item.shortcode ? `https://www.instagram.com/reel/${item.shortcode}/` : null),
+                caption: item.caption || '',
+                thumbnail: item.thumbnail || null,
+                videoUrl: item.videoUrl || null,
+                timestamp: item.timestamp || null
+            }));
+            return res.json({
+                username,
+                count: fallbackManualReels.length,
+                reels: fallbackManualReels,
+                source: 'manual'
+            });
+        }
+
         return res.status(200).json({ username, count: 0, reels: [], error: 'Unable to fetch reels now' });
     } catch (error) {
         console.error('Error in /api/instagram-latest-reels:', error.message);
         const cache = readReelsCache();
+        const manualConfig = readManualReelsConfig();
         if (cache && cache.reels.length > 0) {
             return res.json({
                 username,
                 count: Math.min(limit, cache.reels.length),
-                reels: cache.reels.slice(0, limit),
+                reels: applyManualOverrides(cache.reels.slice(0, limit), manualConfig),
                 source: 'cache',
                 cachedAt: cache.updatedAt
+            });
+        }
+
+        if (manualConfig.manualReels.length > 0) {
+            return res.json({
+                username,
+                count: Math.min(limit, manualConfig.manualReels.length),
+                reels: manualConfig.manualReels.slice(0, limit),
+                source: 'manual'
             });
         }
 

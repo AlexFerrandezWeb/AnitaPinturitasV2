@@ -67,14 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const safeCaption = reel.caption ? reel.caption.replace(/"/g, '&quot;') : 'Reel de Instagram';
             const safeThumbnail = reel.thumbnail || 'assets/reel1.jpg';
             const safeVideoUrl = reel.videoUrl || '';
-            const proxyVideoUrl = reel.shortcode ? `/api/instagram-reel-video/${reel.shortcode}` : '';
-            const finalVideoUrl = safeVideoUrl || proxyVideoUrl;
 
             return `
                 <div class="live-section__reel-container">
-                    ${finalVideoUrl ? `
+                    ${safeVideoUrl ? `
                     <video class="live-section__reel-video" controls playsinline preload="metadata" poster="${safeThumbnail}">
-                        <source src="${finalVideoUrl}" type="video/mp4">
+                        <source src="${safeVideoUrl}" type="video/mp4">
                         Tu navegador no soporta el formato de video.
                     </video>` : `
                     <a href="${safeUrl}" target="_blank" rel="noopener noreferrer">
