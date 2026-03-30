@@ -59,6 +59,19 @@ Para trackear compras en Meta (Facebook Pixel), configura estas variables:
   - Ejemplo: `TEST12345`
   - ⚠️ Solo usa esto en desarrollo/testing. En producción usa `META_PIXEL_ID`
 
+### Reels de Instagram en la web (recomendado en producción)
+
+Instagram suele bloquear peticiones automáticas desde servidores (como Render). Para que los **3 últimos reels** se actualicen solos y se puedan reproducir en la página con URL de vídeo oficial, configura la **Instagram Graph API** (cuenta de Instagram **Profesional o de creador** vinculada a una página de Facebook):
+
+- **`INSTAGRAM_GRAPH_ACCESS_TOKEN`**
+  - Token de acceso de larga duración de usuario con permisos sobre la cuenta de Instagram (por ejemplo `instagram_basic`, `pages_show_list`; según tu app en Meta for Developers).
+- **`INSTAGRAM_BUSINESS_ACCOUNT_ID`** (o alternativa **`INSTAGRAM_IG_USER_ID`**)
+  - ID numérico de la cuenta de Instagram con la que publicas (no el @nombre de usuario). Lo obtienes en Meta for Developers / Graph API Explorer con la página vinculada (`instagram_business_account`).
+- **`INSTAGRAM_GRAPH_API_VERSION`** (opcional)
+  - Por defecto: `v21.0`
+
+Sin estas variables, el sitio seguirá intentando el método no oficial (más frágil) y el archivo `data/instagramReelsManual.json` como respaldo.
+
 ## Actualizar Frontend para Usar Render
 
 Una vez que tu backend esté desplegado en Render:

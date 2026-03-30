@@ -12,6 +12,73 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const INSTAGRAM_REELS_CACHE_PATH = path.join(__dirname, 'data', 'instagramReelsCache.json');
 const INSTAGRAM_REELS_MANUAL_PATH = path.join(__dirname, 'data', 'instagramReelsManual.json');
+const GRAPH_API_VERSION = process.env.INSTAGRAM_GRAPH_API_VERSION || 'v21.0';
+
+function httpsGetFacebookGraph(pathAndQuery, timeoutMs = 12000) {
+    return new Promise((resolve, reject) => {
+        const request = https.get(
+            {
+                hostname: 'graph.facebook.com',
+                path: pathAndQuery,
+                method: 'GET',
+                timeout: timeoutMs
+            },
+            (res) => {
+                let raw = '';
+                res.on('data', (chunk) => {
+                    raw += chunk;
+                });
+                res.on('end', () => {
+                    try {
+                        const json = JSON.parse(raw);
+                        if (json.error) {
+                            reject(new Error(json.error.message || JSON.stringify(json.error)));
+                        } else {
+                            resolve(json);
+                        }
+                    } catch (e) {
+                        reject(e);
+                    }
+                });
+            }
+        );
+        request.on('error', reject);
+        request.on('timeout', () => {
+            request.destroy(new Error('Instagram Graph API request timeout'));
+        });
+    });
+}
+
+async function fetchLatestReelsFromInstagramGraph(igUserId, accessToken, limit) {
+    const fields = 'id,caption,media_type,media_product_type,media_url,thumbnail_url,permalink,timestamp';
+    const pathQuery = `/${GRAPH_API_VERSION}/${encodeURIComponent(igUserId)}/media?fields=${encodeURIComponent(fields)}&limit=50&access_token=${encodeURIComponent(accessToken)}`;
+    const data = await httpsGetFacebookGraph(pathQuery);
+    const items = Array.isArray(data.data) ? data.data : [];
+
+    const reelItems = items.filter((m) => {
+        if (!m || !m.media_url) return false;
+        if (m.media_product_type === 'REELS') return true;
+        if (m.media_type === 'VIDEO' && m.permalink && /\/reel\//.test(m.permalink)) return true;
+        return false;
+    });
+
+    reelItems.sort((a, b) => (Number(b.timestamp) || 0) - (Number(a.timestamp) || 0));
+
+    return reelItems.slice(0, limit).map((m) => {
+        const perm = m.permalink || '';
+        const shortcodeMatch = perm.match(/\/reel\/([A-Za-z0-9_-]+)/);
+        const shortcode = shortcodeMatch ? shortcodeMatch[1] : '';
+        const captionText = typeof m.caption === 'string' ? m.caption : '';
+        return {
+            shortcode: shortcode || null,
+            url: perm || (shortcode ? `https://www.instagram.com/reel/${shortcode}/` : null),
+            caption: captionText,
+            thumbnail: m.thumbnail_url || null,
+            videoUrl: m.media_url || null,
+            timestamp: m.timestamp || null
+        };
+    }).filter((r) => r.shortcode);
+}
 
 // Middleware
 app.use(cors());
@@ -1101,6 +1168,28 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
 
     try {
         const manualConfig = readManualReelsConfig();
+        const graphToken = process.env.INSTAGRAM_GRAPH_ACCESS_TOKEN;
+        const graphIgUserId = process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID || process.env.INSTAGRAM_IG_USER_ID;
+
+        if (graphToken && graphIgUserId) {
+            try {
+                const graphReels = await fetchLatestReelsFromInstagramGraph(graphIgUserId, graphToken, limit);
+                if (graphReels.length > 0) {
+                    const finalReels = applyManualOverrides(graphReels, manualConfig);
+                    const responsePayload = {
+                        username,
+                        count: finalReels.length,
+                        reels: finalReels,
+                        source: 'instagram_graph'
+                    };
+                    writeReelsCache(responsePayload);
+                    return res.json(responsePayload);
+                }
+            } catch (graphErr) {
+                console.warn('Instagram Graph API reels failed, fallback scraping:', graphErr.message);
+            }
+        }
+
         const profileData = await getJsonWithRetry(
             'www.instagram.com',
             `/api/v1/users/web_profile_info/?username=${encodeURIComponent(username)}`,
@@ -1231,6 +1320,12 @@ app.get('/api/health', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+
+    if (process.env.INSTAGRAM_GRAPH_ACCESS_TOKEN && (process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID || process.env.INSTAGRAM_IG_USER_ID)) {
+        console.log('✅ Instagram Graph API configurada (reels automáticos con media_url)');
+    } else {
+        console.log('ℹ️ Instagram Graph API no configurada: reels usan scraping/cache/manual (menos fiable en hosting)');
+    }
 
     if (!stripeSecretKey || stripeSecretKey.includes('tu_clave_aqui')) {
         console.error('⚠️  ERROR: STRIPE_SECRET_KEY no está configurada');
