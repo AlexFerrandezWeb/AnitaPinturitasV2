@@ -987,6 +987,12 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
         'Cache-Control': 'no-cache'
     };
 
+    function instagramShortcodeFromUrl(u) {
+        if (!u || typeof u !== 'string') return null;
+        const m = String(u).trim().match(/instagram\.com\/(?:p|reel|tv)\/([A-Za-z0-9_-]+)/i);
+        return m ? m[1] : null;
+    }
+
     function readReelsCache() {
         try {
             if (!fs.existsSync(INSTAGRAM_REELS_CACHE_PATH)) {
@@ -1007,41 +1013,43 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
     function readManualReelsConfig() {
         const envReels = [];
         for (let i = 1; i <= 3; i++) {
-            const videoUrl = process.env[`INSTAGRAM_REEL_${i}_VIDEO_URL`];
-            if (!videoUrl || !String(videoUrl).trim()) continue;
+            const videoRaw = process.env[`INSTAGRAM_REEL_${i}_VIDEO_URL`];
+            const videoUrl = videoRaw ? String(videoRaw).trim() : '';
             const igUrl = String(process.env[`INSTAGRAM_REEL_${i}_URL`] || '').trim();
-            let shortcode = null;
-            if (igUrl) {
-                const m = igUrl.match(/\/reel\/([A-Za-z0-9_-]+)/i);
-                if (m) shortcode = m[1];
-            }
+            if (!videoUrl && !igUrl) continue;
+
+            const shortcode = instagramShortcodeFromUrl(igUrl);
             const thumb = String(process.env[`INSTAGRAM_REEL_${i}_THUMB_URL`] || '').trim() || null;
             envReels.push({
                 shortcode,
                 url: igUrl || (shortcode ? `https://www.instagram.com/reel/${shortcode}/` : 'https://www.instagram.com/anita_pinturitas/reels/'),
                 caption: '',
                 thumbnail: thumb,
-                videoUrl: String(videoUrl).trim(),
+                videoUrl: videoUrl || null,
                 timestamp: null
             });
         }
         if (envReels.length > 0) {
-            return { manualReels: envReels, fromEnv: true };
+            return { manualReels: envReels, fromEnv: true, useAsPrimary: false };
         }
 
         try {
             if (!fs.existsSync(INSTAGRAM_REELS_MANUAL_PATH)) {
-                return { manualReels: [], fromEnv: false };
+                return { manualReels: [], fromEnv: false, useAsPrimary: false };
             }
             const raw = fs.readFileSync(INSTAGRAM_REELS_MANUAL_PATH, 'utf8');
             const parsed = JSON.parse(raw);
             if (!parsed || !Array.isArray(parsed.manualReels)) {
-                return { manualReels: [], fromEnv: false };
+                return { manualReels: [], fromEnv: false, useAsPrimary: false };
             }
-            return { ...parsed, fromEnv: false };
+            return {
+                ...parsed,
+                fromEnv: false,
+                useAsPrimary: parsed.useAsPrimary === true
+            };
         } catch (error) {
             console.warn('⚠️ Error reading manual reels config:', error.message);
-            return { manualReels: [], fromEnv: false };
+            return { manualReels: [], fromEnv: false, useAsPrimary: false };
         }
     }
 
@@ -1196,12 +1204,35 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
         const graphIgUserId = process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID || process.env.INSTAGRAM_IG_USER_ID;
 
         if (manualConfig.fromEnv && manualConfig.manualReels.length > 0) {
-            const reels = manualConfig.manualReels.slice(0, limit);
+            const enriched = await enrichReelsWithPublicMeta(manualConfig.manualReels.slice(0, limit));
             const responsePayload = {
                 username,
-                count: reels.length,
-                reels,
+                count: enriched.length,
+                reels: enriched,
                 source: 'manual_env'
+            };
+            writeReelsCache(responsePayload);
+            return res.json(responsePayload);
+        }
+
+        if (manualConfig.useAsPrimary && manualConfig.manualReels.length > 0) {
+            const normalized = manualConfig.manualReels.slice(0, limit).map((item) => {
+                const sc = (item && item.shortcode) || instagramShortcodeFromUrl(item?.url || '');
+                return {
+                    shortcode: sc,
+                    url: (item && item.url) || (sc ? `https://www.instagram.com/reel/${sc}/` : null),
+                    caption: (item && item.caption) || '',
+                    thumbnail: (item && item.thumbnail) || null,
+                    videoUrl: (item && item.videoUrl) || null,
+                    timestamp: (item && item.timestamp) || null
+                };
+            });
+            const enriched = await enrichReelsWithPublicMeta(normalized);
+            const responsePayload = {
+                username,
+                count: enriched.length,
+                reels: enriched,
+                source: 'manual_file'
             };
             writeReelsCache(responsePayload);
             return res.json(responsePayload);

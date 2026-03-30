@@ -70,13 +70,16 @@ Instagram suele bloquear peticiones automáticas desde servidores (como Render).
 - **`INSTAGRAM_GRAPH_API_VERSION`** (opcional)
   - Por defecto: `v21.0`
 
-**Alternativa sin Graph API:** si defines al menos una URL de vídeo MP4 (HTTPS) en Render, esos reels tienen **prioridad** sobre Graph y scraping:
+**Alternativa sin Graph API:** variables `INSTAGRAM_REEL_*` tienen **prioridad** sobre Graph y scraping:
 
-- **`INSTAGRAM_REEL_1_VIDEO_URL`**, **`INSTAGRAM_REEL_2_VIDEO_URL`**, **`INSTAGRAM_REEL_3_VIDEO_URL`**
-  - URL directa al `.mp4` (o otro formato que el navegador pueda reproducir).
-- Opcionales por cada índice **`INSTAGRAM_REEL_N_URL`** (enlace `instagram.com/reel/...` para el botón / detectar shortcode) y **`INSTAGRAM_REEL_N_THUMB_URL`** (miniatura).
+- **`INSTAGRAM_REEL_1_VIDEO_URL`**, **`INSTAGRAM_REEL_2_VIDEO_URL`**, **`INSTAGRAM_REEL_3_VIDEO_URL`** (opcional si solo enlazas la publicación)
+  - URL directa al `.mp4` (u otro vídeo servible por HTTPS).
+- **`INSTAGRAM_REEL_N_URL`**: publicación `instagram.com/p/...`, `reel/...` o `tv/...` (puede usarse **sin** `_VIDEO_URL`; el servidor intenta completar miniatura / vídeo vía metadatos públicos).
+- Opcional: **`INSTAGRAM_REEL_N_THUMB_URL`**.
 
-Sin Graph ni variables `INSTAGRAM_REEL_*`, el sitio seguirá intentando el método no oficial (más frágil) y el archivo `data/instagramReelsManual.json` como respaldo.
+En el repo, `data/instagramReelsManual.json` con **`"useAsPrimary": true`** fuerza esos reels antes que Graph y scraping (útil en deploy con el JSON versionado).
+
+Sin Graph ni `INSTAGRAM_REEL_*` ni JSON primario, el sitio intentará el método no oficial (más frágil) y el JSON solo como respaldo al final.
 
 ## Actualizar Frontend para Usar Render
 

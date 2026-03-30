@@ -1,26 +1,27 @@
 {
-  "updatedAt": "2026-03-26T17:20:00.000Z",
-  "notes": "Rellena videoUrl con URLs mp4 propias (CDN/hosting) para forzar reproducción en web en producción.",
+  "useAsPrimary": true,
+  "updatedAt": "2026-03-30T12:00:00.000Z",
+  "notes": "useAsPrimary: estos 3 enlaces sustituyen scraping/Graph hasta que lo cambies. Opcional: videoUrl con mp4 HTTPS para producción si og:video falla.",
   "manualReels": [
     {
-      "shortcode": "DWUrHnTCJvp",
-      "url": "https://www.instagram.com/reel/DWUrHnTCJvp/",
+      "shortcode": "DWY5ktQiEQ7",
+      "url": "https://www.instagram.com/p/DWY5ktQiEQ7/",
       "caption": "",
       "thumbnail": null,
       "videoUrl": null,
       "timestamp": null
     },
     {
-      "shortcode": "DWSH_twiAXa",
-      "url": "https://www.instagram.com/reel/DWSH_twiAXa/",
+      "shortcode": "DWY3p4OCJPt",
+      "url": "https://www.instagram.com/p/DWY3p4OCJPt/",
       "caption": "",
       "thumbnail": null,
       "videoUrl": null,
       "timestamp": null
     },
     {
-      "shortcode": "DWQ5kE6leNn",
-      "url": "https://www.instagram.com/reel/DWQ5kE6leNn/",
+      "shortcode": "DWY3dvACGxh",
+      "url": "https://www.instagram.com/p/DWY3dvACGxh/",
       "caption": "",
       "thumbnail": null,
       "videoUrl": null,
