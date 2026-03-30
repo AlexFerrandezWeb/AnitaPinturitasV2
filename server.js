@@ -1400,10 +1400,7 @@ app.listen(PORT, () => {
         console.log('ℹ️ Instagram Graph API no configurada: reels usan scraping/cache/manual (menos fiable en hosting)');
     }
 
-    if (!stripeSecretKey || stripeSecretKey.includes('tu_clave_aqui')) {
-        console.error('⚠️  ERROR: STRIPE_SECRET_KEY no está configurada');
-        console.error('   Configúrala en Render -> Environment Variables');
-    } else {
+    if (stripeSecretKey && !stripeSecretKey.includes('tu_clave_aqui')) {
         console.log('✅ Stripe configurado correctamente');
     }
 });

@@ -790,6 +790,13 @@ html, body {
     box-shadow: 0 15px 40px rgba(186, 11, 95, 0.25);
 }
 
+.live-section__reel-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 0;
+}
+
 .live-section__reel-video {
     width: 100%;
     height: 100%;

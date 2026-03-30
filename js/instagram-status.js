@@ -16,6 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!liveBadge || !liveBanner) return;
 
     function getApiCandidates() {
+        const backend =
+            typeof window !== 'undefined' && window.BACKEND_URL
+                ? String(window.BACKEND_URL).replace(/\/$/, '')
+                : '';
         const origin = window.location.origin;
         const isLiveServer =
             window.location.port === '5500' ||
@@ -23,11 +27,16 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.port === '5502' ||
             window.location.protocol === 'file:';
 
+        const list = [];
+        if (backend) list.push(backend);
         if (isLiveServer) {
-            return ['http://localhost:3000', origin];
+            list.push('http://localhost:3000');
+            if (origin && origin !== 'null') list.push(origin);
+        } else {
+            list.push(origin);
+            list.push('http://localhost:3000');
         }
-
-        return [origin, 'http://localhost:3000'];
+        return [...new Set(list.filter(Boolean))];
     }
 
     async function fetchFromApi(path) {
@@ -62,10 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderLatestReels(reels) {
         if (!reelsSection || !Array.isArray(reels) || reels.length === 0) return;
 
-        reelsSection.innerHTML = reels.map((reel) => {
+        reelsSection.innerHTML = reels.map((reel, index) => {
             const safeUrl = reel.url || (reel.shortcode ? `https://www.instagram.com/reel/${reel.shortcode}/` : 'https://www.instagram.com/anita_pinturitas/reels/');
             const safeCaption = reel.caption ? reel.caption.replace(/"/g, '&quot;') : 'Reel de Instagram';
-            const safeThumbnail = reel.thumbnail || 'assets/reel1.jpg';
+            const fallbackImg = `assets/reel${(index % 3) + 1}.jpg`;
+            const safeThumbnail = reel.thumbnail || fallbackImg;
             const safeVideoUrl = reel.videoUrl || '';
 
             return `
@@ -75,9 +85,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         <source src="${safeVideoUrl}" type="video/mp4">
                         Tu navegador no soporta el formato de video.
                     </video>` : `
-                    <a href="${safeUrl}" target="_blank" rel="noopener noreferrer">
+                    <a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="live-section__reel-link">
                         <img class="live-section__reel-video" src="${safeThumbnail}" alt="${safeCaption}" loading="lazy">
                     </a>`}
+                    <div class="live-section__reel-overlay">
+                        <a href="${safeUrl}" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+                            Ver en Instagram
+                        </a>
+                    </div>
                 </div>
             `;
         }).join('');
@@ -89,7 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             if (Array.isArray(data.reels) && data.reels.length > 0) {
                 renderLatestReels(data.reels);
-                setApiStatus('ok', 'API conectada');
+                const msg =
+                    data.source === 'manual_file' || data.source === 'manual_env'
+                        ? 'Mostrando los reels seleccionados'
+                        : 'API conectada';
+                setApiStatus('ok', msg);
             } else {
                 if (isLiveNow) {
                     setApiStatus('ok', 'Directo activo detectado');
@@ -128,8 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isLive) {
                 liveBadge.style.display = 'inline-flex';
                 liveBanner.style.display = 'flex';
-                if (reelsSection) reelsSection.style.display = 'none';
-                setApiStatus('ok', 'Directo activo detectado');
+                if (reelsSection) reelsSection.style.display = 'grid';
+                setApiStatus('ok', 'Directo activo — últimos reels abajo');
             } else {
                 liveBadge.style.display = 'none';
                 liveBanner.style.display = 'none';
