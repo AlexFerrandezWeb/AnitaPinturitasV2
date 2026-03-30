@@ -1005,19 +1005,43 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
     }
 
     function readManualReelsConfig() {
+        const envReels = [];
+        for (let i = 1; i <= 3; i++) {
+            const videoUrl = process.env[`INSTAGRAM_REEL_${i}_VIDEO_URL`];
+            if (!videoUrl || !String(videoUrl).trim()) continue;
+            const igUrl = String(process.env[`INSTAGRAM_REEL_${i}_URL`] || '').trim();
+            let shortcode = null;
+            if (igUrl) {
+                const m = igUrl.match(/\/reel\/([A-Za-z0-9_-]+)/i);
+                if (m) shortcode = m[1];
+            }
+            const thumb = String(process.env[`INSTAGRAM_REEL_${i}_THUMB_URL`] || '').trim() || null;
+            envReels.push({
+                shortcode,
+                url: igUrl || (shortcode ? `https://www.instagram.com/reel/${shortcode}/` : 'https://www.instagram.com/anita_pinturitas/reels/'),
+                caption: '',
+                thumbnail: thumb,
+                videoUrl: String(videoUrl).trim(),
+                timestamp: null
+            });
+        }
+        if (envReels.length > 0) {
+            return { manualReels: envReels, fromEnv: true };
+        }
+
         try {
             if (!fs.existsSync(INSTAGRAM_REELS_MANUAL_PATH)) {
-                return { manualReels: [] };
+                return { manualReels: [], fromEnv: false };
             }
             const raw = fs.readFileSync(INSTAGRAM_REELS_MANUAL_PATH, 'utf8');
             const parsed = JSON.parse(raw);
             if (!parsed || !Array.isArray(parsed.manualReels)) {
-                return { manualReels: [] };
+                return { manualReels: [], fromEnv: false };
             }
-            return parsed;
+            return { ...parsed, fromEnv: false };
         } catch (error) {
             console.warn('⚠️ Error reading manual reels config:', error.message);
-            return { manualReels: [] };
+            return { manualReels: [], fromEnv: false };
         }
     }
 
@@ -1171,6 +1195,18 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
         const graphToken = process.env.INSTAGRAM_GRAPH_ACCESS_TOKEN;
         const graphIgUserId = process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID || process.env.INSTAGRAM_IG_USER_ID;
 
+        if (manualConfig.fromEnv && manualConfig.manualReels.length > 0) {
+            const reels = manualConfig.manualReels.slice(0, limit);
+            const responsePayload = {
+                username,
+                count: reels.length,
+                reels,
+                source: 'manual_env'
+            };
+            writeReelsCache(responsePayload);
+            return res.json(responsePayload);
+        }
+
         if (graphToken && graphIgUserId) {
             try {
                 const graphReels = await fetchLatestReelsFromInstagramGraph(graphIgUserId, graphToken, limit);
@@ -1321,7 +1357,13 @@ app.get('/api/health', (req, res) => {
 app.listen(PORT, () => {
     console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
 
-    if (process.env.INSTAGRAM_GRAPH_ACCESS_TOKEN && (process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID || process.env.INSTAGRAM_IG_USER_ID)) {
+    if (
+        process.env.INSTAGRAM_REEL_1_VIDEO_URL ||
+        process.env.INSTAGRAM_REEL_2_VIDEO_URL ||
+        process.env.INSTAGRAM_REEL_3_VIDEO_URL
+    ) {
+        console.log('✅ Reels manuales por entorno: INSTAGRAM_REEL_*_VIDEO_URL (prioridad sobre Graph y scraping)');
+    } else if (process.env.INSTAGRAM_GRAPH_ACCESS_TOKEN && (process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID || process.env.INSTAGRAM_IG_USER_ID)) {
         console.log('✅ Instagram Graph API configurada (reels automáticos con media_url)');
     } else {
         console.log('ℹ️ Instagram Graph API no configurada: reels usan scraping/cache/manual (menos fiable en hosting)');

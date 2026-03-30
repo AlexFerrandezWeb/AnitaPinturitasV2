@@ -70,7 +70,13 @@ Instagram suele bloquear peticiones automáticas desde servidores (como Render).
 - **`INSTAGRAM_GRAPH_API_VERSION`** (opcional)
   - Por defecto: `v21.0`
 
-Sin estas variables, el sitio seguirá intentando el método no oficial (más frágil) y el archivo `data/instagramReelsManual.json` como respaldo.
+**Alternativa sin Graph API:** si defines al menos una URL de vídeo MP4 (HTTPS) en Render, esos reels tienen **prioridad** sobre Graph y scraping:
+
+- **`INSTAGRAM_REEL_1_VIDEO_URL`**, **`INSTAGRAM_REEL_2_VIDEO_URL`**, **`INSTAGRAM_REEL_3_VIDEO_URL`**
+  - URL directa al `.mp4` (o otro formato que el navegador pueda reproducir).
+- Opcionales por cada índice **`INSTAGRAM_REEL_N_URL`** (enlace `instagram.com/reel/...` para el botón / detectar shortcode) y **`INSTAGRAM_REEL_N_THUMB_URL`** (miniatura).
+
+Sin Graph ni variables `INSTAGRAM_REEL_*`, el sitio seguirá intentando el método no oficial (más frágil) y el archivo `data/instagramReelsManual.json` como respaldo.
 
 ## Actualizar Frontend para Usar Render
 
