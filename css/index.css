@@ -804,6 +804,19 @@ html, body {
     display: block;
 }
 
+.live-section__reel-container--embed {
+    min-height: 480px;
+}
+
+.live-section__reel-iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #000;
+}
+
 .live-section__reel-overlay {
     position: absolute;
     inset: auto 0 0 0;

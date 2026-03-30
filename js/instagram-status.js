@@ -68,31 +68,52 @@ document.addEventListener('DOMContentLoaded', () => {
         apiStatus.textContent = message;
     }
 
+    function shortcodeFromReel(reel) {
+        if (reel.shortcode && /^[A-Za-z0-9_-]+$/.test(String(reel.shortcode))) {
+            return String(reel.shortcode);
+        }
+        const m = (reel.url || '').match(/instagram\.com\/(?:p|reel|tv)\/([A-Za-z0-9_-]+)/i);
+        return m ? m[1] : null;
+    }
+
     function renderLatestReels(reels) {
         if (!reelsSection || !Array.isArray(reels) || reels.length === 0) return;
 
         reelsSection.innerHTML = reels.map((reel, index) => {
             const safeUrl = reel.url || (reel.shortcode ? `https://www.instagram.com/reel/${reel.shortcode}/` : 'https://www.instagram.com/anita_pinturitas/reels/');
-            const safeCaption = reel.caption ? reel.caption.replace(/"/g, '&quot;') : 'Reel de Instagram';
+            const safeCaption = reel.caption ? reel.caption.replace(/"/g, '&quot;') : 'Publicación de Instagram';
             const fallbackImg = `assets/reel${(index % 3) + 1}.jpg`;
             const safeThumbnail = reel.thumbnail || fallbackImg;
             const safeVideoUrl = reel.videoUrl || '';
+            const sc = shortcodeFromReel(reel);
+            const embedSrc = sc
+                ? `https://www.instagram.com/p/${encodeURIComponent(sc)}/embed/?hidecaption=true`
+                : '';
+            const useNativeVideo = Boolean(safeVideoUrl);
+            const useEmbed = !useNativeVideo && Boolean(embedSrc);
 
             return `
-                <div class="live-section__reel-container">
-                    ${safeVideoUrl ? `
+                <div class="live-section__reel-container${useEmbed ? ' live-section__reel-container--embed' : ''}">
+                    ${useNativeVideo ? `
                     <video class="live-section__reel-video" controls playsinline preload="metadata" poster="${safeThumbnail}">
                         <source src="${safeVideoUrl}" type="video/mp4">
                         Tu navegador no soporta el formato de video.
-                    </video>` : `
+                    </video>` : useEmbed ? `
+                    <iframe class="live-section__reel-iframe"
+                        src="${embedSrc}"
+                        title="${safeCaption}"
+                        loading="lazy"
+                        allowfullscreen="allowfullscreen"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"></iframe>` : `
                     <a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="live-section__reel-link">
                         <img class="live-section__reel-video" src="${safeThumbnail}" alt="${safeCaption}" loading="lazy">
-                    </a>`}
+                    </a>
                     <div class="live-section__reel-overlay">
                         <a href="${safeUrl}" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
                             Ver en Instagram
                         </a>
-                    </div>
+                    </div>`}
                 </div>
             `;
         }).join('');
