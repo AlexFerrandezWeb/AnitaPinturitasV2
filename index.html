@@ -2,6 +2,16 @@
 <html lang="es">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BR8JHHRQL9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BR8JHHRQL9');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
@@ -724,6 +734,19 @@
     <script src="js/botonFlotante.js"></script>
     <script src="js/metaPixelTracking.js"></script>
     <script src="js/carruselClientas.js"></script>
+    <script>
+        document.addEventListener('click', function (event) {
+            const whatsappLink = event.target.closest('a[href*="wa.me"]');
+            if (!whatsappLink || typeof window.gtag !== 'function') {
+                return;
+            }
+
+            window.gtag('event', 'contact', {
+                method: 'whatsapp',
+                link_url: whatsappLink.href
+            });
+        });
+    </script>
 </body>
 
 </html>

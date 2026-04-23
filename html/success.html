@@ -2,6 +2,16 @@
 <html lang="es">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BR8JHHRQL9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BR8JHHRQL9');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Pago realizado con éxito. Gracias por tu compra en Anita Pinturitas.">
@@ -242,6 +252,21 @@
                             price: item.price ? (item.price.unit_amount / 100).toFixed(2) : '0.00'
                         };
                     });
+
+                    // Trackear Purchase en Google Analytics (GA4)
+                    if (typeof window.gtag === 'function') {
+                        window.gtag('event', 'purchase', {
+                            transaction_id: session.id || session.payment_intent || sessionId,
+                            value: parseFloat(totalAmount),
+                            currency: (session.currency || 'eur').toUpperCase(),
+                            items: purchasedItems.map(item => ({
+                                item_id: String(item.id || ''),
+                                item_name: item.id ? `Producto ${item.id}` : 'Producto',
+                                price: parseFloat(item.price) || 0,
+                                quantity: item.quantity || 1
+                            }))
+                        });
+                    }
 
                     // Usar window.trackPurchase si está disponible (de metaPixelTracking.js)
                     // Esta función ya captura automáticamente fbc, fbp, userAgent y sourceUrl

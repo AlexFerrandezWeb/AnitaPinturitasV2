@@ -55,6 +55,20 @@
         if (typeof window.trackAddToCart === 'function') {
             window.trackAddToCart(productoId, nombre, precioNum, cantidad);
         }
+
+        // Trackear AddToCart en Google Analytics (GA4)
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', 'add_to_cart', {
+                currency: 'EUR',
+                value: (precioNum || 0) * cantidad,
+                items: [{
+                    item_id: String(productoId || ''),
+                    item_name: nombre || '',
+                    price: precioNum || 0,
+                    quantity: cantidad
+                }]
+            });
+        }
         
         // Notificar al carrito si existe
         if (typeof window.renderCart === 'function') {

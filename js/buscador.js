@@ -360,6 +360,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (termino.length >= 2 && typeof window.trackSearch === 'function') {
                 window.trackSearch(termino);
             }
+
+            // Trackear Search en Google Analytics (GA4)
+            if (termino.length >= 2 && typeof window.gtag === 'function') {
+                window.gtag('event', 'search', {
+                    search_term: termino
+                });
+            }
         });
     }
     
@@ -391,6 +398,18 @@ document.addEventListener('DOMContentLoaded', function() {
                         window.trackSearch(termino);
                         window.lastTrackedSearch = termino;
                     }
+                }
+
+                if (
+                    termino.length >= 2 &&
+                    resultados.length > 0 &&
+                    typeof window.gtag === 'function' &&
+                    (!window.lastTrackedSearchGA || window.lastTrackedSearchGA !== termino)
+                ) {
+                    window.gtag('event', 'search', {
+                        search_term: termino
+                    });
+                    window.lastTrackedSearchGA = termino;
                 }
                 
                 // Asegurar que el buscador permanezca visible cuando hay resultados

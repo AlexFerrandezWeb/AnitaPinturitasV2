@@ -289,6 +289,20 @@ document.addEventListener('DOMContentLoaded', function() {
         if (typeof window.trackInitiateCheckout === 'function') {
             window.trackInitiateCheckout(total, currentCart);
         }
+
+        // Trackear begin_checkout en Google Analytics (GA4)
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', 'begin_checkout', {
+                currency: 'EUR',
+                value: total,
+                items: currentCart.map(item => ({
+                    item_id: String(item.id || ''),
+                    item_name: item.nombre || '',
+                    price: typeof item.precio === 'number' ? item.precio : parseFloat(item.precio) || 0,
+                    quantity: item.quantity || 1
+                }))
+            });
+        }
         
         // Capturar cookies de Meta para HQC (serán guardadas en metadata de Stripe)
         function getCookie(name) {
