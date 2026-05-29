@@ -97,6 +97,26 @@ app.use((req, res, next) => {
 
 app.use(express.static('.'));
 
+// 301 redirects for old/incorrect URLs indexed by Google
+app.get('/index', (req, res) => res.redirect(301, '/'));
+app.get('/index.html', (req, res) => res.redirect(301, '/'));
+app.get('/carrito', (req, res) => res.redirect(301, '/'));
+app.get('/carrito.html', (req, res) => res.redirect(301, '/'));
+app.get('/producto', (req, res) => {
+    const id = req.query.id;
+    res.redirect(301, id ? `/html/producto.html?id=${id}` : '/html/productos.html');
+});
+app.get('/producto.html', (req, res) => {
+    const id = req.query.id;
+    res.redirect(301, id ? `/html/producto.html?id=${id}` : '/html/productos.html');
+});
+app.get('/productos', (req, res) => res.redirect(301, '/html/productos.html'));
+app.get('/productos.html', (req, res) => res.redirect(301, '/html/productos.html'));
+app.get('/politica-devoluciones.html', (req, res) => res.redirect(301, '/html/politicaDevoluciones.html'));
+app.get('/politica-privacidad.html', (req, res) => res.redirect(301, '/html/politicaPrivacidad.html'));
+app.get('/politica-cookies.html', (req, res) => res.redirect(301, '/html/politicaCookies.html'));
+app.get('/aviso-legal.html', (req, res) => res.redirect(301, '/html/avisoLegal.html'));
+
 // Inicializar Stripe con tu clave secreta
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
