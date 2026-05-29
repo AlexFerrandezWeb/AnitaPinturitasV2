@@ -230,4 +230,5 @@ La web está optimizada para:
 
 ---
 
-**Última actualización:** Mayo 2026
+**Última actualización:** Mayo 2026  
+**Versión:** 3.0.0
