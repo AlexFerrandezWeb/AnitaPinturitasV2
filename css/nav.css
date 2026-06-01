@@ -220,6 +220,63 @@ body {
     padding-left: 40px;
 }
 
+/* Nav left wrapper (hamburguesa en móvil, links en desktop) */
+.nav__left {
+    display: flex;
+    align-items: center;
+}
+
+.nav__links {
+    display: none;
+}
+
+.nav__link {
+    padding: 8px 14px;
+    color: var(--color-secundario);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.nav__link:hover {
+    background-color: rgba(198, 112, 155, 0.1);
+    color: var(--jazzberry-jam);
+}
+
+.nav__link--active {
+    color: var(--jazzberry-jam);
+    font-weight: 600;
+}
+
+/* Redes sociales en nav desktop */
+.nav__social {
+    display: none;
+}
+
+.nav__social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: var(--jazzberry-jam);
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.nav__social-link:hover {
+    background-color: rgba(198, 112, 155, 0.15);
+}
+
+.nav__social-link svg {
+    width: 17px;
+    height: 17px;
+}
+
 /* Base responsive pensada para móvil primero */
 @media (min-width: 768px) {
   .nav { padding: 14px 20px; }
@@ -227,5 +284,8 @@ body {
   .nav__cart-icon { width: 28px; height: 28px; }
   .search-bar { padding: 14px 20px; }
   .search-bar__input { font-size: 16px; }
+  .nav__menu { display: none; }
+  .nav__links { display: flex; align-items: center; gap: 4px; }
+  .nav__social { display: flex; align-items: center; gap: 2px; }
 }
 

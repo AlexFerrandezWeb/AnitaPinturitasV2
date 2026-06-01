@@ -89,10 +89,30 @@
 <body>
 
     <nav class="nav">
-        <button class="nav__menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
-            <span class="nav__menu-bar"></span>
-            <span class="nav__menu-bar"></span>
-        </button>
+        <div class="nav__left">
+            <button class="nav__menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="nav__menu-bar"></span>
+                <span class="nav__menu-bar"></span>
+            </button>
+            <nav class="nav__links" aria-label="Navegación principal">
+                <a href="/" class="nav__link nav__link--active">Inicio</a>
+                <a href="/html/productos.html" class="nav__link">Productos</a>
+            </nav>
+            <div class="nav__social">
+                <a href="https://www.instagram.com/anita_pinturitas" class="nav__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="currentColor"/></svg>
+                </a>
+                <a href="https://www.tiktok.com/@anitapinturitas" class="nav__social-link" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" fill="currentColor"/></svg>
+                </a>
+                <a href="https://www.facebook.com/anitapinturitass/?locale=es_ES" class="nav__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" fill="currentColor"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@anitapinturitastv/videos" class="nav__social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="currentColor"/></svg>
+                </a>
+            </div>
+        </div>
         <a href="/" class="nav__logo" aria-label="Inicio">
             <img src="assets/anita-pinturitas_logo.png" alt="Logo Anita Pinturitas">
         </a>
@@ -422,82 +442,32 @@
             </div>
         </section>
 
-        <!-- Directos en Instagram Section -->
-        <section class="live-section" id="directos">
+        <!-- Productos Destacados -->
+        <section class="products-home">
             <div class="container">
-                <div class="live-section__content">
-                    <div id="instagram-live-banner" class="live-banner" style="display: none;">
-                        <div class="live-banner__overlay"></div>
-                        <div class="live-banner__content">
-                            <div class="live-banner__badge">
-                                <span class="live-banner__dot"></span>
-                                <span>EN DIRECTO</span>
-                            </div>
-                            <h3 class="live-banner__title">¡HOLA! ESTOY EN DIRECTO AHORA</h3>
-                            <p class="live-banner__text">Acompáñame en Instagram para ver consejos, trucos y resolver tus
-                                dudas en vivo.</p>
-                            <a href="https://www.instagram.com/anita_pinturitas/live/" class="live-banner__btn"
-                                target="_blank" rel="noopener noreferrer">
-                                <span>UNIRSE AL DIRECTO</span>
-                                <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"
-                                        fill="currentColor" />
-                                </svg>
-                            </a>
+                <h2 class="products-home__title">Mis productos</h2>
+                <p class="products-home__subtitle">Selección personal de cosmética probada y recomendada para piel madura +40</p>
+                <div class="products-home__grid">
+                    <a href="html/cuidadoPiel.html" class="products-home__card">
+                        <div class="products-home__card-img-wrapper">
+                            <img src="assets/productos/cuidadoPiel/producto1.jpg" alt="Productos de cuidado de la piel" class="products-home__card-img" loading="lazy">
                         </div>
-                    </div>
-                    <div class="live-section__text">
-                        <div id="instagram-live-badge" class="live-badge">
-                            <span class="live-badge__dot"></span>
-                            <span class="live-badge__text">EN DIRECTO</span>
+                        <div class="products-home__card-body">
+                            <h3 class="products-home__card-title">Cuidado de la piel</h3>
+                            <p class="products-home__card-desc">Cremas, serums y tratamientos especializados para piel madura +40. Todos testeados y recomendados personalmente.</p>
+                            <span class="products-home__card-cta">Ver productos →</span>
                         </div>
-                        <h2 class="live-section__title">Directos en Instagram</h2>
-                        <p class="live-section__subtitle">
-                            Acompáñame en mis directos donde resolvemos dudas en tiempo real, probamos productos y
-                            hablamos de cuidado de la piel madura.
-                        </p>
-                        <p class="live-section__description">
-                            Cuando esté en directo, podrás unirte haciendo clic en el botón de abajo. Si en este
-                            momento no hay directo activo, accederás igualmente a mi perfil para ver próximos
-                            directos y contenidos guardados.
-                        </p>
-                        <a href="https://www.instagram.com/anita_pinturitas"
-                            class="btn btn--primary live-section__button" target="_blank" rel="noopener noreferrer">
-                            <span>Ver directo en Instagram</span>
-                            <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
-                                <path
-                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-                                    fill="currentColor" />
-                            </svg>
-                        </a>
-                        <p id="instagram-api-status" class="live-section__api-status live-section__api-status--checking">
-                            Comprobando conexión API...
-                        </p>
-                        <p class="live-section__note">
-                            *Instagram no permite mostrar siempre el vídeo del directo incrustado en la web, por eso
-                            te llevo directamente a mi perfil cuando esté emitiendo.
-                        </p>
-                    </div>
-                    <div class="live-section__reels" aria-label="Últimos Reels de Instagram">
-                        <div class="live-section__reel-container live-section__reel-container--embed">
-                            <iframe class="live-section__reel-iframe" src="https://www.instagram.com/p/DWY5ktQiEQ7/embed/?hidecaption=true"
-                                title="Publicación de Instagram" loading="lazy" allowfullscreen
-                                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </a>
+                    <a href="html/cuidadoCapilar.html" class="products-home__card">
+                        <div class="products-home__card-img-wrapper">
+                            <img src="assets/productos/cuidadoCapilar/banner-ppal-b2b-desktop.jpg" alt="Productos de cuidado capilar" class="products-home__card-img" loading="lazy">
                         </div>
-                        <div class="live-section__reel-container live-section__reel-container--embed">
-                            <iframe class="live-section__reel-iframe" src="https://www.instagram.com/p/DWY3p4OCJPt/embed/?hidecaption=true"
-                                title="Publicación de Instagram" loading="lazy" allowfullscreen
-                                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                        <div class="products-home__card-body">
+                            <h3 class="products-home__card-title">Cuidado capilar</h3>
+                            <p class="products-home__card-desc">Champús, mascarillas y tratamientos profesionales para devolver brillo y vitalidad a tu cabello.</p>
+                            <span class="products-home__card-cta">Ver productos →</span>
                         </div>
-                        <div class="live-section__reel-container live-section__reel-container--embed">
-                            <iframe class="live-section__reel-iframe" src="https://www.instagram.com/p/DWY3dvACGxh/embed/?hidecaption=true"
-                                title="Publicación de Instagram" loading="lazy" allowfullscreen
-                                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -596,6 +566,37 @@
 
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Instagram -->
+        <section class="instagram-strip">
+            <div class="container">
+                <h2 class="instagram-strip__title">Sígueme en Instagram</h2>
+                <p class="instagram-strip__subtitle">Consejos de belleza, productos y directos en vivo</p>
+                <div class="instagram-strip__reels">
+                    <div class="live-section__reel-container live-section__reel-container--embed">
+                        <iframe class="live-section__reel-iframe" src="https://www.instagram.com/p/DWY5ktQiEQ7/embed/?hidecaption=true"
+                            title="Publicación de Instagram" loading="lazy" allowfullscreen
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                    <div class="live-section__reel-container live-section__reel-container--embed">
+                        <iframe class="live-section__reel-iframe" src="https://www.instagram.com/p/DWY3p4OCJPt/embed/?hidecaption=true"
+                            title="Publicación de Instagram" loading="lazy" allowfullscreen
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                    <div class="live-section__reel-container live-section__reel-container--embed">
+                        <iframe class="live-section__reel-iframe" src="https://www.instagram.com/p/DWY3dvACGxh/embed/?hidecaption=true"
+                            title="Publicación de Instagram" loading="lazy" allowfullscreen
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                </div>
+                <a href="https://www.instagram.com/anita_pinturitas" class="btn btn--secondary" target="_blank" rel="noopener noreferrer">
+                    Ver perfil en Instagram
+                </a>
             </div>
         </section>
 
