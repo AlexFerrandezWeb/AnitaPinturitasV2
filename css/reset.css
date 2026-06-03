@@ -19,17 +19,18 @@
     --tipo-secundaria : 'Montserrat', helvetica, Arial, sans-serif;
 
     /* Paleta de colores - Anita Pinturitas */
-    /* CSS HEX */
-    --cardinal-pink   : #98074f;
-    --corn-harvest    : #817f0a;
-    --vista-white     : #fdfafb;
-    --indian-khaki    : #c0be85;
-    --hopbush         : #c6709b;
-    --chantilly       : #f8c5e4;
-    --citrine-white   : #faf8da;
-    --jazzberry-jam   : #ba0b5f;
+    /* Extraída directamente del logo: rosa #ba0b5f + oliva #817f0a */
+    --cardinal-pink   : #98074f;    /* rosa oscuro (sombra del logo) */
+    --corn-harvest    : #817f0a;    /* oliva dorado del logo (PINTURITAS/MAQUILLADORA) */
+    --vista-white     : #fdfafb;    /* blanco neutro */
+    --indian-khaki    : #e8c5d5;    /* rosa pálido para bordes */
+    --hopbush         : #c6709b;    /* rosa medio */
+    --chantilly       : #fce8f3;    /* rosa muy claro para fondos */
+    --citrine-white   : #f8f8e8;    /* crema oliva muy suave para fondos alternos */
+    --jazzberry-jam   : #ba0b5f;    /* rosa crimson del logo (Anita) */
     --coral           : #ff7f50;
-    --olive-green     : #6b8e3a;
+    --olive-green     : #6b6b08;    /* oliva oscuro para texto secundario */
+    --pale-sky        : #8a8060;    /* gris oliva cálido para notas */
 }
 
 /*Las adaptamos al modo oscuro*/

@@ -23,7 +23,43 @@ document.addEventListener('DOMContentLoaded', function () {
     const increaseBtn = document.querySelector('#increase-qty');
     const quantityInput = document.querySelector('#cantidad');
     const addToCartBtn = document.querySelector('#add-to-cart');
+    const buyNowBtn = document.querySelector('#buy-now');
     const contactWhatsappBtn = document.querySelector('#contact-whatsapp');
+
+    function recogerDatosProducto() {
+        const productId = window.currentProductId || productoId || 'default-' + Date.now();
+        let productName = document.querySelector('.producto-details__name').textContent;
+        let finalProductId = productId;
+
+        const colorSelector = document.getElementById('color-selector');
+        if (colorSelector && colorSelector.value) {
+            productName = `${productName} (${colorSelector.value})`;
+            finalProductId = `${productId}-${colorSelector.value}`;
+        }
+
+        const productPriceText = document.querySelector('.producto-details__price-current').textContent;
+        const productPrice = parseFloat(productPriceText.replace('€', '').replace(',', '.')) || 0;
+
+        const firstThumbnail = document.querySelector('.producto-details__thumbnail');
+        let productImage;
+        if (firstThumbnail && firstThumbnail.getAttribute('data-main-img')) {
+            productImage = firstThumbnail.getAttribute('data-main-img');
+        } else if (window.currentProductData && window.currentProductData.galeria && window.currentProductData.galeria.length > 0) {
+            productImage = window.currentProductData.galeria[0];
+        } else if (window.currentProductData && window.currentProductData.imagen) {
+            productImage = window.currentProductData.imagen;
+        } else {
+            const mainImgElement = document.querySelector('#producto-img-principal');
+            productImage = mainImgElement ? mainImgElement.src : '../assets/productos/cuidadoPiel/productoPortada1.png';
+        }
+
+        if (productId === 'cepillo-detangling-antiestatico-para-desenredar-termix-professional' && colorSelector && colorSelector.value) {
+            productImage = `../assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional${colorSelector.value}.jpg`;
+        }
+
+        const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
+        return { finalProductId, productName, productPrice, productImage, quantity };
+    }
 
     // Función para añadir event listeners a las miniaturas
     function attachThumbnailListeners() {
@@ -88,68 +124,24 @@ document.addEventListener('DOMContentLoaded', function () {
     // Añadir al carrito
     if (addToCartBtn) {
         addToCartBtn.addEventListener('click', function () {
-            // Obtener datos del producto (usar el ID del producto cargado o de la URL)
-            const productId = window.currentProductId || productoId || 'default-' + Date.now();
-            let productName = document.querySelector('.producto-details__name').textContent;
+            const { finalProductId, productName, productPrice, productImage, quantity } = recogerDatosProducto();
 
-            // Añadir color al nombre si hay uno seleccionado
-            let finalProductId = productId;
-            const colorSelector = document.getElementById('color-selector');
-            if (colorSelector && colorSelector.value) {
-                productName = `${productName} (${colorSelector.value})`;
-                finalProductId = `${productId}-${colorSelector.value}`;
-            }
-
-            const productPriceText = document.querySelector('.producto-details__price-current').textContent;
-            const productPrice = parseFloat(productPriceText.replace('€', '').replace(',', '.')) || 0;
-
-            // Usar SIEMPRE la primera imagen para el carrito, no la que está visible actualmente
-            const firstThumbnail = document.querySelector('.producto-details__thumbnail');
-            let productImage;
-
-            if (firstThumbnail && firstThumbnail.getAttribute('data-main-img')) {
-                productImage = firstThumbnail.getAttribute('data-main-img');
-            } else if (window.currentProductData && window.currentProductData.galeria && window.currentProductData.galeria.length > 0) {
-                productImage = window.currentProductData.galeria[0];
-            } else if (window.currentProductData && window.currentProductData.imagen) {
-                productImage = window.currentProductData.imagen;
-            } else {
-                const mainImgElement = document.querySelector('#producto-img-principal');
-                productImage = mainImgElement ? mainImgElement.src : '../assets/productos/cuidadoPiel/productoPortada1.png';
-            }
-
-            // EXCEPCIÓN: Si es el cepillo Termix y tiene color seleccionado, usar la imagen específica
-            // Reutilizamos la variable colorSelector definida arriba
-            if (productId === 'cepillo-detangling-antiestatico-para-desenredar-termix-professional' && colorSelector && colorSelector.value) {
-                productImage = `../assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional${colorSelector.value}.jpg`;
-            }
-
-            const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
-
-            // Validar que todos los datos sean válidos
             if (!finalProductId || finalProductId === 'undefined') {
                 alert('Error: No se ha podido identificar el producto. Por favor, recarga la página.');
                 return;
             }
-
             if (!productName || productName.trim() === '' || productName === 'undefined') {
                 alert('Error: No se ha podido obtener el nombre del producto. Por favor, recarga la página.');
                 return;
             }
 
-            // Usar la función global addToCart
             if (typeof window.addToCart === 'function') {
-                // Ejecutar animación desde el botón antes de añadir al carrito
                 if (typeof window.createFlyToCartAnimationFromButton === 'function') {
                     window.createFlyToCartAnimationFromButton(this, productImage, () => {
-                        // Añadir al carrito después de la animación
                         window.addToCart(finalProductId, productName, productPrice, productImage, quantity);
-                        console.log('Producto añadido al carrito:', { finalProductId, productName, productPrice, productImage, quantity });
                     });
                 } else {
-                    // Si no hay animación disponible, añadir directamente
                     window.addToCart(finalProductId, productName, productPrice, productImage, quantity);
-                    console.log('Producto añadido al carrito:', { finalProductId, productName, productPrice, productImage, quantity });
                 }
             } else {
                 console.error('La función addToCart no está disponible');
@@ -164,6 +156,36 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.textContent = originalText;
                 this.style.background = '';
             }, 2000);
+        });
+    }
+
+    // Comprar ahora → añadir al carrito y lanzar checkout directamente
+    if (buyNowBtn) {
+        buyNowBtn.addEventListener('click', function () {
+            const { finalProductId, productName, productPrice, productImage, quantity } = recogerDatosProducto();
+
+            if (!finalProductId || finalProductId === 'undefined') {
+                alert('Error: No se ha podido identificar el producto. Por favor, recarga la página.');
+                return;
+            }
+
+            if (typeof window.addToCart === 'function') {
+                window.addToCart(finalProductId, productName, productPrice, productImage, quantity);
+            }
+
+            const originalText = this.textContent;
+            this.textContent = 'Procesando...';
+            this.disabled = true;
+
+            if (typeof window.proceedToCheckout === 'function') {
+                window.proceedToCheckout();
+            }
+
+            // Restaurar el botón por si el checkout falla (red, backend caído, etc.)
+            setTimeout(() => {
+                this.textContent = originalText;
+                this.disabled = false;
+            }, 5000);
         });
     }
 
