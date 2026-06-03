@@ -826,6 +826,44 @@ html, body {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
 }
 
+/* ===== PUENTE HACIA SERVICIOS ===== */
+.services-bridge {
+    padding: 40px 0;
+    background: linear-gradient(135deg, var(--citrine-white) 0%, var(--vista-white) 100%);
+}
+
+.services-bridge__inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.services-bridge__line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--jazzberry-jam), transparent);
+    opacity: 0.35;
+}
+
+.services-bridge__label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--jazzberry-jam);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+    opacity: 0.75;
+}
+
+@media (max-width: 639px) {
+    .services-bridge__label {
+        font-size: 0.75rem;
+        letter-spacing: 0.8px;
+        white-space: normal;
+        text-align: center;
+    }
+}
+
 /* ===== MAQUILLAJE DE BODAS SECTION ===== */
 .wedding-makeup {
     padding: 100px 0;
@@ -1186,8 +1224,8 @@ html, body {
 
 .featured-products__grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
     margin-bottom: 40px;
 }
 
@@ -1320,11 +1358,67 @@ html, body {
 
 .featured-products__footer {
     text-align: center;
+    margin-top: 40px;
+}
+
+.home-categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.home-category-card {
+    display: block;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.home-category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+}
+
+.home-category-card__img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.home-category-card__body {
+    padding: 16px 20px 20px;
+}
+
+.home-category-card__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cardinal-pink);
+    margin-bottom: 6px;
+}
+
+.home-category-card__desc {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+    .home-categories {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (min-width: 640px) {
     .featured-products__grid {
         grid-template-columns: 1fr 1fr;
+        gap: 24px;
     }
 }
 
@@ -1931,5 +2025,155 @@ html, body {
         padding: 12px 20px;
         font-size: 0.88rem;
         gap: 8px;
+    }
+}
+
+/* ===== MOBILE GENERAL (≤ 639px) ===== */
+@media (max-width: 639px) {
+    /* Padding de secciones */
+    .featured-products,
+    .instagram-strip,
+    .clients-strip {
+        padding: 48px 0;
+    }
+
+    .wedding-makeup,
+    .about-anita,
+    .cta {
+        padding: 52px 0;
+    }
+
+    /* --- Productos destacados --- */
+    .featured-products__header {
+        margin-bottom: 24px;
+    }
+
+    .featured-products__title {
+        font-size: 1.65rem;
+        line-height: 1.2;
+    }
+
+    .featured-products__subtitle {
+        font-size: 0.9rem;
+    }
+
+    /* Tarjeta de producto en 2 columnas */
+    .featured-product-card__img-link {
+        height: 150px;
+    }
+
+    .featured-product-card__body {
+        padding: 10px;
+    }
+
+    .featured-product-card__name {
+        font-size: 0.8rem;
+        margin-bottom: 6px;
+    }
+
+    .featured-product-card__desc {
+        display: none;
+    }
+
+    .featured-product-card__price {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .featured-product-card__actions {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .featured-product-card__btn {
+        font-size: 0.78rem;
+        padding: 8px 4px;
+    }
+
+    /* --- Maquillaje de bodas --- */
+    .wedding-makeup__title {
+        font-size: 1.65rem;
+    }
+
+    .wedding-makeup__subtitle {
+        font-size: 1rem;
+        margin-bottom: 16px;
+    }
+
+    .wedding-makeup__description {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+
+    .wedding-makeup__button {
+        padding: 14px 20px;
+        font-size: 0.92rem;
+        letter-spacing: 0.3px;
+        width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    .wedding-makeup__img {
+        height: 260px;
+        max-width: 100%;
+    }
+
+    /* --- Quién es Anita --- */
+    .about-anita__title {
+        font-size: 1.65rem;
+    }
+
+    .about-anita__name {
+        font-size: 1.4rem;
+    }
+
+    .about-anita__subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+
+    .about-anita__paragraph {
+        font-size: 0.98rem;
+        line-height: 1.65;
+    }
+
+    .about-anita__img {
+        height: 300px;
+    }
+
+    /* --- Instagram --- */
+    .instagram-strip__title {
+        font-size: 1.65rem;
+    }
+
+    .instagram-strip__subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 24px;
+    }
+
+    .instagram-strip__reels {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        max-width: 340px;
+    }
+
+    /* --- CTA --- */
+    .cta__title {
+        font-size: 1.55rem;
+        line-height: 1.25;
+    }
+
+    .cta__subtitle {
+        font-size: 0.98rem;
+    }
+
+    .cta__buttons {
+        width: 100%;
+    }
+
+    .cta .btn {
+        width: 100%;
+        box-sizing: border-box;
     }
 }

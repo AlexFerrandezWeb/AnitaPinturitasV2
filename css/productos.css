@@ -210,18 +210,18 @@ body.page-productos .main > *:last-child { margin-bottom: 0 !important; }
     }
     
     .categories-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
         padding: 0 15px;
     }
-    
+
     .category-card {
         padding: 0;
     }
-    
+
     .contenedor-circular {
-        width: 220px;
-        height: 220px;
+        width: 140px;
+        height: 140px;
         margin-bottom: 0;
     }
 

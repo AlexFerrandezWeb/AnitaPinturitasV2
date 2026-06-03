@@ -1,114 +1,134 @@
-// Cargar y mostrar productos de cuidado capilar
-document.addEventListener('DOMContentLoaded', function() {
+// Cargar y mostrar productos de cuidado capilar con carga progresiva por scroll
+document.addEventListener('DOMContentLoaded', function () {
     const productosContainer = document.getElementById('productos-container');
-    
-    // Cargar datos del JSON
+    const CATEGORIAS_INICIAL = 2;
+
     fetch('../data/cuidadoCapilar.json')
         .then(response => response.json())
         .then(data => {
-            mostrarProductos(data.categorias);
+            iniciarCargaPorScroll(data.categorias);
         })
         .catch(error => {
             console.error('Error al cargar los productos:', error);
             productosContainer.innerHTML = '<p>Error al cargar los productos. Por favor, intenta de nuevo más tarde.</p>';
         });
-    
-    function mostrarProductos(categorias) {
-        let html = '';
-        
-        categorias.forEach(categoria => {
-            html += `
-                <div class="categoria-section">
-                    <h2 class="categoria-titulo">${categoria.titulo}</h2>
-                    <div class="productos-grid${categoria.productos.length === 1 ? ' productos-grid--single' : ''}">
-            `;
-            
-            categoria.productos.forEach(producto => {
-                // Generar alt accesible y SEO-friendly a partir de la descripción si es útil
-                let altTextoBase = `${producto.nombre} de la categoría ${categoria.titulo} - Anita Pinturitas`;
-                let altDesdeDescripcion = altTextoBase;
-                if (producto.descripcion && producto.descripcion.trim().length > 0) {
-                    const primeraFrase = producto.descripcion.split('.')?.[0]?.trim() || '';
-                    if (primeraFrase.length >= 20 && primeraFrase.length <= 140) {
-                        altDesdeDescripcion = primeraFrase;
-                    }
-                }
-                const altSeguro = (altDesdeDescripcion || altTextoBase).replace(/"/g, '&quot;');
 
-                html += `
-                    <div class="producto-card" onclick="verProducto('${producto.id}')">
-                        <div class="producto-imagen">
-                            <img src="${producto.imagen}" alt="${altSeguro}" loading="lazy">
-                        </div>
-                        <div class="producto-info">
-                            <h3 class="producto-nombre">${producto.nombre}</h3>
-                            <p class="producto-precio">${producto.precio.toFixed(2)} €</p>
-                            <p class="producto-precio-iva">+IVA incluido</p>
-                            <div class="producto-botones" onclick="event.stopPropagation()">
-                                <button class="btn-ver" onclick="event.stopPropagation(); verProducto('${producto.id}')">
-                                    Ver
-                                </button>
-                                <button class="btn-comprar" onclick="event.stopPropagation(); addToCartWithAnimation(this, '${producto.id}', '${producto.nombre}', ${producto.precio}, '${producto.imagen}')">
-                                    Añadir al carrito
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-            
+    function iniciarCargaPorScroll(categorias) {
+        let indice = 0;
+
+        function cargarSiguietesBatch(cantidad, anteDe = null) {
+            const hasta = Math.min(indice + cantidad, categorias.length);
+            for (let i = indice; i < hasta; i++) {
+                const seccion = crearSeccionCategoria(categorias[i]);
+                if (anteDe) {
+                    productosContainer.insertBefore(seccion, anteDe);
+                } else {
+                    productosContainer.appendChild(seccion);
+                }
+            }
+            indice = hasta;
+        }
+
+        // Carga inicial
+        cargarSiguietesBatch(CATEGORIAS_INICIAL);
+
+        if (indice >= categorias.length) return;
+
+        // Sentinel para detectar scroll
+        const sentinel = document.createElement('div');
+        sentinel.className = 'lazy-sentinel';
+        sentinel.innerHTML = '<div class="lazy-spinner"><span></span><span></span><span></span></div>';
+        productosContainer.appendChild(sentinel);
+
+        const observer = new IntersectionObserver((entries) => {
+            if (!entries[0].isIntersecting) return;
+
+            cargarSiguietesBatch(1, sentinel);
+
+            if (indice >= categorias.length) {
+                observer.disconnect();
+                sentinel.remove();
+            }
+        }, { rootMargin: '200px' });
+
+        observer.observe(sentinel);
+    }
+
+    function crearSeccionCategoria(categoria) {
+        const seccion = document.createElement('div');
+        seccion.className = 'categoria-section';
+
+        let html = `<h2 class="categoria-titulo">${categoria.titulo}</h2><div class="productos-grid">`;
+
+        categoria.productos.forEach(producto => {
+            let altTextoBase = `${producto.nombre} de la categoría ${categoria.titulo} - Anita Pinturitas`;
+            let altDesdeDescripcion = altTextoBase;
+            if (producto.descripcion && producto.descripcion.trim().length > 0) {
+                const primeraFrase = producto.descripcion.split('.')?.[0]?.trim() || '';
+                if (primeraFrase.length >= 20 && primeraFrase.length <= 140) {
+                    altDesdeDescripcion = primeraFrase;
+                }
+            }
+            const altSeguro = (altDesdeDescripcion || altTextoBase).replace(/"/g, '&quot;');
+
             html += `
+                <div class="featured-product-card" onclick="verProducto('${producto.id}')">
+                    <a href="producto.html?id=${producto.id}" class="featured-product-card__img-link" onclick="event.stopPropagation()">
+                        <img src="${producto.imagen}" alt="${altSeguro}" class="featured-product-card__img" loading="lazy">
+                        <span class="featured-product-card__tag">Cabello</span>
+                    </a>
+                    <div class="featured-product-card__body">
+                        <h3 class="featured-product-card__name">${producto.nombre}</h3>
+                        <p class="featured-product-card__desc">${producto.descripcion || ''}</p>
+                        <p class="featured-product-card__price">${producto.precio.toFixed(2)} €</p>
+                        <p class="featured-product-card__iva">IVA incluido</p>
+                        <div class="featured-product-card__actions" onclick="event.stopPropagation()">
+                            <a href="producto.html?id=${producto.id}" class="featured-product-card__btn featured-product-card__btn--ver">Ver</a>
+                            <button type="button" class="featured-product-card__btn featured-product-card__btn--cart" onclick="event.stopPropagation(); addToCartWithAnimation(this, '${producto.id}', '${producto.nombre}', ${producto.precio}, '${producto.imagen}')">
+                                Añadir al carrito
+                            </button>
+                        </div>
                     </div>
                 </div>
             `;
         });
-        
-        productosContainer.innerHTML = html;
+
+        html += '</div>';
+        seccion.innerHTML = html;
+        return seccion;
     }
-    
-    // Función para ver detalles del producto
-    window.verProducto = function(productoId) {
-        const isRootPage = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/');
-        const productoUrl = isRootPage
-            ? `html/producto.html?id=${productoId}`
-            : `producto.html?id=${productoId}`;
-        window.location.href = productoUrl;
+
+    window.verProducto = function (productoId) {
+        window.location.href = `producto.html?id=${productoId}`;
     };
-    
-    // Función para añadir al carrito con animación
-    window.addToCartWithAnimation = function(buttonElement, productoId, nombre, precio, imagen) {
-        // Encontrar la imagen del producto en la tarjeta
-        const productCard = buttonElement.closest('.producto-card');
-        const productImage = productCard ? productCard.querySelector('.producto-imagen img') : null;
-        
+
+    window.addToCartWithAnimation = function (buttonElement, productoId, nombre, precio, imagen) {
+        const productCard = buttonElement.closest('.featured-product-card');
+        const productImage = productCard ? productCard.querySelector('.featured-product-card__img') : null;
+
         if (productImage && typeof window.createFlyToCartAnimationFromButton === 'function') {
-            // Usar la animación desde el botón
             window.createFlyToCartAnimationFromButton(buttonElement, productImage.src, () => {
-                // Añadir al carrito después de la animación
                 if (typeof window.addToCart === 'function') {
                     window.addToCart(productoId, nombre, precio, imagen, 1);
                 }
             });
-            
-            // Feedback visual en el botón
+
             const originalText = buttonElement.textContent;
             buttonElement.textContent = '✓ Añadido';
             buttonElement.style.background = 'linear-gradient(135deg, #4caf50 0%, #45a049 100%)';
             buttonElement.style.color = 'white';
-            
+
             setTimeout(() => {
                 buttonElement.textContent = originalText;
                 buttonElement.style.background = '';
                 buttonElement.style.color = '';
             }, 2000);
-            
+
         } else {
-            // Fallback sin animación
             if (typeof window.addToCart === 'function') {
                 window.addToCart(productoId, nombre, precio, imagen, 1);
             }
-            
-            // Feedback visual simple
+
             const originalText = buttonElement.textContent;
             buttonElement.textContent = '✓ Añadido';
             setTimeout(() => {
