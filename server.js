@@ -12,6 +12,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const INSTAGRAM_REELS_CACHE_PATH = path.join(__dirname, 'data', 'instagramReelsCache.json');
 const INSTAGRAM_REELS_MANUAL_PATH = path.join(__dirname, 'data', 'instagramReelsManual.json');
+const GOOGLE_REVIEWS_CACHE_PATH = path.join(__dirname, 'data', 'googleReviewsCache.json');
+const GOOGLE_REVIEWS_CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 horas
 const GRAPH_API_VERSION = process.env.INSTAGRAM_GRAPH_API_VERSION || 'v21.0';
 
 function httpsGetFacebookGraph(pathAndQuery, timeoutMs = 12000) {
@@ -93,6 +95,20 @@ app.use((req, res, next) => {
         // Para el resto de endpoints, usar express.json()
         express.json()(req, res, next);
     }
+});
+
+// Middleware WebP: sirve .webp si el navegador lo soporta y el archivo existe
+app.use((req, res, next) => {
+    if (!/\.(jpe?g|png)$/i.test(req.path)) return next();
+    if (!req.headers.accept || !req.headers.accept.includes('image/webp')) return next();
+
+    const webpPath = path.join(__dirname, req.path.replace(/\.(jpe?g|png)$/i, '.webp'));
+    if (fs.existsSync(webpPath)) {
+        res.set('Content-Type', 'image/webp');
+        res.set('Vary', 'Accept');
+        return res.sendFile(webpPath);
+    }
+    next();
 });
 
 app.use(express.static('.'));
@@ -1397,6 +1413,120 @@ app.get('/api/instagram-latest-reels', async (req, res) => {
         }
 
         return res.status(200).json({ username, count: 0, reels: [], error: 'Unable to fetch reels now' });
+    }
+});
+
+// ===== GOOGLE REVIEWS =====
+function readGoogleReviewsCache() {
+    try {
+        if (!fs.existsSync(GOOGLE_REVIEWS_CACHE_PATH)) return null;
+        const raw = fs.readFileSync(GOOGLE_REVIEWS_CACHE_PATH, 'utf8');
+        const parsed = JSON.parse(raw);
+        if (!parsed || !Array.isArray(parsed.reviews)) return null;
+        const age = Date.now() - new Date(parsed.updatedAt).getTime();
+        if (age > GOOGLE_REVIEWS_CACHE_TTL_MS) return null;
+        return parsed;
+    } catch {
+        return null;
+    }
+}
+
+function writeGoogleReviewsCache(data) {
+    try {
+        const dataDir = path.join(__dirname, 'data');
+        if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+        fs.writeFileSync(GOOGLE_REVIEWS_CACHE_PATH, JSON.stringify({ updatedAt: new Date().toISOString(), ...data }, null, 2), 'utf8');
+    } catch (err) {
+        console.warn('⚠️ Error writing Google reviews cache:', err.message);
+    }
+}
+
+function googleMapsGet(urlPath) {
+    return new Promise((resolve, reject) => {
+        const request = https.get(
+            { hostname: 'maps.googleapis.com', path: urlPath, timeout: 10000 },
+            (res) => {
+                let raw = '';
+                res.on('data', (chunk) => { raw += chunk; });
+                res.on('end', () => {
+                    try { resolve(JSON.parse(raw)); }
+                    catch (e) { reject(e); }
+                });
+            }
+        );
+        request.on('error', reject);
+        request.on('timeout', () => request.destroy(new Error('Google Maps API timeout')));
+    });
+}
+
+async function resolveGooglePlaceId(apiKey) {
+    const placeId = process.env.GOOGLE_PLACE_ID;
+    if (placeId) return placeId;
+
+    const businessName = process.env.GOOGLE_BUSINESS_NAME || 'Anita Pinturitas Asturias';
+    const params = new URLSearchParams({ input: businessName, inputtype: 'textquery', fields: 'place_id', language: 'es', key: apiKey });
+    const data = await googleMapsGet(`/maps/api/place/findplacefromtext/json?${params}`);
+
+    if (data.status !== 'OK' || !data.candidates?.[0]?.place_id) {
+        throw new Error(`No se encontró el negocio "${businessName}" en Google. Status: ${data.status}`);
+    }
+
+    const found = data.candidates[0].place_id;
+    console.log(`✅ Google Place ID encontrado automáticamente: ${found}`);
+    return found;
+}
+
+async function fetchGooglePlaceDetails(placeId, apiKey) {
+    const params = new URLSearchParams({
+        place_id: placeId,
+        fields: 'rating,user_ratings_total,reviews',
+        language: 'es',
+        reviews_sort: 'newest',
+        key: apiKey
+    });
+    return googleMapsGet(`/maps/api/place/details/json?${params}`);
+}
+
+app.get('/api/google-reviews', async (req, res) => {
+    const cached = readGoogleReviewsCache();
+    if (cached) return res.json(cached);
+
+    const apiKey = process.env.GOOGLE_PLACES_API_KEY;
+    if (!apiKey) {
+        return res.status(503).json({ error: 'Falta GOOGLE_PLACES_API_KEY en las variables de entorno.' });
+    }
+
+    try {
+        const placeId = await resolveGooglePlaceId(apiKey);
+        const data = await fetchGooglePlaceDetails(placeId, apiKey);
+
+        if (data.status !== 'OK') {
+            console.error('Google Places API error:', data.status, data.error_message);
+            return res.status(502).json({ error: `Google API error: ${data.status}` });
+        }
+
+        const reviews = (data.result.reviews || [])
+            .filter(r => r.rating >= 4)
+            .map(r => ({
+                author: r.author_name,
+                photo: r.profile_photo_url || null,
+                rating: r.rating,
+                text: r.text,
+                time: r.relative_time_description
+            }));
+
+        const payload = {
+            rating: data.result.rating,
+            total: data.result.user_ratings_total,
+            reviews,
+            placeId
+        };
+
+        writeGoogleReviewsCache(payload);
+        res.json(payload);
+    } catch (err) {
+        console.error('Error fetching Google reviews:', err.message);
+        res.status(503).json({ error: err.message });
     }
 });
 

@@ -187,10 +187,20 @@ body {
     padding: 0 20px;
 }
 
-/* Evitar franja blanca arriba del footer SOLO en esta página */
-body.page-productos .main { padding-bottom: 1px; display: block; flex: 1 0 auto; }
-body.page-productos .main > *:last-child { margin-bottom: 0 !important; }
-/* Mantener el comportamiento del footer por defecto (auto empuje) */
+/* Sticky footer: el footer siempre al fondo aunque haya poco contenido */
+body.page-productos {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+body.page-productos .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+body.page-productos .categories-section {
+    flex: 1;
+}
 
 /* En pantallas muy grandes, reducir aún más el espacio inferior */
 @media (min-width: 1920px) {

@@ -1,7 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /data/
-Disallow: /html/*.html?*
+Disallow: /html/success.html
+Disallow: /html/cancel.html
 
 Sitemap: https://anitapinturitas.es/sitemap.xml
 
