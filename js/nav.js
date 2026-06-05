@@ -51,6 +51,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Nav vidriera al hacer scroll, sólido tras 1.5s de inactividad
+    const nav = document.querySelector('.nav');
+    if (nav) {
+        let idleTimer = null;
+
+        function resetIdleTimer() {
+            nav.classList.add('nav--transparent');
+            clearTimeout(idleTimer);
+            if (window.scrollY > 10) {
+                idleTimer = setTimeout(function() {
+                    nav.classList.remove('nav--transparent');
+                }, 1500);
+            }
+        }
+
+        resetIdleTimer();
+        window.addEventListener('scroll', resetIdleTimer, { passive: true });
+    }
+
     // Cerrar buscador al hacer scroll
     window.addEventListener('scroll', function() {
         if (searchBar && searchBar.classList.contains('is-visible')) {

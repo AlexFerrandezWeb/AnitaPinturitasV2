@@ -468,4 +468,11 @@ document.addEventListener('DOMContentLoaded', function() {
             closeSearch();
         });
     }
+
+    // Cerrar buscador al hacer scroll
+    window.addEventListener('scroll', function() {
+        if (searchBar && searchBar.classList.contains('is-visible')) {
+            closeSearch();
+        }
+    }, { passive: true });
 });

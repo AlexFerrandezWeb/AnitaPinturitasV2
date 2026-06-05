@@ -8,7 +8,7 @@ body {
 /* Hero Section */
 .products-hero {
     background: var(--vista-white);
-    padding: 40px 0;
+    padding: 132px 0 40px;
     text-align: center;
     border-bottom: 1px solid rgba(0,0,0,0.05);
 }

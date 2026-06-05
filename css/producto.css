@@ -36,7 +36,7 @@ body {
 /* Hero del producto */
 .producto-hero {
     background: var(--vista-white);
-    padding: 14px 0;
+    padding: 106px 0 14px;
     text-align: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }

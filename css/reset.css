@@ -121,6 +121,11 @@ h1 , h2 , h3 , h4 , h5 , h6 , p , span , a , strong , blockquote , i , b , u , e
 /* Aplicamos Montserrat a los títulos */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--tipo-secundaria);
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    word-break: keep-all;
+    overflow-wrap: normal;
 }
 
 /*Evitamos problemas con los pseudoelementos de quotes*/

@@ -1060,6 +1060,15 @@ html, body {
     50% { transform: scale(1.05); }
 }
 
+/* ===== MADEROTERAPIA ===== */
+.maderoterapia {
+    background: linear-gradient(135deg, var(--chantilly) 0%, var(--vista-white) 100%);
+}
+
+.maderoterapia::before {
+    display: none;
+}
+
 /* ===== ¿QUIÉN ES ANITA PINTURITAS? SECTION ===== */
 .about-anita {
     padding: 100px 0;
@@ -1456,34 +1465,149 @@ html, body {
 }
 
 /* ===== INSTAGRAM STRIP ===== */
+/* ===== INSTAGRAM STRIP ===== */
 .instagram-strip {
-    padding: 70px 0;
-    background: linear-gradient(135deg, var(--vista-white) 0%, var(--chantilly) 100%);
+    position: relative;
+    padding: 90px 0;
+    background: linear-gradient(160deg, #280620 0%, #3d0a30 45%, #1a0414 100%);
     text-align: center;
+    overflow: hidden;
+}
+
+.instagram-strip__bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+}
+
+.instagram-strip__bg-orb--1 {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(238, 42, 123, 0.45) 0%, transparent 70%);
+    top: -130px;
+    left: -120px;
+}
+
+.instagram-strip__bg-orb--2 {
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(98, 40, 215, 0.4) 0%, transparent 70%);
+    bottom: -100px;
+    right: -100px;
+}
+
+.instagram-strip__header {
+    margin-bottom: 52px;
+}
+
+.instagram-strip__ig-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50px;
+    padding: 8px 22px;
+    margin-bottom: 22px;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+}
+
+.instagram-strip__ig-icon {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.instagram-strip__handle {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.88);
+    letter-spacing: 0.3px;
 }
 
 .instagram-strip__title {
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: 800;
-    color: var(--jazzberry-jam);
-    margin: 0 0 8px 0;
+    color: #fff;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.5px;
 }
-
 
 .instagram-strip__subtitle {
     font-size: 1rem;
-    color: var(--corn-harvest);
-    margin: 0 0 40px 0;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0;
 }
-
 
 .instagram-strip__reels {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
+    gap: 24px;
     max-width: 1050px;
-    margin: 0 auto 40px;
+    margin: 0 auto 52px;
     justify-items: center;
+}
+
+.instagram-strip__reel-wrapper {
+    padding: 3px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%);
+    width: 100%;
+    max-width: 340px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.instagram-strip__reel-wrapper:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 24px 55px rgba(238, 42, 123, 0.38);
+}
+
+.instagram-strip__reel-wrapper .live-section__reel-container {
+    border-radius: 17px;
+    box-shadow: none;
+}
+
+.instagram-strip__reel-wrapper .live-section__reel-container:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.btn--instagram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 38px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 55%, #6228d7 100%);
+    color: #fff;
+    box-shadow: 0 8px 28px rgba(238, 42, 123, 0.45);
+    transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn--instagram:hover {
+    opacity: 0.88;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(238, 42, 123, 0.55);
+}
+
+.btn--instagram:active {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(238, 42, 123, 0.4);
+}
+
+.btn--instagram__icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
 }
 
 /* ===== CTA SECTION ===== */
@@ -1583,6 +1707,15 @@ html, body {
         grid-template-columns: 1fr 1fr;
         gap: 60px;
         text-align: left;
+    }
+
+    .maderoterapia .wedding-makeup__image {
+        order: -1;
+    }
+
+    .maderoterapia .wedding-makeup__text {
+        text-align: left;
+        margin: 0;
     }
     
     .wedding-makeup__text {
@@ -1960,14 +2093,39 @@ html, body {
         padding: 16px 32px;
         font-size: 1rem;
     }
+
+    /* --- Instagram scroll horizontal en tablet --- */
+    .instagram-strip__reels {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        gap: 16px;
+        max-width: none;
+        margin-bottom: 40px;
+        padding-bottom: 4px;
+    }
+
+    .instagram-strip__reels::-webkit-scrollbar {
+        display: none;
+    }
+
+    .instagram-strip__reel-wrapper {
+        flex: 0 0 72vw;
+        max-width: 340px;
+        scroll-snap-align: start;
+    }
 }
 
 /* ===== BARRA DE CONFIANZA ===== */
 .trust-bar {
     background: linear-gradient(135deg, var(--citrine-white) 0%, var(--vista-white) 100%);
     border-bottom: 1px solid rgba(186, 11, 95, 0.1);
-    padding: 20px 0;
+    padding: 112px 0 20px;
 }
+
 
 .trust-bar__stats {
     max-width: 1200px;
@@ -2347,19 +2505,57 @@ html, body {
     }
 
     /* --- Instagram --- */
+    .instagram-strip {
+        padding: 60px 0;
+    }
+
+    .instagram-strip__bg-orb--1 {
+        width: 280px;
+        height: 280px;
+        top: -80px;
+        left: -80px;
+    }
+
+    .instagram-strip__bg-orb--2 {
+        width: 240px;
+        height: 240px;
+        bottom: -60px;
+        right: -60px;
+    }
+
+    .instagram-strip__header {
+        margin-bottom: 36px;
+    }
+
     .instagram-strip__title {
-        font-size: 1.65rem;
+        font-size: 1.75rem;
     }
 
     .instagram-strip__subtitle {
         font-size: 0.9rem;
-        margin-bottom: 24px;
     }
 
     .instagram-strip__reels {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        max-width: 340px;
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        gap: 14px;
+        max-width: none;
+        margin-bottom: 36px;
+        padding-bottom: 4px;
+    }
+
+    .instagram-strip__reels::-webkit-scrollbar {
+        display: none;
+    }
+
+    .instagram-strip__reel-wrapper {
+        flex: 0 0 80vw;
+        max-width: 310px;
+        scroll-snap-align: start;
     }
 
     /* --- CTA --- */
