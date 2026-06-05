@@ -404,6 +404,36 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Botón compartir producto
+    const shareBtn = document.querySelector('#share-btn');
+    if (shareBtn) {
+        shareBtn.addEventListener('click', async function () {
+            const productName = document.querySelector('.producto-details__name')?.textContent || 'Producto';
+            const url = window.location.href;
+
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: `${productName} - Anita Pinturitas`,
+                        text: 'Mira este producto de Anita Pinturitas 💄',
+                        url
+                    });
+                } catch (_) { /* usuario canceló */ }
+            } else {
+                try {
+                    await navigator.clipboard.writeText(url);
+                    this.classList.add('producto-share-btn--copied');
+                    const originalLabel = this.getAttribute('aria-label');
+                    this.setAttribute('aria-label', '¡Enlace copiado!');
+                    setTimeout(() => {
+                        this.classList.remove('producto-share-btn--copied');
+                        this.setAttribute('aria-label', originalLabel);
+                    }, 2000);
+                } catch (_) { /* sin soporte clipboard */ }
+            }
+        });
+    }
+
     // Función para renderizar ingredientes dinamicamente
     function renderIngredientes(ingredientes) {
         const ingredientsSection = document.querySelector('.producto-details__ingredients');

@@ -1336,6 +1336,12 @@ html, body {
     margin: 0 0 14px 0;
 }
 
+.featured-product-card__iva {
+    font-size: 0.72rem;
+    color: #6b8e3a;
+    margin: 0 0 14px 0;
+}
+
 .featured-product-card__actions {
     display: flex;
     gap: 8px;

@@ -111,6 +111,74 @@ app.use((req, res, next) => {
     next();
 });
 
+// Dynamic OG meta tags for product pages (must be before static middleware)
+// WhatsApp/Facebook crawlers don't execute JS, so OG tags must be server-rendered
+function escapeHtmlAttr(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
+
+function findProductById(id) {
+    const dataFiles = [
+        path.join(__dirname, 'data', 'cuidadoPiel.json'),
+        path.join(__dirname, 'data', 'cuidadoCapilar.json')
+    ];
+    for (const dataFile of dataFiles) {
+        try {
+            const data = JSON.parse(fs.readFileSync(dataFile, 'utf8'));
+            if (!Array.isArray(data.categorias)) continue;
+            for (const categoria of data.categorias) {
+                const found = (categoria.productos || []).find(p => p.id === id);
+                if (found) return found;
+            }
+        } catch (_) { /* continue */ }
+    }
+    return null;
+}
+
+app.get('/html/producto.html', (req, res, next) => {
+    const productId = req.query.id;
+    if (!productId) return next();
+
+    const producto = findProductById(productId);
+    if (!producto) return next();
+
+    try {
+        const htmlPath = path.join(__dirname, 'html', 'producto.html');
+        let html = fs.readFileSync(htmlPath, 'utf8');
+
+        const BASE_URL = 'https://anitapinturitas.es';
+        const imageUrl = producto.image_link ||
+            (producto.imagen
+                ? (producto.imagen.startsWith('http') ? producto.imagen : `${BASE_URL}${producto.imagen.startsWith('/') ? '' : '/'}${producto.imagen}`)
+                : `${BASE_URL}/assets/anita-pinturitas_logo.png`);
+        const productUrl = `${BASE_URL}/html/producto.html?id=${encodeURIComponent(productId)}`;
+        const title = escapeHtmlAttr(`${producto.nombre} - Anita Pinturitas`);
+        const description = escapeHtmlAttr(
+            producto.descripcion ? producto.descripcion.substring(0, 200) : 'Producto de belleza testado y recomendado. Ideal para piel madura.'
+        );
+        const safeImageUrl = escapeHtmlAttr(imageUrl);
+        const safeProductUrl = escapeHtmlAttr(productUrl);
+
+        html = html.replace(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${safeProductUrl}">`);
+        html = html.replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${title}">`);
+        html = html.replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${description}">`);
+        html = html.replace(/<meta property="og:image" content="[^"]*">/, `<meta property="og:image" content="${safeImageUrl}">`);
+        html = html.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`);
+        html = html.replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${safeProductUrl}">`);
+
+        res.setHeader('Content-Type', 'text/html; charset=utf-8');
+        res.send(html);
+    } catch (error) {
+        console.error('Error serving dynamic product OG tags:', error);
+        next();
+    }
+});
+
 app.use(express.static('.'));
 
 // 301 redirects for old/incorrect URLs indexed by Google

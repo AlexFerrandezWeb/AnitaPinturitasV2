@@ -1,63 +1,35 @@
-// Funcionalidad del botón WhatsApp flotante
-document.addEventListener('DOMContentLoaded', function() {
-    const whatsappButton = document.querySelector('.whatsapp-button');
-    const whatsappText = document.querySelector('.whatsapp-button__text');
-    
-    if (whatsappButton && whatsappText) {
-        // Iniciar en modo solo logo
-        whatsappButton.classList.add('logo-only');
-        
-        // Función para mostrar texto con transición
-        function mostrarTexto(texto) {
-            whatsappButton.classList.remove('logo-only');
-            whatsappText.textContent = texto;
-            whatsappText.classList.add('is-visible');
-        }
-        
-        // Función para ocultar texto con transición
-        function ocultarTexto() {
-            whatsappText.classList.remove('is-visible');
-            // Esperar a que termine la transición antes de encoger el botón
-            setTimeout(function() {
-                whatsappButton.classList.add('logo-only');
-            }, 300);
-        }
-        
-        // Función para volver al estado inicial (solo logo)
-        function volverAlInicio() {
-            whatsappText.classList.remove('is-visible');
-            // Esperar a que termine la transición del texto antes de encoger el botón
-            setTimeout(function() {
-                whatsappButton.classList.add('logo-only');
-                // Limpiar el texto después de encoger el botón
-                setTimeout(function() {
-                    whatsappText.textContent = '';
-                }, 100);
-            }, 300);
-        }
-        
-        // Secuencia de animación:
-        // 1. Después de 10 segundos: mostrar "¡Hola!"
-        setTimeout(function() {
-            mostrarTexto('¡Hola!');
-        }, 10000);
-        
-        // 2. Después de 12 segundos (2 segundos más): mostrar "¿Te ayudo?"
-        setTimeout(function() {
-            mostrarTexto('¿Te ayudo?');
-        }, 12000);
-        
-        // 3. Después de 17 segundos (5 segundos más): volver al estado inicial
-        setTimeout(function() {
-            volverAlInicio();
-        }, 17000);
-        
-        // Trackear Contact cuando se hace clic en el botón WhatsApp
-        whatsappButton.addEventListener('click', function() {
-            // Trackear Contact en Meta Pixel
-            if (typeof window.trackContact === 'function') {
-                window.trackContact('whatsapp');
-            }
+document.addEventListener('DOMContentLoaded', function () {
+    const banner = document.getElementById('wa-banner');
+    if (!banner) return;
+
+    const CINCO_MIN = 5 * 60 * 1000;
+    const lastDismissed = sessionStorage.getItem('wa_banner_dismissed_at');
+    if (lastDismissed && Date.now() - parseInt(lastDismissed) < CINCO_MIN) {
+        banner.remove();
+        return;
+    }
+
+    setTimeout(function () {
+        banner.classList.add('is-visible');
+    }, 1500);
+
+    function closeBanner() {
+        banner.classList.remove('is-visible');
+        setTimeout(function () { banner.remove(); }, 400);
+        sessionStorage.setItem('wa_banner_dismissed_at', Date.now().toString());
+    }
+
+    const acceptBtn = document.getElementById('wa-banner-accept');
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', function () {
+            closeBanner();
+        });
+    }
+
+    const dismissBtn = document.getElementById('wa-banner-dismiss');
+    if (dismissBtn) {
+        dismissBtn.addEventListener('click', function () {
+            closeBanner();
         });
     }
 });

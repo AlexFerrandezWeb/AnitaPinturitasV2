@@ -9,6 +9,7 @@
     z-index: 998; /* Debajo de .search-bar (999) */
     display: none;
     overflow-y: auto;
+    overscroll-behavior: contain;
     padding: 0;
     box-shadow: none;
 }

@@ -42,6 +42,7 @@
                 <h3 class="featured-product-card__name">${nombre}</h3>
                 <p class="featured-product-card__desc">${desc}</p>
                 <p class="featured-product-card__price">${formatPrice(p.precio)}</p>
+                <p class="featured-product-card__iva">IVA incluido</p>
                 <div class="featured-product-card__actions">
                     <a href="html/producto.html?id=${p.id}" class="featured-product-card__btn featured-product-card__btn--ver">Ver</a>
                     <button type="button" class="featured-product-card__btn featured-product-card__btn--cart"

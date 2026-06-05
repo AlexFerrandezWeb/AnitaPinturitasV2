@@ -11,6 +11,23 @@ document.addEventListener('DOMContentLoaded', function() {
     let productosCache = null;
     let productosTextoIndexados = false;
 
+    // Bloqueo táctil para iOS Safari < 16 (overscroll-behavior no soportado)
+    let _touchBlocker = null;
+    function lockBodyTouchScroll() {
+        if (_touchBlocker) return;
+        _touchBlocker = function(e) {
+            const resultadosContainer = document.querySelector('.search-results');
+            if (resultadosContainer && resultadosContainer.contains(e.target)) return;
+            e.preventDefault();
+        };
+        document.addEventListener('touchmove', _touchBlocker, { passive: false });
+    }
+    function unlockBodyTouchScroll() {
+        if (!_touchBlocker) return;
+        document.removeEventListener('touchmove', _touchBlocker);
+        _touchBlocker = null;
+    }
+
     // Genera variantes simples (plural/singular) y raíz para mejorar coincidencias en español
     function generarVariantesBusqueda(palabra) {
         const variantes = new Set();
@@ -315,18 +332,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         resultadosContainer.style.display = 'block';
-        // Bloquear scroll del body cuando los resultados están visibles
         document.body.style.overflow = 'hidden';
+        lockBodyTouchScroll();
     }
-    
+
     // Ocultar resultados
     function ocultarResultados() {
         const resultadosContainer = document.querySelector('.search-results');
         if (resultadosContainer) {
             resultadosContainer.style.display = 'none';
         }
-        // Restaurar scroll del body
         document.body.style.overflow = '';
+        unlockBodyTouchScroll();
     }
     
     // Función para ir a un producto
@@ -422,16 +439,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 300);
         });
         
-        // Ocultar resultados cuando se pierde el foco
-        searchInput.addEventListener('blur', function() {
-            // Delay para permitir clicks en los resultados
-            setTimeout(() => {
-                // En móvil mantener el buscador visible y no ocultar automáticamente
-                if (window.innerWidth > 768) {
-                    ocultarResultados();
-                }
-            }, 200);
-        });
     }
     
     // Cargar productos al inicializar
@@ -469,10 +476,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Cerrar buscador al hacer scroll
+    // Cerrar buscador al hacer scroll solo si no hay resultados visibles
     window.addEventListener('scroll', function() {
-        if (searchBar && searchBar.classList.contains('is-visible')) {
+        if (!searchBar || !searchBar.classList.contains('is-visible')) return;
+        const resultadosContainer = document.querySelector('.search-results');
+        const resultadosVisibles = resultadosContainer && resultadosContainer.style.display === 'block';
+        if (!resultadosVisibles) {
             closeSearch();
         }
     }, { passive: true });
+
 });
