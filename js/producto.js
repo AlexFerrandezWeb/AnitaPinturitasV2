@@ -415,7 +415,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 try {
                     await navigator.share({
                         title: `${productName} - Anita Pinturitas`,
-                        text: 'Mira este producto de Anita Pinturitas 💄',
                         url
                     });
                 } catch (_) { /* usuario canceló */ }
