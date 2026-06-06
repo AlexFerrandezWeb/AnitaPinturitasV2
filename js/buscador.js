@@ -487,22 +487,24 @@ document.addEventListener('DOMContentLoaded', function() {
     if (searchBar) {
         searchBar.addEventListener('touchstart', function() {
             ignorarScrollPorTeclado = true;
-            setTimeout(() => { ignorarScrollPorTeclado = false; }, 700);
+            setTimeout(() => { ignorarScrollPorTeclado = false; }, 1000);
         }, { passive: true });
     }
 
-    // También en focus (por si acaso, cubre teclados hardware y otros navegadores)
+    // También en focus (cubre teclados hardware y otros navegadores)
     if (searchInput) {
         searchInput.addEventListener('focus', function() {
             ignorarScrollPorTeclado = true;
-            setTimeout(() => { ignorarScrollPorTeclado = false; }, 700);
+            setTimeout(() => { ignorarScrollPorTeclado = false; }, 1000);
         });
     }
 
     // Cerrar buscador al hacer scroll solo si no hay resultados visibles
     window.addEventListener('scroll', function() {
         if (!searchBar || !searchBar.classList.contains('is-visible')) return;
+        // No cerrar si el flag está activo, o si el input tiene el foco en este momento
         if (ignorarScrollPorTeclado) return;
+        if (searchInput && document.activeElement === searchInput) return;
         const resultadosContainer = document.querySelector('.search-results');
         const resultadosVisibles = resultadosContainer && resultadosContainer.style.display === 'block';
         if (!resultadosVisibles) {
