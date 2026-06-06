@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let productosCache = null;
     let productosTextoIndexados = false;
 
+    // Flag para ignorar el scroll falso que genera el teclado virtual al abrirse
+    let ignorarScrollPorTeclado = false;
+
     // Bloqueo táctil para iOS Safari < 16 (overscroll-behavior no soportado)
     let _touchBlocker = null;
     function lockBodyTouchScroll() {
@@ -71,20 +74,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (isVisible) {
                     closeSearch();
                 } else {
+                    // Ignorar cualquier scroll durante la apertura (scroll falso del teclado o del propio navegador)
+                    ignorarScrollPorTeclado = true;
+                    setTimeout(() => { ignorarScrollPorTeclado = false; }, 700);
+
                     // Añadir clase visible y forzar visibilidad inmediata del input
                     searchBar.classList.add('is-visible');
                     searchToggle.setAttribute('aria-expanded', 'true');
-                    
+
                     const input = searchBar.querySelector('.search-bar__input');
                     if (input) {
                         // Asegurar que el input esté habilitado
                         input.disabled = false;
                         input.readOnly = false;
                         input.style.pointerEvents = 'auto';
-                        
+
                         // Detectar si es móvil
                         const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                        
+
                         // Función auxiliar para hacer focus de forma agresiva (especialmente en móvil)
                         const forceFocus = () => {
                             // En móvil, usar un enfoque más directo
@@ -93,9 +100,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                 input.style.position = 'relative';
                                 input.style.zIndex = '9999';
                             }
-                            
-                            input.scrollIntoView({ behavior: 'instant', block: 'nearest' });
-                            
+
+                            // scrollIntoView eliminado: search-bar es position:fixed, no necesita scroll
+
                             // Múltiples intentos de focus
                             input.focus();
                             
@@ -476,8 +483,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Ignorar el scroll que provoca el teclado virtual al abrirse
-    let ignorarScrollPorTeclado = false;
+    // Extender el flag también cuando el input recibe foco directamente
     if (searchInput) {
         searchInput.addEventListener('focus', function() {
             ignorarScrollPorTeclado = true;
