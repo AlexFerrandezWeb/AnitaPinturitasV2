@@ -483,11 +483,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Extender el flag también cuando el input recibe foco directamente
+    // Activar el flag en touchstart sobre la barra entera (antes de que iOS scrollee al abrir teclado)
+    if (searchBar) {
+        searchBar.addEventListener('touchstart', function() {
+            ignorarScrollPorTeclado = true;
+            setTimeout(() => { ignorarScrollPorTeclado = false; }, 700);
+        }, { passive: true });
+    }
+
+    // También en focus (por si acaso, cubre teclados hardware y otros navegadores)
     if (searchInput) {
         searchInput.addEventListener('focus', function() {
             ignorarScrollPorTeclado = true;
-            setTimeout(() => { ignorarScrollPorTeclado = false; }, 500);
+            setTimeout(() => { ignorarScrollPorTeclado = false; }, 700);
         });
     }
 
