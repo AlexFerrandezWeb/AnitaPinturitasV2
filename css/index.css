@@ -591,6 +591,9 @@ html, body {
     min-width: 200px;
     position: relative;
     overflow: hidden;
+    -webkit-hyphens: none;
+    hyphens: none;
+    word-break: keep-all;
 }
 
 .btn::before {

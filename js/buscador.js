@@ -476,9 +476,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Ignorar el scroll que provoca el teclado virtual al abrirse
+    let ignorarScrollPorTeclado = false;
+    if (searchInput) {
+        searchInput.addEventListener('focus', function() {
+            ignorarScrollPorTeclado = true;
+            setTimeout(() => { ignorarScrollPorTeclado = false; }, 500);
+        });
+    }
+
     // Cerrar buscador al hacer scroll solo si no hay resultados visibles
     window.addEventListener('scroll', function() {
         if (!searchBar || !searchBar.classList.contains('is-visible')) return;
+        if (ignorarScrollPorTeclado) return;
         const resultadosContainer = document.querySelector('.search-results');
         const resultadosVisibles = resultadosContainer && resultadosContainer.style.display === 'block';
         if (!resultadosVisibles) {
