@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /data/
 Disallow: /html/success.html
 Disallow: /html/cancel.html
 

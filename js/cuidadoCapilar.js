@@ -16,10 +16,15 @@ document.addEventListener('DOMContentLoaded', function () {
     function iniciarCargaPorScroll(categorias) {
         let indice = 0;
 
+        const slugDe = (titulo) => String(titulo || '').toLowerCase()
+            .normalize('NFD').replace(/[̀-ͯ]/g, '')
+            .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
         function cargarSiguietesBatch(cantidad, anteDe = null) {
             const hasta = Math.min(indice + cantidad, categorias.length);
             for (let i = indice; i < hasta; i++) {
                 const seccion = crearSeccionCategoria(categorias[i]);
+                seccion.id = 'cat-' + slugDe(categorias[i].titulo);
                 if (anteDe) {
                     productosContainer.insertBefore(seccion, anteDe);
                 } else {
@@ -27,6 +32,32 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
             indice = hasta;
+        }
+
+        // Índice de subcategorías: permite saltar directamente a cada sección
+        if (categorias.length > 1) {
+            const chips = document.createElement('nav');
+            chips.className = 'categorias-index';
+            chips.setAttribute('aria-label', 'Subcategorías');
+            chips.innerHTML = categorias.map((c, i) =>
+                `<button type="button" class="categorias-index__chip" data-index="${i}">${c.titulo}</button>`
+            ).join('');
+            productosContainer.parentNode.insertBefore(chips, productosContainer);
+
+            chips.addEventListener('click', (e) => {
+                const chip = e.target.closest('.categorias-index__chip');
+                if (!chip) return;
+                const objetivo = parseInt(chip.dataset.index, 10);
+                const sentinel = productosContainer.querySelector('.lazy-sentinel');
+                if (objetivo >= indice) {
+                    cargarSiguietesBatch(objetivo - indice + 1, sentinel);
+                }
+                if (indice >= categorias.length && sentinel) {
+                    sentinel.remove();
+                }
+                const seccion = document.getElementById('cat-' + slugDe(categorias[objetivo].titulo));
+                if (seccion) seccion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
         }
 
         // Carga inicial

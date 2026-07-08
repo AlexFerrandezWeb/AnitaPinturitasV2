@@ -327,3 +327,31 @@ body {
     --chantilly: #f8c5e4;
     --vista-white: #fdfafb;
 }
+
+/* ===== Índice de subcategorías (chips) ===== */
+.categorias-index {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 0 0 28px;
+}
+
+.categorias-index__chip {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--cardinal-pink, #98074f);
+    background: var(--vista-white, #fdfafb);
+    border: 1px solid var(--chantilly, #f8c5e4);
+    border-radius: 999px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    text-transform: capitalize;
+}
+
+.categorias-index__chip:hover {
+    background: var(--cardinal-pink, #98074f);
+    color: #fff;
+}

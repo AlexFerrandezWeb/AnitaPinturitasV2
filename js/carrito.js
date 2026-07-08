@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (cartCheckout) cartCheckout.disabled = true;
             if (cartCount) cartCount.textContent = '0';
             if (cartTotal) cartTotal.textContent = '0.00 €';
+            updateShippingProgress(0);
             return;
         }
 
@@ -146,7 +147,34 @@ document.addEventListener('DOMContentLoaded', function() {
         if (cartTotal) cartTotal.textContent = `${total.toFixed(2)} €`;
         if (cartCount) cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
         if (cartCheckout) cartCheckout.disabled = false;
+        updateShippingProgress(total);
     };
+
+    // Barra de progreso hacia el envío gratis (umbral 62 €, envío estándar 6,95 €)
+    const FREE_SHIPPING_THRESHOLD = 62;
+    function updateShippingProgress(total) {
+        const shippingInfo = document.querySelector('.cart-shipping-info');
+        if (!shippingInfo) return;
+
+        if (total <= 0) {
+            shippingInfo.innerHTML = '<p class="cart-shipping-text">Envío 6,95 € · GRATIS en pedidos de más de 62 €</p>';
+            return;
+        }
+
+        const percent = Math.min(100, Math.round((total / FREE_SHIPPING_THRESHOLD) * 100));
+        if (total >= FREE_SHIPPING_THRESHOLD) {
+            shippingInfo.innerHTML = `
+                <p class="cart-shipping-text cart-shipping-text--success">🎉 ¡Genial! Tu pedido tiene <strong>envío GRATIS</strong></p>
+                <div class="cart-shipping-bar"><div class="cart-shipping-bar__fill cart-shipping-bar__fill--complete" style="width: 100%"></div></div>
+            `;
+        } else {
+            const faltan = (FREE_SHIPPING_THRESHOLD - total).toFixed(2).replace('.', ',');
+            shippingInfo.innerHTML = `
+                <p class="cart-shipping-text">Te faltan <strong>${faltan} €</strong> para el envío <strong>GRATIS</strong></p>
+                <div class="cart-shipping-bar"><div class="cart-shipping-bar__fill" style="width: ${percent}%"></div></div>
+            `;
+        }
+    }
 
     // La función addToCart se define en cartUtils.js
 

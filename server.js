@@ -97,6 +97,16 @@ app.use((req, res, next) => {
     }
 });
 
+// Bloquear archivos internos del proyecto que no deben ser públicos
+// (código del servidor, documentación, scripts de build...)
+const BLOCKED_PATHS = /^\/(server\.js$|package\.json$|package-lock\.json$|\.env$|\.htaccess$|\.gitignore$|scripts\/|temp_reel\/|node_modules\/|[^/]*\.md$)/i;
+app.use((req, res, next) => {
+    if (BLOCKED_PATHS.test(req.path)) {
+        return res.status(404).send('Not found');
+    }
+    next();
+});
+
 // Middleware WebP: sirve .webp si el navegador lo soporta y el archivo existe
 app.use((req, res, next) => {
     if (!/\.(jpe?g|png)$/i.test(req.path)) return next();
@@ -106,6 +116,7 @@ app.use((req, res, next) => {
     if (fs.existsSync(webpPath)) {
         res.set('Content-Type', 'image/webp');
         res.set('Vary', 'Accept');
+        res.set('Cache-Control', 'public, max-age=604800'); // 7 días
         return res.sendFile(webpPath);
     }
     next();
@@ -170,6 +181,38 @@ app.get('/html/producto.html', (req, res, next) => {
         html = html.replace(/<meta property="og:image" content="[^"]*">/, `<meta property="og:image" content="${safeImageUrl}">`);
         html = html.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`);
         html = html.replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${safeProductUrl}">`);
+        html = html.replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${description}">`);
+
+        // Datos estructurados de Producto (JSON-LD): permiten resultados
+        // enriquecidos con precio en Google y listados gratuitos de Shopping
+        const productSchema = {
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            name: producto.nombre,
+            image: [imageUrl],
+            description: producto.descripcion || '',
+            brand: { '@type': 'Brand', name: producto.brand || 'Anita Pinturitas' },
+            offers: {
+                '@type': 'Offer',
+                url: productUrl,
+                priceCurrency: 'EUR',
+                price: producto.precio,
+                availability: producto.availability === 'out of stock'
+                    ? 'https://schema.org/OutOfStock'
+                    : 'https://schema.org/InStock',
+                itemCondition: 'https://schema.org/NewCondition',
+                shippingDetails: {
+                    '@type': 'OfferShippingDetails',
+                    shippingRate: {
+                        '@type': 'MonetaryAmount',
+                        value: producto.precio >= 62 ? 0 : 6.95,
+                        currency: 'EUR'
+                    },
+                    shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'ES' }
+                }
+            }
+        };
+        html = html.replace('</head>', `<script type="application/ld+json">${JSON.stringify(productSchema)}</script>\n</head>`);
 
         res.setHeader('Content-Type', 'text/html; charset=utf-8');
         res.send(html);
@@ -179,7 +222,21 @@ app.get('/html/producto.html', (req, res, next) => {
     }
 });
 
-app.use(express.static('.'));
+// Servir estáticos con caché: sin caché para HTML (contenido editable),
+// caché corta para los JSON de productos y caché larga para imágenes/CSS/JS
+app.use(express.static('.', {
+    setHeaders: (res, filePath) => {
+        if (/\.(html)$/i.test(filePath)) {
+            res.set('Cache-Control', 'no-cache');
+        } else if (/[\\/]data[\\/].*\.json$/i.test(filePath)) {
+            res.set('Cache-Control', 'public, max-age=3600'); // 1 hora
+        } else if (/\.(css|js)$/i.test(filePath)) {
+            res.set('Cache-Control', 'public, max-age=86400'); // 1 día
+        } else if (/\.(jpe?g|png|webp|gif|svg|ico|mp4|woff2?)$/i.test(filePath)) {
+            res.set('Cache-Control', 'public, max-age=604800'); // 7 días
+        }
+    }
+}));
 
 // 301 redirects for old/incorrect URLs indexed by Google
 app.get('/index', (req, res) => res.redirect(301, '/'));
@@ -310,7 +367,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
             line_items: lineItems,
             mode: 'payment',
             success_url: `${baseUrl}/html/success.html?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${baseUrl}/`, // Volver a la página principal usando la URL detectada
+            cancel_url: `${baseUrl}/html/cancel.html`,
             billing_address_collection: 'auto',
             // Solicitar número de teléfono
             phone_number_collection: {
@@ -318,12 +375,13 @@ app.post('/api/create-checkout-session', async (req, res) => {
             },
             // Solicitar dirección de envío (obligatorio)
             shipping_address_collection: {
-                allowed_countries: ['ES', 'FR', 'PT', 'IT', 'DE', 'GB', 'US', 'MX', 'AR', 'CO', 'CL', 'PE'], // Países permitidos
+                allowed_countries: ['ES', 'PT'], // El envío plano de 6,95€ solo es rentable en la península; añadir países aquí si se amplía
+
             },
             // Opciones de envío con coste y tiempo estimado
             shipping_options: shippingOptions,
-            // Desactivar código promocional/descuento (esto también ayuda a ocultar el botón Link en algunos casos)
-            allow_promotion_codes: false,
+            // Permitir códigos promocionales (cupones creados en el dashboard de Stripe)
+            allow_promotion_codes: true,
             // Configuración para mostrar métodos de pago rápidos
             payment_method_options: {
                 paypal: {

@@ -2586,3 +2586,107 @@ html, body {
         box-sizing: border-box;
     }
 }
+
+/* ===== Hero principal con H1 ===== */
+.home-hero {
+    background: linear-gradient(135deg, #fdfafb 0%, #f8c5e4 130%);
+    padding: 56px 20px 48px;
+    text-align: center;
+}
+
+.home-hero__title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: #98074f;
+    max-width: 820px;
+    margin: 0 auto 16px;
+}
+
+.home-hero__subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    color: #555;
+    line-height: 1.6;
+    max-width: 640px;
+    margin: 0 auto 28px;
+}
+
+.home-hero__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.home-hero__link {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #98074f;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.home-hero__link:hover {
+    color: #ba0b5f;
+}
+
+/* ===== Franja de garantías de compra ===== */
+.shop-guarantees {
+    background: #fff;
+    padding: 28px 0;
+    border-top: 1px solid #f4e3ee;
+    border-bottom: 1px solid #f4e3ee;
+}
+
+.shop-guarantees__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.shop-guarantees__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+}
+
+.shop-guarantees__item svg {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    color: #98074f;
+}
+
+.shop-guarantees__item div {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.shop-guarantees__item strong {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #222;
+}
+
+.shop-guarantees__item span {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+@media (max-width: 820px) {
+    .shop-guarantees__list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .shop-guarantees__item {
+        justify-content: flex-start;
+    }
+}

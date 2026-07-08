@@ -255,8 +255,6 @@
                             <img src="../assets/productos/cuidadoPiel/productoPortada1.png" alt="Miniatura 1 del producto" class="producto-details__thumbnail active" data-main-img="../assets/productos/cuidadoPiel/productoPortada1.png">
                             <img src="../assets/productos/cuidadoPiel/productoPortada2.png" alt="Miniatura 2 del producto" class="producto-details__thumbnail" data-main-img="../assets/productos/cuidadoPiel/productoPortada2.png">
                             <img src="../assets/productos/cuidadoPiel/productoPortada3.png" alt="Miniatura 3 del producto" class="producto-details__thumbnail" data-main-img="../assets/productos/cuidadoPiel/productoPortada3.png">
-                            <img src="../assets/frase1.jpg" alt="Frase inspiracional 1" class="producto-details__thumbnail" data-main-img="../assets/frase1.jpg">
-                            <img src="../assets/frase2.jpg" alt="Frase inspiracional 2" class="producto-details__thumbnail" data-main-img="../assets/frase2.jpg">
                         </div>
                     </div>
 
@@ -284,6 +282,25 @@
                             <button type="button" class="btn btn--secondary btn--full" id="contact-whatsapp">Consultar por WhatsApp</button>
                         </div>
 
+                        <ul class="producto-trust">
+                            <li class="producto-trust__item">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8zM5.5 18.5a2 2 0 100 .01M18.5 18.5a2 2 0 100 .01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <span><strong>Envío gratis</strong> en pedidos de más de 62 €</span>
+                            </li>
+                            <li class="producto-trust__item">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8M3 3v5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <span><strong>Devolución fácil</strong> en 14 días</span>
+                            </li>
+                            <li class="producto-trust__item">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 11H6a2 2 0 00-2 2v7a2 2 0 002 2h12a2 2 0 002-2v-7a2 2 0 00-2-2zM7 11V7a5 5 0 0110 0v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <span><strong>Pago 100% seguro</strong> · Tarjeta, PayPal, Klarna o Bizum</span>
+                            </li>
+                            <li class="producto-trust__item">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <span><strong>Testado personalmente</strong> por Ana María</span>
+                            </li>
+                        </ul>
+
                         <div class="producto-details__description">
                             <h3>Descripción</h3>
                             <p>Crema hidratante facial intensiva formulada con ingredientes naturales para nutrir y revitalizar tu piel madura. Proporciona hidratación profunda durante 24 horas, dejando tu piel suave, elástica y radiante.</p>
@@ -295,6 +312,14 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Productos relacionados (se rellena por JS con productos de la misma categoría) -->
+        <section class="producto-related" id="producto-related" hidden>
+            <div class="container">
+                <h2 class="producto-related__title">Completa tu rutina</h2>
+                <div class="producto-related__grid" id="producto-related-grid"></div>
             </div>
         </section>
     </main>

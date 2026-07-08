@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const mainImg = document.querySelector('#producto-img-principal');
                 const galeria = Array.isArray(producto.galeria) && producto.galeria.length > 0
                     ? producto.galeria
-                    : [producto.imagen, '../assets/frase1.jpg', '../assets/frase2.jpg'];
+                    : [producto.imagen];
                 const thumbnailsContainer = document.querySelector('.producto-details__thumbnails');
 
                 if (mainImg) {
@@ -329,6 +329,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     productContainer.style.opacity = '1';
                 }
 
+                renderRelacionados(result.categoria, producto.id);
+
                 // Trackear ViewContent (ver contenido del producto)
                 // Usar fbq directamente para asegurar que content_ids y content_type se envíen correctamente
                 if (typeof window.fbq === 'function') {
@@ -386,7 +388,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         for (const categoria of data.categorias) {
                             const productoEncontrado = (categoria.productos || []).find(p => p.id === id);
                             if (productoEncontrado) {
-                                resolve({ producto: productoEncontrado, origen: dataFiles[index] });
+                                resolve({ producto: productoEncontrado, categoria: categoria, origen: dataFiles[index] });
                                 return;
                             }
                         }
@@ -431,6 +433,36 @@ document.addEventListener('DOMContentLoaded', function () {
                 } catch (_) { /* sin soporte clipboard */ }
             }
         });
+    }
+
+    // Renderizar productos de la misma categoría para cross-sell
+    function renderRelacionados(categoria, currentId) {
+        const section = document.getElementById('producto-related');
+        const grid = document.getElementById('producto-related-grid');
+        if (!section || !grid || !categoria || !Array.isArray(categoria.productos)) return;
+
+        const candidatos = categoria.productos.filter(p => p.id !== currentId && p.imagen && p.precio);
+        if (candidatos.length === 0) return;
+
+        // Mezclar para que no salgan siempre los mismos
+        for (let i = candidatos.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [candidatos[i], candidatos[j]] = [candidatos[j], candidatos[i]];
+        }
+
+        const seleccion = candidatos.slice(0, 4);
+        grid.innerHTML = seleccion.map(p => {
+            const nombreSeguro = String(p.nombre || '').replace(/</g, '&lt;');
+            return `
+            <a href="producto.html?id=${encodeURIComponent(p.id)}" class="producto-related-card">
+                <img src="${p.imagen}" alt="${nombreSeguro}" class="producto-related-card__img" loading="lazy">
+                <div class="producto-related-card__body">
+                    <span class="producto-related-card__name">${nombreSeguro}</span>
+                    <span class="producto-related-card__price">${p.precio.toFixed(2)} €</span>
+                </div>
+            </a>`;
+        }).join('');
+        section.hidden = false;
     }
 
     // Función para renderizar ingredientes dinamicamente
