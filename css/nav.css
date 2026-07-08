@@ -8,7 +8,7 @@
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    padding: 12px 16px;
+    padding: 12px 20px 12px 16px;
     background-color: var(--vista-white);
     color: var(--color-secundario);
     box-shadow: 0 2px 16px rgba(186, 11, 95, 0.08);
@@ -308,10 +308,12 @@ body:has(.nav--transparent) .search-bar__input {
 
 /* Base responsive pensada para móvil primero */
 @media (min-width: 768px) {
-  .nav { padding: 14px 20px; }
+  /* Padding derecho extra: la barra de scroll overlay de Windows se dibuja
+     encima del contenido fijo y tapaba el icono del carrito */
+  .nav { padding: 14px 32px 14px 20px; }
   .nav__menu-bar { width: 24px; }
   .nav__cart-icon { width: 28px; height: 28px; }
-  .search-bar { padding: 14px 20px; }
+  .search-bar { padding: 14px 32px 14px 20px; }
   .search-bar__input { font-size: 16px; }
   .nav__menu { display: none; }
   .nav__links { display: flex; align-items: center; gap: 4px; }

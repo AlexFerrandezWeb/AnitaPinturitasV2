@@ -1,7 +1,17 @@
 // Utilidades del carrito compartidas entre todas las páginas
 (function() {
     'use strict';
-    
+
+    // Normaliza la ruta de la imagen a una ruta absoluta desde la raíz del sitio.
+    // Las tarjetas de cada página pasan rutas relativas distintas ('assets/...',
+    // '../assets/...'), y una ruta relativa guardada en el carrito solo se
+    // resuelve bien desde la página donde se añadió.
+    window.normalizeCartImage = function(imagen) {
+        if (!imagen) return imagen;
+        if (/^(https?:)?\/\//i.test(imagen)) return imagen;
+        return '/' + String(imagen).replace(/^(\.\.\/|\.\/)+/, '').replace(/^\/+/, '');
+    };
+
     // Función para actualizar el contador del carrito
     window.updateCartCount = function() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -37,7 +47,7 @@
                 id: productoId,
                 nombre: nombre,
                 precio: precioNum,
-                imagen: imagen,
+                imagen: window.normalizeCartImage(imagen),
                 quantity: cantidad
             });
         }

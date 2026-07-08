@@ -118,9 +118,13 @@ document.addEventListener('DOMContentLoaded', function() {
             // Asegurar que precio sea un número
             const precio = typeof item.precio === 'number' ? item.precio : parseFloat(item.precio) || 0;
             
+            const imagenSrc = (typeof window.normalizeCartImage === 'function')
+                ? window.normalizeCartImage(item.imagen)
+                : item.imagen;
+
             return `
             <div class="cart-item" data-id="${item.id}">
-                <img src="${item.imagen}" alt="${item.nombre}" class="cart-item__image">
+                <img src="${imagenSrc}" alt="${item.nombre}" class="cart-item__image">
                 <div class="cart-item__details">
                     <h4 class="cart-item__name">${item.nombre}</h4>
                     <p class="cart-item__price">${precio.toFixed(2)} €</p>

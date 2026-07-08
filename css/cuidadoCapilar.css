@@ -79,6 +79,9 @@ body {
 /* Secciones de categorías */
 .categoria-section {
     margin-bottom: 80px;
+    /* Deja hueco para el nav fijo al saltar a la sección desde los chips,
+       para que el banner rosa no quede tapado por la barra superior */
+    scroll-margin-top: 100px;
 }
 
 .categoria-titulo {
