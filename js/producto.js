@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
             productImage = mainImgElement ? mainImgElement.src : '../assets/productos/cuidadoPiel/productoPortada1.png';
         }
 
-        if (productId === 'cepillo-detangling-antiestatico-para-desenredar-termix-professional' && colorSelector && colorSelector.value) {
+        if (productId === 'cepillo_detangling_antiestatico_para_desenredar_termix_professional' && colorSelector && colorSelector.value) {
             productImage = `../assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional${colorSelector.value}.jpg`;
         }
 
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                             // Obtener nombre base de la imagen original o hardcodearla si es este producto específico
                             // Dado que es un requerimiento específico para este producto, podemos asumir la ruta base si estamos en este bloque
-                            if (producto.id === 'cepillo-detangling-antiestatico-para-desenredar-termix-professional') {
+                            if (producto.id === 'cepillo_detangling_antiestatico_para_desenredar_termix_professional') {
                                 const newImageSrc = `/assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional${selectedColor}.jpg`;
 
                                 if (mainImg) {

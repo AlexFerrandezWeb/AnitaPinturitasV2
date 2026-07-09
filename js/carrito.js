@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const percent = Math.min(100, Math.round((total / FREE_SHIPPING_THRESHOLD) * 100));
         if (total >= FREE_SHIPPING_THRESHOLD) {
             shippingInfo.innerHTML = `
-                <p class="cart-shipping-text cart-shipping-text--success">🎉 ¡Genial! Tu pedido tiene <strong>envío GRATIS</strong></p>
+                <p class="cart-shipping-text cart-shipping-text--success">¡Genial! Tu pedido tiene <strong>envío GRATIS</strong></p>
                 <div class="cart-shipping-bar"><div class="cart-shipping-bar__fill cart-shipping-bar__fill--complete" style="width: 100%"></div></div>
             `;
         } else {

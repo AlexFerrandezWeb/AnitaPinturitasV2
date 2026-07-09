@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
             const altSeguro = (altDesdeDescripcion || altTextoBase).replace(/"/g, '&quot;');
-            const isNuevo = ['US-21109-00', 'prod_SdTAGVPaPAE5Wu0', 'prod_SdTAGVPaPAE5Wu01', 'prod_SdTAGVPaPAE5Wu02', 'prod_SdTAGVPaPAE5Wu03', 'prod_SdTAGVPaPAE5Wu04'].includes(producto.id);
+            const isNuevo = ['cleansing_mousse_150_ml', 'velo_hyaluronic_refresh_35ml', 'velo_hyaluronic_refresh_caja_5_sobres', 'exoderm_2ml', 'diamond_crema_facial_50ml', 'hyal7_exoderm_serum_30ml'].includes(producto.id);
 
             html += `
                 <div class="featured-product-card" onclick="verProducto('${producto.id}')">

@@ -151,9 +151,24 @@ function findProductById(id) {
     return null;
 }
 
+// Redirecciones 301 de los ids antiguos (prod_... y códigos US-...) a los
+// nuevos slugs descriptivos. Preserva el SEO de las URLs ya indexadas.
+let LEGACY_PRODUCT_ID_REDIRECTS = {};
+try {
+    LEGACY_PRODUCT_ID_REDIRECTS = JSON.parse(
+        fs.readFileSync(path.join(__dirname, 'data', 'legacy-redirects.json'), 'utf8')
+    );
+} catch (_) { /* sin fichero de redirecciones: no se redirige nada */ }
+
 app.get('/html/producto.html', (req, res, next) => {
     const productId = req.query.id;
     if (!productId) return next();
+
+    // Redirigir permanentemente los ids antiguos al nuevo slug
+    const newId = LEGACY_PRODUCT_ID_REDIRECTS[productId];
+    if (newId) {
+        return res.redirect(301, `/html/producto.html?id=${newId}`);
+    }
 
     const producto = findProductById(productId);
     if (!producto) return next();

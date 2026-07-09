@@ -299,7 +299,7 @@
             "descripcion": "Cepillos de Pelo Profesionales Termix",
             "productos": [
                 {
-                    "id": "pack-6-cepillos-termix-cramic-pride",
+                    "id": "pack_6_cepillos_termix_c_ramic_pride",
                     "nombre": "Pack 6 Cepillos Termix C·Ramic Pride",
                     "precio": 69.00,
                     "descripcion": "Muestra quién eres. Los colores nos identifican, nos transmiten emociones e impulsan nuestra creatividad. El nuevo pack C·Ramic Pride apuesta por marcar la diferencia y es por ello que incluye 6 cepillos de distintos colores y diámetros. Para que puedas crear estilos sin límites. Inspirados en la diversidad y libertad de la bandera LGTBI, los cepillos C·Ramic Pride se visten con los colores del arcoíris para que des rienda suelta a tu creatividad siendo la apuesta perfecta para aquellos profesionales que se atrevan a mostrar todo su potencial. Sin complejos, ni ataduras.",
@@ -310,7 +310,7 @@
                         "/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride3.jpg"
                     ],
                     "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride.jpg",
-                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_cepillos_termix_cramic_pride",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=pack_6_cepillos_termix_c_ramic_pride",
                     "availability": "in stock",
                     "condition": "new",
                     "brand": "Anita Pinturitas",
@@ -322,7 +322,7 @@
                     ]
                 },
                 {
-                    "id": "pack-cepillos-redondos-termix-evolution-basic-cabello-medio",
+                    "id": "pack_cepillos_redondos_termix_evolution_basic_cabello_medio",
                     "nombre": "Pack Cepillos Redondos Termix Evolution Basic cabello medio",
                     "precio": 59.00,
                     "descripcion": "Ideal para cabellos medios.Especialmente diseñado con fibra ionizada de alto rendimiento especial para cabellos de grosor medio. El cepillo Evolution Basic de Termix es el único cepillo del mercado diseñado para controlar los problemas de deshidratación que presenta este tipo de cabello gracias a la combinación del diseño de su tubo y la cantidad y grosor específico de sus fibras de nylon ionizadas.",
@@ -339,7 +339,7 @@
                         "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic9.jpg"
                     ],
                     "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic.jpg",
-                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_cepillos_termix_evolution_basic",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=pack_cepillos_redondos_termix_evolution_basic_cabello_medio",
                     "availability": "in stock",
                     "condition": "new",
                     "brand": "Anita Pinturitas",
@@ -351,7 +351,7 @@
                     ]
                 },
                 {
-                    "id": "set-cepillos-Termix-evolution-soft",
+                    "id": "set_de_cepillos_redondos_termix_evolution_soft_cabello_fino",
                     "nombre": "Set de Cepillos Redondos Termix Evolution Soft cabello fino",
                     "precio": 59.00,
                     "descripcion": "Perfecto para cabellos finos. Especialmente diseñado para cuidar de los cabellos finos con tendencia a la rotura.El cepillo Evolution Soft de Termix es el único cepillo del mercado diseñado para evitar la rotura del cabello y el deterioro de la fibra capilar gracias a su sistema cruzado de fibras de diámetro fino de nylon ionizadas y microfilamentos de color beige. Este sistema permite un mayor agarre del cabello sin dañarlo y aportando un efecto de mayor densidad capilar.",
@@ -366,7 +366,7 @@
                         "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft7.jpg"
                     ],
                     "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft.jpg",
-                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_cepillos_termix_evolution_soft",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=set_de_cepillos_redondos_termix_evolution_soft_cabello_fino",
                     "availability": "in stock",
                     "condition": "new",
                     "brand": "Anita Pinturitas",
@@ -378,7 +378,7 @@
                     ]
                 },
                 {
-                    "id": "pack-termix-profesional-regalo-neceser",
+                    "id": "pack_termix_profesional_regalo_neceser",
                     "nombre": "Pack Termix profesional regalo neceser",
                     "precio": 28.00,
                     "descripcion": "Este lanzamiento lleva un neceser de gran calidad en color negro con el logo de Termix y, todo los esencial para realizar los primeros recogidos, peinados, tintes, cepillados… El pack incorpora tres cepillos térmicos Profesionales (ø23, ø32 y ø43), el buque insignia de Termix, que nos permitirán conseguir un secado rápido y nos facilitarán crear peinados de todo tipo, con unos resultados verdaderamente duraderos y sin daños ni roturas en el pelo. Precisamente estos diámetros son los más demandados en nuestro mercado. Además, este pack, también incorpora dos pinzas profesionales y dos paletinas grandes, para recoger gran cantidad de cabello sin marcarlo y para trabajar cualquier tipo de tinte. ¡Consigue los mejores resultados con este kit! Ideal para todos los estilitas.",
@@ -389,7 +389,7 @@
                         "/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser3.jpg"
                     ],
                     "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser.jpg",
-                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_pack_termix_profesional_regalo_neceser",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=pack_termix_profesional_regalo_neceser",
                     "availability": "in stock",
                     "condition": "new",
                     "brand": "Anita Pinturitas",
@@ -403,7 +403,7 @@
                     ]
                 },
                 {
-                    "id": "cepillo-detangling-antiestatico-para-desenredar-termix-professional",
+                    "id": "cepillo_detangling_antiestatico_para_desenredar_termix_professional",
                     "nombre": "Cepillo Detangling Antiestático Para Desenredar Termix Professional",
                     "precio": 11.90,
                     "descripcion": "El Cepillo Detangling Antiestático de Termix Professional es la herramienta profesional diseñada para un desenredado rápido, suave y sin frizz. Gracias a su tecnología antiestática, controla la electricidad estática desde la primera pasada, dejando el cabello más pulido, brillante y manejable. Sus púas flexibles en dos alturas con sistema antitirones se deslizan suavemente por el cabello, evitando roturas y adaptándose al cuero cabelludo para ofrecer una experiencia más cómoda al cliente. Además, su estructura perforada permite el paso del aire durante el secado, acelerando el proceso sin dañar la fibra capilar. Ligero, compacto y ergonómico, es perfecto para los estilistas freelance, de eventos, shootings o todos aquellos que necesitan cepillos fáciles de transportar. Disponible en tres colores tendencia —Ocean Breeze, Green Whisper y Sandy Peach—, combina funcionalidad, cuidado y estilo en una sola herramienta profesional.",
@@ -414,7 +414,7 @@
                         "/assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional3.jpg"
                     ],
                     "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride.jpg",
-                    "link": "https://anitapinturitas.es/html/producto.html?id=hair_cepillos_termix_cramic_pride",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=cepillo_detangling_antiestatico_para_desenredar_termix_professional",
                     "availability": "in stock",
                     "condition": "new",
                     "brand": "Anita Pinturitas",
@@ -514,7 +514,7 @@
                         "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition5.jpg"
                     ],
                     "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition.jpg",
-                    "link": "https://anitapinturitas.es/html/producto.html?id=plancha_de_pelo_profesional_termix_230_black_edition",
+                    "link": "https://anitapinturitas.es/html/producto.html?id=plancha_de_pelo_profesional_termix_230",
                     "availability": "in stock",
                     "condition": "new",
                     "brand": "Anita Pinturitas",
