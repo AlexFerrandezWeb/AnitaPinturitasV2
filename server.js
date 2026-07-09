@@ -151,6 +151,41 @@ function findProductById(id) {
     return null;
 }
 
+// Lector de dimensiones de imagen síncrono y sin dependencias (png/jpeg/webp).
+// Se usa para las etiquetas og:image:width/height, que mejoran la fiabilidad
+// de las vistas previas al compartir (WhatsApp, Facebook, etc.).
+function _pngSize(b) { return b.readUInt32BE(0) === 0x89504E47 ? { w: b.readUInt32BE(16), h: b.readUInt32BE(20) } : null; }
+function _jpegSize(b) {
+    let i = 2;
+    while (i < b.length - 8) {
+        if (b[i] !== 0xFF) { i++; continue; }
+        const m = b[i + 1];
+        if (m >= 0xC0 && m <= 0xCF && m !== 0xC4 && m !== 0xC8 && m !== 0xCC) return { h: b.readUInt16BE(i + 5), w: b.readUInt16BE(i + 7) };
+        i += 2 + b.readUInt16BE(i + 2);
+    }
+    return null;
+}
+function _webpSize(b) {
+    if (b.slice(0, 4).toString('ascii') !== 'RIFF' || b.slice(8, 12).toString('ascii') !== 'WEBP') return null;
+    const fmt = b.slice(12, 16).toString('ascii');
+    if (fmt === 'VP8 ') return { w: b.readUInt16LE(26) & 0x3fff, h: b.readUInt16LE(28) & 0x3fff };
+    if (fmt === 'VP8L') { const n = b.readUInt32LE(21); return { w: (n & 0x3fff) + 1, h: ((n >> 14) & 0x3fff) + 1 }; }
+    if (fmt === 'VP8X') return { w: 1 + (b[24] | b[25] << 8 | b[26] << 16), h: 1 + (b[27] | b[28] << 8 | b[29] << 16) };
+    return null;
+}
+const _imgDimCache = {};
+function getImageDimensions(localPath) {
+    if (localPath in _imgDimCache) return _imgDimCache[localPath];
+    let res = null;
+    try {
+        const buf = fs.readFileSync(localPath);
+        const ext = localPath.split('.').pop().toLowerCase();
+        res = ext === 'png' ? _pngSize(buf) : ext === 'webp' ? _webpSize(buf) : (ext === 'jpg' || ext === 'jpeg') ? _jpegSize(buf) : null;
+    } catch (_) { res = null; }
+    _imgDimCache[localPath] = res;
+    return res;
+}
+
 // Redirecciones 301 de los ids antiguos (prod_... y códigos US-...) a los
 // nuevos slugs descriptivos. Preserva el SEO de las URLs ya indexadas.
 let LEGACY_PRODUCT_ID_REDIRECTS = {};
@@ -181,7 +216,7 @@ app.get('/html/producto.html', (req, res, next) => {
         const imageUrl = producto.image_link ||
             (producto.imagen
                 ? (producto.imagen.startsWith('http') ? producto.imagen : `${BASE_URL}${producto.imagen.startsWith('/') ? '' : '/'}${producto.imagen}`)
-                : `${BASE_URL}/assets/anita-pinturitas_logo.png`);
+                : `${BASE_URL}/assets/anita-pinturitas_logo.webp`);
         const productUrl = `${BASE_URL}/html/producto.html?id=${encodeURIComponent(productId)}`;
         const title = escapeHtmlAttr(`${producto.nombre} - Anita Pinturitas`);
         const description = escapeHtmlAttr(
@@ -193,7 +228,21 @@ app.get('/html/producto.html', (req, res, next) => {
         html = html.replace(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${safeProductUrl}">`);
         html = html.replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${title}">`);
         html = html.replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${description}">`);
-        html = html.replace(/<meta property="og:image" content="[^"]*">/, `<meta property="og:image" content="${safeImageUrl}">`);
+        // og:image + dimensiones/tipo (mejoran la vista previa al compartir).
+        // Las dimensiones se leen del fichero local que corresponde a la imagen.
+        let ogImageMeta = `<meta property="og:image" content="${safeImageUrl}">`;
+        try {
+            const imgRel = (producto.imagen || imageUrl).replace(/^https?:\/\/[^/]+/, '').replace(/^\//, '');
+            const dims = getImageDimensions(path.join(__dirname, imgRel));
+            if (dims && dims.w && dims.h) {
+                const ext = imgRel.split('.').pop().toLowerCase();
+                const mime = ext === 'webp' ? 'image/webp' : ext === 'png' ? 'image/png' : 'image/jpeg';
+                ogImageMeta += `\n    <meta property="og:image:width" content="${dims.w}">`
+                    + `\n    <meta property="og:image:height" content="${dims.h}">`
+                    + `\n    <meta property="og:image:type" content="${mime}">`;
+            }
+        } catch (_) { /* si falla, se queda solo og:image */ }
+        html = html.replace(/<meta property="og:image" content="[^"]*">/, ogImageMeta);
         html = html.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`);
         html = html.replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${safeProductUrl}">`);
         html = html.replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${description}">`);

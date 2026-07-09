@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
             productImage = window.currentProductData.imagen;
         } else {
             const mainImgElement = document.querySelector('#producto-img-principal');
-            productImage = mainImgElement ? mainImgElement.src : '../assets/productos/cuidadoPiel/productoPortada1.png';
+            productImage = mainImgElement ? mainImgElement.src : '../assets/productos/cuidadoPiel/productoPortada1.webp';
         }
 
         if (productId === 'cepillo_detangling_antiestatico_para_desenredar_termix_professional' && colorSelector && colorSelector.value) {
@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                             // Construir ruta de imagen basada en el color
                             // Patrón: nombre-base + Color + .jpg
-                            // Ejemplo: cepillo-detangling-antiestatico-termix-professionalAzul.jpg
+                            // Ejemplo: cepillo-detangling-antiestatico-termix-professionalAzul.webp
 
                             // Obtener nombre base de la imagen original o hardcodearla si es este producto específico
                             // Dado que es un requerimiento específico para este producto, podemos asumir la ruta base si estamos en este bloque

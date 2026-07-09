@@ -11,13 +11,13 @@
                     "nombre": "SPRAY TERMO PROTECTOR PROFESIONAL SHIELDY STYLE.ME",
                     "precio": 14.9,
                     "descripcion": "Spray termoprotector enriquecido con aceite de argán que crea una película invisible para una protección total del cabello contra las altas temperaturas y la acción del calor. Facilita el planchado y proporciona una acción hidratante y anti-estática para un cabello más suave y luminoso.",
-                    "imagen": "/assets/productos/cuidadoCapilar/spray-styleme-shieldy-termoprotector.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/spray-styleme-shieldy-termoprotector.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/spray-styleme-shieldy-termoprotector.jpg",
-                        "/assets/productos/cuidadoCapilar/spray-styleme-shieldy-termoprotector2.jpg",
-                        "/assets/productos/cuidadoCapilar/spray-styleme-shieldy-termoprotector3.jpg"
+                        "/assets/productos/cuidadoCapilar/spray-styleme-shieldy-termoprotector.webp",
+                        "/assets/productos/cuidadoCapilar/spray-styleme-shieldy-termoprotector2.webp",
+                        "/assets/productos/cuidadoCapilar/spray-styleme-shieldy-termoprotector3.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/spray-styleme-shieldy-termoprotector.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/spray-styleme-shieldy-termoprotector.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=hair_spray_termo_protector_30ml",
                     "availability": "in stock",
                     "condition": "new",
@@ -44,13 +44,13 @@
                     "nombre": "ACEITE REAVIVA CABELLO PROFESIONAL REVIVE STYLE.ME",
                     "precio": 14.9,
                     "descripcion": "Aceite revitalizante con extracto de quinoa y orquídea que aporta suavidad y elasticidad al cabello. Colabora a la reparación de los cabellos secos y dañados, aportando brillo, sedosidad y un control perfecto del encrespamiento.",
-                    "imagen": "/assets/productos/cuidadoCapilar/aceite-styleme-revive-revive-tu-cabello.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/aceite-styleme-revive-revive-tu-cabello.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/aceite-styleme-revive-revive-tu-cabello.jpg",
-                        "/assets/productos/cuidadoCapilar/aceite-styleme-revive-revive-tu-cabello2.jpg",
-                        "/assets/productos/cuidadoCapilar/aceite-styleme-revive-revive-tu-cabello3.jpg"
+                        "/assets/productos/cuidadoCapilar/aceite-styleme-revive-revive-tu-cabello.webp",
+                        "/assets/productos/cuidadoCapilar/aceite-styleme-revive-revive-tu-cabello2.webp",
+                        "/assets/productos/cuidadoCapilar/aceite-styleme-revive-revive-tu-cabello3.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/aceite-styleme-revive-revive-tu-cabello.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/aceite-styleme-revive-revive-tu-cabello.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=hair_oil_revive_30ml",
                     "availability": "in stock",
                     "condition": "new",
@@ -76,13 +76,13 @@
                     "nombre": "POLVO VOLUMINIZADOR PROFESIONAL DUSTY STYLE.ME",
                     "precio": 22.9,
                     "descripcion": "Voluminizador en polvo ideal para aportar ese extra de volumen y textura al cabello. Destaca por su innovador dosificador, en formato pulsador, para mayor precisión a la hora de aplicar el producto en su cantidad justa. Aplicándolo sobre la raíz del cabello en seco, proporciona un efecto voluminizador instantáneo y de larga duración. Es ideal para texturizar, dar forma y cardar el cabello. Si se aplica en poca cantidad, también puede actuar como champú en seco al eliminar aceites grasos del cabello.",
-                    "imagen": "/assets/productos/cuidadoCapilar/polvo-styleme-dusty-super-voluminizador.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/polvo-styleme-dusty-super-voluminizador.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/polvo-styleme-dusty-super-voluminizador.jpg",
-                        "/assets/productos/cuidadoCapilar/polvo-styleme-dusty-super-voluminizador2.jpg",
-                        "/assets/productos/cuidadoCapilar/polvo-styleme-dusty-super-voluminizador3.jpg"
+                        "/assets/productos/cuidadoCapilar/polvo-styleme-dusty-super-voluminizador.webp",
+                        "/assets/productos/cuidadoCapilar/polvo-styleme-dusty-super-voluminizador2.webp",
+                        "/assets/productos/cuidadoCapilar/polvo-styleme-dusty-super-voluminizador3.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/polvo-styleme-dusty-super-voluminizador.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/polvo-styleme-dusty-super-voluminizador.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=hair_powder_volume_rootlift",
                     "availability": "in stock",
                     "condition": "new",
@@ -108,13 +108,13 @@
                     "nombre": "LACA FUERTE PROFESIONAL SEXY STYLE.ME",
                     "precio": 14.9,
                     "descripcion": "Laca de fijación fuerte y de larga duración, perfecta para aportar volumen a esos peinados que necesitan mantenerse intactos durante todo el día. Protege el cabello de la humedad y lo acondiciona para un peinado natural e intenso.",
-                    "imagen": "/assets/productos/cuidadoCapilar/laca-styleme-sexy-larga-duracion.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/laca-styleme-sexy-larga-duracion.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/laca-styleme-sexy-larga-duracion.jpg",
-                        "/assets/productos/cuidadoCapilar/laca-styleme-sexy-larga-duracion2.jpg",
-                        "/assets/productos/cuidadoCapilar/laca-styleme-sexy-larga-duracion3.jpg"
+                        "/assets/productos/cuidadoCapilar/laca-styleme-sexy-larga-duracion.webp",
+                        "/assets/productos/cuidadoCapilar/laca-styleme-sexy-larga-duracion2.webp",
+                        "/assets/productos/cuidadoCapilar/laca-styleme-sexy-larga-duracion3.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/laca-styleme-sexy-larga-duracion.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/laca-styleme-sexy-larga-duracion.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=hair_laca_fijacion_flexible",
                     "availability": "in stock",
                     "condition": "new",
@@ -141,12 +141,12 @@
                     "precio": 16,
                     "descripcion": "Repara y fortalece el cabello dañado. Para evitar la desnutrición que causaría perder los lípidos naturales del cabello, Termix ha desarrollado la nueva mascarilla Repair.Me, ideal para cabellos dañados, ya que gracias a su fórmula sin sulfatos ni siliconas repara la fibra capilar y lo mantiene hidratado. Enriquecida con manteca de Karité, Aloe Vera y aceite de Marula, además de un 84% de principios activos naturales, la mascarilla fortalece las fibras capilares, regenera el cabello, y le da un aspecto más bonito y saludable. Combínala con el champú Repair.Me para conseguir una melena más suave, brillante y protegida.",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/mascarilla-anti-yellow-styleme.jpg",
-                        "/assets/productos/cuidadoCapilar/mascarilla-anti-yellow-styleme2.jpg",
-                        "/assets/productos/cuidadoCapilar/mascarilla-anti-yellow-styleme3.jpg"
+                        "/assets/productos/cuidadoCapilar/mascarilla-anti-yellow-styleme.webp",
+                        "/assets/productos/cuidadoCapilar/mascarilla-anti-yellow-styleme2.webp",
+                        "/assets/productos/cuidadoCapilar/mascarilla-anti-yellow-styleme3.webp"
                     ],
-                    "imagen": "/assets/productos/cuidadoCapilar/mascarilla-anti-yellow-styleme.jpg",
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/mascarilla-anti-yellow-styleme.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/mascarilla-anti-yellow-styleme.webp",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/mascarilla-anti-yellow-styleme.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=hair_shampoo_fortificante_250ml",
                     "availability": "in stock",
                     "condition": "new",
@@ -168,12 +168,12 @@
                     "precio": 16,
                     "descripcion": "Para un cabello sano y nutrido. La mascarilla Nutri.Me es ideal para cabellos quebradizos, sin elasticidad y sin brillo ya que gracias su fórmula vegana, 100% libre de SLES, parabenos y siliconas deja el pelo nutrido y revitaliza la fibra capilar aportando movimiento de raíz a puntas. Con una textura fundente, tiene propiedades altamente nutritivas y protectoras. Contiene un 85% de ingredientes naturales como la manteca de Karité, el Aloe Vera y el aceite de Marula reestructura la fibra capilar y proporciona una nutrición intensa sin apelmazar el cabello, restaurando además su brillo.",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/mascarilla-nutritiva-nutrime-styleme.jpg",
-                        "/assets/productos/cuidadoCapilar/mascarilla-nutritiva-nutrime-styleme2.jpg",
-                        "/assets/productos/cuidadoCapilar/mascarilla-nutritiva-nutrime-styleme3.jpg"
+                        "/assets/productos/cuidadoCapilar/mascarilla-nutritiva-nutrime-styleme.webp",
+                        "/assets/productos/cuidadoCapilar/mascarilla-nutritiva-nutrime-styleme2.webp",
+                        "/assets/productos/cuidadoCapilar/mascarilla-nutritiva-nutrime-styleme3.webp"
                     ],
-                    "imagen": "/assets/productos/cuidadoCapilar/mascarilla-nutritiva-nutrime-styleme.jpg",
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/mascarilla-nutritiva-nutrime-styleme.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/mascarilla-nutritiva-nutrime-styleme.webp",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/mascarilla-nutritiva-nutrime-styleme.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=hair_shampoo_color_250ml",
                     "availability": "in stock",
                     "condition": "new",
@@ -195,11 +195,11 @@
                     "precio": 13,
                     "descripcion": "Reaviva y transforma el tono del cabello. Termix presenta su primera línea de champús y mascarillas veganas AntiYellow.Me de Style.Me para cabellos rubios, decolorados o con canas formulada para neutralizar los tonos subyacentes amarillos no deseados. Gracias a su fórmula natural, libre de SLES, y enriquecida con Aloe Vera, Aceite de Marula y pigmentos violetas, mantiene el rubio frío neutralizando los tonos subyacentes cálidos, previniendo la pérdida de color y realzando su intensidad. Compuesto por un 88% de ingredientes de origen natural, el champú AntiYellow.Me está enriquecida con ingredientes como el Aloe Vera, el aceite de Marula y pigmentos violetas para limpiar con suavidad las impurezas del cuero cabelludo y eliminar de forma instantánea los tonos subyacentes amarillos no deseados.",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/champu-antiyellowme-styleme.jpg",
-                        "/assets/productos/cuidadoCapilar/champu-antiyellowme-styleme2.jpg"
+                        "/assets/productos/cuidadoCapilar/champu-antiyellowme-styleme.webp",
+                        "/assets/productos/cuidadoCapilar/champu-antiyellowme-styleme2.webp"
                     ],
-                    "imagen": "/assets/productos/cuidadoCapilar/champu-antiyellowme-styleme.jpg",
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/champu-antiyellowme-styleme.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/champu-antiyellowme-styleme.webp",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/champu-antiyellowme-styleme.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=hair_shampoo_antiedad_250ml",
                     "availability": "in stock",
                     "condition": "new",
@@ -220,11 +220,11 @@
                     "precio": 13,
                     "descripcion": "Cuidado desde la raíz hasta las puntas. Dale a tu cabello una dosis de fuerza, suavidad y vitalidad con el champú Nutri.Me, que nutre profundamente la fibra capilar desde el interior a la vez que previene la rotura del cabello y las puntas abiertas. Compuesto por un 88% de ingredientes de origen natural, su fórmula nutritiva a base de Aloe Vera, aceite de Marula y Provitamina B5, elimina el encrespamiento y aporta la nutrición que el cabello necesita a la vez que elimina con suavidad las impurezas del cuero cabelludo.",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/champu-nutritivo-nutrime-styleme.jpg",
-                        "/assets/productos/cuidadoCapilar/champu-nutritivo-nutrime-styleme2.jpg"
+                        "/assets/productos/cuidadoCapilar/champu-nutritivo-nutrime-styleme.webp",
+                        "/assets/productos/cuidadoCapilar/champu-nutritivo-nutrime-styleme2.webp"
                     ],
-                    "imagen": "/assets/productos/cuidadoCapilar/champu-nutritivo-nutrime-styleme.jpg",
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/champu-nutritivo-nutrime-styleme.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/champu-nutritivo-nutrime-styleme.webp",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/champu-nutritivo-nutrime-styleme.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=hair_mascarilla_reparadora_200ml",
                     "availability": "in stock",
                     "condition": "new",
@@ -245,11 +245,11 @@
                     "precio": 13,
                     "descripcion": "¿List@ para revivir tu melena? Termix presenta su primera línea de champús veganos Repair.Me de Style.Me con tecnología natural que repara y fortalece el cabello dañado. Con un 88% de principios activos naturales, su fórmula sin SLES está enriquecida con Aloe Vera y Aceite de Marula para regenerar el cabello, revitalizarlo y devolverle un aspecto saludable y brillante. Diseñado para cabellos secos y dañados, limpia en profundidad el cuero cabelludo a la vez que restaura los cabellos más dañados. ¡Devuélvele la vida a tu cabello!",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/champu-reparador-repairme-styleme.jpg",
-                        "/assets/productos/cuidadoCapilar/champu-reparador-repairme-styleme2.jpg"
+                        "/assets/productos/cuidadoCapilar/champu-reparador-repairme-styleme.webp",
+                        "/assets/productos/cuidadoCapilar/champu-reparador-repairme-styleme2.webp"
                     ],
-                    "imagen": "/assets/productos/cuidadoCapilar/champu-reparador-repairme-styleme.jpg",
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/champu-reparador-repairme-styleme.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/champu-reparador-repairme-styleme.webp",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/champu-reparador-repairme-styleme.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=hair_mascarilla_hidratante_200ml",
                     "availability": "in stock",
                     "condition": "new",
@@ -270,12 +270,12 @@
                     "precio": 16,
                     "descripcion": "Repara y fortalece el cabello dañado.Para evitar la desnutrición que causaría perder los lípidos naturales del cabello, Termix ha desarrollado la nueva mascarilla Repair.Me, ideal para cabellos dañados, ya que gracias a su fórmula sin sulfatos ni siliconas repara la fibra capilar y lo mantiene hidratado. Enriquecida con manteca de Karité, Aloe Vera y aceite de Marula, además de un 84% de principios activos naturales, la mascarilla fortalece las fibras capilares, regenera el cabello, y le da un aspecto más bonito y saludable. Combínala con el champú Repair.Me para conseguir una melena más suave, brillante y protegida.",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/mascarilla-reparadora-repairme-styleme.jpg",
-                        "/assets/productos/cuidadoCapilar/mascarilla-reparadora-repairme-styleme2.jpg",
-                        "/assets/productos/cuidadoCapilar/mascarilla-reparadora-repairme-styleme3.jpg"
+                        "/assets/productos/cuidadoCapilar/mascarilla-reparadora-repairme-styleme.webp",
+                        "/assets/productos/cuidadoCapilar/mascarilla-reparadora-repairme-styleme2.webp",
+                        "/assets/productos/cuidadoCapilar/mascarilla-reparadora-repairme-styleme3.webp"
                     ],
-                    "imagen": "/assets/productos/cuidadoCapilar/mascarilla-reparadora-repairme-styleme.jpg",
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/mascarilla-reparadora-repairme-styleme.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/mascarilla-reparadora-repairme-styleme.webp",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/mascarilla-reparadora-repairme-styleme.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=hair_mascarilla_brillo_150ml",
                     "availability": "in stock",
                     "condition": "new",
@@ -303,13 +303,13 @@
                     "nombre": "Pack 6 Cepillos Termix C·Ramic Pride",
                     "precio": 69.00,
                     "descripcion": "Muestra quién eres. Los colores nos identifican, nos transmiten emociones e impulsan nuestra creatividad. El nuevo pack C·Ramic Pride apuesta por marcar la diferencia y es por ello que incluye 6 cepillos de distintos colores y diámetros. Para que puedas crear estilos sin límites. Inspirados en la diversidad y libertad de la bandera LGTBI, los cepillos C·Ramic Pride se visten con los colores del arcoíris para que des rienda suelta a tu creatividad siendo la apuesta perfecta para aquellos profesionales que se atrevan a mostrar todo su potencial. Sin complejos, ni ataduras.",
-                    "imagen": "/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride.jpg",
-                        "/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride2.jpg",
-                        "/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride3.jpg"
+                        "/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride.webp",
+                        "/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride2.webp",
+                        "/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride3.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=pack_6_cepillos_termix_c_ramic_pride",
                     "availability": "in stock",
                     "condition": "new",
@@ -326,19 +326,19 @@
                     "nombre": "Pack Cepillos Redondos Termix Evolution Basic cabello medio",
                     "precio": 59.00,
                     "descripcion": "Ideal para cabellos medios.Especialmente diseñado con fibra ionizada de alto rendimiento especial para cabellos de grosor medio. El cepillo Evolution Basic de Termix es el único cepillo del mercado diseñado para controlar los problemas de deshidratación que presenta este tipo de cabello gracias a la combinación del diseño de su tubo y la cantidad y grosor específico de sus fibras de nylon ionizadas.",
-                    "imagen": "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic.jpg",
-                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic2.jpg",
-                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic3.jpg",
-                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic4.jpg",
-                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic5.jpg",
-                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic6.jpg",
-                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic7.jpg",
-                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic8.jpg",
-                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic9.jpg"
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic.webp",
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic2.webp",
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic3.webp",
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic4.webp",
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic5.webp",
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic6.webp",
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic7.webp",
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic8.webp",
+                        "/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic9.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pack-cepillos-redondos-termix-evolution-basic.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=pack_cepillos_redondos_termix_evolution_basic_cabello_medio",
                     "availability": "in stock",
                     "condition": "new",
@@ -355,17 +355,17 @@
                     "nombre": "Set de Cepillos Redondos Termix Evolution Soft cabello fino",
                     "precio": 59.00,
                     "descripcion": "Perfecto para cabellos finos. Especialmente diseñado para cuidar de los cabellos finos con tendencia a la rotura.El cepillo Evolution Soft de Termix es el único cepillo del mercado diseñado para evitar la rotura del cabello y el deterioro de la fibra capilar gracias a su sistema cruzado de fibras de diámetro fino de nylon ionizadas y microfilamentos de color beige. Este sistema permite un mayor agarre del cabello sin dañarlo y aportando un efecto de mayor densidad capilar.",
-                    "imagen": "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft.jpg",
-                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft2.jpg",
-                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft3.jpg",
-                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft4.jpg",
-                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft5.jpg",
-                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft6.jpg",
-                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft7.jpg"
+                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft.webp",
+                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft2.webp",
+                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft3.webp",
+                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft4.webp",
+                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft5.webp",
+                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft6.webp",
+                        "/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft7.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/set-cepillos-Termix-evolution-soft.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=set_de_cepillos_redondos_termix_evolution_soft_cabello_fino",
                     "availability": "in stock",
                     "condition": "new",
@@ -382,13 +382,13 @@
                     "nombre": "Pack Termix profesional regalo neceser",
                     "precio": 28.00,
                     "descripcion": "Este lanzamiento lleva un neceser de gran calidad en color negro con el logo de Termix y, todo los esencial para realizar los primeros recogidos, peinados, tintes, cepillados… El pack incorpora tres cepillos térmicos Profesionales (ø23, ø32 y ø43), el buque insignia de Termix, que nos permitirán conseguir un secado rápido y nos facilitarán crear peinados de todo tipo, con unos resultados verdaderamente duraderos y sin daños ni roturas en el pelo. Precisamente estos diámetros son los más demandados en nuestro mercado. Además, este pack, también incorpora dos pinzas profesionales y dos paletinas grandes, para recoger gran cantidad de cabello sin marcarlo y para trabajar cualquier tipo de tinte. ¡Consigue los mejores resultados con este kit! Ideal para todos los estilitas.",
-                    "imagen": "/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser.jpg",
-                        "/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser2.jpg",
-                        "/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser3.jpg"
+                        "/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser.webp",
+                        "/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser2.webp",
+                        "/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser3.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pack-termix-profesional-regalo-neceser.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=pack_termix_profesional_regalo_neceser",
                     "availability": "in stock",
                     "condition": "new",
@@ -407,13 +407,13 @@
                     "nombre": "Cepillo Detangling Antiestático Para Desenredar Termix Professional",
                     "precio": 11.90,
                     "descripcion": "El Cepillo Detangling Antiestático de Termix Professional es la herramienta profesional diseñada para un desenredado rápido, suave y sin frizz. Gracias a su tecnología antiestática, controla la electricidad estática desde la primera pasada, dejando el cabello más pulido, brillante y manejable. Sus púas flexibles en dos alturas con sistema antitirones se deslizan suavemente por el cabello, evitando roturas y adaptándose al cuero cabelludo para ofrecer una experiencia más cómoda al cliente. Además, su estructura perforada permite el paso del aire durante el secado, acelerando el proceso sin dañar la fibra capilar. Ligero, compacto y ergonómico, es perfecto para los estilistas freelance, de eventos, shootings o todos aquellos que necesitan cepillos fáciles de transportar. Disponible en tres colores tendencia —Ocean Breeze, Green Whisper y Sandy Peach—, combina funcionalidad, cuidado y estilo en una sola herramienta profesional.",
-                    "imagen": "/assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional.jpg",
-                        "/assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional2.jpg",
-                        "/assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional3.jpg"
+                        "/assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional.webp",
+                        "/assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional2.webp",
+                        "/assets/productos/cuidadoCapilar/cepillo-detangling-antiestatico-termix-professional3.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pack-6-cepillos-termix-cramic-pride.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=cepillo_detangling_antiestatico_para_desenredar_termix_professional",
                     "availability": "in stock",
                     "condition": "new",
@@ -447,15 +447,15 @@
                     "nombre": "PLANCHA DE PELO PROFESIONAL TERMIX WILD",
                     "precio": 94.00,
                     "descripcion": "Presentamos la Plancha de pelo Termix profesional Wild. Una combinación de elegancia y sencillez en una plancha de pelo especialmente pensada para los que premian la versatilidad. ¿Alisado perfecto u ondas salvajes? La creatividad no tiene límites. Desata tu lado más salvaje con la nueva Plancha de pelo Termix Wild.",
-                    "imagen": "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild.jpg",
-                        "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild2.jpg",
-                        "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild3.jpg",
-                        "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild4.jpg",
-                        "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild5.jpg"
+                        "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild.webp",
+                        "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild2.webp",
+                        "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild3.webp",
+                        "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild4.webp",
+                        "/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild5.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/plancha-termix-profesional-wild.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=plancha_de_pelo_profesional_termix_wild",
                     "availability": "in stock",
                     "condition": "new",
@@ -476,14 +476,14 @@
                     "nombre": "PLANCHA DE PELO TERMIX PROFESSIONAL UNLIMITED",
                     "precio": 260.00,
                     "descripcion": "La Plancha Termix Professional Unlimited ofrece una solución avanzada para estilistas que buscan precisión, versatilidad y resultados duraderos. Equipada con un contador de pasadas patentado y alertas sonoras, esta herramienta optimiza cada tratamiento, reduciendo el tiempo de trabajo y garantizando un acabado perfecto sin dañar el cabello. Su diseño con placas de cerámica y turmalina de 38mm distribuye el calor de manera uniforme, proporcionando un acabado suave y brillante en una sola pasada. Los peines intercambiables permiten adaptar la plancha a diferentes tipos de cabello y técnicas, lo que la convierte en una opción imprescindible para cualquier profesional. Además, su control táctil de temperatura permite un ajuste preciso, alcanzando hasta 230°C, ideal para tratamientos de salón, alisados y ondas. Diseñada para el uso intensivo en salones de belleza, la Plancha Termix Unlimited combina innovación y funcionalidad, ofreciendo a los profesionales una herramienta que maximiza la calidad y la eficiencia en cada servicio.",
-                    "imagen": "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited.jpg",
-                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited2.jpg",
-                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited3.jpg",
-                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited4.jpg"
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited.webp",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited2.webp",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited3.webp",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited4.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-unlimited.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=plancha_de_pelo_profesional_termix_unlimited",
                     "availability": "in stock",
                     "condition": "new",
@@ -505,15 +505,15 @@
                     "nombre": "PLANCHA DE PELO PROFESIONAL TERMIX 230º",
                     "precio": 110.00,
                     "descripcion": "La plancha de pelo Termix 230 está diseñada para trabajar todo tipo de cabellos y tratamientos con resultados profesionales y duraderos. Gracias a la tecnología que incorpora en sus placas de cerámica y su avanzado sistema digital de regulación de temperatura, está considerada una de las mejores planchas de pelo del mercado. La posibilidad de regular la temperatura –desde los 130º hasta los 230º- permite un planchado personalizado ya que se puede trabajar todo tipo de cabellos respetando su salud.",
-                    "imagen": "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition.jpg",
-                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition2.jpg",
-                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition3.jpg",
-                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition4.jpg",
-                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition5.jpg"
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition.webp",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition2.webp",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition3.webp",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition4.webp",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition5.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/plancha-de-pelo-termix-230-black-edition.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=plancha_de_pelo_profesional_termix_230",
                     "availability": "in stock",
                     "condition": "new",
@@ -536,13 +536,13 @@
                     "nombre": "Plancha de Pelo Profesional Termix 230º Gold Rose",
                     "precio": 124.00,
                     "descripcion": "La Plancha más icónica de Termix se actualiza en esta nueva edición limitada para seguir revolucionando el cuidado del cabello. Con un acabado brillante en oro rosa y elegantes placas de cerámica en color dorado, la plancha 230º Gold Rose es idónea para realizar cualquier look o tratamientos profesionales respetando la salud del cabello y aportando un resultado profesional duradero, personalizado y con un extra de brillo. Descubre el clásico más codiciado por los estilistas ahora en una edición limitada Gold Rose con un exclusivo neceser resistente al calor ideal tanto para uso profesional como para usar en casa. Conecta con la magia de Termix estas Navidades y hazte con la herramienta más poderosa para ser uno mismo.",
-                    "imagen": "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-230-gold-rose.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-230-gold-rose.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-230-gold-rose.jpg",
-                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-230-gold-rose2.jpg",
-                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-230-gold-rose3.jpg"
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-230-gold-rose.webp",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-230-gold-rose2.webp",
+                        "/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-230-gold-rose3.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-230-gold-rose.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/plancha-de-pelo-profesional-termix-230-gold-rose.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=plancha_de_pelo_profesional_termix_230_gold_rose",
                     "availability": "in stock",
                     "condition": "new",
@@ -572,15 +572,15 @@
                     "nombre": "SECADOR PROFESIONAL TERMIX ILLUSION",
                     "precio": 179.00,
                     "descripcion": "La unión perfecta entre potencia, diseño de vanguardia y ligereza. Incorpora un revolucionario motor silencioso con el que se reduce aproximadamente un 40% el tiempo de secado y que ofrece una extensa vida útil de más de 2.000 horas de uso. Además, incorpora una función de autolimpiado, botón de bloqueo, botón de aire frío, 3 niveles temperatura y 3 de potencia. Con tecnología iónica y antifrizz, se adapta a todo tipo de cabello y consigue un resultado suave, brillante y saludable.",
-                    "imagen": "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion.jpg",
-                        "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion2.jpg",
-                        "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion3.jpg",
-                        "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion4.jpg",
-                        "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion5.jpg"
+                        "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion.webp",
+                        "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion2.webp",
+                        "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion3.webp",
+                        "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion4.webp",
+                        "/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion5.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/secador-profesional-termix-illusion.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=secador_profesional_termix_illusion",
                     "availability": "in stock",
                     "condition": "new",
@@ -611,12 +611,12 @@
                     "nombre": "SET 6 PINZAS DE PELO PROFESIONALES PRIDE TERMIX",
                     "precio": 13.00,
                     "descripcion": "Una sujeción del cabello perfecta. Las pinzas de pelo Termix están diseñadas para lograr recoger una gran cantidad de cabello, sin marcarlo. Además, también son perfectas para crear particiones durante la elaboración de cualquier peinado. Con muelles de acero, contribuyen a una mayor elasticidad para un agarre fuerte, prolongado y sin marca.",
-                    "imagen": "/assets/productos/cuidadoCapilar/set-6-pinzas-de-pelo-profesionales-pride-termix.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/set-6-pinzas-de-pelo-profesionales-pride-termix.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/set-6-pinzas-de-pelo-profesionales-pride-termix.jpg",
-                        "/assets/productos/cuidadoCapilar/set-6-pinzas-de-pelo-profesionales-pride-termix2.jpg"
+                        "/assets/productos/cuidadoCapilar/set-6-pinzas-de-pelo-profesionales-pride-termix.webp",
+                        "/assets/productos/cuidadoCapilar/set-6-pinzas-de-pelo-profesionales-pride-termix2.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/set-6-pinzas-de-pelo-profesionales-pride-termix.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/set-6-pinzas-de-pelo-profesionales-pride-termix.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=set_6_pinzas_de_pelo_profesionales_pride_termix",
                     "availability": "in stock",
                     "condition": "new",
@@ -633,13 +633,13 @@
                     "nombre": "SET 6 PINZAS DE PELO PROFESIONALES TERMIX",
                     "precio": 12.00,
                     "descripcion": "Probablemente las pinzas para el pelo más avanzadas del mercado. Su estudiado diseño permite agarrar una mayor cantidad de cabello con máxima fijación. Perfectas también para realizar particiones durante la elaboración de peinados. Sus muelles están diseñados con acero importado, con elasticidad y mayor estabilidad que otros ganchos de cabello ordinarios. La elasticidad de estas pinzas para el pelo se mantiene incluso después de un uso frecuente. Pinzas con tacto gomoso (soft touch) para mayor sensación de agarre y presentadas en packs de 6 unidades.",
-                    "imagen": "/assets/productos/cuidadoCapilar/pinzas-termix-negras-soft-touch.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/pinzas-termix-negras-soft-touch.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/pinzas-termix-negras-soft-touch.jpg",
-                        "/assets/productos/cuidadoCapilar/pinzas-termix-negras-soft-touch2.jpg",
-                        "/assets/productos/cuidadoCapilar/pinzas-termix-negras-soft-touch3.jpg"
+                        "/assets/productos/cuidadoCapilar/pinzas-termix-negras-soft-touch.webp",
+                        "/assets/productos/cuidadoCapilar/pinzas-termix-negras-soft-touch2.webp",
+                        "/assets/productos/cuidadoCapilar/pinzas-termix-negras-soft-touch3.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pinzas-termix-negras-soft-touch.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/pinzas-termix-negras-soft-touch.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=set_6_pinzas_de_pelo_profesional_termix_unlimited",
                     "availability": "in stock",
                     "condition": "new",
@@ -665,13 +665,13 @@
                     "nombre": "PEINE PROFESIONAL CARBONO DESENREDANTE TERMIX",
                     "precio": 17.00,
                     "descripcion": "Peine de fibra de carbono que alcanza una gran resistencia y durabilidad. Los peines de carbono Termix disponen de diferentes modelos que ofrecen alternativas en cuanto a peinado, sin embargo, este diseño es ideal para cortes y peinados. Además, es antiestático y soporta altas temperaturas, por lo que podrás trabajar con él incluso con plancha.",
-                    "imagen": "/assets/productos/cuidadoCapilar/peine-termix-carbono.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/peine-termix-carbono.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/peine-termix-carbono.jpg",
-                        "/assets/productos/cuidadoCapilar/peine-termix-carbono2.jpg",
-                        "/assets/productos/cuidadoCapilar/peine-termix-carbono3.jpg"
+                        "/assets/productos/cuidadoCapilar/peine-termix-carbono.webp",
+                        "/assets/productos/cuidadoCapilar/peine-termix-carbono2.webp",
+                        "/assets/productos/cuidadoCapilar/peine-termix-carbono3.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/peine-termix-carbono.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/peine-termix-carbono.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=peine_profesional_carbono_desenredante_termix",
                     "availability": "in stock",
                     "condition": "new",
@@ -698,15 +698,15 @@
                     "nombre": "MÁQUINA PARA CONTORNOS PROFESIONAL TERMIX MARBLE",
                     "precio": 89.00,
                     "descripcion": "Precisión y rendimiento en cada corte. La Máquina para Contornos Profesional Termix Marble es ideal para cualquier tipo de retoque o hair tattoos. Gracias a su motor eléctrico sin escobillas y a su set de peines, obtendrás un resultado impecable, pulido y definido durante sus 120 minutos de uso continuo. Este avanzado y novedoso motor ofrece un menor calentamiento y brinda un mejor rendimiento. Su tiempo máximo de carga es de 90 minutos y cuenta con una potente, pero ligera batería de litio, que tiene un menor efecto memoria, lo que significa que se puede cargar en cualquier momento sin afectar a su capacidad. La máquina permite alcanzar altas cotas de precisión gracias a su cuchilla de acero inoxidable. Para el tipo de rasurado que buscamos en la barba y para ciertos retoques en el cabello, este material es uno de los más indicados. Esta herramienta también destaca por su pattern estilo mármol, que transmite elegancia, sofisticación y atemporalidad. Además, es versátil, pudiendo ser utilizada tanto con cable como sin cable, proporcionando flexibilidad y comodidad, ideal para cualquier tipo de retoque.",
-                    "imagen": "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble.jpg",
-                        "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble2.jpg",
-                        "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble3.jpg",
-                        "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble4.jpg",
-                        "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble5.jpg"
+                        "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble.webp",
+                        "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble2.webp",
+                        "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble3.webp",
+                        "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble4.webp",
+                        "/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble5.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/maquina-para-contornos-profesional-termix-marble.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=maquina_para_contornos_profesional_termix_marble",
                     "availability": "in stock",
                     "condition": "new",
@@ -731,15 +731,15 @@
                     "nombre": "MÁQUINA DE CORTE PROFESIONAL TERMIX MARBLE MAX",
                     "precio": 109.00,
                     "descripcion": "Precisión y rendimiento en cada corte. La Máquina de Corte Profesional Termix Marble Max es la elección perfecta para los profesionales del cuidado del cabello. Gracias a su motor eléctrico sin escobillas, produce un menor calentamiento y brinda un mejor rendimiento durante sus 180 minutos de tiempo de uso. Su ligera, pero potente batería de litio ofrece un menor efecto memoria, lo que significa que se puede cargar en cualquier momento sin afectar a su capacidad. La máquina redefine el concepto de precisión en el corte del cabello gracias a su avanzada cuchilla de pulvimetalurgia. Este material, fabricado mediante un proceso de compresión de polvos metálicos a altas temperaturas, ofrece toda una serie de ventajas en comparación con las cuchillas tradicionales, como, por ejemplo, mayor durabilidad y rendimiento superior. Incorpora ocho peines de distinto tamaño para adaptarse a todas las necesidades. Esta herramienta también destaca por su pattern estilo mármol, que transmite elegancia, sofisticación y atemporalidad. Además, es versátil, pudiendo ser utilizada tanto con cable como sin cable, proporcionando flexibilidad y comodidad, ideal para cualquier tipo de corte.",
-                    "imagen": "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max.jpg",
+                    "imagen": "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max.webp",
                     "galeria": [
-                        "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max.jpg",
-                        "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max2.jpg",
-                        "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max3.jpg",
-                        "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max4.jpg",
-                        "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max5.jpg"
+                        "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max.webp",
+                        "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max2.webp",
+                        "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max3.webp",
+                        "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max4.webp",
+                        "/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max5.webp"
                     ],
-                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max.jpg",
+                    "image_link": "https://anitapinturitas.es/assets/productos/cuidadoCapilar/maquina-de-corte-profesional-termix-marble-max.webp",
                     "link": "https://anitapinturitas.es/html/producto.html?id=maquina_de_corte_profesional_termix_marble_max",
                     "availability": "in stock",
                     "condition": "new",

@@ -53,7 +53,7 @@ html, body {
 
 .hero__top {
     position: relative;
-    background-image: url('../assets/cabina_maquillaje.jpg');
+    background-image: url('../assets/cabina_maquillaje.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1914,7 +1914,7 @@ html, body {
 .live-banner__overlay {
     position: absolute;
     inset: 0;
-    background-image: url('../assets/live_stream_bg.png');
+    background-image: url('../assets/live_stream_bg.webp');
     background-size: cover;
     background-position: center;
     opacity: 0.4;
