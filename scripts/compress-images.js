@@ -21,6 +21,10 @@ function getAllImages(dir) {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
         const full = path.join(dir, entry.name);
         if (entry.isDirectory()) {
+            // assets/og son las imágenes para compartir en redes: tienen que quedarse en
+            // JPEG. Si existiera un .webp gemelo, el middleware se lo serviría al
+            // rastreador y no cuadraría con el og:image:type que anuncia el HTML.
+            if (entry.name === 'og') continue;
             results.push(...getAllImages(full));
         } else if (/\.(jpe?g|png)$/i.test(entry.name)) {
             results.push(full);

@@ -213,10 +213,18 @@ app.get('/html/producto.html', (req, res, next) => {
         let html = fs.readFileSync(htmlPath, 'utf8');
 
         const BASE_URL = 'https://anitapinturitas.es';
-        const imageUrl = producto.image_link ||
-            (producto.imagen
-                ? (producto.imagen.startsWith('http') ? producto.imagen : `${BASE_URL}${producto.imagen.startsWith('/') ? '' : '/'}${producto.imagen}`)
-                : `${BASE_URL}/assets/anita-pinturitas_logo.webp`);
+        // Imagen dedicada a las vistas previas (1200x1200, generada por
+        // scripts/generate-og-images.js). Facebook pinta la foto de la tarjeta al ancho
+        // completo de la publicación, así que las fotos del catálogo (600-850 px) salían
+        // borrosas. getImageDimensions cachea y devuelve null si el fichero no existe,
+        // en cuyo caso se cae a la foto de siempre.
+        const ogDims = getImageDimensions(path.join(__dirname, 'assets', 'og', `${productId}.jpg`));
+        const imageUrl = ogDims
+            ? `${BASE_URL}/assets/og/${encodeURIComponent(productId)}.jpg`
+            : (producto.image_link ||
+                (producto.imagen
+                    ? (producto.imagen.startsWith('http') ? producto.imagen : `${BASE_URL}${producto.imagen.startsWith('/') ? '' : '/'}${producto.imagen}`)
+                    : `${BASE_URL}/assets/anita-pinturitas_logo.webp`));
         const productUrl = `${BASE_URL}/html/producto.html?id=${encodeURIComponent(productId)}`;
         const title = escapeHtmlAttr(`${producto.nombre} - Anita Pinturitas`);
         const description = escapeHtmlAttr(
@@ -232,8 +240,10 @@ app.get('/html/producto.html', (req, res, next) => {
         // Las dimensiones se leen del fichero local que corresponde a la imagen.
         let ogImageMeta = `<meta property="og:image" content="${safeImageUrl}">`;
         try {
-            const imgRel = (producto.imagen || imageUrl).replace(/^https?:\/\/[^/]+/, '').replace(/^\//, '');
-            const dims = getImageDimensions(path.join(__dirname, imgRel));
+            const imgRel = ogDims
+                ? `assets/og/${productId}.jpg`
+                : (producto.imagen || imageUrl).replace(/^https?:\/\/[^/]+/, '').replace(/^\//, '');
+            const dims = ogDims || getImageDimensions(path.join(__dirname, imgRel));
             if (dims && dims.w && dims.h) {
                 const ext = imgRel.split('.').pop().toLowerCase();
                 const mime = ext === 'webp' ? 'image/webp' : ext === 'png' ? 'image/png' : 'image/jpeg';
