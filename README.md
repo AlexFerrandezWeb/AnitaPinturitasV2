@@ -110,7 +110,7 @@ anitaPinturitasV3/
 - Gestión de productos en tiempo real
 - Cálculo automático de totales
 - Envío gratuito a partir de 62€
-- Checkout con Stripe (tarjeta, PayPal, Klarna, Google Pay)
+- Checkout con Stripe (tarjeta, PayPal, Klarna, Bizum, Google Pay)
 
 ### Catálogo de Productos
 - Catálogo general y por categorías (cuidado piel / capilar)
@@ -129,7 +129,9 @@ anitaPinturitasV3/
 - **Sesión de checkout:** `POST /api/create-checkout-session`
 - **Verificar sesión:** `GET /api/checkout-session/:sessionId`
 - **Webhook:** `POST /webhook-stripe` (evento `checkout.session.completed`)
-- Métodos de pago: tarjeta, PayPal, Klarna, Google Pay
+- Métodos de pago: los que estén habilitados en Dashboard -> Settings -> Payment methods
+  (hoy: tarjeta, PayPal, Klarna, Bizum, Apple Pay, Google Pay). La sesión no fija
+  `payment_method_types`, así que se añaden o quitan desde el dashboard sin tocar código.
 
 ## API Endpoints del Servidor
 

@@ -437,7 +437,11 @@ app.post('/api/create-checkout-session', async (req, res) => {
 
         // Crear sesión de checkout
         const session = await stripeClient.checkout.sessions.create({
-            payment_method_types: ['card', 'paypal', 'klarna'], // Incluir PayPal, Klarna y tarjetas (Google Pay aparece automáticamente si está habilitado)
+            // Sin payment_method_types a propósito: al omitirlo, Stripe muestra los métodos
+            // que estén habilitados en Dashboard -> Settings -> Payment methods, filtrados por
+            // divisa, importe y país del cliente. Así se activa o quita un método (Bizum,
+            // Klarna, PayPal...) desde el dashboard sin tocar este archivo. Si se vuelve a
+            // fijar la lista aquí, el dashboard deja de mandar.
             line_items: lineItems,
             mode: 'payment',
             success_url: `${baseUrl}/html/success.html?session_id={CHECKOUT_SESSION_ID}`,
