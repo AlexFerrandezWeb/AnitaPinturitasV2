@@ -366,6 +366,23 @@ function convertToAbsoluteUrl(imagePath, baseUrl) {
     return `${base}/${normalizedPath}`;
 }
 
+// Texto que Stripe muestra bajo el nombre del producto en el resumen del pedido.
+// La descripción se busca por id en el catálogo y no se coge de lo que manda el
+// navegador: el carrito vive en localStorage y cualquiera podría editarlo.
+// Se recorta porque la columna del resumen es estrecha y las fichas completas
+// (300+ caracteres) la desbordan.
+const MAX_DESC_CHECKOUT = 160;
+function descripcionParaCheckout(id) {
+    const texto = (findProductById(id)?.descripcion || '').trim();
+    if (!texto) return 'IVA incluido';
+    if (texto.length <= MAX_DESC_CHECKOUT) return `IVA incluido · ${texto}`;
+    // Cortar por la última palabra entera para no dejar una sílaba a medias, y
+    // quitar la puntuación que quede al final para no encadenar ".…"
+    const corte = texto.lastIndexOf(' ', MAX_DESC_CHECKOUT);
+    const recorte = texto.slice(0, corte > 0 ? corte : MAX_DESC_CHECKOUT).replace(/[\s.,;:]+$/, '');
+    return `IVA incluido · ${recorte}…`;
+}
+
 // Endpoint para crear sesión de checkout
 app.post('/api/create-checkout-session', async (req, res) => {
     try {
@@ -400,6 +417,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
                     currency: 'eur',
                     product_data: {
                         name: item.nombre,
+                        description: descripcionParaCheckout(item.id),
                         images: imageUrl ? [imageUrl] : [], // Stripe acepta array vacío si no hay imagen
                     },
                     unit_amount: Math.round(item.precio * 100), // Convertir a centavos
