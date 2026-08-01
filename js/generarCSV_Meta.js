@@ -9,6 +9,10 @@ const JSON_FILES = [
 ];
 const CSV_FILE = path.join(__dirname, '..', 'product-feed.csv');
 const CURRENCY = 'EUR';
+// Meta exige una cantidad >= 1 para que el producto sea comprable en la tienda.
+// No llevamos control de stock por unidades, así que declaramos una cantidad
+// fija; la disponibilidad real se gestiona con el campo `availability`.
+const CANTIDAD_POR_DEFECTO = 100;
 
 // Función para escapar valores CSV (manejar comillas, comas, saltos de línea)
 function escapeCSV(value) {
@@ -68,7 +72,8 @@ function generateCSV() {
             'availability',
             'condition',
             'brand',
-            'product_type'
+            'product_type',
+            'quantity_to_sell_on_facebook'
         ];
 
         // Array para almacenar las filas del CSV
@@ -102,7 +107,8 @@ function generateCSV() {
                                 escapeCSV(producto.availability || 'in stock'),
                                 escapeCSV(producto.condition || 'new'),
                                 escapeCSV(producto.brand || 'Anita Pinturitas'),
-                                escapeCSV(productTypeFallback)
+                                escapeCSV(productTypeFallback),
+                                escapeCSV(producto.cantidad ?? CANTIDAD_POR_DEFECTO)
                             ];
 
                             rows.push(row.join(','));
