@@ -178,8 +178,13 @@ body{
     color: var(--color-secundario);
     background-color: var(--color-primario);
     line-height: 1.4em;
-    -webkit-hyphens: auto; /* prefijo para compatibilidad iOS */
-    hyphens: auto; /*se encarga de poner un guión para separ el texto de final de linea*/ /*opcional*/
+    /* Nada de partir palabras con guion: el navegador cortaba nombres propios
+       y de marca ("Descubre Li-meLife", "Younique" en dos) y quedaba fatal. Con
+       manual solo parte donde se le diga a mano, con un &shy;. El titulo del
+       hero sigue con hyphens:auto por su cuenta, que ahi son palabras normales
+       a cuerpo muy grande y ahi si ayuda */
+    -webkit-hyphens: manual;
+    hyphens: manual;
     
     /*estos tres atributos se aplican para darle a la tipografía un tono más definido solo en caso de los macs*/ /*opcional*/
     -webkit-font-smoothing: antialiased;

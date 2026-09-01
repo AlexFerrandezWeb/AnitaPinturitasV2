@@ -31,6 +31,7 @@
     <title>Anita Pinturitas - Catálogo de Productos de Belleza y Cosmética</title>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/productos.css">
+    <link rel="stylesheet" href="../css/brandShowcase.css">
     <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/botonFlotante.css">
@@ -72,6 +73,10 @@
             <nav class="nav__links" aria-label="Navegación principal">
                 <a href="/" class="nav__link">Inicio</a>
                 <a href="/html/productos.html" class="nav__link nav__link--active">Productos</a>
+                <!-- Tiendas externas: LimeLife y Younique. Ana las vende aparte,
+                     por eso salen del menu y no del catalogo propio -->
+                <a href="https://www.limelife.com/anitapinturitas" class="nav__link nav__link--shop" target="_blank" rel="noopener noreferrer">LimeLife</a>
+                <a href="https://curatedfor.you/anamariaramosrodriguez" class="nav__link nav__link--shop" target="_blank" rel="noopener noreferrer">Younique</a>
             </nav>
             <div class="nav__social">
                 <a href="https://www.instagram.com/anita_pinturitas" class="nav__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
@@ -128,6 +133,8 @@
                         <a href="cuidadoCapilar.html" class="mobile-menu__sublink">Cuidado capilar</a>
                     </div>
                 </div>
+                <a href="https://www.limelife.com/anitapinturitas" class="mobile-menu__link mobile-menu__link--shop" target="_blank" rel="noopener noreferrer">LimeLife</a>
+                <a href="https://curatedfor.you/anamariaramosrodriguez" class="mobile-menu__link mobile-menu__link--shop" target="_blank" rel="noopener noreferrer">Younique</a>
             </nav>
             <div class="mobile-menu__contact">
                 <h4 class="mobile-menu__contact-title">Contáctame:</h4>
@@ -262,6 +269,35 @@
                 </div>
             </div>
         </section>
+        <!-- ===== Escaparate de marcas externas (LimeLife / Younique) =====
+             Mismo bloque que en la home; los estilos son css/brandShowcase.css -->
+        <section class="brand-showcase" aria-labelledby="brand-showcase-title">
+            <div class="container">
+                <div class="brand-showcase__header">
+                    <h2 class="brand-showcase__title" id="brand-showcase-title">Mis otras tiendas</h2>
+                    <p class="brand-showcase__subtitle">Otras marcas con las que trabajo, aquí encontrarás los productos que utilizo en mis redes.</p>
+                </div>
+                <div class="brand-showcase__grid">
+
+                    <!-- LimeLife -->
+                    <a href="https://www.limelife.com/anitapinturitas" class="brand-showcase-card" target="_blank" rel="noopener noreferrer">
+                        <img src="../assets/misTiendasLimelife.webp" alt="Tienda LimeLife de Anita" class="brand-showcase-card__img" loading="lazy">
+                        <div class="brand-showcase-card__body">
+                            <p class="brand-showcase-card__cta">Descubre LimeLife</p>
+                        </div>
+                    </a>
+
+                    <!-- Younique -->
+                    <a href="https://curatedfor.you/anamariaramosrodriguez" class="brand-showcase-card" target="_blank" rel="noopener noreferrer">
+                        <img src="../assets/misTiendasYounique.webp" alt="Tienda Younique de Anita" class="brand-showcase-card__img" loading="lazy">
+                        <div class="brand-showcase-card__body">
+                            <p class="brand-showcase-card__cta">Descubre Younique</p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -305,6 +341,16 @@
                         </svg>
                         <span>infoanitapinturitas@gmail.com</span>
                     </a>
+                    <a href="https://maps.app.goo.gl/5P4G982mqb4ESbC29" class="footer__contact-item footer__contact-item--direccion"
+                        target="_blank" rel="noopener noreferrer">
+                        <svg class="footer__contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="2" />
+                        </svg>
+                        <span>El Cortín 63, 33877 El Crucero (Tineo), Asturias</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -332,7 +378,7 @@
                 <a href="politicaCookies.html" class="footer__legal-link">Política de Cookies</a>
                 <a href="politicaDevoluciones.html" class="footer__legal-link">Política de Devoluciones</a>
             </div>
-            <p class="footer__copyright">&copy; 2026 Anita Pinturitas. Todos los derechos reservados.</p>
+            <p class="footer__copyright">&copy; 2026 Anita Pinturitas&reg;. Todos los derechos reservados.</p>
         </div>
     </footer>
 

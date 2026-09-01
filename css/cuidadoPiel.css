@@ -24,7 +24,10 @@ body {
     line-height: 1.6;
     color: var(--black);
     background-color: var(--white);
-    padding-top: 75px;
+    /* 104 = alto del nav fijo (logo 80 + 24 de padding). Aqui el <main> no
+       lleva clase, asi que no le llega la regla .main > *:first-child de
+       nav.css: este es el unico sitio que reserva ese hueco */
+    padding-top: 104px;
 }
 
 .container {
@@ -36,7 +39,9 @@ body {
 /* Hero Section */
 .cuidado-hero {
     background: var(--vista-white);
-    padding: 132px 0 40px;
+    /* El hueco del nav ya lo pone el padding del body: esto es solo el aire
+       entre la barra y el titulo */
+    padding: 100px 0 40px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -245,7 +250,7 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .cuidado-hero { padding: 28px 0; }
+    .cuidado-hero { padding: 34px 0 26px; }
     .cuidado-hero__title { font-size: 2.1rem; }
     .cuidado-hero__subtitle { font-size: 0.95rem; }
     .cuidado-content { padding: 40px 0; }
@@ -338,4 +343,46 @@ body {
 .categorias-index__chip:hover {
     background: var(--cardinal-pink, #98074f);
     color: #fff;
+}
+
+
+/* ===== LOS CHIPS, EN UNA SOLA FILA QUE SE DESLIZA (movil) =====
+   Con salto de linea, once subcategorias ocupaban cinco filas y casi media
+   pantalla antes de que se viera el primer producto. En una fila que se
+   arrastra con el dedo ocupan una. */
+@media (max-width: 768px) {
+    .categorias-index {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scroll-snap-type: x proximity;
+        -webkit-overflow-scrolling: touch;
+        /* Sin barra de scroll a la vista: se arrastra con el dedo */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        /* Se come el margen del contenedor para que la fila llegue de borde a
+           borde: asi el ultimo chip visible queda cortado por el filo y se
+           entiende que hay mas a la derecha */
+        margin: 0 -20px 18px;
+        padding: 2px 20px 8px;
+        /* El padding solo separa al arrancar: al deslizar, el scroll-snap pega
+           el chip al filo de la pantalla. scroll-padding le dice donde tiene
+           que parar, asi que el margen se mantiene tambien al soltar */
+        scroll-padding-left: 20px;
+        scroll-padding-right: 20px;
+    }
+
+    .categorias-index::-webkit-scrollbar {
+        display: none;
+    }
+
+    .categorias-index__chip {
+        /* Sin esto los chips se encogerian para caber en la fila en vez de
+           salirse por el lado, que es lo que hace falta para poder deslizar */
+        flex: 0 0 auto;
+        white-space: nowrap;
+        scroll-snap-align: start;
+        font-size: 0.78rem;
+        padding: 7px 14px;
+    }
 }

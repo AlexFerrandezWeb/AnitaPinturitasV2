@@ -23,9 +23,10 @@
     box-shadow: none;
 }
 
-/* La primera sección de cada página absorbe la altura del nav fijo */
+/* La primera sección de cada página absorbe la altura del nav fijo.
+   Altura del nav = logo (80) + padding vertical (24) = 104 */
 .main > *:first-child {
-    padding-top: 92px;
+    padding-top: 104px;
 }
 
 .nav__menu { display: inline-flex; flex-direction: column; gap: 6px; background: transparent; border: 0; padding: 8px; cursor: pointer; }
@@ -33,7 +34,10 @@
 .nav__menu:focus-visible { outline: 2px solid var(--jazzberry-jam); outline-offset: 2px; }
 .nav__menu-bar { width: 22px; height: 2px; background: var(--jazzberry-jam); display: block; border-radius: 2px; }
 
-.nav__logo { display: inline-flex; align-items: center; justify-content: center; height: 68px; }
+/* 80 px: la marca ya no se repite dentro de la home, asi que este logo es el
+   unico que hay y se le da algo mas de aire. Si cambia la altura hay que tocar
+   tambien .main > *:first-child y .search-bar (top) */
+.nav__logo { display: inline-flex; align-items: center; justify-content: center; height: 80px; }
 .nav__logo img { height: 100%; width: auto; display: block; border-radius: 4px; }
 
 .nav__actions { display: flex; align-items: center; gap: 8px; justify-self: end; }
@@ -51,7 +55,7 @@
 /* Buscador */
 .search-bar {
     position: fixed;
-    top: 92px;
+    top: 104px;
     left: 0;
     right: 0;
     z-index: 999;
@@ -150,6 +154,10 @@ body:has(.nav--transparent) .search-bar__input {
 .mobile-menu__link:hover { background-color: var(--chantilly); color: var(--jazzberry-jam); }
 .mobile-menu__link--active { background-color: var(--jazzberry-jam); color: white; font-weight: 600; }
 .mobile-menu__link--active:hover { background-color: var(--cardinal-pink); color: white; }
+
+/* Las mismas dos tiendas externas dentro del menu hamburguesa */
+.mobile-menu__link--shop { color: var(--jazzberry-jam); font-weight: 600; }
+.mobile-menu__link--shop::after { content: ' ↗'; font-size: 13px; opacity: 0.7; }
 
 /* Sección de contacto y redes sociales */
 .mobile-menu__contact { margin-top: auto; padding: 20px 16px; border-top: 1px solid rgba(0,0,0,0.1); background-color: var(--vista-white); }
@@ -280,9 +288,29 @@ body:has(.nav--transparent) .search-bar__input {
     font-weight: 700;
 }
 
+/* Tiendas externas (LimeLife / Younique): en pildora y no como texto plano,
+   para que se lean como "otra tienda" y no como una seccion mas de esta web */
+.nav__link--shop {
+    margin-left: 6px;
+    padding: 6px 12px;
+    font-weight: 600;
+    color: var(--jazzberry-jam);
+    border: 1px solid rgba(198, 112, 155, 0.45);
+    border-radius: 999px;
+}
+
+.nav__link--shop:hover {
+    background-color: rgba(198, 112, 155, 0.12);
+    border-color: var(--jazzberry-jam);
+    color: var(--jazzberry-jam);
+}
+
 /* Redes sociales en nav desktop */
 .nav__social {
     display: none;
+    /* Aire respecto a las pildoras de LimeLife y Younique: pegados parecian
+       parte del mismo grupo */
+    margin-left: 22px;
 }
 
 .nav__social-link {
@@ -318,5 +346,14 @@ body:has(.nav--transparent) .search-bar__input {
   .nav__menu { display: none; }
   .nav__links { display: flex; align-items: center; gap: 4px; }
   .nav__social { display: flex; align-items: center; gap: 2px; }
+}
+
+/* Franja estrecha de escritorio (tablet en horizontal): con la hamburguesa ya
+   oculta, las dos pildoras son lo unico que sobra de ancho; se aprietan en vez
+   de esconderlas, que aqui no hay menu donde recuperarlas */
+@media (min-width: 768px) and (max-width: 900px) {
+    .nav__link { padding: 8px 9px; }
+    .nav__link--shop { margin-left: 4px; padding: 5px 9px; font-size: 13px; }
+    .nav__social { margin-left: 12px; }
 }
 

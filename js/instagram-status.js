@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         reelsSection.innerHTML = reels.map((reel, index) => {
             const safeUrl = reel.url || (reel.shortcode ? `https://www.instagram.com/reel/${reel.shortcode}/` : 'https://www.instagram.com/anita_pinturitas/reels/');
             const safeCaption = reel.caption ? reel.caption.replace(/"/g, '&quot;') : 'Publicación de Instagram';
-            const fallbackImg = `assets/reel${(index % 3) + 1}.jpg`;
+            const fallbackImg = `assets/reel${(index % 3) + 1}.webp`;
             const safeThumbnail = reel.thumbnail || fallbackImg;
             const safeVideoUrl = reel.videoUrl || '';
             const sc = shortcodeFromReel(reel);

@@ -57,13 +57,17 @@ document.addEventListener('DOMContentLoaded', function() {
         let idleTimer = null;
 
         function resetIdleTimer() {
-            nav.classList.add('nav--transparent');
             clearTimeout(idleTimer);
-            if (window.scrollY > 10) {
-                idleTimer = setTimeout(function() {
-                    nav.classList.remove('nav--transparent');
-                }, 1500);
+            // Arriba del todo el nav va solido: en la home la primera seccion
+            // es la foto de la cabina y en vidriera se transparentaba encima
+            if (window.scrollY <= 10) {
+                nav.classList.remove('nav--transparent');
+                return;
             }
+            nav.classList.add('nav--transparent');
+            idleTimer = setTimeout(function() {
+                nav.classList.remove('nav--transparent');
+            }, 1500);
         }
 
         resetIdleTimer();

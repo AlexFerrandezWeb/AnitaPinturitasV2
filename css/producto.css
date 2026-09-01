@@ -24,7 +24,10 @@ body {
     line-height: 1.6;
     color: var(--black);
     background-color: var(--white);
-    padding-top: 75px;
+    /* 104 = alto del nav fijo (logo 80 + 24 de padding). Aqui el <main> no
+       lleva clase, asi que no le llega la regla .main > *:first-child de
+       nav.css: este es el unico sitio que reserva ese hueco */
+    padding-top: 104px;
 }
 
 .container {

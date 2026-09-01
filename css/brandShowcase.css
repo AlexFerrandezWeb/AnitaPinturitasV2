@@ -1,0 +1,176 @@
+/* ===== ESCAPARATE DE MARCAS EXTERNAS (LimeLife / Younique) =====
+   Vive en su propio fichero porque lo usan la home y la pagina de productos.
+   Depende de las variables de color de reset.css. */
+
+.brand-showcase {
+    padding: 72px 0;
+    background: linear-gradient(135deg, var(--vista-white) 0%, var(--chantilly) 100%);
+}
+
+.brand-showcase__header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.brand-showcase__title {
+    font-family: var(--tipo-principal);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--jazzberry-jam);
+    margin: 0 0 12px 0;
+}
+
+.brand-showcase__subtitle {
+    font-family: var(--tipo-principal);
+    font-size: 1.05rem;
+    color: var(--corn-harvest);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.brand-showcase__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.brand-showcase-card {
+    display: block;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.brand-showcase-card__img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.brand-showcase-card__body {
+    padding: 16px 20px 20px;
+    text-align: center;
+}
+
+/* Texto de llamada a la acción: forma parte del mismo <a>, es clicable */
+.brand-showcase-card__cta {
+    font-family: var(--tipo-principal);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--cardinal-pink);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.brand-showcase-card__cta::after {
+    /* Espacio duro: con un espacio normal, la flecha se quedaba sola en la
+       linea de abajo cuando el nombre de la marca ocupaba el ancho entero */
+    content: ' →';
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+/* Hover sutil: solo en dispositivos con ratón. En móvil la tarjeta ya se
+   distingue por su sombra, borde y flecha, sin depender del hover. */
+@media (hover: hover) and (pointer: fine) {
+    .brand-showcase-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+    }
+
+    .brand-showcase-card:hover .brand-showcase-card__img {
+        transform: scale(1.04);
+    }
+
+    .brand-showcase-card:hover .brand-showcase-card__cta::after {
+        transform: translateX(4px);
+    }
+}
+
+/* Foco visible para navegación con teclado */
+.brand-showcase-card:focus-visible {
+    outline: 3px solid var(--jazzberry-jam);
+    outline-offset: 3px;
+}
+
+/* Feedback táctil al pulsar en móvil */
+.brand-showcase-card:active {
+    transform: scale(0.985);
+}
+
+@media (max-width: 768px) {
+    .brand-showcase {
+        padding: 48px 0;
+    }
+
+    .brand-showcase__header {
+        margin-bottom: 24px;
+    }
+
+    .brand-showcase__title {
+        font-size: 1.65rem;
+        line-height: 1.2;
+    }
+
+    .brand-showcase__subtitle {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .brand-showcase__grid {
+        /* Apiladas ocupaban dos pantallazos: en movil van a la par */
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .brand-showcase-card__img {
+        aspect-ratio: 16 / 10;
+    }
+}
+
+/* Compactacion en movil, en linea con el resto de la home */
+@media (max-width: 768px) {
+    .brand-showcase {
+        padding: 40px 0;
+    }
+}
+
+/* En movil el bloque entero tiene que entrar de una vez, tanto al final de la
+   home como en la pagina de productos */
+@media (max-width: 560px) {
+    .brand-showcase {
+        padding: 22px 0;
+    }
+
+    .brand-showcase__header {
+        margin-bottom: 14px;
+    }
+
+    .brand-showcase__title {
+        font-size: 1.3rem;
+        margin-bottom: 7px;
+    }
+
+    .brand-showcase__subtitle {
+        font-size: 0.78rem;
+        line-height: 1.45;
+    }
+
+    .brand-showcase-card__body {
+        padding: 9px 10px 11px;
+    }
+
+    .brand-showcase-card__cta {
+        font-size: 0.85rem;
+    }
+}
