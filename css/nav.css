@@ -157,7 +157,9 @@ body:has(.nav--transparent) .search-bar__input {
 
 /* Las mismas dos tiendas externas dentro del menu hamburguesa */
 .mobile-menu__link--shop { color: var(--jazzberry-jam); font-weight: 600; }
-.mobile-menu__link--shop::after { content: ' ↗'; font-size: 13px; opacity: 0.7; }
+/* La flecha lleva detras un selector de variacion (U+FE0E): sin el, iOS la
+   pinta como emoji de colores en vez de como simbolo del texto */
+.mobile-menu__link--shop::after { content: ' ↗︎'; font-size: 13px; opacity: 0.7; }
 
 /* Sección de contacto y redes sociales */
 .mobile-menu__contact { margin-top: auto; padding: 20px 16px; border-top: 1px solid rgba(0,0,0,0.1); background-color: var(--vista-white); }
