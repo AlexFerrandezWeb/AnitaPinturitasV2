@@ -1,0 +1,276 @@
+/* Catalogo filtrable de productos.html.
+   Va SIEMPRE despues de cuidadoPiel.css en el <head>: de ahi se reutilizan
+   .productos-grid y .featured-product-card para no duplicar los estilos de
+   tarjeta, y aqui se corrige lo unico que choca entre ambas paginas. */
+
+/* cuidadoPiel.html usa <main> sin clase y reserva el hueco del nav fijo en el
+   body; productos.html usa <main class="main">, que ya lo reserva via nav.css
+   (.main > *:first-child). Sin esto el hueco se aplicaria dos veces. */
+body {
+    padding-top: 0;
+}
+
+.catalogo {
+    padding: 0 0 60px;
+    /* Alto del nav fijo: logo 80 + 12 de padding arriba y abajo. En >=768px el
+       padding sube a 14 (ver nav.css). Es de donde cuelga la barra pegajosa. */
+    --alto-nav: 104px;
+    /* Hereda el sticky footer que antes sostenia .categories-section: sin esto
+       el footer sube cuando un filtro devuelve pocos resultados. */
+    flex: 1;
+}
+
+/* En esta pagina la lupa del header sobra: el buscador propio del catalogo va
+   dentro de la barra pegajosa, o sea que esta siempre a la vista. Basta con
+   ocultarla aqui porque catalogo.css solo se carga en productos.html. */
+.nav__search-toggle {
+    display: none;
+}
+
+.catalogo__filtros {
+    position: sticky;
+    top: var(--alto-nav);
+    z-index: 90;
+    /* Opaco y del mismo color que el body, o las tarjetas se verian pasar */
+    background-color: var(--white);
+    /* Se separa de las fichas con la misma sombra difusa que el nav y no con un
+       borde: el borde dibujaba una linea nitida de lado a lado */
+    box-shadow: 0 2px 16px rgba(186, 11, 95, 0.08);
+    padding-bottom: 12px;
+}
+
+/* En esta pagina no hay efecto vidriera: ni la barra de filtros ni el nav.
+   Con las dos barras apiladas, el nav translucido sobre la barra blanca daba
+   un escalon raro, y el desenfoque del nav se cortaba en seco justo encima de
+   las fichas y dibujaba una linea de lado a lado. Todo blanco y se acabo.
+   menu-hamburguesa.js sigue poniendo .nav--transparent al hacer scroll en
+   todas las paginas; aqui simplemente se le deja sin efecto. */
+.nav.nav--transparent {
+    background-color: var(--vista-white);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: 0 2px 16px rgba(186, 11, 95, 0.08);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* --- Barra de filtros --- */
+
+/* Espaciado apretado a proposito: sumado a los 104px del nav, esta barra ocupa
+   sitio fijo en cada pantalla de movil, asi que cada pixel de aire se nota. */
+.catalogo__barra {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0 0;
+}
+
+.catalogo__buscar {
+    position: relative;
+    display: block;
+}
+
+.catalogo__buscar input {
+    width: 100%;
+    font-family: var(--tipo-principal);
+    font-size: 1rem;
+    color: var(--color-secundario);
+    background: var(--vista-white);
+    border: 1px solid var(--indian-khaki);
+    border-radius: 999px;
+    padding: 13px 20px 13px 46px;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.catalogo__buscar input::placeholder {
+    color: #9b8791;
+}
+
+.catalogo__buscar input:focus {
+    outline: none;
+    border-color: var(--cardinal-pink);
+    box-shadow: 0 0 0 3px rgba(152, 7, 79, .12);
+}
+
+/* La "x" de limpiar que pinta Chrome sale en azul de sistema. Se sustituye por
+   el mismo circulo rosa del buscador del nav (.search-bar__input en nav.css):
+   si se retoca alli, retocar tambien aqui. Firefox no dibuja ninguna. */
+.catalogo__buscar input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23ba0b5f'/%3E%3Cline x1='15' y1='9' x2='9' y2='15' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='9' y1='9' x2='15' y2='15' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.catalogo__buscar input::-webkit-search-cancel-button:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' fill='%2398074f'/%3E%3Cline x1='15' y1='9' x2='9' y2='15' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='9' y1='9' x2='15' y2='15' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+.catalogo__buscar::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    pointer-events: none;
+    background: currentColor;
+    color: #9b8791;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10 2a8 8 0 105.3 14l5.4 5.4 1.4-1.4-5.4-5.4A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10 2a8 8 0 105.3 14l5.4 5.4 1.4-1.4-5.4-5.4A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* En movil los chips van en una sola fila deslizable: envueltos, las 10
+   subcategorias de piel ocupaban media pantalla antes del primer producto.
+   A partir de 700px hay sitio de sobra y se dejan envolver. */
+.catalogo__familias,
+.catalogo__subs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    /* Sin scroll-snap: enganchaba el primer chip al borde del contenedor, se
+       comia el padding de abajo y dejaba los chips desalineados con el
+       buscador. En pastillas de este tamano el enganche no aporta nada. */
+    scrollbar-width: none;
+    /* La tira se sale del .container para llegar de borde a borde de pantalla:
+       cortada a 20px del margen parecia contenido roto, y cortada en el propio
+       borde se lee como "hay mas, desliza". El padding devuelve la alineacion
+       del primer chip y deja aire tras el ultimo. */
+    padding: 2px 20px;
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+.catalogo__familias::-webkit-scrollbar,
+.catalogo__subs::-webkit-scrollbar {
+    display: none;
+}
+
+.catalogo__familias > .catalogo__chip,
+.catalogo__subs > .catalogo__chip {
+    flex: 0 0 auto;
+}
+
+.catalogo__subs {
+    /* El aire de abajo lo pone ya .catalogo__filtros */
+    padding-bottom: 2px;
+}
+
+.catalogo__chip {
+    font-family: var(--tipo-principal);
+    font-size: .875rem;
+    line-height: 1.2;
+    color: var(--color-secundario);
+    background: var(--vista-white);
+    border: 1px solid var(--indian-khaki);
+    border-radius: 999px;
+    padding: 9px 15px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .18s ease, border-color .18s ease, color .18s ease;
+}
+
+.catalogo__chip:hover {
+    border-color: var(--cardinal-pink);
+}
+
+.catalogo__chip:focus-visible {
+    outline: 2px solid var(--cardinal-pink);
+    outline-offset: 2px;
+}
+
+.catalogo__chip.is-activo {
+    background: var(--cardinal-pink);
+    border-color: var(--cardinal-pink);
+    color: #fff;
+}
+
+.catalogo__chip--familia {
+    font-weight: 600;
+}
+
+.catalogo__chip-num {
+    display: inline-block;
+    margin-left: 4px;
+    font-size: .75rem;
+    opacity: .65;
+    font-variant-numeric: tabular-nums;
+}
+
+/* --- Resultados --- */
+
+.catalogo__contador {
+    font-size: .8125rem;
+    color: #6f6169;
+    margin: 16px 0 14px;
+    font-variant-numeric: tabular-nums;
+}
+
+.catalogo__vacio,
+.catalogo__error {
+    text-align: center;
+    color: #6f6169;
+    padding: 48px 20px;
+    margin: 0;
+}
+
+.featured-product-card__btn--cart.is-anadido {
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    /* nav.css sube el padding del nav a 14px a partir de aqui */
+    .catalogo {
+        --alto-nav: 108px;
+    }
+}
+
+@media (min-width: 700px) {
+    .catalogo__barra {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+    }
+
+    /* El buscador va primero en el marcado por el movil; aqui vuelve a su
+       sitio, a la derecha de los chips de familia. */
+    .catalogo__buscar {
+        flex: 0 1 320px;
+        order: 2;
+    }
+
+    .catalogo__familias {
+        order: 1;
+    }
+
+    /* Con anchura de sobra no hace falta deslizar: que envuelvan, y sin el
+       sangrado a pantalla completa que necesita la tira del movil */
+    .catalogo__familias,
+    .catalogo__subs {
+        flex-wrap: wrap;
+        overflow-x: visible;
+        padding: 2px 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

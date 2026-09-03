@@ -34,8 +34,8 @@ Cuando despliegues el backend en Render, configura estas variables de entorno en
 
 - **`FREE_SHIPPING_THRESHOLD`**
   - Valor: Umbral para envío gratuito en euros
-  - Ejemplo: `62.00`
-  - Por defecto: `62.00`
+  - Ejemplo: `80.00`
+  - Por defecto: `80.00`
 
 ### Variables para Meta (Facebook Pixel) - Opcionales
 

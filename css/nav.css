@@ -42,7 +42,9 @@
 
 .nav__actions { display: flex; align-items: center; gap: 8px; justify-self: end; }
 
-.nav__search-toggle { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: transparent; border: 0; color: var(--jazzberry-jam); cursor: pointer; border-radius: 6px; transition: all 0.2s ease; }
+/* Ya no es un <button> que despliega la barra: es un enlace al catalogo, de ahi
+   el text-decoration */
+.nav__search-toggle { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: transparent; border: 0; color: var(--jazzberry-jam); cursor: pointer; border-radius: 6px; text-decoration: none; transition: all 0.2s ease; }
 .nav__search-toggle:hover { background-color: rgba(198, 112, 155, 0.1); }
 .nav__search-toggle:focus { outline: none; }
 .nav__search-toggle:focus-visible { outline: 2px solid var(--jazzberry-jam); outline-offset: 2px; }

@@ -12,7 +12,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Productos de belleza testeados por Anita Pinturitas: cuidado de piel madura +40, cosmética capilar y asesoría personalizada. Envío gratis en pedidos +62€. Consúltanos sin compromiso.">
+    <meta name="description" content="Productos de belleza testeados por Anita Pinturitas: cuidado de piel madura +40, cosmética capilar y asesoría personalizada. Envío gratis en pedidos +80€. Consúltanos sin compromiso.">
     <meta name="keywords" content="productos belleza, cosmética, cuidado piel, productos testeados, Anita Pinturitas">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://anitapinturitas.es/html/productos.html">
@@ -31,12 +31,19 @@
     <title>Anita Pinturitas - Catálogo de Productos de Belleza y Cosmética</title>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/productos.css">
-    <link rel="stylesheet" href="../css/brandShowcase.css">
     <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/botonFlotante.css">
     <link rel="stylesheet" href="../css/carrito.css">
+    <link rel="stylesheet" href="../css/confirmModal.css">
+    <link rel="stylesheet" href="../css/cartAnimation.css">
+    <link rel="stylesheet" href="../css/volverArriba.css">
     <link rel="stylesheet" href="../css/searchResults.css">
+    <!-- cuidadoPiel.css aporta .productos-grid y .featured-product-card, que el
+         catalogo reutiliza; catalogo.css va justo despues para corregir el
+         unico solape entre ambas paginas (el hueco del nav fijo). -->
+    <link rel="stylesheet" href="../css/cuidadoPiel.css">
+    <link rel="stylesheet" href="../css/catalogo.css">
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -97,11 +104,11 @@
             <img src="../assets/anita-pinturitas_logo.webp" alt="Logo Anita Pinturitas">
         </a>
         <div class="nav__actions">
-            <button class="nav__search-toggle" aria-label="Buscar productos" aria-expanded="false" aria-controls="search-bar">
+            <a class="nav__search-toggle" href="productos.html#buscar" aria-label="Buscar productos">
                 <svg class="nav__search-icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-            </button>
+            </a>
             <a href="#" class="nav__cart" aria-label="Carrito">
                 <svg class="nav__cart-icon" viewBox="0 0 24 24" aria-hidden="true">
                     <!-- Bolso de compras estilo cosmética -->
@@ -205,7 +212,7 @@
             </div>
             <div class="cart-sidebar__footer">
                 <div class="cart-shipping-info">
-                    <p class="cart-shipping-text">Envío gratis a España en todos los pedidos de más de 62.00 €</p>
+                    <p class="cart-shipping-text">Envío gratis a España en todos los pedidos de más de 80.00 €</p>
                 </div>
                 <div class="cart-total">
                     <span class="cart-total__label">Total:</span>
@@ -242,62 +249,45 @@
             </div>
         </section>
 
-        <!-- Categorías de Productos -->
-        <section class="categories-section">
-            <div class="container">
-                <div class="categories-grid">
-                    <div class="category-card">
-                        <a href="cuidadoPiel.html" class="category-card__link">
-                            <div class="contenedor-circular">
-                                <img src="../assets/productos/cuidadoPiel/producto1.webp" alt="Cuidado de la piel" class="category-card__img">
-                            </div>
-                            <div class="category-card__caption">Cuidado piel</div>
-                        </a>
-                    </div>
-                    <div class="category-card">
-                        <a href="cuidadoCapilar.html" class="category-card__link">
-                            <div class="contenedor-circular">
-                                <img src="../assets/productos/cuidadoCapilar/banner-ppal-b2b-desktop.webp" alt="Cuidado de la piel" class="category-card__img">
-                            </div>
-                            <div class="category-card__caption">Cuidado capilar</div>
-                        </a>
+        <!-- Catálogo filtrable: las dos familias conviven en una sola rejilla,
+             asi que el cuidado capilar no queda detras de una eleccion previa.
+             Lo rellena js/catalogo.js desde los dos JSON de data/. -->
+        <section class="catalogo">
+            <!-- Los filtros se quedan pegados bajo el nav: con 183 fichas, si
+                 se van con el scroll hay que subir la pagina entera para
+                 cambiar de categoria. Por eso aqui tampoco se muestra la lupa
+                 del header (catalogo.css la oculta): sobra teniendo el
+                 buscador de la pagina siempre a la vista. -->
+            <div class="catalogo__filtros">
+                <div class="container">
+                    <!-- El buscador va primero en el marcado para que en movil
+                         no quede encajonado entre las dos filas de chips; en
+                         escritorio catalogo.css lo recoloca a la derecha. -->
+                    <div class="catalogo__barra">
+                        <label class="catalogo__buscar">
+                            <span class="sr-only">Buscar en el catálogo</span>
+                            <input type="search" id="catalogo-buscar" placeholder="Buscar en el catálogo…" autocomplete="off">
+                        </label>
+                        <nav class="catalogo__familias" id="catalogo-familias" aria-label="Familias de producto"></nav>
                     </div>
 
-                    <!-- Añadir más categorías de productos aquí -->
-                    
-                    
+                    <nav class="catalogo__subs" id="catalogo-subcategorias" aria-label="Subcategorías" hidden></nav>
                 </div>
             </div>
-        </section>
-        <!-- ===== Escaparate de marcas externas (LimeLife / Younique) =====
-             Mismo bloque que en la home; los estilos son css/brandShowcase.css -->
-        <section class="brand-showcase" aria-labelledby="brand-showcase-title">
+
             <div class="container">
-                <div class="brand-showcase__header">
-                    <h2 class="brand-showcase__title" id="brand-showcase-title">Mis otras tiendas</h2>
-                    <p class="brand-showcase__subtitle">Otras marcas con las que trabajo, aquí encontrarás los productos que utilizo en mis redes.</p>
-                </div>
-                <div class="brand-showcase__grid">
+                <p class="catalogo__contador" id="catalogo-contador" role="status" aria-live="polite"></p>
 
-                    <!-- LimeLife -->
-                    <a href="https://www.limelife.com/anitapinturitas" class="brand-showcase-card" target="_blank" rel="noopener noreferrer">
-                        <img src="../assets/misTiendasLimelife.webp" alt="Tienda LimeLife de Anita" class="brand-showcase-card__img" loading="lazy">
-                        <div class="brand-showcase-card__body">
-                            <p class="brand-showcase-card__cta">Descubre LimeLife</p>
-                        </div>
-                    </a>
+                <div class="productos-grid" id="catalogo-grid"></div>
 
-                    <!-- Younique -->
-                    <a href="https://curatedfor.you/anamariaramosrodriguez" class="brand-showcase-card" target="_blank" rel="noopener noreferrer">
-                        <img src="../assets/misTiendasYounique.webp" alt="Tienda Younique de Anita" class="brand-showcase-card__img" loading="lazy">
-                        <div class="brand-showcase-card__body">
-                            <p class="brand-showcase-card__cta">Descubre Younique</p>
-                        </div>
-                    </a>
-
-                </div>
+                <p class="catalogo__vacio" id="catalogo-vacio" hidden>No hay productos que coincidan con esa búsqueda.</p>
             </div>
         </section>
+        <!-- "Mis otras tiendas" (LimeLife / Younique) ya NO va aqui: era lo
+             ultimo que veia alguien que habia entrado a comprar, y sacaba
+             trafico fuera justo en el momento de decidir. No se pierde nada:
+             siguen en el nav y en el menu movil de todas las paginas
+             (.nav__link--shop) y en el bloque del final de la home. -->
     </main>
 
     <!-- Footer -->
@@ -399,10 +389,24 @@
         </div>
     </div>
 
+    <!-- metaPixelTracking y cartUtils faltaban en esta pagina: sin ellos no
+         existia window.addToCart, asi que no se podia comprar desde aqui ni se
+         registraba el evento add_to_cart. -->
+    <script src="../js/metaPixelTracking.js"></script>
+    <script src="../js/cartUtils.js"></script>
+    <script src="../js/confirmModal.js"></script>
+    <script src="../js/cartAnimation.js"></script>
     <script src="../js/menu-hamburguesa.js"></script>
     <script src="../js/carrito.js"></script>
-    <script src="../js/buscador.js"></script>
+    <!-- buscador.js NO va aqui: la lupa del header esta oculta en esta pagina
+         (ver catalogo.css) y el script se descargaba los dos JSON de producto
+         al cargar, justo los mismos que ya pide catalogo.js. Si algun dia se
+         vuelve a mostrar la lupa aqui, hay que devolverlo. -->
     <script src="../js/botonFlotante.js"></script>
+    <!-- La pagina paso de dos enlaces a 183 fichas: sin esto la vuelta arriba
+         son sesenta pantallas de scroll. Mismo boton que en las categorias. -->
+    <script src="../js/volverArriba.js"></script>
+    <script src="../js/catalogo.js"></script>
     <script>
         document.addEventListener('click', function(event) {
             if (typeof window.gtag !== 'function') return;

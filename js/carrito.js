@@ -154,14 +154,14 @@ document.addEventListener('DOMContentLoaded', function() {
         updateShippingProgress(total);
     };
 
-    // Barra de progreso hacia el envío gratis (umbral 62 €, envío estándar 6,95 €)
-    const FREE_SHIPPING_THRESHOLD = 62;
+    // Barra de progreso hacia el envío gratis (umbral 80 €, envío estándar 6,95 €)
+    const FREE_SHIPPING_THRESHOLD = 80;
     function updateShippingProgress(total) {
         const shippingInfo = document.querySelector('.cart-shipping-info');
         if (!shippingInfo) return;
 
         if (total <= 0) {
-            shippingInfo.innerHTML = '<p class="cart-shipping-text">Envío 6,95 € · GRATIS en pedidos de más de 62 €</p>';
+            shippingInfo.innerHTML = '<p class="cart-shipping-text">Envío 6,95 € · GRATIS en pedidos de más de 80 €</p>';
             return;
         }
 

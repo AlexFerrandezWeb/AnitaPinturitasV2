@@ -3790,6 +3790,17 @@ html, body {
 
     .svc-slider--cabina .svc-slider__viewport {
         display: flex;
+        /* Se sale de los 16px del .container para llegar de borde a borde: el
+           trozo que asoma del pase siguiente se cortaba a 16px del margen y
+           dejaba una franja muerta a la derecha, que parecia un fallo en vez
+           de "hay mas, desliza". El padding devuelve la alineacion del primer
+           pase y scroll-padding hace que el enganche la respete: sin el, el
+           scroll-snap pega la diapositiva al borde y se come el padding. */
+        margin-left: -16px;
+        margin-right: -16px;
+        padding-left: 16px;
+        padding-right: 16px;
+        scroll-padding-left: 16px;
     }
 
     /* Solo dos pases: el primero es Masajes y el segundo mete las otras cuatro
@@ -4425,9 +4436,14 @@ html, body {
         margin-bottom: 0;
     }
 
+    /* La foto se mide en proporcion al ancho de la tarjeta, no en alto fijo
+       atado a la pantalla: con la altura en svh la caja salia de 152x113 y el
+       object-fit: cover recortaba el bote por arriba y por abajo, que es lo que
+       hacia que los productos se vieran achatados en moviles pequenos.
+       Cuadrada queda a 152x152, como en el catalogo, y el bote se ve entero. */
     .featured-product-card__img-link {
-        height: 100px;
-        height: clamp(85px, 12.5svh, 130px);
+        height: auto;
+        aspect-ratio: 1 / 1;
     }
 
     .featured-product-card__body {
@@ -4506,8 +4522,11 @@ html, body {
         gap: 8px;
     }
 
+    /* En pantallas bajas se aplana un poco para ganar alto, pero por proporcion
+       y no con un alto fijo: 76px dejaban el bote en una rebanada */
     .featured-product-card__img-link {
-        height: 76px;
+        height: auto;
+        aspect-ratio: 4 / 3;
     }
 
     .featured-product-card__body {

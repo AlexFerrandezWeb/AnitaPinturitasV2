@@ -279,7 +279,7 @@ app.get('/html/producto.html', (req, res, next) => {
                     '@type': 'OfferShippingDetails',
                     shippingRate: {
                         '@type': 'MonetaryAmount',
-                        value: producto.precio >= 62 ? 0 : 6.95,
+                        value: producto.precio >= 80 ? 0 : 6.95,
                         currency: 'EUR'
                     },
                     shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'ES' }
@@ -427,8 +427,8 @@ app.post('/api/create-checkout-session', async (req, res) => {
         });
 
         // Configurar opciones de envío
-        // Umbral para envío gratuito (configurable, por defecto 62€)
-        const FREE_SHIPPING_THRESHOLD = parseFloat(process.env.FREE_SHIPPING_THRESHOLD) || 62.00;
+        // Umbral para envío gratuito (configurable, por defecto 80€)
+        const FREE_SHIPPING_THRESHOLD = parseFloat(process.env.FREE_SHIPPING_THRESHOLD) || 80.00;
         const SHIPPING_COST = 6.95; // Coste de envío estándar en euros
 
         // Una sola opción de envío según el total del pedido
@@ -436,7 +436,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
             shipping_rate_data: {
                 type: 'fixed_amount',
                 fixed_amount: {
-                    amount: total >= FREE_SHIPPING_THRESHOLD ? 0 : Math.round(SHIPPING_COST * 100), // Gratis si >= 62€, sino 6.95€
+                    amount: total >= FREE_SHIPPING_THRESHOLD ? 0 : Math.round(SHIPPING_COST * 100), // Gratis si >= 80€, sino 6.95€
                     currency: 'eur',
                 },
                 display_name: total >= FREE_SHIPPING_THRESHOLD ? 'Envío gratuito' : 'Envío estándar',

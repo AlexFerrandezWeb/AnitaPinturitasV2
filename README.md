@@ -109,7 +109,7 @@ anitaPinturitasV3/
 ### Carrito de Compras (sidebar)
 - Gestión de productos en tiempo real
 - Cálculo automático de totales
-- Envío gratuito a partir de 62€
+- Envío gratuito a partir de 80€
 - Checkout con Stripe (tarjeta, PayPal, Klarna, Bizum, Google Pay)
 
 ### Catálogo de Productos

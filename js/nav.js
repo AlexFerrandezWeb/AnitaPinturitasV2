@@ -3,8 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuButton = document.querySelector('.nav__menu');
     const menuClose = document.querySelector('.mobile-menu__close');
     const mobileMenu = document.querySelector('.mobile-menu');
-    const searchToggle = document.querySelector('.nav__search-toggle');
-    const searchBar = document.querySelector('.search-bar');
 
     // Abrir menú hamburguesa
     if (menuButton) {
@@ -31,25 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Toggle buscador
-    if (searchToggle && searchBar) {
-        searchToggle.addEventListener('click', function() {
-            const isVisible = searchBar.classList.contains('is-visible');
-            
-            if (isVisible) {
-                searchBar.classList.remove('is-visible');
-                searchToggle.setAttribute('aria-expanded', 'false');
-            } else {
-                searchBar.classList.add('is-visible');
-                searchToggle.setAttribute('aria-expanded', 'true');
-                // Focus al input cuando se abre
-                const searchInput = searchBar.querySelector('.search-bar__input');
-                if (searchInput) {
-                    setTimeout(() => searchInput.focus(), 300);
-                }
-            }
-        });
-    }
+    // La lupa ya no despliega la barra: ahora es un enlace al catalogo, que es
+    // un buscador con filtros y con las 183 fichas detras. La barra desplegable
+    // y buscador.js se retiraron; .search-bar sigue en el marcado pero nunca
+    // recibe .is-visible, asi que queda plegada.
 
     // Nav vidriera al hacer scroll, sólido tras 1.5s de inactividad
     const nav = document.querySelector('.nav');
@@ -74,15 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('scroll', resetIdleTimer, { passive: true });
     }
 
-    // Cerrar buscador al hacer scroll
-    window.addEventListener('scroll', function() {
-        if (searchBar && searchBar.classList.contains('is-visible')) {
-            searchBar.classList.remove('is-visible');
-            if (searchToggle) {
-                searchToggle.setAttribute('aria-expanded', 'false');
-            }
-        }
-    });
 });
 
 

@@ -19,7 +19,12 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(12px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    /* "bottom" va en la lista para que el hueco que deja el banner de WhatsApp
+       se haga con una animacion y no de un salto. Mismo tiempo y misma curva
+       que .wa-banner en botonFlotante.css, asi el boton sube y baja pegado al
+       banner en vez de ir por su cuenta. */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease,
+                bottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .volver-arriba.is-visible {
